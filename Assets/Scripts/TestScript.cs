@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    public Collider2D collider1;
-    public Collider2D collider2;
-    // Start is called before the first frame update
-    void Start()
+    public float speed = 1f;
+    public WaypointMovement movementState = new WaypointMovement();
+    public Rigidbody2D rb;
+
+    private void Start()
     {
-        print(collider1.bounds);
-        print(collider2.bounds);
+        movementState.Initialize();
+    }
+
+    private void FixedUpdate()
+    {
+        movementState.MoveAgent(transform, rb, speed);
     }
 }

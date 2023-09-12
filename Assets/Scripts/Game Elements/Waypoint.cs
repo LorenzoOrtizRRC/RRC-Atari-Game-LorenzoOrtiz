@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 public class Waypoint : MonoBehaviour
 {
     public Collider2D WaypointArea => _waypointArea;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [Serializable]
@@ -13,13 +14,18 @@ public class WaypointMovement : MovementState
     private int _currentWaypoint = 0;
     private Vector2 _currentDestination = Vector2.zero;
 
+    public void Initialize()
+    {
+        _currentDestination = GetNewDestination();
+    }
+
     public override void MoveAgent(Transform self, Rigidbody2D rb, float speed)
     {
-        Vector2 distance = (Vector2)self.position - _currentDestination;
+        Vector2 distance = _currentDestination - (Vector2)self.position;
         // move self if distance is greater than threshold, else get new waypoint
-        if (distance.magnitude <= _distanceThreshold)
+        if (distance.magnitude >= _distanceThreshold)
         {
-            rb.MovePosition(distance.normalized * Time.fixedDeltaTime * speed);
+            rb.MovePosition((Vector2)self.position + (distance.normalized * Time.fixedDeltaTime * speed));
         }
         else
         {
@@ -32,6 +38,7 @@ public class WaypointMovement : MovementState
     // Works with 2D colliders of any size (box, circle, rectangle). Use box/rectangle and circle colliders.
     private Vector2 GetNewDestination()
     {
+        Debug.Log("setting new destination");
         Vector2 newDestination = _waypointDestinations[_currentWaypoint].GetRandomArea();
 
         if (_currentWaypoint != 0)
@@ -55,6 +62,7 @@ public class WaypointMovement : MovementState
             // apply bias to new destination
             newDestination = Vector2.Lerp(newDestination, biasPoint, _laneAlignmentBias);
         }
+        Debug.Log(newDestination);
         return newDestination;
     }
 }
