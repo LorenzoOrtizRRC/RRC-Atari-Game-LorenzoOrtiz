@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [Serializable]
@@ -43,12 +41,14 @@ public class WaypointMovement : MovementState
 
         if (_currentWaypoint != 0)
         {
+            
             // apply bias based on alignment of previous waypoint and current one
             Waypoint oldWaypoint = _waypointDestinations[_currentWaypoint - 1];
-            Vector2 oldDestinationBiasPoint = (_currentDestination - (Vector2)_waypointDestinations[_currentWaypoint - 1].transform.position)
-                + (Vector2)_waypointDestinations[_currentWaypoint].transform.position;
+            //Vector2 oldDestinationBiasPoint = (_currentDestination - (Vector2)_waypointDestinations[_currentWaypoint - 1].transform.position)
+            //    + (Vector2)_waypointDestinations[_currentWaypoint].transform.position;
 
             // used as target for lerping to implement bias.
+            /*
             Vector2 oldExtents = oldWaypoint.WaypointSize / 2f;
             float xBiasFraction = (oldDestinationBiasPoint.x + oldExtents.x) / oldWaypoint.WaypointSize.x + oldExtents.x;
             float yBiasFraction = (oldDestinationBiasPoint.y + oldExtents.y) / oldWaypoint.WaypointSize.y + oldExtents.y;
@@ -58,11 +58,25 @@ public class WaypointMovement : MovementState
             float xBias = Mathf.Lerp(-newExtents.x, newExtents.x, xBiasFraction);
             float yBias = Mathf.Lerp(-newExtents.y, newExtents.y, yBiasFraction);
             Vector2 biasPoint = new Vector2(xBias, yBias) + (Vector2)_waypointDestinations[_currentWaypoint].transform.position;
+            */
+            // Get vector to scale old destination with new waypoint's size
+            float xBiasScale = _waypointDestinations[_currentWaypoint].WaypointSize.x / oldWaypoint.WaypointSize.x;
+            float yBiasScale = _waypointDestinations[_currentWaypoint].WaypointSize.y / oldWaypoint.WaypointSize.y;
+            Debug.LogWarning($"BEFORE INVERSE: {_currentDestination}");
+            //Vector2 biasPoint = oldWaypoint.transform.InverseTransformPoint(_currentDestination);
+            //Vector2 offset = _waypointDestinations[_currentWaypoint].transform.position - oldWaypoint.transform.position;
+            //Debug.LogWarning($"INVERSE using ({oldWaypoint.transform.name}): {biasPoint}");
+            Vector2 biasPoint = _currentDestination - (Vector2)oldWaypoint.transform.position;
+            biasPoint *= new Vector2(xBiasScale, yBiasScale);
+            //biasPoint *= new Vector2(xBiasScale, yBiasScale);
+            //biasPoint += offset;
+            biasPoint += (Vector2)_waypointDestinations[_currentWaypoint].transform.position;
+            //biasPoint += (Vector2)_waypointDestinations[_currentWaypoint].transform.position;
+            Debug.LogWarning($"INVERSE + WORLD: {biasPoint}");
 
             // apply bias to new destination
             newDestination = Vector2.Lerp(newDestination, biasPoint, _laneAlignmentBias);
         }
-        Debug.Log(newDestination);
         return newDestination;
     }
 }
