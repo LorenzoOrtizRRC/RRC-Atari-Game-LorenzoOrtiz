@@ -7,9 +7,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.UI;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class CharacterData : MonoBehaviour
+public class CharacterData : ScriptableObject
 {
+    [SerializeField] private string _name = "Unit Name";
+    [SerializeField] private float _health = 1f;
+    [SerializeField] private float _armor = 0f;
+    [SerializeField] private float _speed = 1f;
+
+    public string Name => _name;
+    public float Health => _health;
+    public float Armor => _armor;
+    public float Speed => _speed;
+    /*
     [SerializeField] private Rigidbody2D _rb;
 
     [SerializeField] private float _maxHealth = 1f;
@@ -50,4 +59,5 @@ public class CharacterData : MonoBehaviour
         _rb.AddForce(direction * _moveSpeed * Time.deltaTime);
         Debug.Log(_rb.velocity.magnitude);
     }
+    */
 }
