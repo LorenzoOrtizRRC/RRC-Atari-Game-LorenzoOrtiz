@@ -7,25 +7,31 @@ public abstract class WeaponInstance : MonoBehaviour
     [SerializeField] protected WeaponData _weaponData;
     [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();  // positions used to position spawned projectiles
 
+    private Team _currentTeam = Team.cat;
     private float _cooldownTime = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
     private bool _canFire = true;
     private bool _isFiring = false;
 
-    public void UseWeapon(Team weaponOwnerTeam)
+    public void InitializeWeapon(Team currentTeam)
+    {
+        _currentTeam = currentTeam;
+    }
+
+    public void UseWeapon()
     {
         if (Time.time >= _cooldownTime)
         {
-            FireWeapon(weaponOwnerTeam);
+            FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;
         }
     }
 
-    public virtual void FireWeapon(Team weaponOwnerTeam)
+    public virtual void FireWeapon()
     {
         foreach (Transform spawnPoint in _projectileSpawnPoints)
         {
             ProjectileInstance spawnedProjectile = SpawnProjectile(spawnPoint);
-            InitializeProjectile(spawnedProjectile, weaponOwnerTeam);
+            InitializeProjectile(spawnedProjectile);
         }
     }
 
@@ -36,8 +42,8 @@ public abstract class WeaponInstance : MonoBehaviour
         return spawnedProjectile;
     }
 
-    private void InitializeProjectile(ProjectileInstance spawnedProjectile, Team projectileTeam)
+    private void InitializeProjectile(ProjectileInstance spawnedProjectile)
     {
-        spawnedProjectile.InitializeProjectile(_weaponData.Damage, _weaponData.ProjectileSpeed, _weaponData.ProjectileLifetime, projectileTeam);
+        spawnedProjectile.InitializeProjectile(_weaponData.Damage, _weaponData.ProjectileSpeed, _weaponData.ProjectileLifetime, _currentTeam);
     }
 }

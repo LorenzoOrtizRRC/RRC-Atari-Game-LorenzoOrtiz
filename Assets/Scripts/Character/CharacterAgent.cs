@@ -29,7 +29,11 @@ public class CharacterAgent : MonoBehaviour
 
     private void Start()
     {
+        // initialize variables
         _currentHealth = MaxHealth;
+        // initialize weapons
+        _weapon.InitializeWeapon(_currentTeam);
+        // initialize events
     }
 
     private void Update()
@@ -46,6 +50,6 @@ public class CharacterAgent : MonoBehaviour
 
     private void UseWeapon()
     {
-        _weapon.UseWeapon(_currentTeam);
+        _weapon.UseWeapon();
     }
 }
