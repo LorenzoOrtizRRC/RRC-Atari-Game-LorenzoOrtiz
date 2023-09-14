@@ -16,7 +16,7 @@ public abstract class WeaponInstance : MonoBehaviour
         if (Time.time >= _cooldownTime)
         {
             FireWeapon(weaponOwnerTeam);
-            _cooldownTime = Time.time + (1 / _weaponData.RateOfFire);
+            _cooldownTime = Time.time + _weaponData.RateOfFire;
         }
     }
 

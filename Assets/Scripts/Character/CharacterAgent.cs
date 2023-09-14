@@ -46,6 +46,6 @@ public class CharacterAgent : MonoBehaviour
 
     private void UseWeapon()
     {
-        _weapon.FireWeapon(_currentTeam);
+        _weapon.UseWeapon(_currentTeam);
     }
 }
