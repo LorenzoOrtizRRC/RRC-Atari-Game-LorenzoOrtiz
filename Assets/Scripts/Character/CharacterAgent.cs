@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
+public enum Team { cat = 0, dog = 1 }
+
 public class CharacterAgent : MonoBehaviour
 {
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
-
-    [SerializeField] private CharacterData _stats;
+    [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
+    [Header("Agent Variables")]
+    [SerializeField] private CharacterData _stats;
+    [SerializeField] private Team _currentTeam = Team.cat;
     [Header("State Machine Variables")]
     [SerializeField] private MovementState _movementState;
     [SerializeField] private MovementState _chaseState;
-    [SerializeField] private List<WeaponInstance> _weapons;
+    [SerializeField] private WeaponInstance _weapon;
 
     private float _currentHealth;
     private CharacterAgent _enemyTarget;
@@ -31,7 +35,7 @@ public class CharacterAgent : MonoBehaviour
     private void Update()
     {
         //  chase and attack enemy targets, else continue movement
-        if (_enemyTarget) UseWeapons();
+        if (_enemyTarget) UseWeapon();
         else MoveCharacter();
     }
 
@@ -40,8 +44,8 @@ public class CharacterAgent : MonoBehaviour
         _movementState.MoveAgent(transform, _rb, Speed);
     }
 
-    private void UseWeapons()
+    private void UseWeapon()
     {
-        //
+        _weapon.FireWeapon(_currentTeam);
     }
 }

@@ -8,16 +8,20 @@ public class ProjectileInstance : MonoBehaviour
     private float _damage = 1f;
     private float _speed = 1f;
     private float _lifetime = 1f;
+    private Team _currentTeam = Team.cat;
+
     private float _elapsedLifetime = 0f;
+
     public float Damage => _damage;
     public float Speed => _speed;
     public float Lifetime => _lifetime;
 
-    public ProjectileInstance(float newDamage, float newSpeed, float newLifetime)
+    public void InitializeProjectile(float newDamage, float newSpeed, float newLifetime, Team newTeam)
     {
         _damage = newDamage;
         _speed = newSpeed;
         _lifetime = newLifetime;
+        _currentTeam = newTeam;
     }
 
     private void Start()
