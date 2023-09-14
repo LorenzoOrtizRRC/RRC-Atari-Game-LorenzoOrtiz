@@ -5,7 +5,21 @@ using UnityEngine;
 public abstract class WeaponInstance : MonoBehaviour
 {
     [SerializeField] protected WeaponData _weaponData;
-    [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();     // positions used to position spawned projectiles
+    [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();  // positions used to position spawned projectiles
+
+    private float _cooldownTime = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
+    private bool _canFire = true;
+    private bool _isFiring = false;
+
+    public void UseWeapon(Team weaponOwnerTeam)
+    {
+        if (Time.time >= _cooldownTime)
+        {
+            FireWeapon(weaponOwnerTeam);
+            _cooldownTime = Time.time + (1 / _weaponData.RateOfFire);
+        }
+    }
+
     public virtual void FireWeapon(Team weaponOwnerTeam)
     {
         foreach (Transform spawnPoint in _projectileSpawnPoints)

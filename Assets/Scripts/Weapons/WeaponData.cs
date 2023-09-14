@@ -6,7 +6,7 @@ public class WeaponData : ScriptableObject
 {
     [SerializeField] private GameObject _projectileObject;
     [SerializeField] private float _damage;
-    [SerializeField] private float _rateOfFire;     // Projectiles per second. Used to calculate weapon cooldown between bullets. Formula for cooldown: 1 second / _rateOfFire.
+    [SerializeField] private float _rateOfFire;     // Projectiles per second. Used to calculate weapon cooldown between bullets. Formula for rate of fire: 1 second / bullets per second.
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileLifetime;     // OProjectile lifetime duration in seconds.
 
