@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponInstance : MonoBehaviour
+public abstract class WeaponInstance : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] protected WeaponData _weaponData;
+    [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();     // positions used to position spawned projectiles
+    protected abstract void UseWeapon();
+    protected abstract void FireProjectile();
 }
