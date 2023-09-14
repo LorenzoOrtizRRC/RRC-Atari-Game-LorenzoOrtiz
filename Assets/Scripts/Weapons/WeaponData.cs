@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Weapon Data", menuName = "Weapons/Weapon Data")]
 public class WeaponData : ScriptableObject
 {
     [SerializeField] private GameObject _projectileObject;

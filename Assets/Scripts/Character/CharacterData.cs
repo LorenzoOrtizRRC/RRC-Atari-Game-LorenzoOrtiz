@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.UI;
 
+[CreateAssetMenu(fileName = "New Character Data", menuName = "Character/Character Data")]
 public class CharacterData : ScriptableObject
 {
     [SerializeField] private string _name = "Unit Name";
