@@ -17,8 +17,8 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private float _enemyDetectionRadius = 10f;
     [Header("State Machine Variables")]
     [SerializeField] private WeaponInstance _weapon;
-    [SerializeField] private MovementState _movementState;
-    [SerializeField] private MovementState _chaseState;
+    [SerializeField] private WaypointMovement _movementState;
+    //[SerializeField] private MovementState _chaseState;
 
     private float _currentHealth;
     private CharacterAgent _enemyTarget;
@@ -42,12 +42,13 @@ public class CharacterAgent : MonoBehaviour
     {
         // initialize variables
         _currentHealth = MaxHealth;
+        _movementState.Initialize();
     }
 
     private void Update()
     {
         //  chase and attack enemy targets, else continue movement
-        if (_enemyTarget) UseWeapon();
+        if (_enemyTarget && _enemyTarget.gameObject.activeSelf) UseWeapon();
         else MoveCharacter();
     }
 

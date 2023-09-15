@@ -17,6 +17,7 @@ public abstract class WeaponInstance : MonoBehaviour
         _currentTeam = currentTeam;
     }
 
+    // activation conditions for weapon
     public void UseWeapon()
     {
         if (Time.time >= _cooldownTime)
@@ -26,6 +27,7 @@ public abstract class WeaponInstance : MonoBehaviour
         }
     }
 
+    // logic for spawning projectiles
     public virtual void FireWeapon()
     {
         foreach (Transform spawnPoint in _projectileSpawnPoints)

@@ -9,7 +9,7 @@ public class WaypointMovement : MovementState
     [SerializeField] private List<Waypoint> _waypointDestinations = new List<Waypoint>();
     [SerializeField] private float _distanceThreshold = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _laneAlignmentBias = 0f;  // aligns agent to stay on a side of the lane more.
-    private int _currentWaypoint = 0;
+    private int _waypointIndex = 0;
     private Vector2 _currentDestination = Vector2.zero;
 
     public void Initialize()
@@ -27,8 +27,8 @@ public class WaypointMovement : MovementState
         }
         else
         {
-            if (_currentWaypoint == _waypointDestinations.Count - 1) return;
-            _currentWaypoint++;
+            if (_waypointIndex == _waypointDestinations.Count - 1) return;
+            _waypointIndex++;
             _currentDestination = GetNewDestination();
         }
     }
@@ -37,20 +37,20 @@ public class WaypointMovement : MovementState
     private Vector2 GetNewDestination()
     {
         Debug.Log("setting new destination");
-        Vector2 newDestination = _waypointDestinations[_currentWaypoint].GetRandomArea();
+        Vector2 newDestination = _waypointDestinations[_waypointIndex].GetRandomArea();
 
-        if (_currentWaypoint != 0)
+        if (_waypointIndex != 0)
         {
             // apply bias based on alignment of previous waypoint and current one
-            Waypoint oldWaypoint = _waypointDestinations[_currentWaypoint - 1];
+            Waypoint oldWaypoint = _waypointDestinations[_waypointIndex - 1];
 
             // Get vector to scale old destination with new waypoint's size
-            float xBiasScale = _waypointDestinations[_currentWaypoint].WaypointSize.x / oldWaypoint.WaypointSize.x;
-            float yBiasScale = _waypointDestinations[_currentWaypoint].WaypointSize.y / oldWaypoint.WaypointSize.y;
+            float xBiasScale = _waypointDestinations[_waypointIndex].WaypointSize.x / oldWaypoint.WaypointSize.x;
+            float yBiasScale = _waypointDestinations[_waypointIndex].WaypointSize.y / oldWaypoint.WaypointSize.y;
             // set bias point to local space then apply scales
             Vector2 biasPoint = _currentDestination - (Vector2)oldWaypoint.transform.position;
             biasPoint *= new Vector2(xBiasScale, yBiasScale);
-            biasPoint += (Vector2)_waypointDestinations[_currentWaypoint].transform.position;
+            biasPoint += (Vector2)_waypointDestinations[_waypointIndex].transform.position;
 
             // apply bias to new destination
             newDestination = Vector2.Lerp(newDestination, biasPoint, _laneAlignmentBias);
