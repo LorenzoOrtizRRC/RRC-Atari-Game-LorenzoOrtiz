@@ -18,9 +18,17 @@ public abstract class WeaponInstance : MonoBehaviour
     }
 
     // activation conditions for weapon
-    public void UseWeapon()
+    public void UseWeapon(CharacterAgent enemyAgent)
     {
-        if (Time.time >= _cooldownTime)
+        //  rotate weapon towards target
+        float angleDifference = Vector2.SignedAngle(transform.up, enemyAgent.transform.position);
+        if (Mathf.Abs(angleDifference) > 5f)
+        {
+            float direction = angleDifference > 0f ? 1f : -1f;
+            transform.Rotate(new Vector3(0f, 0f, 1 * direction * 180f * Time.deltaTime));
+            print($"angle difference: {angleDifference}");
+        }
+        else if (Time.time >= _cooldownTime)
         {
             FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;

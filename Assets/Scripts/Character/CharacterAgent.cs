@@ -67,7 +67,7 @@ public class CharacterAgent : MonoBehaviour
 
     private void UseWeapon()
     {
-        _weapon.UseWeapon();
+        _weapon.UseWeapon(_enemyTarget);
     }
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
