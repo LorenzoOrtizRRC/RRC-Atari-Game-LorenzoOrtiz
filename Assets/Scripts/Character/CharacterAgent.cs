@@ -14,7 +14,6 @@ public class CharacterAgent : MonoBehaviour
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private Team _currentTeam = Team.cat;
-    [SerializeField] private float _enemyDetectionRadius = 10f;
     [Header("State Machine Variables")]
     [SerializeField] private WeaponInstance _weapon;
     [SerializeField] private WaypointMovement _movementState;
@@ -32,7 +31,6 @@ public class CharacterAgent : MonoBehaviour
     private void Awake()
     {
         // initialize weapons and other components
-        _targetDetector.InitializeTargetDetector(_currentTeam, _enemyDetectionRadius);
         _weapon.InitializeWeapon(_currentTeam);
         // initialize events
         _targetDetector.OnEnemyDetected += RegisterNewEnemy;
