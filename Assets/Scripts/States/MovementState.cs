@@ -6,5 +6,6 @@ using System;
 [Serializable]
 public abstract class MovementState
 {
-    public abstract void MoveAgent(Transform self, Rigidbody2D rb, float speed);
+    public virtual void Initialize() { }
+    public abstract void MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null);
 }

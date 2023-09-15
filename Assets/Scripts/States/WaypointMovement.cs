@@ -12,18 +12,18 @@ public class WaypointMovement : MovementState
     private int _waypointIndex = 0;
     private Vector2 _currentDestination = Vector2.zero;
 
-    public void Initialize()
+    public override void Initialize()
     {
         _currentDestination = GetNewDestination();
     }
 
-    public override void MoveAgent(Transform self, Rigidbody2D rb, float speed)
+    public override void MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null)
     {
         Vector2 distance = _currentDestination - (Vector2)self.position;
         // move self if distance is greater than threshold, else get new waypoint
         if (distance.magnitude >= _distanceThreshold)
         {
-            rb.MovePosition((Vector2)self.position + (distance.normalized * Time.fixedDeltaTime * speed));
+            rb.MovePosition((Vector2)self.position + (distance.normalized * Time.deltaTime * speed));
         }
         else
         {
