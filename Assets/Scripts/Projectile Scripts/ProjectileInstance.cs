@@ -13,8 +13,7 @@ public class ProjectileInstance : MonoBehaviour
     private float _elapsedLifetime = 0f;
 
     public float Damage => _damage;
-    public float Speed => _speed;
-    public float Lifetime => _lifetime;
+    public Team CurrentTeam => _currentTeam;
 
     public void InitializeProjectile(float newDamage, float newSpeed, float newLifetime, Team newTeam)
     {
@@ -41,8 +40,17 @@ public class ProjectileInstance : MonoBehaviour
         _rb.MovePosition(transform.position + (transform.up * _speed * Time.fixedDeltaTime));
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out CharacterAgent collidingAgent))
+        {
+            if (collidingAgent.CurrentTeam != _currentTeam) DestroyProjectile();
+        }
+    }
+
     private void DestroyProjectile()
     {
         gameObject.SetActive(false);
     }
+
 }

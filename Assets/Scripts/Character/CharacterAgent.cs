@@ -51,6 +51,14 @@ public class CharacterAgent : MonoBehaviour
         else MoveCharacter();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out ProjectileInstance collidingProjectile))
+        {
+            if (collidingProjectile.CurrentTeam != _currentTeam) DamageCharacter(collidingProjectile.Damage);
+        }
+    }
+
     private void MoveCharacter()
     {
         _movementState.MoveAgent(transform, _rb, Speed);
@@ -64,5 +72,17 @@ public class CharacterAgent : MonoBehaviour
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
         _enemyTarget = enemyAgent;
+    }
+
+    private void DamageCharacter(float rawDamage)
+    {
+        // Damage formula.
+        float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
+        _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+    }
+
+    private void KillCharacter()
+    {
+        gameObject.SetActive(false);
     }
 }
