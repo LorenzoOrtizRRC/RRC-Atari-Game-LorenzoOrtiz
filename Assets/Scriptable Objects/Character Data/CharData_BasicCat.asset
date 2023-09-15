@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Cat Shooter
   _health: 1
   _armor: 0
-  _speed: 3
+  _speed: 20

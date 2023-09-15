@@ -21,12 +21,11 @@ public abstract class WeaponInstance : MonoBehaviour
     public void UseWeapon(CharacterAgent enemyAgent)
     {
         //  rotate weapon towards target
-        float angleDifference = Vector2.SignedAngle(transform.up, enemyAgent.transform.position);
-        if (Mathf.Abs(angleDifference) > 5f)
+        float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
+        if (Mathf.Abs(angleDifference) > 1f)
         {
             float direction = angleDifference > 0f ? 1f : -1f;
             transform.Rotate(new Vector3(0f, 0f, 1 * direction * 180f * Time.deltaTime));
-            print($"angle difference: {angleDifference}");
         }
         else if (Time.time >= _cooldownTime)
         {
