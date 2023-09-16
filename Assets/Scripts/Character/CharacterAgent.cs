@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -12,10 +13,11 @@ public class CharacterAgent : MonoBehaviour
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
     [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private CharacterArtController _characterArtController;
     [SerializeField] private TargetDetector _targetDetector;
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
-    [SerializeField] private Team _currentTeam = Team.cat;
+    [SerializeField] private TeamData _currentTeam;
     [Header("State Machine Variables")]
     [SerializeField] private WeaponInstance _weapon;
     [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
@@ -27,13 +29,14 @@ public class CharacterAgent : MonoBehaviour
     public float MaxHealth => _stats.Health;
     public float Armor => _stats.Armor;
     public float Speed => _stats.Speed;
-    public Team CurrentTeam => _currentTeam;
+    public TeamData CurrentTeam => _currentTeam;
     public float CurrentHealth => _currentHealth;
 
     private void Awake()
     {
         // initialize weapons and other components
         _weapon.InitializeWeapon(_currentTeam);
+        _characterArtController.Initialize(_currentTeam);
         _targetDetector.InitializeTargetDetector(_currentTeam);
         // initialize own events
         OnEnemyTargetAcquired += _weapon.SetNewTarget;

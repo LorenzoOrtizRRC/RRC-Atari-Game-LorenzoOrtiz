@@ -11,7 +11,7 @@ public abstract class WeaponInstance : MonoBehaviour
     public float MinimumRange => _weaponData.MinimumWeaponRange;
     public float MaximumRange => _weaponData.MaximumWeaponRange;
 
-    private Team _currentTeam = Team.cat;
+    private TeamData _currentTeam;
     private CharacterAgent _enemyAgent = null; // current target enemy
     private float _cooldownTime = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
     private bool _canFire = true;
@@ -22,14 +22,13 @@ public abstract class WeaponInstance : MonoBehaviour
         if (_enemyAgent) RotateWeapon();
     }
 
-    public void InitializeWeapon(Team currentTeam) => _currentTeam = currentTeam;
+    public void InitializeWeapon(TeamData currentTeam) => _currentTeam = currentTeam;
 
     // activation conditions for weapon
     public void UseWeapon(CharacterAgent enemyAgent)
     {
         //  rotate weapon towards target
         float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
-        print($"USE WEAPON FOR:{_currentTeam}");
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
         if (Mathf.Abs(angleDifference) <= 1f && Time.time >= _cooldownTime)
         {

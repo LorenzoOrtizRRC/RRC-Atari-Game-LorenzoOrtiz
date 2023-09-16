@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 669879565933400586}
   - component: {fileID: 6174069632819570803}
   - component: {fileID: 4917470637874317170}
+  - component: {fileID: 8520688758158660115}
   m_Layer: 0
   m_Name: BallProjectile_Small
   m_TagString: Untagged
@@ -132,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 4917470637874317170}
+  _characterArtController: {fileID: 8520688758158660115}
 --- !u!58 &6174069632819570803
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -194,3 +196,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8520688758158660115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792752497417319274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fca166ea6e39314ba7acf7689f7ee00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 1296025737315068694}

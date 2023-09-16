@@ -1436,9 +1436,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 998175313}
+  _characterArtController: {fileID: 0}
   _targetDetector: {fileID: 994339218}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
-  _currentTeam: 0
+  _currentTeam: {fileID: 0}
   _weapon: {fileID: 2003106144}
   _movementState:
     _waypointDestinations:
@@ -1562,6 +1563,7 @@ GameObject:
   - component: {fileID: 1041231662}
   - component: {fileID: 1041231661}
   - component: {fileID: 1041231660}
+  - component: {fileID: 1041231664}
   m_Layer: 0
   m_Name: Character Base (1)
   m_TagString: Untagged
@@ -1644,9 +1646,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 1041231660}
+  _characterArtController: {fileID: 1041231664}
   _targetDetector: {fileID: 650966402}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
-  _currentTeam: 1
+  _currentTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _weapon: {fileID: 1736124659}
   _movementState:
     _waypointDestinations:
@@ -1665,7 +1668,7 @@ Transform:
   m_GameObject: {fileID: 1041231659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.23, y: 2.33, z: 0}
+  m_LocalPosition: {x: 8.47, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1674,6 +1677,19 @@ Transform:
   - {fileID: 650966404}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1041231664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041231659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fca166ea6e39314ba7acf7689f7ee00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 912455856}
 --- !u!1 &1085148190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,6 +2289,7 @@ GameObject:
   - component: {fileID: 1343469465}
   - component: {fileID: 1343469463}
   - component: {fileID: 1343469466}
+  - component: {fileID: 1343469467}
   m_Layer: 0
   m_Name: Character Base
   m_TagString: Untagged
@@ -2346,9 +2363,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 1343469466}
+  _characterArtController: {fileID: 1343469467}
   _targetDetector: {fileID: 462740037}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
-  _currentTeam: 0
+  _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _weapon: {fileID: 1464906608}
   _movementState:
     _waypointDestinations:
@@ -2385,6 +2403,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1343469467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343469462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fca166ea6e39314ba7acf7689f7ee00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 1767391868}
 --- !u!1 &1464906606
 GameObject:
   m_ObjectHideFlags: 0

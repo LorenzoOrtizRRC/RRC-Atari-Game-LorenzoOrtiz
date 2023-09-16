@@ -5,27 +5,35 @@ using UnityEngine;
 public class ProjectileInstance : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private CharacterArtController _characterArtController;
     private float _damage = 1f;
     private float _speed = 1f;
     private float _lifetime = 1f;
-    private Team _currentTeam = Team.cat;
+    private TeamData _currentTeam;
 
     private float _elapsedLifetime = 0f;
 
     public float Damage => _damage;
-    public Team CurrentTeam => _currentTeam;
+    public TeamData CurrentTeam => _currentTeam;
 
-    public void InitializeProjectile(float newDamage, float newSpeed, float newLifetime, Team newTeam)
+    public void InitializeProjectile(float newDamage, float newSpeed, float newLifetime, TeamData newTeam)
     {
         _damage = newDamage;
         _speed = newSpeed;
         _lifetime = newLifetime;
         _currentTeam = newTeam;
+        print($"proj team init: {_currentTeam}");
+    }
+
+    private void Awake()
+    {
+        _rb ??= GetComponent<Rigidbody2D>();
+        _characterArtController ??= GetComponent<CharacterArtController>();
     }
 
     private void Start()
     {
-        _rb ??= GetComponent<Rigidbody2D>();
+        _characterArtController.Initialize(_currentTeam);   // this is at start instead of awake because the projectile needs to be initialized first to get the team, before the artcontroller gets intialized.
     }
 
     private void Update()

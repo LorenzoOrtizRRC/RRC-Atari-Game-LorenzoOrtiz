@@ -10,7 +10,7 @@ public class TargetDetector : MonoBehaviour
     [Header("Enemy detection range is set by the CharacterAgent class.")]
     [SerializeField] private CircleCollider2D _detectorCollider;
     [SerializeField] private float _enemyDetectionRadius = 10f;
-    private Team ownerTeam = Team.cat;
+    private TeamData ownerTeam;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class TargetDetector : MonoBehaviour
         _detectorCollider.radius = _enemyDetectionRadius;
     }
 
-    public void InitializeTargetDetector(Team newTeam)
+    public void InitializeTargetDetector(TeamData newTeam)
     {
         ownerTeam = newTeam;
     }
