@@ -22,7 +22,6 @@ public class ProjectileInstance : MonoBehaviour
         _speed = newSpeed;
         _lifetime = newLifetime;
         _currentTeam = newTeam;
-        print($"proj team init: {_currentTeam}");
     }
 
     private void Awake()

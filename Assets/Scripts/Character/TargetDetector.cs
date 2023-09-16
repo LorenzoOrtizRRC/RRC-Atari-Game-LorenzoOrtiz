@@ -10,6 +10,7 @@ public class TargetDetector : MonoBehaviour
     [Header("Enemy detection range is set by the CharacterAgent class.")]
     [SerializeField] private CircleCollider2D _detectorCollider;
     [SerializeField] private float _enemyDetectionRadius = 10f;
+    [SerializeField] private bool _showDetectionRadius = true;  // in editor only
     private TeamData ownerTeam;
 
     private void Awake()
@@ -28,6 +29,15 @@ public class TargetDetector : MonoBehaviour
         if (collision.TryGetComponent(out CharacterAgent collidingAgent))
         {
             if (collidingAgent.CurrentTeam != ownerTeam) OnEnemyDetected(collidingAgent);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_showDetectionRadius)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _enemyDetectionRadius);
         }
     }
 }

@@ -12,6 +12,8 @@ public class WaypointMovement : MovementState
     private int _waypointIndex = 0;
     private Vector2 _currentDestination = Vector2.zero;
 
+    public void SetWaypoints(List<Waypoint> initialWaypoints) => _waypointDestinations = initialWaypoints;
+
     public override void Initialize()
     {
         _currentDestination = GetNewDestination();
@@ -36,7 +38,6 @@ public class WaypointMovement : MovementState
     // Works with 2D colliders of any size (box, circle, rectangle). Use box/rectangle and circle colliders.
     private Vector2 GetNewDestination()
     {
-        Debug.Log("setting new destination");
         Vector2 newDestination = _waypointDestinations[_waypointIndex].GetRandomArea();
 
         if (_waypointIndex != 0)

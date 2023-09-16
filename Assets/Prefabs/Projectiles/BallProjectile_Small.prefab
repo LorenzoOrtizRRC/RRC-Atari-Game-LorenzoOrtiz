@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2454549382797561487}
   - component: {fileID: 1296025737315068694}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6174069632819570803}
   - component: {fileID: 4917470637874317170}
   - component: {fileID: 8520688758158660115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BallProjectile_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,10 +153,10 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295

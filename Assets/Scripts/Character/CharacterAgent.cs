@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class CharacterAgent : MonoBehaviour
 {
-    public Action<CharacterAgent> OnEnemyTargetAcquired;
+    public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
     [Header("Component References")]
@@ -18,6 +18,7 @@ public class CharacterAgent : MonoBehaviour
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
+    [SerializeField] private bool _cannotMove = false;
     [Header("State Machine Variables")]
     [SerializeField] private WeaponInstance _weapon;
     [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
@@ -32,7 +33,14 @@ public class CharacterAgent : MonoBehaviour
     public TeamData CurrentTeam => _currentTeam;
     public float CurrentHealth => _currentHealth;
 
-    private void Awake()
+    public void InitializeAgent(TeamData newTeam, List<Waypoint> initialPath)
+    {
+        _currentTeam = newTeam;
+        _movementState.SetWaypoints(initialPath);
+        _movementState.Initialize();
+    }
+
+    private void Start()
     {
         // initialize weapons and other components
         _weapon.InitializeWeapon(_currentTeam);
@@ -48,8 +56,8 @@ public class CharacterAgent : MonoBehaviour
     {
         // initialize variables
         _currentHealth = MaxHealth;
-        _movementState.Initialize();
-        _chaseState.Initialize();
+        //_movementState.Initialize();
+        //_chaseState.Initialize();
     }
 
     private void Update()
@@ -64,7 +72,7 @@ public class CharacterAgent : MonoBehaviour
             }
             // evaluate weapon ranges, chase or retreat appropriately
             float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (distanceFromEnemy > _weapon.MaximumRange) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
+            if (distanceFromEnemy > _weapon.MaximumRange && !_cannotMove) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
             else if (distanceFromEnemy < _weapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
             else UseWeapon();   // use weapon when within appropriate range
         }
@@ -81,6 +89,7 @@ public class CharacterAgent : MonoBehaviour
 
     private void MoveCharacter()
     {
+        if (_cannotMove) return;
         _movementState.MoveAgent(transform, _rb, Speed);
     }
 
@@ -107,6 +116,9 @@ public class CharacterAgent : MonoBehaviour
         // Damage formula.
         float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
         _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+
+        // evaluate health.
+        if (_currentHealth == 0) KillCharacter();
     }
 
     private void KillCharacter()
