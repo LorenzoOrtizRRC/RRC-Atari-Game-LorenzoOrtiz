@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum Team { cat = 0, dog = 1 }
 
 public class CharacterAgent : MonoBehaviour
 {
+    public Action<CharacterAgent> OnEnemyTargetAcquired;
+
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
     [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
@@ -16,8 +20,8 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private Team _currentTeam = Team.cat;
     [Header("State Machine Variables")]
     [SerializeField] private WeaponInstance _weapon;
-    [SerializeField] private WaypointMovement _movementState;
-    //[SerializeField] private MovementState _chaseState;
+    [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
+    [SerializeField] private MovementState _chaseState = new ChaseState();
 
     private float _currentHealth;
     private CharacterAgent _enemyTarget;
@@ -32,7 +36,10 @@ public class CharacterAgent : MonoBehaviour
     {
         // initialize weapons and other components
         _weapon.InitializeWeapon(_currentTeam);
-        // initialize events
+        _targetDetector.InitializeTargetDetector(_currentTeam);
+        // initialize own events
+        OnEnemyTargetAcquired += _weapon.SetNewTarget;
+        // initialize component events
         _targetDetector.OnEnemyDetected += RegisterNewEnemy;
     }
 
@@ -41,12 +48,25 @@ public class CharacterAgent : MonoBehaviour
         // initialize variables
         _currentHealth = MaxHealth;
         _movementState.Initialize();
+        _chaseState.Initialize();
     }
 
     private void Update()
     {
-        //  chase and attack enemy targets, else continue movement
-        if (_enemyTarget && _enemyTarget.gameObject.activeSelf) UseWeapon();
+        //  if target is valid, evaluate target
+        if (_enemyTarget)
+        {
+            if (!_enemyTarget.gameObject.activeSelf)    // if target is dead, reset detector (to check ontrigger again) and current enemy target.
+            {
+                ResetTarget();
+                return;
+            }
+            // evaluate weapon ranges, chase or retreat appropriately
+            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
+            if (distanceFromEnemy > _weapon.MaximumRange) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
+            else if (distanceFromEnemy < _weapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
+            else UseWeapon();   // use weapon when within appropriate range
+        }
         else MoveCharacter();
     }
 
@@ -71,6 +91,14 @@ public class CharacterAgent : MonoBehaviour
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
         _enemyTarget = enemyAgent;
+        OnEnemyTargetAcquired(_enemyTarget);
+    }
+
+    private void ResetTarget()
+    {
+        _enemyTarget = null;
+        _targetDetector.gameObject.SetActive(false);
+        _targetDetector.gameObject.SetActive(true);
     }
 
     private void DamageCharacter(float rawDamage)

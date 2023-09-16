@@ -734,7 +734,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 5
 --- !u!114 &462740037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 462740036}
+  _enemyDetectionRadius: 10
 --- !u!1 &628497734
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 650966403}
+  _enemyDetectionRadius: 10
 --- !u!58 &650966403
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -906,7 +908,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 5
 --- !u!4 &650966404
 Transform:
   m_ObjectHideFlags: 0
@@ -1205,6 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 994339219}
+  _enemyDetectionRadius: 10
 --- !u!58 &994339219
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1357,7 +1360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &998175313
 Rigidbody2D:
   serializedVersion: 4
@@ -1436,7 +1439,6 @@ MonoBehaviour:
   _targetDetector: {fileID: 994339218}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: 0
-  _enemyDetectionRadius: 10
   _weapon: {fileID: 2003106144}
   _movementState:
     _waypointDestinations:
@@ -1580,7 +1582,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1645,7 +1647,6 @@ MonoBehaviour:
   _targetDetector: {fileID: 650966402}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: 1
-  _enemyDetectionRadius: 10
   _weapon: {fileID: 1736124659}
   _movementState:
     _waypointDestinations:
@@ -2348,7 +2349,6 @@ MonoBehaviour:
   _targetDetector: {fileID: 462740037}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: 0
-  _enemyDetectionRadius: 10
   _weapon: {fileID: 1464906608}
   _movementState:
     _waypointDestinations:
@@ -2371,7 +2371,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

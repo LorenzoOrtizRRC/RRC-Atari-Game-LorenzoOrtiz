@@ -15,5 +15,7 @@ MonoBehaviour:
   _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
   _damage: 1
   _rateOfFire: 0.5
+  _minimumWeaponRange: 0
+  _maximumWeaponRange: 8
   _projectileSpeed: 5
   _projectileLifetime: 5

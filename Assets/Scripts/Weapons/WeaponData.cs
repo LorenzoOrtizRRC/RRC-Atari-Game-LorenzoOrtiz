@@ -16,6 +16,8 @@ public class WeaponData : ScriptableObject
     public GameObject ProjectileObject => _projectileObject;
     public float Damage => _damage;
     public float RateOfFire => _rateOfFire;
+    public float MinimumWeaponRange => _minimumWeaponRange;
+    public float MaximumWeaponRange => _maximumWeaponRange;
     public float ProjectileSpeed => _projectileSpeed;
     public float ProjectileLifetime => _projectileLifetime;
 }
