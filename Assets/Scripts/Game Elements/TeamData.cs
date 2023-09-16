@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Team { cat = 0, dog = 1 }
 
-[CreateAssetMenu(fileName = "New Team Data", menuName ="Team Data")]
+[CreateAssetMenu(fileName = "New Team Data", menuName ="Game/Team Data")]
 public class TeamData : ScriptableObject
 {
     [SerializeField] private Team _selectedTeam;

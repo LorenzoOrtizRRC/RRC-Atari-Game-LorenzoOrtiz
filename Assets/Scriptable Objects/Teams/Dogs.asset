@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
-  m_Name: CharData_BasicCat
+  m_Script: {fileID: 11500000, guid: 6d9a11249e04b294daa6fd4d65c70343, type: 3}
+  m_Name: Dogs
   m_EditorClassIdentifier: 
-  _name: Cat Shooter
-  _health: 1
-  _armor: 0
-  _speed: 30
+  _selectedTeam: 1
+  _teamName: Dogs
+  _teamColor: {r: 1, g: 0.27450982, b: 0.27450982, a: 0}
