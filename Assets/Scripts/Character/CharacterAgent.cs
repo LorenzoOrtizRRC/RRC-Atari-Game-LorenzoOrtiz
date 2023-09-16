@@ -5,8 +5,6 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public enum Team { cat = 0, dog = 1 }
-
 public class CharacterAgent : MonoBehaviour
 {
     public Action<CharacterAgent> OnEnemyTargetAcquired;

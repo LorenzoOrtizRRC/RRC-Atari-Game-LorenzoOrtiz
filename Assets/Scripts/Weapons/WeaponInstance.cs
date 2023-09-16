@@ -29,9 +29,9 @@ public abstract class WeaponInstance : MonoBehaviour
     {
         //  rotate weapon towards target
         float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
-
+        print($"USE WEAPON FOR:{_currentTeam}");
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
-        if (Mathf.Abs(angleDifference) > 1f && Time.time >= _cooldownTime)
+        if (Mathf.Abs(angleDifference) <= 1f && Time.time >= _cooldownTime)
         {
             FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;
