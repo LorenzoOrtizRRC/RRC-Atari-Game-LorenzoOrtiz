@@ -52,7 +52,8 @@ public abstract class WeaponInstance : MonoBehaviour
     {
         float angleDifference = Vector2.SignedAngle(transform.up, (_enemyAgent.transform.position - transform.position));
         float direction = angleDifference > 0f ? 1f : -1f;
-        transform.Rotate(new Vector3(0f, 0f, 1 * direction * 180f * Time.deltaTime));
+        float absClampValue = Mathf.Abs(angleDifference);
+        transform.Rotate(new Vector3(0f, 0f, 1 * Mathf.Clamp(direction * 180f * Time.deltaTime, -absClampValue, absClampValue)));
     }
 
     private ProjectileInstance SpawnProjectile(Transform spawnPosition)
