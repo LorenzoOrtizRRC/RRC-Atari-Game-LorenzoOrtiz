@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 394877704361097563}
+  _targetDetector: {fileID: 1808969846888306160}
   _movementState:
     _waypointDestinations: []
     _distanceThreshold: 0.3

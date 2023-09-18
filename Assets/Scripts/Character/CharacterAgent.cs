@@ -14,7 +14,7 @@ public class CharacterAgent : MonoBehaviour
     [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
-    [SerializeField] private TargetDetector _targetDetector;
+    //[SerializeField] private TargetDetector _targetDetector;
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
@@ -28,7 +28,6 @@ public class CharacterAgent : MonoBehaviour
     */
 
     private float _currentHealth;
-    private CharacterAgent _enemyTarget;
 
     public Rigidbody2D Rb => _rb;
     public float MaxHealth => _stats.Health;
@@ -37,7 +36,6 @@ public class CharacterAgent : MonoBehaviour
     public TeamData CurrentTeam => _currentTeam;
     public WeaponInstance EquippedWeapon => _weapon;
     public float CurrentHealth => _currentHealth;
-    public CharacterAgent EnemyTarget => _enemyTarget;
 
     public void InitializeAgent(TeamData newTeam)
     {
@@ -49,11 +47,11 @@ public class CharacterAgent : MonoBehaviour
         // initialize weapons and other components
         _weapon.InitializeWeapon(_currentTeam);
         _characterArtController.Initialize(_currentTeam);
-        _targetDetector.InitializeTargetDetector(_currentTeam);
+        //_targetDetector.InitializeTargetDetector(_currentTeam);
         // initialize own events
-        OnEnemyTargetAcquired += _weapon.SetNewTarget;
+        //OnEnemyTargetAcquired += _weapon.SetNewTarget;
         // initialize component events
-        _targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        //_targetDetector.OnEnemyDetected += RegisterNewEnemy;
     }
 
     private void OnEnable()
@@ -79,22 +77,14 @@ public class CharacterAgent : MonoBehaviour
         _movementState.MoveAgent(transform, _rb, Speed);
     }
     */
-    public void UseWeapon()
+    public void UseWeapon(CharacterAgent enemyAgent)
     {
-        _weapon.UseWeapon(_enemyTarget);
+        _weapon.UseWeaponAuto(enemyAgent);
     }
 
-    private void RegisterNewEnemy(CharacterAgent enemyAgent)
+    public void RotateWeapon(Vector3 direction)
     {
-        _enemyTarget = enemyAgent;
-        OnEnemyTargetAcquired(_enemyTarget);
-    }
-
-    public void ResetTarget()
-    {
-        _enemyTarget = null;
-        _targetDetector.gameObject.SetActive(false);
-        _targetDetector.gameObject.SetActive(true);
+        _weapon.RotateWeapon(direction);
     }
 
     private void DamageCharacter(float rawDamage)

@@ -538,7 +538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 211373217}
   _characterArtController: {fileID: 211373216}
-  _targetDetector: {fileID: 534506312}
   _stats: {fileID: 11400000, guid: 722361d2725d95f4795cd9bced18ea5d, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _weapon: {fileID: 2059499369}
@@ -573,6 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 211373219}
+  _targetDetector: {fileID: 534506312}
   _movementState:
     _waypointDestinations: []
     _distanceThreshold: 0.3
@@ -1979,7 +1979,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 1041231660}
   _characterArtController: {fileID: 1041231664}
-  _targetDetector: {fileID: 650966402}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _weapon: {fileID: 1736124659}
@@ -3521,7 +3520,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 2084948284}
   _characterArtController: {fileID: 2084948283}
-  _targetDetector: {fileID: 942255017}
   _stats: {fileID: 11400000, guid: 722361d2725d95f4795cd9bced18ea5d, type: 2}
   _currentTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _weapon: {fileID: 1613370952}
@@ -3556,6 +3554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 2084948286}
+  _targetDetector: {fileID: 942255017}
   _movementState:
     _waypointDestinations: []
     _distanceThreshold: 0.3

@@ -7,5 +7,6 @@ using System;
 public abstract class MovementState
 {
     public virtual void Initialize() { }
-    public abstract void MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null);
+    // returns destination
+    public abstract Vector2 MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null);
 }

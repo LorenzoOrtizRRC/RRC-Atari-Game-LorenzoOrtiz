@@ -19,20 +19,22 @@ public class WaypointMovement : MovementState
         _currentDestination = GetNewDestination();
     }
 
-    public override void MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null)
+    public override Vector2 MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null)
     {
         Vector2 distance = _currentDestination - (Vector2)self.position;
         // move self if distance is greater than threshold, else get new waypoint
         if (distance.magnitude >= _distanceThreshold)
         {
-            rb.MovePosition((Vector2)self.position + (distance.normalized * Time.deltaTime * speed));
+            Vector2 destination = (Vector2)self.position + (distance.normalized * Time.deltaTime * speed);
+            rb.MovePosition(destination);
+            return destination;
         }
-        else
+        else if (_waypointIndex != _waypointDestinations.Count - 1)
         {
-            if (_waypointIndex == _waypointDestinations.Count - 1) return;
             _waypointIndex++;
             _currentDestination = GetNewDestination();
         }
+        return Vector2.zero;
     }
 
     // Works with 2D colliders of any size (box, circle, rectangle). Use box/rectangle and circle colliders.

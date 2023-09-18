@@ -18,7 +18,7 @@ public class PlayerAgent : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            _weapon.UseWeapon(agent);
+            _weapon.UseWeaponAuto(agent);
         }
     }
 
