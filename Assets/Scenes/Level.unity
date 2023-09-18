@@ -287,7 +287,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 2, z: 1}
+  m_LocalScale: {x: 30, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 403310431}
@@ -371,7 +371,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 15, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1278601286}
@@ -438,6 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211373220}
   - component: {fileID: 211373219}
+  - component: {fileID: 211373221}
   - component: {fileID: 211373218}
   - component: {fileID: 211373217}
   - component: {fileID: 211373216}
@@ -540,16 +541,7 @@ MonoBehaviour:
   _targetDetector: {fileID: 534506312}
   _stats: {fileID: 11400000, guid: 722361d2725d95f4795cd9bced18ea5d, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _cannotMove: 0
   _weapon: {fileID: 2059499369}
-  _movementState:
-    _waypointDestinations:
-    - {fileID: 1278601284}
-    - {fileID: 403310429}
-    - {fileID: 1166118117}
-    - {fileID: 628497736}
-    _distanceThreshold: 0.5
-    _laneAlignmentBias: 0.8
 --- !u!4 &211373220
 Transform:
   m_ObjectHideFlags: 0
@@ -568,6 +560,23 @@ Transform:
   - {fileID: 534506314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211373221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211373215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa35d3bc1de84064dbd718cd83f495fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 211373219}
+  _movementState:
+    _waypointDestinations: []
+    _distanceThreshold: 0.3
+    _laneAlignmentBias: 0
 --- !u!1 &297811905
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +806,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 2}
+  m_Size: {x: 30, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &403310429
 MonoBehaviour:
@@ -1026,7 +1035,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 15, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &628497736
 MonoBehaviour:
@@ -1252,7 +1261,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 15, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 628497737}
@@ -1539,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 942255018}
-  _enemyDetectionRadius: 15
+  _enemyDetectionRadius: 20
   _showDetectionRadius: 1
 --- !u!58 &942255018
 CircleCollider2D:
@@ -1575,7 +1584,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 20
 --- !u!4 &942255019
 Transform:
   m_ObjectHideFlags: 0
@@ -1618,7 +1627,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 2, z: 1}
+  m_LocalScale: {x: 30, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1166118119}
@@ -1973,16 +1982,7 @@ MonoBehaviour:
   _targetDetector: {fileID: 650966402}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
-  _cannotMove: 0
   _weapon: {fileID: 1736124659}
-  _movementState:
-    _waypointDestinations:
-    - {fileID: 1278601284}
-    - {fileID: 403310429}
-    - {fileID: 1166118117}
-    - {fileID: 628497736}
-    _distanceThreshold: 0.5
-    _laneAlignmentBias: 0.8
 --- !u!4 &1041231663
 Transform:
   m_ObjectHideFlags: 0
@@ -2041,7 +2041,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 628497737}
@@ -2392,7 +2392,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 2}
+  m_Size: {x: 30, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &1166118117
 MonoBehaviour:
@@ -2485,7 +2485,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 15, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &1278601284
 MonoBehaviour:
@@ -2773,6 +2773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1808969846888306160, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _enemyDetectionRadius
       value: 0.1
@@ -2827,10 +2831,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1670f6e4c693ec646b3d21614269f170, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5014570178666664386, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1730225840}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       insertIndex: -1
@@ -2884,11 +2885,6 @@ MonoBehaviour:
 --- !u!50 &1589918849 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7723696700473416166, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  m_PrefabInstance: {fileID: 1589918844}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1589918851 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5014570178666664386, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   m_PrefabInstance: {fileID: 1589918844}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1613370951
@@ -3115,7 +3111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1589918851}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1730225841
 MonoBehaviour:
@@ -3425,6 +3421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084948287}
   - component: {fileID: 2084948286}
+  - component: {fileID: 2084948288}
   - component: {fileID: 2084948285}
   - component: {fileID: 2084948284}
   - component: {fileID: 2084948283}
@@ -3527,16 +3524,7 @@ MonoBehaviour:
   _targetDetector: {fileID: 942255017}
   _stats: {fileID: 11400000, guid: 722361d2725d95f4795cd9bced18ea5d, type: 2}
   _currentTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
-  _cannotMove: 0
   _weapon: {fileID: 1613370952}
-  _movementState:
-    _waypointDestinations:
-    - {fileID: 1278601284}
-    - {fileID: 403310429}
-    - {fileID: 1166118117}
-    - {fileID: 628497736}
-    _distanceThreshold: 0.5
-    _laneAlignmentBias: 0.8
 --- !u!4 &2084948287
 Transform:
   m_ObjectHideFlags: 0
@@ -3555,6 +3543,23 @@ Transform:
   - {fileID: 942255019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &2084948288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084948282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa35d3bc1de84064dbd718cd83f495fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 2084948286}
+  _movementState:
+    _waypointDestinations: []
+    _distanceThreshold: 0.3
+    _laneAlignmentBias: 0
 --- !u!1001 &1383038302374322053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3697,6 +3702,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1730225840}
   - {fileID: 1589918844}
   - {fileID: 1867303280}
   - {fileID: 1090321997}

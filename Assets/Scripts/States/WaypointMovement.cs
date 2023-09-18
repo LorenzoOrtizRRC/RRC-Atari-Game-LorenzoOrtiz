@@ -7,7 +7,7 @@ using UnityEngine;
 public class WaypointMovement : MovementState
 {
     [SerializeField] private List<Waypoint> _waypointDestinations = new List<Waypoint>();
-    [SerializeField] private float _distanceThreshold = 0.5f;
+    [SerializeField] private float _distanceThreshold = 0.3f;
     [SerializeField, Range(0f, 1f)] private float _laneAlignmentBias = 0f;  // aligns agent to stay on a side of the lane more.
     private int _waypointIndex = 0;
     private Vector2 _currentDestination = Vector2.zero;

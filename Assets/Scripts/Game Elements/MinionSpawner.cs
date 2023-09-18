@@ -23,8 +23,8 @@ public class MinionSpawner : MonoBehaviour
 
     private void SpawnMinion()
     {
-        Instantiate(_minionSpawn, GetSpawnPosition(), transform.rotation).TryGetComponent(out CharacterAgent agent);
-        agent.InitializeAgent(_spawnerTeam, _minionWaypoints);
+        Instantiate(_minionSpawn, GetSpawnPosition(), transform.rotation).TryGetComponent(out StateMachine stateMachine);
+        stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
     }
 
     private Vector2 GetSpawnPosition()

@@ -18,26 +18,30 @@ public class CharacterAgent : MonoBehaviour
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
-    [SerializeField] private bool _cannotMove = false;
+    [SerializeField] private WeaponInstance _weapon;
+    //[SerializeField] private bool _cannotMove = false;
+    /*
     [Header("State Machine Variables")]
     [SerializeField] private WeaponInstance _weapon;
     [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
     [SerializeField] private MovementState _chaseState = new ChaseState();
+    */
 
     private float _currentHealth;
     private CharacterAgent _enemyTarget;
 
+    public Rigidbody2D Rb => _rb;
     public float MaxHealth => _stats.Health;
     public float Armor => _stats.Armor;
     public float Speed => _stats.Speed;
     public TeamData CurrentTeam => _currentTeam;
+    public WeaponInstance EquippedWeapon => _weapon;
     public float CurrentHealth => _currentHealth;
+    public CharacterAgent EnemyTarget => _enemyTarget;
 
-    public void InitializeAgent(TeamData newTeam, List<Waypoint> initialPath)
+    public void InitializeAgent(TeamData newTeam)
     {
         _currentTeam = newTeam;
-        _movementState.SetWaypoints(initialPath);
-        _movementState.Initialize();
     }
 
     private void Start()
@@ -60,25 +64,6 @@ public class CharacterAgent : MonoBehaviour
         //_chaseState.Initialize();
     }
 
-    private void Update()
-    {
-        //  if target is valid, evaluate target
-        if (_enemyTarget)
-        {
-            if (!_enemyTarget.gameObject.activeSelf)    // if target is dead, reset detector (to check ontrigger again) and current enemy target.
-            {
-                ResetTarget();
-                return;
-            }
-            // evaluate weapon ranges, chase or retreat appropriately
-            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (distanceFromEnemy > _weapon.MaximumRange && !_cannotMove) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
-            else if (distanceFromEnemy < _weapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
-            else UseWeapon();   // use weapon when within appropriate range
-        }
-        else MoveCharacter();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out ProjectileInstance collidingProjectile))
@@ -86,14 +71,15 @@ public class CharacterAgent : MonoBehaviour
             if (collidingProjectile.CurrentTeam != _currentTeam) DamageCharacter(collidingProjectile.Damage);
         }
     }
-
-    private void MoveCharacter()
+    /*
+     * THIS FUNCTION WILL BE ENABLED IN THE FUTURE FOR PHYSICS (FORCE) MOVEMENT. FOR NOW AI AGENTS WILL MOVE FROM STATEMACHINE (REFERENCE OF RIGIDBODY2D IN THERE TOO).
+    public void MoveCharacter()
     {
         if (_cannotMove) return;
         _movementState.MoveAgent(transform, _rb, Speed);
     }
-
-    private void UseWeapon()
+    */
+    public void UseWeapon()
     {
         _weapon.UseWeapon(_enemyTarget);
     }
@@ -104,7 +90,7 @@ public class CharacterAgent : MonoBehaviour
         OnEnemyTargetAcquired(_enemyTarget);
     }
 
-    private void ResetTarget()
+    public void ResetTarget()
     {
         _enemyTarget = null;
         _targetDetector.gameObject.SetActive(false);
