@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 534506313}
-  _enemyDetectionRadius: 15
+  _enemyDetectionRadius: 20
   _showDetectionRadius: 1
 --- !u!58 &534506313
 CircleCollider2D:
@@ -958,7 +958,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 20
 --- !u!4 &534506314
 Transform:
   m_ObjectHideFlags: 0
