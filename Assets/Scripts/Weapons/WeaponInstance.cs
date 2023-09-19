@@ -12,15 +12,9 @@ public abstract class WeaponInstance : MonoBehaviour
     public float MaximumRange => _weaponData.MaximumWeaponRange;
 
     private TeamData _currentTeam;
-    //private CharacterAgent _enemyAgent = null; // current target enemy
     private float _cooldownTime = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
     private bool _canFire = true;
     private bool _isFiring = false;
-
-    private void Update()
-    {
-        //if (_enemyAgent) RotateWeapon();
-    }
 
     public void InitializeWeapon(TeamData currentTeam) => _currentTeam = currentTeam;
 
@@ -29,17 +23,7 @@ public abstract class WeaponInstance : MonoBehaviour
     {
         // targetPoint can be the direction the agent is moving, or the enemy's position relative to weapon
         Vector2 direction = targetPoint - (Vector2)transform.position;
-        /*
-        if (!enemyAgent)
-        {
-            if (!(Time.time >= _cooldownTime)) return;
-            FireWeapon();
-            _cooldownTime = Time.time + _weaponData.RateOfFire;
-            return;
-        }
-        */
         //  rotate weapon towards target
-        //float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
         float angleDifference = Vector2.SignedAngle(transform.up, direction);
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
         if (Mathf.Abs(angleDifference) <= 1f && Time.time >= _cooldownTime)
@@ -47,15 +31,6 @@ public abstract class WeaponInstance : MonoBehaviour
             FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;
         }
-        /*
-        else {
-            print($"{gameObject.transform.parent.name}");
-                };
-        if (gameObject.transform.parent.name == "Mothership Test Dogs")
-        {
-            print($"angle diff is true?: {Mathf.Abs(angleDifference) <= 1f}, anglediff: {angleDifference}, self pos: {transform.position}");
-            print($"time greater than time+cd? {Time.time >= _cooldownTime}");
-        }*/
     }
 
     // logic for spawning projectiles
@@ -88,6 +63,4 @@ public abstract class WeaponInstance : MonoBehaviour
     {
         spawnedProjectile.InitializeProjectile(_weaponData.Damage, _weaponData.ProjectileSpeed, _weaponData.ProjectileLifetime, _currentTeam);
     }
-
-    //public void SetNewTarget(CharacterAgent enemyAgent) => _enemyAgent = enemyAgent;
 }
