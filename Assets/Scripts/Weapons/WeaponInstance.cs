@@ -27,6 +27,13 @@ public abstract class WeaponInstance : MonoBehaviour
     // activation conditions for weapon
     public void UseWeaponAuto(CharacterAgent enemyAgent)
     {
+        if (!enemyAgent)
+        {
+            if (!(Time.time >= _cooldownTime)) return;
+            FireWeapon();
+            _cooldownTime = Time.time + _weaponData.RateOfFire;
+            return;
+        }
         //  rotate weapon towards target
         float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
