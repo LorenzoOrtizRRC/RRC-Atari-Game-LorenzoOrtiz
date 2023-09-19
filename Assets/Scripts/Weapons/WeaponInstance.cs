@@ -25,8 +25,10 @@ public abstract class WeaponInstance : MonoBehaviour
     public void InitializeWeapon(TeamData currentTeam) => _currentTeam = currentTeam;
 
     // activation conditions for weapon
-    public void UseWeaponAuto(Vector2 direction)
+    public void UseWeaponAuto(Vector2 targetPoint)
     {
+        // targetPoint can be the direction the agent is moving, or the enemy's position relative to weapon
+        Vector2 direction = targetPoint - (Vector2)transform.position;
         /*
         if (!enemyAgent)
         {
@@ -45,6 +47,7 @@ public abstract class WeaponInstance : MonoBehaviour
             FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;
         }
+        /*
         else {
             print($"{gameObject.transform.parent.name}");
                 };
@@ -52,7 +55,7 @@ public abstract class WeaponInstance : MonoBehaviour
         {
             print($"angle diff is true?: {Mathf.Abs(angleDifference) <= 1f}, anglediff: {angleDifference}, self pos: {transform.position}");
             print($"time greater than time+cd? {Time.time >= _cooldownTime}");
-        }
+        }*/
     }
 
     // logic for spawning projectiles
@@ -65,8 +68,9 @@ public abstract class WeaponInstance : MonoBehaviour
         }
     }
 
-    public void RotateWeapon(Vector3 direction)
+    public void RotateWeapon(Vector2 targetPoint)
     {
+        Vector2 direction = targetPoint - (Vector2)transform.position;
         float angleDifference = Vector2.SignedAngle(transform.up, direction);
         float rotationDirection = angleDifference > 0f ? 1f : -1f;
         float absClampValue = Mathf.Abs(angleDifference);

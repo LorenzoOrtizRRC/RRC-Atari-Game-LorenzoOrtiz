@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         // rotate weapon towards mouse
         Vector2 mouseWorldPosition = (Vector2)_playerCamera.ScreenToWorldPoint(Input.mousePosition);
-        _playerAgent.RotateWeapon(mouseWorldPosition - (Vector2)_playerAgent.transform.position);
+        _playerAgent.RotateWeapon(mouseWorldPosition);
         // shoot weapon on input: LMB
         if (Input.GetMouseButton(0)) _playerAgent.UseWeapon(null);
     }

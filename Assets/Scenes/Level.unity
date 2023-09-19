@@ -259,7 +259,7 @@ MonoBehaviour:
   - {fileID: 1166118117}
   - {fileID: 628497736}
   - {fileID: 1398026871}
-  _spawnRate: 0.5
+  _spawnRate: 2
   _spawnArea: {x: 10, y: 1}
 --- !u!1 &50179476
 GameObject:
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   - {fileID: 847553611}
   - {fileID: 1216266672}
   - {fileID: 1398026871}
-  _spawnRate: 0.5
+  _spawnRate: 2
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &174508167
 Transform:
@@ -2524,7 +2524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &457908278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,7 +4221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &889022543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5778,7 +5778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1263887302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6868,7 +6868,7 @@ Transform:
   m_GameObject: {fileID: 1613370951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7358,7 +7358,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8023,7 +8023,7 @@ MonoBehaviour:
   - {fileID: 135099681}
   - {fileID: 196976553}
   - {fileID: 1398026871}
-  _spawnRate: 0.5
+  _spawnRate: 2
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &1990246461
 Transform:
@@ -8333,7 +8333,7 @@ Transform:
   m_GameObject: {fileID: 2059499368}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

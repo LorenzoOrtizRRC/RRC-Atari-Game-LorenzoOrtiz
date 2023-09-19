@@ -19,6 +19,7 @@ public class WaypointMovement : MovementState
         _currentDestination = GetNewDestination();
     }
 
+    // returns destination point. by default returns forward (for weapon rotation purposes).
     public override Vector2 MoveAgent(Transform self, Rigidbody2D rb, float speed, Vector3? customDestination = null)
     {
         Vector2 distance = _currentDestination - (Vector2)self.position;
@@ -34,7 +35,7 @@ public class WaypointMovement : MovementState
             _waypointIndex++;
             _currentDestination = GetNewDestination();
         }
-        return Vector2.zero;
+        return self.forward;
     }
 
     // Works with 2D colliders of any size (box, circle, rectangle). Use box/rectangle and circle colliders.

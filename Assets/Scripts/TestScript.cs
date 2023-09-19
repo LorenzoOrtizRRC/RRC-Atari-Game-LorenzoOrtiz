@@ -15,6 +15,6 @@ public class TestScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movementState.MoveAgent(transform, rb, speed);
+        //movementState.MoveAgent(transform, rb, speed);
     }
 }

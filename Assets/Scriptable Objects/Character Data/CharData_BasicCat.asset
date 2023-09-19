@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Basic Shooter
   _health: 3
   _armor: 0
-  _speed: 20
+  _speed: 10
