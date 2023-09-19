@@ -79,7 +79,12 @@ public class CharacterAgent : MonoBehaviour
     */
     public void UseWeapon(CharacterAgent enemyAgent)
     {
-        _weapon.UseWeaponAuto(enemyAgent);
+        //_weapon.UseWeaponAuto(enemyAgent);
+    }
+
+    public void UseWeapon(Vector2 direction)
+    {
+        _weapon.UseWeaponAuto(direction);
     }
 
     public void RotateWeapon(Vector3 direction)

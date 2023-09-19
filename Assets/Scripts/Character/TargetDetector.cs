@@ -24,6 +24,12 @@ public class TargetDetector : MonoBehaviour
         ownerTeam = newTeam;
     }
 
+    public void ResetDetector()
+    {
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out CharacterAgent collidingAgent))

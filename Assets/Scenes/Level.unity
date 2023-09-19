@@ -259,7 +259,7 @@ MonoBehaviour:
   - {fileID: 1166118117}
   - {fileID: 628497736}
   - {fileID: 1398026871}
-  _spawnRate: 2
+  _spawnRate: 0.5
   _spawnArea: {x: 10, y: 1}
 --- !u!1 &50179476
 GameObject:
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   - {fileID: 847553611}
   - {fileID: 1216266672}
   - {fileID: 1398026871}
-  _spawnRate: 2
+  _spawnRate: 0.5
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &174508167
 Transform:
@@ -2524,7 +2524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &457908278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,7 +4221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &889022543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5778,7 +5778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1263887302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8023,7 +8023,7 @@ MonoBehaviour:
   - {fileID: 135099681}
   - {fileID: 196976553}
   - {fileID: 1398026871}
-  _spawnRate: 2
+  _spawnRate: 0.5
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &1990246461
 Transform:

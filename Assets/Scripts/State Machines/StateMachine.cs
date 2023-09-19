@@ -37,16 +37,24 @@ public class StateMachine : MonoBehaviour
         //  if target is valid, evaluate target
         if (_enemyTarget)
         {
-            if (!_enemyTarget.gameObject.activeSelf)    // if target is dead, reset detector (to check ontrigger again) and current enemy target.
+            // replace 2nd condition with AGGRO RANGE from weapon data :>
+            // if target is dead, reset detector (to check ontrigger again) and current enemy target.
+            if (_enemyTarget.gameObject.activeSelf == false)
             {
                 ResetTarget();
-                return;
             }
-            // evaluate weapon ranges, chase or retreat appropriately
-            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
-            //if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange && !_agent.) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
-            if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
-            else _agent.UseWeapon(_enemyTarget);   // use weapon when within appropriate range
+            else
+            {
+                // evaluate weapon ranges, chase or retreat appropriately
+                float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
+                //if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange && !_agent.) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
+                if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
+                else
+                {
+                    //_agent.UseWeapon(_enemyTarget);   // use weapon when within appropriate range
+                    _agent.UseWeapon((Vector2)(_enemyTarget.transform.position - transform.position));
+                }
+            }
         }
         else directionToMove = MoveCharacter() - (Vector2)transform.position;
 
@@ -61,6 +69,7 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
+        if (_enemyTarget) return;
         _enemyTarget = enemyAgent;
         //OnEnemyTargetAcquired(_enemyTarget);
     }
@@ -68,7 +77,10 @@ public class StateMachine : MonoBehaviour
     public void ResetTarget()
     {
         _enemyTarget = null;
+        /*
         _targetDetector.gameObject.SetActive(false);
         _targetDetector.gameObject.SetActive(true);
+        */
+        _targetDetector.ResetDetector();
     }
 }

@@ -25,8 +25,9 @@ public abstract class WeaponInstance : MonoBehaviour
     public void InitializeWeapon(TeamData currentTeam) => _currentTeam = currentTeam;
 
     // activation conditions for weapon
-    public void UseWeaponAuto(CharacterAgent enemyAgent)
+    public void UseWeaponAuto(Vector2 direction)
     {
+        /*
         if (!enemyAgent)
         {
             if (!(Time.time >= _cooldownTime)) return;
@@ -34,13 +35,23 @@ public abstract class WeaponInstance : MonoBehaviour
             _cooldownTime = Time.time + _weaponData.RateOfFire;
             return;
         }
+        */
         //  rotate weapon towards target
-        float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
+        //float angleDifference = Vector2.SignedAngle(transform.up, (enemyAgent.transform.position - transform.position));
+        float angleDifference = Vector2.SignedAngle(transform.up, direction);
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
         if (Mathf.Abs(angleDifference) <= 1f && Time.time >= _cooldownTime)
         {
             FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;
+        }
+        else {
+            print($"{gameObject.transform.parent.name}");
+                };
+        if (gameObject.transform.parent.name == "Mothership Test Dogs")
+        {
+            print($"angle diff is true?: {Mathf.Abs(angleDifference) <= 1f}, anglediff: {angleDifference}, self pos: {transform.position}");
+            print($"time greater than time+cd? {Time.time >= _cooldownTime}");
         }
     }
 
