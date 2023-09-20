@@ -49,7 +49,7 @@ public abstract class WeaponInstance : MonoBehaviour
         float angleDifference = Vector2.SignedAngle(transform.up, direction);
         float rotationDirection = angleDifference > 0f ? 1f : -1f;
         float absClampValue = Mathf.Abs(angleDifference);
-        transform.Rotate(new Vector3(0f, 0f, 1 * Mathf.Clamp(rotationDirection * 180f * Time.deltaTime, -absClampValue, absClampValue)));
+        transform.Rotate(new Vector3(0f, 0f, 1 * Mathf.Clamp(rotationDirection * 180f * Time.fixedDeltaTime, -absClampValue, absClampValue)));
     }
 
     private ProjectileInstance SpawnProjectile(Transform spawnPosition)

@@ -58,10 +58,22 @@ public class StateMachine : MonoBehaviour
                 }
             }
         }
-        else directionToMove = MoveCharacter();
+        //else directionToMove = MoveCharacter();
 
         if (_enemyTarget) _agent.RotateWeapon(_enemyTarget.transform.position);
-        else _agent.RotateWeapon(directionToMove);
+        //else _agent.RotateWeapon(directionToMove);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 directionToMove = transform.forward;
+        //  if target is valid, evaluate target
+        if (!_enemyTarget)
+        {
+            directionToMove = MoveCharacter();
+            _agent.RotateWeapon(directionToMove);
+        }
+        else _agent.RotateWeapon(_enemyTarget.transform.position);
     }
 
     private Vector2 MoveCharacter()
