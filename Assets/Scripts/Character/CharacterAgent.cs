@@ -8,7 +8,8 @@ using UnityEngine;
 
 public class CharacterAgent : MonoBehaviour
 {
-    public Action OnDamageTaken;
+    public Action<float> OnDamageTaken;     // float is mitigated damage taken
+    public Action<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
     public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
@@ -98,6 +99,9 @@ public class CharacterAgent : MonoBehaviour
         // Damage formula.
         float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
         _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+
+        OnDamageTaken?.Invoke(mitigatedDamage);
+        OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
 
         // evaluate health.
         if (_currentHealth == 0) KillCharacter();

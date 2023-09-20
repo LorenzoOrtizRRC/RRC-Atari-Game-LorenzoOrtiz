@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterAgent _playerAgent;
 
     private Camera _playerCamera;
+    
+    public CharacterAgent PlayerAgent => _playerAgent;
 
     private void OnEnable()
     {
