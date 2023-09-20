@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class CharacterAgent : MonoBehaviour
 {
+    public Action OnDamageTaken;
     public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.

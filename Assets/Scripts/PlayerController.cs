@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         Vector2 mouseWorldPosition = (Vector2)_playerCamera.ScreenToWorldPoint(Input.mousePosition);
         _playerAgent.RotateWeapon(mouseWorldPosition);
         // shoot weapon on input: LMB
-        if (Input.GetMouseButton(0)) _playerAgent.UseWeapon(null);
+        if (Input.GetMouseButton(0)) _playerAgent.UseWeapon(mouseWorldPosition);
     }
 
     private void FixedUpdate()
