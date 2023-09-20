@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StateMachine : MonoBehaviour
 {
     // NPC AI responsible for logic. Uses CharacterAgent to execute logic.
     public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
-    [Header("References")]
+    [Header("Component References")]
     [SerializeField] private CharacterAgent _agent;
     [SerializeField] private TargetDetector _targetDetector;
     [Header("State Machine Variables")]
@@ -26,7 +27,7 @@ public class StateMachine : MonoBehaviour
 
     private void Start()
     {
-        // += _weapon.SetNewTarget;
+        // initialize components
         _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
         _targetDetector.OnEnemyDetected += RegisterNewEnemy;
     }

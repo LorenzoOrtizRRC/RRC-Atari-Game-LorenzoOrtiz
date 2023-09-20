@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterAgent : MonoBehaviour
 {
@@ -16,11 +14,13 @@ public class CharacterAgent : MonoBehaviour
     [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
-    //[SerializeField] private TargetDetector _targetDetector;
+    [Header("UI Component References")]
+    [SerializeField] private ResourceBar _healthBar;
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
     [SerializeField] private WeaponInstance _weapon;
+    [SerializeField] private bool _healthBarVisible = true;
     //[SerializeField] private bool _cannotMove = false;
     /*
     [Header("State Machine Variables")]
@@ -54,6 +54,7 @@ public class CharacterAgent : MonoBehaviour
         //OnEnemyTargetAcquired += _weapon.SetNewTarget;
         // initialize component events
         //_targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        if (_healthBarVisible) OnHealthDecreased += _healthBar.UpdateSliderValue;
     }
 
     private void OnEnable()
