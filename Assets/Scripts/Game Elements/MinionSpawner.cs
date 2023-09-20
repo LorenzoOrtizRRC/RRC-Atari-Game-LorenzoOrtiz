@@ -23,7 +23,7 @@ public class MinionSpawner : MonoBehaviour
 
     private void SpawnMinion()
     {
-        Instantiate(_minionSpawn, GetSpawnPosition(), transform.rotation).TryGetComponent(out StateMachine stateMachine);
+        Instantiate(_minionSpawn, GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
         stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
     }
 

@@ -61,6 +61,7 @@ public class CharacterAgent : MonoBehaviour
     {
         // initialize variables
         _currentHealth = MaxHealth;
+        _healthBar.UpdateSliderValue(_currentHealth);
         //_movementState.Initialize();
         //_chaseState.Initialize();
     }
