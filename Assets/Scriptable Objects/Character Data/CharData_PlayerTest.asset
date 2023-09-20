@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CharData_PlayerTest
   m_EditorClassIdentifier: 
   _name: Player Test
-  _health: 999
-  _armor: 999
-  _speed: 20
+  _health: 1
+  _armor: 0
+  _speed: 11

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CharData_Mothership
   m_EditorClassIdentifier: 
   _name: Mothership
-  _health: 9999
+  _health: 100
   _armor: 1
   _speed: 0
