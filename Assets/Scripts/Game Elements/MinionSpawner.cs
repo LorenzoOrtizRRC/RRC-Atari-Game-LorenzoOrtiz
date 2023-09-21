@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MinionSpawner : MonoBehaviour
 {
+    public UnityEvent OnNewAgentCreated;
+
     [SerializeField] private GameObject _minionSpawn;       // minion to spawn. must be NPCs, and have CharacterAgent scripts.
     [SerializeField] private TeamData _spawnerTeam;
     [SerializeField] private List<Waypoint> _minionWaypoints;
