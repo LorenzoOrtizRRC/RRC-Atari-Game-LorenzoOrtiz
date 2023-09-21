@@ -108,6 +108,8 @@ MonoBehaviour:
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _weapon: {fileID: 5845705992924132293}
   _healthBarVisible: 1
+  slider: {fileID: 116580154563218765}
+  sliderOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1714874358317361568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,17 +691,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 7784281929210888926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784281929210888926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+--- !u!1 &116580154563218765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+  m_PrefabInstance: {fileID: 5005712241606371315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1605958586433106080 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
   m_PrefabInstance: {fileID: 5005712241606371315}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 116580154563218765}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c9a2073d6f19ff43be1061ccc60ffce, type: 3}

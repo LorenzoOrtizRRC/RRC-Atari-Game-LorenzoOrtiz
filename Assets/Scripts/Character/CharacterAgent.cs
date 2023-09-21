@@ -21,6 +21,7 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private TeamData _currentTeam;
     [SerializeField] private WeaponInstance _weapon;
     [SerializeField] private bool _healthBarVisible = true;
+
     //[SerializeField] private bool _cannotMove = false;
     /*
     [Header("State Machine Variables")]
