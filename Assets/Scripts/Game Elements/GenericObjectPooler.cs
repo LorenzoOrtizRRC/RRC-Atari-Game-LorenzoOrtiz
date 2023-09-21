@@ -5,21 +5,19 @@ using System;
 
 public class GenericObjectPooler : MonoBehaviour
 {
-    public static GenericObjectPooler SharedInstance;
+    public static GenericObjectPooler CurrentInstance;
 
     [SerializeField] private List<GameObject> _objectsToPool = new List<GameObject>();  // to initialize _objectPools
     [SerializeField] private int _initialObjectPoolSize = 10;   // initial number of objects to create in object pool
 
     private Dictionary<GameObject, List<GameObject>> _objectPools;
 
-    private void Awake()
+    // initialize
+    private void OnEnable()
     {
-        SharedInstance = this;
+        CurrentInstance = this;
         _objectPools = new Dictionary<GameObject, List<GameObject>>();
-    }
 
-    private void Start()
-    {
         if (_objectsToPool.Count == 0 || _initialObjectPoolSize == 0) return;
         for (int i = 0; i < _objectsToPool.Count; i++)
         {
@@ -28,15 +26,18 @@ public class GenericObjectPooler : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    // reset on disable
+    private void OnDisable()
     {
-        SharedInstance = null;
+        CurrentInstance = null;
+        _objectPools = new Dictionary<GameObject, List<GameObject>>();
     }
 
     public GameObject GetGameObjectFromPool(GameObject gameObjectToGet)
     {
         // if object pool exists, get an inactive object, else if no inactive object available, make a new gameObject and add to that object pool
         // an inactive object means it is available
+        if (!gameObjectToGet) return null;
         if (_objectPools.ContainsKey(gameObjectToGet))
         {
             GameObject availableGameObject = _objectPools[gameObjectToGet].Find((x) => !x.activeSelf);
@@ -48,8 +49,6 @@ public class GenericObjectPooler : MonoBehaviour
             else
             {
                 // make a new copy if no objects are active/available
-                //AddNewObjectToPool(gameObjectToGet, gameObjectToGet);
-                //return _objectPools[gameObjectToGet].Find((x) => !x.activeSelf);
                 return AddNewObjectToPool(gameObjectToGet, gameObjectToGet);
             }
         }

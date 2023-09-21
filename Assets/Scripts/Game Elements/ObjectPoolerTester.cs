@@ -13,7 +13,7 @@ public class ObjectPoolerTester : MonoBehaviour
     {
         if (Time.time >= _timer)
         {
-            GameObject poolObj = GenericObjectPooler.SharedInstance.GetGameObjectFromPool(_objectToPool);
+            GameObject poolObj = GenericObjectPooler.CurrentInstance.GetGameObjectFromPool(_objectToPool);
             poolObj.SetActive(true);
             _timer = Time.time + _timerLength;
         }
