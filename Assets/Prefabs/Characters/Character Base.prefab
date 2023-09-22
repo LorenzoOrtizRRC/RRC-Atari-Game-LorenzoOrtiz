@@ -138,8 +138,8 @@ MonoBehaviour:
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
     _waypointDestinations: []
-    _distanceThreshold: 0.3
-    _laneAlignmentBias: 0.7
+    _distanceThreshold: 0.5
+    _laneAlignmentBias: 0.8
 --- !u!58 &7920214746148758183
 CircleCollider2D:
   m_ObjectHideFlags: 0
