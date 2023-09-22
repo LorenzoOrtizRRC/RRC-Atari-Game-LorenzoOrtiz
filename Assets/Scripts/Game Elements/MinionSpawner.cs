@@ -5,35 +5,6 @@ using UnityEngine.Events;
 
 public class MinionSpawner : MonoBehaviour
 {
-    /*private SpawnerData _spawnerData;
-    public float _spawnTimer = 0f;
-    public float _burstSpawnTimer = 0f;
-
-    private bool _isBurstSpawning = false;
-
-    private void Update()
-    {
-        if (Time.time >= _spawnTimer)
-        {
-            SpawnMinion();
-            _spawnTimer = Time.time + _spawnRate;
-        }
-    }
-
-    private void SpawnMinion()
-    {
-        //Instantiate(_minionSpawn, GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
-        //stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
-    }
-
-    private Vector2 GetSpawnPosition()
-    {
-        float xExtent = _spawnArea.x / 2f;
-        float yExtent = _spawnArea.y / 2f;
-        return new Vector2(Random.Range(-xExtent, xExtent), Random.Range(-yExtent, yExtent)) + (Vector2)transform.position;
-    }*/
-
-    //[SerializeField] private GameObject _minionSpawn;       // minion to spawn. must be NPCs, and have CharacterAgent scripts.
     [SerializeField] private List<SpawnerData> _initialWave = new List<SpawnerData>();    // initial minions in starting waves
     [SerializeField] private TeamData _spawnerTeam;
     [SerializeField] private List<Waypoint> _minionWaypoints;
@@ -55,7 +26,6 @@ public class MinionSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= _waveTimer) _isSpawningWave = true;
         if (_isSpawningWave)
         {
             if (Time.time >= _minionSpawnTimer)
@@ -84,12 +54,9 @@ public class MinionSpawner : MonoBehaviour
 
     public void RemoveMinionsToWave(SpawnerData spawnerData)
     {
-        int removeCount = spawnerData.NumberOfMinions;
-        for (int i = 0; i < spawnerData.NumberOfMinions; i++)
+        for (int i = spawnerData.NumberOfMinions; i > 0; i--)
         {
-            if (removeCount == 0) break;
             if (!_minionWave.Remove(spawnerData.MinionPrefab)) break;   // return if no more of element remains (for edge cases)
-            removeCount--;
         }
     }
 
