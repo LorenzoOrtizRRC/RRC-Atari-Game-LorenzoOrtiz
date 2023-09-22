@@ -8,9 +8,8 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private List<SpawnerData> _initialWave = new List<SpawnerData>();    // initial minions in starting waves
     [SerializeField] private TeamData _spawnerTeam;
     [SerializeField] private List<Waypoint> _minionWaypoints;
-    //[SerializeField] private float _spawnRate = 1f;     // minions per second. formula: _spawnRate = 1f / minions-per-second
     [SerializeField] private float _delayBetweenSpawnWaves = 10f;   // real seconds
-    [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds
+    [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds. delay between each minion spawn in a wave
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
 
     private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
