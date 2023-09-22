@@ -75,11 +75,12 @@ public class StateMachine : MonoBehaviour
         if (_enemyTarget)
         {
             float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (_isChasing) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+            if (_isChasing && !_isImmovable) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
             _agent.RotateWeapon(_enemyTarget.transform.position);
         }
         else
         {
+            if (_isImmovable) return;
             directionToMove = MoveCharacter();
             _agent.RotateWeapon(directionToMove);
         }
