@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13aeadb5d70e42c40b3bfcd399042b18, type: 3}
-  m_Name: SDInitialMinionWave
+  m_Name: SDInitialMinionWave1
   m_EditorClassIdentifier: 
-  _minionPrefab: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  _numberOfMinions: 5
+  _minionPrefab: {fileID: 121837617551764651, guid: c73fb9a3b1b431c4e9f199b99002c290, type: 3}
+  _numberOfMinions: 2
