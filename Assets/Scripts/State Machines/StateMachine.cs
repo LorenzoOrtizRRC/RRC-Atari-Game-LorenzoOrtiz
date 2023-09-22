@@ -15,6 +15,8 @@ public class StateMachine : MonoBehaviour
     [Header("State Machine Variables")]
     [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
     [SerializeField] private MovementState _chaseState = new ChaseState();
+    [SerializeField] private bool _isImmovable = false;
+
     private CharacterAgent _enemyTarget;
     public CharacterAgent EnemyTarget => _enemyTarget;
 
@@ -49,8 +51,8 @@ public class StateMachine : MonoBehaviour
                 // evaluate weapon ranges, chase or retreat appropriately
                 float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
                 // CHASE IS DISABLED CUZ OF NO AGGRO RANGE IMPLEMENTED IN WEAPONINSTANCE YET
-                //if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange && !_agent.) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
-                if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
+                if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);    // chase when out of range
+                //else if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
                 else
                 {
                     //_agent.UseWeapon(_enemyTarget);   // use weapon when within appropriate range

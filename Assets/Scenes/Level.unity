@@ -262,7 +262,7 @@ MonoBehaviour:
   - {fileID: 628497736}
   - {fileID: 1398026871}
   _delayBetweenSpawnWaves: 10
-  _delayBetweenMinions: 0.6
+  _delayBetweenMinions: 1
   _spawnArea: {x: 10, y: 1}
 --- !u!1 &36113688
 GameObject:
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   - {fileID: 1216266672}
   - {fileID: 1398026871}
   _delayBetweenSpawnWaves: 10
-  _delayBetweenMinions: 0.6
+  _delayBetweenMinions: 1
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &174508167
 Transform:
@@ -2871,7 +2871,7 @@ MonoBehaviour:
   - {fileID: 1278601284}
   - {fileID: 635237949}
   _delayBetweenSpawnWaves: 10
-  _delayBetweenMinions: 0.6
+  _delayBetweenMinions: 1
   _spawnArea: {x: 20, y: 1}
 --- !u!4 &457908279
 Transform:
@@ -4731,7 +4731,7 @@ MonoBehaviour:
   - {fileID: 854083798}
   - {fileID: 635237949}
   _delayBetweenSpawnWaves: 10
-  _delayBetweenMinions: 0.6
+  _delayBetweenMinions: 1
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &889022544
 Transform:
@@ -6426,7 +6426,7 @@ MonoBehaviour:
   - {fileID: 867999430}
   - {fileID: 635237949}
   _delayBetweenSpawnWaves: 10
-  _delayBetweenMinions: 0.6
+  _delayBetweenMinions: 1
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &1263887303
 Transform:
@@ -8881,7 +8881,7 @@ MonoBehaviour:
   - {fileID: 196976553}
   - {fileID: 1398026871}
   _delayBetweenSpawnWaves: 10
-  _delayBetweenMinions: 0.6
+  _delayBetweenMinions: 1
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &1990246461
 Transform:

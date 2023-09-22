@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CharData_BasicShielder
   m_EditorClassIdentifier: 
   _name: Shielder
-  _health: 15
+  _health: 10
   _armor: 1
   _speed: 4
