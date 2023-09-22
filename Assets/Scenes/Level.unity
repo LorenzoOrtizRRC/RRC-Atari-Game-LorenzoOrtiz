@@ -251,7 +251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionSpawn: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _minionWave:
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _minionWaypoints:
   - {fileID: 1278601284}
@@ -259,7 +264,8 @@ MonoBehaviour:
   - {fileID: 1166118117}
   - {fileID: 628497736}
   - {fileID: 1398026871}
-  _spawnRate: 1
+  _delayBetweenSpawnWaves: 10
+  _delayBetweenMinions: 0.6
   _spawnArea: {x: 10, y: 1}
 --- !u!1 &36113688
 GameObject:
@@ -1279,7 +1285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionSpawn: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _minionWave:
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _minionWaypoints:
   - {fileID: 867999430}
@@ -1287,7 +1298,8 @@ MonoBehaviour:
   - {fileID: 847553611}
   - {fileID: 1216266672}
   - {fileID: 1398026871}
-  _spawnRate: 1
+  _delayBetweenSpawnWaves: 10
+  _delayBetweenMinions: 0.6
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &174508167
 Transform:
@@ -2854,7 +2866,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionSpawn: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _minionWave:
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   _spawnerTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _minionWaypoints:
   - {fileID: 628497736}
@@ -2862,7 +2879,8 @@ MonoBehaviour:
   - {fileID: 403310429}
   - {fileID: 1278601284}
   - {fileID: 635237949}
-  _spawnRate: 1
+  _delayBetweenSpawnWaves: 10
+  _delayBetweenMinions: 0.6
   _spawnArea: {x: 20, y: 1}
 --- !u!4 &457908279
 Transform:
@@ -4711,7 +4729,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionSpawn: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _minionWave:
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   _spawnerTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _minionWaypoints:
   - {fileID: 196976553}
@@ -4719,7 +4742,8 @@ MonoBehaviour:
   - {fileID: 1478377405}
   - {fileID: 854083798}
   - {fileID: 635237949}
-  _spawnRate: 1
+  _delayBetweenSpawnWaves: 10
+  _delayBetweenMinions: 0.6
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &889022544
 Transform:
@@ -6403,7 +6427,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionSpawn: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _minionWave:
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   _spawnerTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _minionWaypoints:
   - {fileID: 1216266672}
@@ -6411,7 +6440,8 @@ MonoBehaviour:
   - {fileID: 672430795}
   - {fileID: 867999430}
   - {fileID: 635237949}
-  _spawnRate: 1
+  _delayBetweenSpawnWaves: 10
+  _delayBetweenMinions: 0.6
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &1263887303
 Transform:
@@ -8853,7 +8883,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionSpawn: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _minionWave:
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _minionWaypoints:
   - {fileID: 854083798}
@@ -8861,7 +8896,8 @@ MonoBehaviour:
   - {fileID: 135099681}
   - {fileID: 196976553}
   - {fileID: 1398026871}
-  _spawnRate: 1
+  _delayBetweenSpawnWaves: 10
+  _delayBetweenMinions: 0.6
   _spawnArea: {x: 1, y: 5}
 --- !u!4 &1990246461
 Transform:
