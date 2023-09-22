@@ -140,6 +140,7 @@ MonoBehaviour:
     _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+  _isImmovable: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -374,8 +375,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 336732919
-  m_SortingLayer: 1
+  m_SortingLayerID: -754673165
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 976d85fad6f8d664abb663d522311091, type: 3}
   m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
@@ -460,7 +461,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -754673165
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 24fe8308645e04d4b8a881974caf5cde, type: 3}
   m_Color: {r: 0.19607843, g: 1, b: 1, a: 1}
   m_FlipX: 0
