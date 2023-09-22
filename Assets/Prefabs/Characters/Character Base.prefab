@@ -496,7 +496,7 @@ Transform:
   m_GameObject: {fileID: 6686419367982913572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 2394253845395186629}
-  _enemyDetectionRadius: 8
+  _enemyDetectionRadius: 10
   _showDetectionRadius: 1
 --- !u!58 &2394253845395186629
 CircleCollider2D:
