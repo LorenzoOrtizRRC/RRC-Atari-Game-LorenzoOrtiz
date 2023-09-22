@@ -17,9 +17,9 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private MovementState _chaseState = new ChaseState();
     [SerializeField] private bool _isImmovable = false;
 
-    private CharacterAgent _enemyTarget;
     public CharacterAgent EnemyTarget => _enemyTarget;
 
+    private CharacterAgent _enemyTarget;
     private bool _isChasing = false;
 
     public void InitializeStateMachine(TeamData newTeam, List<Waypoint> initialPath)
@@ -72,17 +72,16 @@ public class StateMachine : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 directionToMove = transform.forward;
-        //  if target is valid, evaluate target
-        if (!_enemyTarget)
-        {
-            directionToMove = MoveCharacter();
-            _agent.RotateWeapon(directionToMove);
-        }
-        else
+        if (_enemyTarget)
         {
             float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
             if (_isChasing) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
             _agent.RotateWeapon(_enemyTarget.transform.position);
+        }
+        else
+        {
+            directionToMove = MoveCharacter();
+            _agent.RotateWeapon(directionToMove);
         }
     }
 
@@ -95,16 +94,11 @@ public class StateMachine : MonoBehaviour
     {
         if (_enemyTarget) return;
         _enemyTarget = enemyAgent;
-        //OnEnemyTargetAcquired(_enemyTarget);
     }
 
     public void ResetTarget()
     {
         _enemyTarget = null;
-        /*
-        _targetDetector.gameObject.SetActive(false);
-        _targetDetector.gameObject.SetActive(true);
-        */
         _targetDetector.ResetDetector();
     }
 }
