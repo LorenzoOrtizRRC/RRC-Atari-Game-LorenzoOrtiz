@@ -5,57 +5,70 @@ using UnityEngine.Events;
 
 public class MinionSpawner : MonoBehaviour
 {
-    /*private SpawnerData _spawnerData;
-    public float _spawnTimer = 0f;
-    public float _burstSpawnTimer = 0f;
-
-    private bool _isBurstSpawning = false;
-
-    private void Update()
-    {
-        if (Time.time >= _spawnTimer)
-        {
-            SpawnMinion();
-            _spawnTimer = Time.time + _spawnRate;
-        }
-    }
-
-    private void SpawnMinion()
-    {
-        //Instantiate(_minionSpawn, GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
-        //stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
-    }
-
-    private Vector2 GetSpawnPosition()
-    {
-        float xExtent = _spawnArea.x / 2f;
-        float yExtent = _spawnArea.y / 2f;
-        return new Vector2(Random.Range(-xExtent, xExtent), Random.Range(-yExtent, yExtent)) + (Vector2)transform.position;
-    }*/
-    
-    //[SerializeField] private GameObject _minionSpawn;       // minion to spawn. must be NPCs, and have CharacterAgent scripts.
-    [SerializeField] private List<SpawnerData> _spawnerDataList = new List<SpawnerData>();
+    [SerializeField] private List<SpawnerData> _initialWave = new List<SpawnerData>();    // initial minions in starting waves
     [SerializeField] private TeamData _spawnerTeam;
     [SerializeField] private List<Waypoint> _minionWaypoints;
-    [SerializeField] private float _spawnRate = 1f;     // minions per second. formula: _spawnRate = 1f / minions-per-second
+    [SerializeField] private float _delayBetweenSpawnWaves = 10f;   // real seconds
+    [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds. delay between each minion spawn in a wave
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
 
-    private float _spawnTimer = 0f;
-    private bool _isSpawning = false;
+    private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
+    private float _waveTimer = 0f;     // timer for waves
+    private float _minionSpawnTimer = 0f;       // timer for minions in waves
+    private int _waveIndex = 0;
+    private bool _isSpawningWave = false;
+
+    private void Awake()
+    {
+        foreach (SpawnerData spawnerData in _initialWave)AddMinionsToWave(spawnerData);
+    }
 
     private void Update()
     {
-        if (Time.time >= _spawnTimer)
+        if (_isSpawningWave)
         {
-            SpawnMinion();
-            _spawnTimer = Time.time + _spawnRate;
+            if (Time.time >= _minionSpawnTimer)
+            {
+                SpawnMinion(_waveIndex);
+                _minionSpawnTimer = Time.time + _delayBetweenMinions;
+                _waveIndex++;
+                if (_waveIndex > _minionWave.Count - 1)     // wave finished spawning.
+                {
+                    RefreshTimers();
+                    _waveIndex = 0;
+                    _isSpawningWave = false;
+                }
+            }
+        }
+        else if (Time.time >= _waveTimer) _isSpawningWave = true;
+    }
+
+    public void AddMinionsToWave(SpawnerData spawnerData)
+    {
+        for (int i = 0; i < spawnerData.NumberOfMinions; i++)
+        {
+            _minionWave.Add(spawnerData.MinionPrefab);
         }
     }
 
-    private void SpawnMinion()
+    public void RemoveMinionsToWave(SpawnerData spawnerData)
     {
-        //Instantiate(_minionSpawn, GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
-        //stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
+        for (int i = spawnerData.NumberOfMinions; i > 0; i--)
+        {
+            if (!_minionWave.Remove(spawnerData.MinionPrefab)) break;   // return if no more of element remains (for edge cases)
+        }
+    }
+
+    private void SpawnMinion(int minionWaveIndex)
+    {
+        Instantiate(_minionWave[minionWaveIndex], GetSpawnPosition(), transform.rotation).TryGetComponent(out StateMachine stateMachine);
+        stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
+    }
+
+    private void RefreshTimers()
+    {
+        _waveTimer = Time.time + _delayBetweenSpawnWaves;
+        _minionSpawnTimer = 0f;
     }
 
     private Vector2 GetSpawnPosition()
