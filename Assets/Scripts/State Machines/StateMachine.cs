@@ -20,6 +20,8 @@ public class StateMachine : MonoBehaviour
     private CharacterAgent _enemyTarget;
     public CharacterAgent EnemyTarget => _enemyTarget;
 
+    private bool _isChasing = false;
+
     public void InitializeStateMachine(TeamData newTeam, List<Waypoint> initialPath)
     {
         _agent.InitializeAgent(newTeam);
@@ -51,12 +53,13 @@ public class StateMachine : MonoBehaviour
                 // evaluate weapon ranges, chase or retreat appropriately
                 float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
                 // CHASE IS DISABLED CUZ OF NO AGGRO RANGE IMPLEMENTED IN WEAPONINSTANCE YET
-                if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);    // chase when out of range
+                if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange) _isChasing = true; //_chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);    // chase when out of range
                 //else if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
                 else
                 {
                     //_agent.UseWeapon(_enemyTarget);   // use weapon when within appropriate range
                     _agent.UseWeapon(_enemyTarget.transform.position);
+                    _isChasing = false;
                 }
             }
         }
@@ -75,7 +78,12 @@ public class StateMachine : MonoBehaviour
             directionToMove = MoveCharacter();
             _agent.RotateWeapon(directionToMove);
         }
-        else _agent.RotateWeapon(_enemyTarget.transform.position);
+        else
+        {
+            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
+            if (_isChasing) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+            _agent.RotateWeapon(_enemyTarget.transform.position);
+        }
     }
 
     private Vector2 MoveCharacter()
