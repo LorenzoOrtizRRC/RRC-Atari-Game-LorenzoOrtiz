@@ -48,12 +48,7 @@ public class MinionSpawner : MonoBehaviour
     private bool _isSpawningWave = false;
 
     private void Update()
-    {/*
-        if (Time.time >= _waveTimer)
-        {
-            SpawnMinion();
-            _waveTimer = Time.time + _spawnRate;
-        }*/
+    {
         if (Time.time >= _waveTimer) _isSpawningWave = true;
         if (_isSpawningWave)
         {
@@ -73,9 +68,23 @@ public class MinionSpawner : MonoBehaviour
         else if (Time.time >= _waveTimer) _isSpawningWave = true;
     }
 
-    private void SpawnMinionWave()
+    public void AddMinionsToWave(SpawnerData spawnerData)
     {
-        //
+        for (int i = 0; i < spawnerData.NumberOfMinions; i++)
+        {
+            _minionWave.Add(spawnerData.MinionPrefab);
+        }
+    }
+
+    public void RemoveMinionsToWave(SpawnerData spawnerData)
+    {
+        int removeCount = spawnerData.NumberOfMinions;
+        for (int i = 0; i < spawnerData.NumberOfMinions; i++)
+        {
+            if (removeCount == 0) break;
+            if (!_minionWave.Remove(spawnerData.MinionPrefab)) break;   // return if no more of element remains (for edge cases)
+            removeCount--;
+        }
     }
 
     private void SpawnMinion(int minionWaveIndex)

@@ -8,4 +8,7 @@ public class SpawnerData : ScriptableObject
 {
     [SerializeField] private GameObject _minionPrefab;
     [SerializeField] private int _numberOfMinions;
+
+    public GameObject MinionPrefab => _minionPrefab;
+    public int NumberOfMinions => _numberOfMinions;
 }
