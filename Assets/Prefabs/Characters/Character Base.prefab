@@ -49,6 +49,7 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
   _projectileSpawnPoints:
   - {fileID: 2680645913525236172}
+  _visualizeWeaponSpread: 1
 --- !u!1 &804674929867470295
 GameObject:
   m_ObjectHideFlags: 0
