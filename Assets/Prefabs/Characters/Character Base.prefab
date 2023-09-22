@@ -108,8 +108,6 @@ MonoBehaviour:
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _weapon: {fileID: 5845705992924132293}
   _healthBarVisible: 1
-  slider: {fileID: 116580154563218765}
-  sliderOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1714874358317361568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +214,7 @@ GameObject:
   - component: {fileID: 1121313515934967414}
   - component: {fileID: 161283474767223767}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: World Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +260,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -288001401
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1121313515934967414
@@ -704,17 +702,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
---- !u!1 &116580154563218765 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
-  m_PrefabInstance: {fileID: 5005712241606371315}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1605958586433106080 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
   m_PrefabInstance: {fileID: 5005712241606371315}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116580154563218765}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c9a2073d6f19ff43be1061ccc60ffce, type: 3}
