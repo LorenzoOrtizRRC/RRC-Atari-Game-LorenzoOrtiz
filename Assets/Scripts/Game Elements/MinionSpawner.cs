@@ -34,7 +34,7 @@ public class MinionSpawner : MonoBehaviour
     }*/
 
     //[SerializeField] private GameObject _minionSpawn;       // minion to spawn. must be NPCs, and have CharacterAgent scripts.
-    [SerializeField] private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
+    [SerializeField] private List<SpawnerData> _initialWave = new List<SpawnerData>();    // initial minions in starting waves
     [SerializeField] private TeamData _spawnerTeam;
     [SerializeField] private List<Waypoint> _minionWaypoints;
     //[SerializeField] private float _spawnRate = 1f;     // minions per second. formula: _spawnRate = 1f / minions-per-second
@@ -42,10 +42,16 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
 
+    private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
     private float _waveTimer = 0f;     // timer for waves
     private float _minionSpawnTimer = 0f;       // timer for minions in waves
     private int _waveIndex = 0;
     private bool _isSpawningWave = false;
+
+    private void Awake()
+    {
+        foreach (SpawnerData spawnerData in _initialWave)AddMinionsToWave(spawnerData);
+    }
 
     private void Update()
     {
@@ -89,7 +95,7 @@ public class MinionSpawner : MonoBehaviour
 
     private void SpawnMinion(int minionWaveIndex)
     {
-        Instantiate(_minionWave[minionWaveIndex], GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
+        Instantiate(_minionWave[minionWaveIndex], GetSpawnPosition(), transform.rotation).TryGetComponent(out StateMachine stateMachine);
         stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
     }
 

@@ -251,12 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionWave:
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _initialWave:
+  - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _minionWaypoints:
   - {fileID: 1278601284}
@@ -1285,12 +1281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionWave:
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _initialWave:
+  - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _minionWaypoints:
   - {fileID: 867999430}
@@ -2866,12 +2858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionWave:
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _initialWave:
+  - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _minionWaypoints:
   - {fileID: 628497736}
@@ -4729,12 +4717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionWave:
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _initialWave:
+  - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _minionWaypoints:
   - {fileID: 196976553}
@@ -6427,12 +6411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionWave:
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _initialWave:
+  - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _minionWaypoints:
   - {fileID: 1216266672}
@@ -8883,12 +8863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minionWave:
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  - {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+  _initialWave:
+  - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _minionWaypoints:
   - {fileID: 854083798}
