@@ -15,8 +15,12 @@ public class StateMachine : MonoBehaviour
     [Header("State Machine Variables")]
     [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
     [SerializeField] private MovementState _chaseState = new ChaseState();
-    private CharacterAgent _enemyTarget;
+    [SerializeField] private bool _isImmovable = false;
+
     public CharacterAgent EnemyTarget => _enemyTarget;
+
+    private CharacterAgent _enemyTarget;
+    private bool _isChasing = false;
 
     public void InitializeStateMachine(TeamData newTeam, List<Waypoint> initialPath)
     {
@@ -49,12 +53,13 @@ public class StateMachine : MonoBehaviour
                 // evaluate weapon ranges, chase or retreat appropriately
                 float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
                 // CHASE IS DISABLED CUZ OF NO AGGRO RANGE IMPLEMENTED IN WEAPONINSTANCE YET
-                //if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange && !_agent.) _chaseState.MoveAgent(transform, _rb, Speed, _enemyTarget.transform.position);    // chase when out of range
-                if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
+                if (distanceFromEnemy > _agent.EquippedWeapon.MaximumRange) _isChasing = true; //_chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);    // chase when out of range
+                //else if (distanceFromEnemy < _agent.EquippedWeapon.MinimumRange) { /* put retreat state here */ }     // retreat when target is too close
                 else
                 {
                     //_agent.UseWeapon(_enemyTarget);   // use weapon when within appropriate range
                     _agent.UseWeapon(_enemyTarget.transform.position);
+                    _isChasing = false;
                 }
             }
         }
@@ -67,13 +72,18 @@ public class StateMachine : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 directionToMove = transform.forward;
-        //  if target is valid, evaluate target
-        if (!_enemyTarget)
+        if (_enemyTarget)
         {
+            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
+            if (_isChasing && !_isImmovable) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+            _agent.RotateWeapon(_enemyTarget.transform.position);
+        }
+        else
+        {
+            if (_isImmovable) return;
             directionToMove = MoveCharacter();
             _agent.RotateWeapon(directionToMove);
         }
-        else _agent.RotateWeapon(_enemyTarget.transform.position);
     }
 
     private Vector2 MoveCharacter()
@@ -85,16 +95,11 @@ public class StateMachine : MonoBehaviour
     {
         if (_enemyTarget) return;
         _enemyTarget = enemyAgent;
-        //OnEnemyTargetAcquired(_enemyTarget);
     }
 
     public void ResetTarget()
     {
         _enemyTarget = null;
-        /*
-        _targetDetector.gameObject.SetActive(false);
-        _targetDetector.gameObject.SetActive(true);
-        */
         _targetDetector.ResetDetector();
     }
 }

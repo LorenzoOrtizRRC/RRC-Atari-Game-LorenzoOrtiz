@@ -112,6 +112,7 @@ public class CharacterAgent : MonoBehaviour
 
     private void KillCharacter()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

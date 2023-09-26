@@ -41,9 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Character Weapon
-    uniqueID: 336732919
-    locked: 0
   - name: Character Body
     uniqueID: 3540294131
+    locked: 0
+  - name: World Space UI
+    uniqueID: 4006965895
     locked: 0

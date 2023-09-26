@@ -49,6 +49,7 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
   _projectileSpawnPoints:
   - {fileID: 2680645913525236172}
+  _visualizeWeaponSpread: 1
 --- !u!1 &804674929867470295
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +109,6 @@ MonoBehaviour:
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _weapon: {fileID: 5845705992924132293}
   _healthBarVisible: 1
-  slider: {fileID: 116580154563218765}
-  sliderOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1714874358317361568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +138,9 @@ MonoBehaviour:
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
     _waypointDestinations: []
-    _distanceThreshold: 0.3
-    _laneAlignmentBias: 0.7
+    _distanceThreshold: 0.5
+    _laneAlignmentBias: 0.8
+  _isImmovable: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 1121313515934967414}
   - component: {fileID: 161283474767223767}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: World Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -288001401
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1121313515934967414
@@ -375,8 +375,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 336732919
-  m_SortingLayer: 1
+  m_SortingLayerID: -754673165
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 976d85fad6f8d664abb663d522311091, type: 3}
   m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
@@ -461,7 +461,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -754673165
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 24fe8308645e04d4b8a881974caf5cde, type: 3}
   m_Color: {r: 0.19607843, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -498,7 +498,7 @@ Transform:
   m_GameObject: {fileID: 6686419367982913572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 2394253845395186629}
-  _enemyDetectionRadius: 8
+  _enemyDetectionRadius: 10
   _showDetectionRadius: 1
 --- !u!58 &2394253845395186629
 CircleCollider2D:
@@ -704,17 +704,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
---- !u!1 &116580154563218765 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
-  m_PrefabInstance: {fileID: 5005712241606371315}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1605958586433106080 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
   m_PrefabInstance: {fileID: 5005712241606371315}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116580154563218765}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c9a2073d6f19ff43be1061ccc60ffce, type: 3}

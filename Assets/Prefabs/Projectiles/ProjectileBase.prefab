@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4917470637874317170}
   - component: {fileID: 8520688758158660115}
   m_Layer: 7
-  m_Name: BallProjectile_Small
+  m_Name: ProjectileBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

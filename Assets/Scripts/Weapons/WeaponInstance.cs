@@ -7,6 +7,7 @@ public abstract class WeaponInstance : MonoBehaviour
 {
     [SerializeField] protected WeaponData _weaponData;
     [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();  // positions used to position spawned projectiles
+    [SerializeField, Header("Debugging")] private bool _visualizeWeaponSpread = true; 
 
     public float MinimumRange => _weaponData.MinimumWeaponRange;
     public float MaximumRange => _weaponData.MaximumWeaponRange;
@@ -54,7 +55,9 @@ public abstract class WeaponInstance : MonoBehaviour
 
     private ProjectileInstance SpawnProjectile(Transform spawnPosition)
     {
-        ProjectileInstance spawnedProjectile = Instantiate(_weaponData.ProjectileObject, spawnPosition.position, spawnPosition.rotation)
+        float spreadAngle = _weaponData.WeaponAngleSpread / 2f;
+        Quaternion rotationWithSpread = spawnPosition.rotation * Quaternion.AngleAxis(Random.Range(-spreadAngle, spreadAngle), Vector3.forward);
+        ProjectileInstance spawnedProjectile = Instantiate(_weaponData.ProjectileObject, spawnPosition.position, rotationWithSpread)
             .GetComponent<ProjectileInstance>();
         return spawnedProjectile;
     }
@@ -62,5 +65,23 @@ public abstract class WeaponInstance : MonoBehaviour
     private void InitializeProjectile(ProjectileInstance spawnedProjectile)
     {
         spawnedProjectile.InitializeProjectile(_weaponData.Damage, _weaponData.ProjectileSpeed, _weaponData.ProjectileLifetime, _currentTeam);
+    }
+
+    private void OnDrawGizmos()
+    {
+        // visualize weapon spread
+        if (_visualizeWeaponSpread && _weaponData.WeaponAngleSpread != 0f)
+        {
+            Gizmos.color = Color.yellow;
+            float spreadAngle = _weaponData.WeaponAngleSpread / 2f;
+            Quaternion minRotation = _projectileSpawnPoints[0].localRotation * Quaternion.AngleAxis(-spreadAngle, Vector3.forward);
+            Quaternion maxRotation = _projectileSpawnPoints[0].localRotation * Quaternion.AngleAxis(spreadAngle, Vector3.forward);
+            foreach (Transform spawnPoint in _projectileSpawnPoints)
+            {
+                // for some reason only (Quaternion * Vector) is allowed, not (Vector * Quaternion)
+                Gizmos.DrawLine(spawnPoint.position, spawnPoint.position + ((minRotation * spawnPoint.up) * _weaponData.MaximumWeaponRange));
+                Gizmos.DrawLine(spawnPoint.position, spawnPoint.position + ((maxRotation * spawnPoint.up) * _weaponData.MaximumWeaponRange));
+            }
+        }
     }
 }

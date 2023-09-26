@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
-  m_Name: CharData_BasicCat
+  m_Name: CharData_LaneDefenseTower
   m_EditorClassIdentifier: 
-  _name: Basic Shooter
-  _health: 5
-  _armor: 0
-  _speed: 5
+  _name: Defensive Tower
+  _health: 500
+  _armor: 2
+  _speed: 0

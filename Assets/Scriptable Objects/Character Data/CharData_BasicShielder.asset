@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13aeadb5d70e42c40b3bfcd399042b18, type: 3}
-  m_Name: SDInitialMinionWave
+  m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
+  m_Name: CharData_BasicShielder
   m_EditorClassIdentifier: 
-  _minionPrefab: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-  _numberOfMinions: 5
+  _name: Shielder
+  _health: 40
+  _armor: 1
+  _speed: 4
