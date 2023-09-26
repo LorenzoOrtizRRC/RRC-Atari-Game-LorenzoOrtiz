@@ -36,6 +36,7 @@ public class CharacterAgent : MonoBehaviour
     public float MaxHealth => _stats.Health;
     public float Armor => _stats.Armor;
     public float Speed => _stats.Speed;
+    public float AggroRange => _stats.AggroRange;
     public TeamData CurrentTeam => _currentTeam;
     public WeaponInstance EquippedWeapon => _weapon;
     public float CurrentHealth => _currentHealth;

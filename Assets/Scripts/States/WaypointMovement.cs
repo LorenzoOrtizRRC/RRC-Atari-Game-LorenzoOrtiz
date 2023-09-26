@@ -26,7 +26,7 @@ public class WaypointMovement : MovementState
         // move self if distance is greater than threshold, else get new waypoint
         if (distance.magnitude >= _distanceThreshold)
         {
-            Vector2 destination = (Vector2)self.position + (distance.normalized * Time.deltaTime * speed);
+            Vector2 destination = (Vector2)self.position + (distance.normalized * Time.fixedDeltaTime * speed);
             rb.MovePosition(destination);
             return destination;
         }

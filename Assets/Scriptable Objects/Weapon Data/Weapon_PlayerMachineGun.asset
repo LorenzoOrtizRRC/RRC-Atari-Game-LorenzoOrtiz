@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
-  m_Name: Weapon_PlayerTest
+  m_Name: Weapon_PlayerMachineGun
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
-  _damage: 999
-  _rateOfFire: 0.6
+  _damage: 2
+  _rateOfFire: 0.2
   _minimumWeaponRange: 0
   _maximumWeaponRange: 10
-  _projectileSpeed: 10
-  _projectileLifetime: 1.2
+  _weaponAngleSpread: 30
+  _projectileSpeed: 8
+  _projectileLifetime: 1.5

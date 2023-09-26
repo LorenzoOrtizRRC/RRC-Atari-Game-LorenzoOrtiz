@@ -44,7 +44,8 @@ public class StateMachine : MonoBehaviour
         {
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
-            if (_enemyTarget.gameObject.activeSelf == false)
+            float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
+            if (_enemyTarget.gameObject.activeSelf == false && distanceToTarget > _agent.AggroRange)
             {
                 ResetTarget();
             }
