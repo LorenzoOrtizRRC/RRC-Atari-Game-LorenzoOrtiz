@@ -32,8 +32,11 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         // initialize components
-        _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
-        _targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        if (_targetDetector || !_targetDetector.gameObject.activeSelf)
+        {
+            _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
+            _targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        }
     }
 
     private void Update()

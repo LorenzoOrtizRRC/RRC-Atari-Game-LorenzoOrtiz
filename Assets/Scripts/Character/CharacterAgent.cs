@@ -28,6 +28,7 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private bool _healthBarVisible = true;     // Enable/Disable the health bar.
     [Header("Life Dependancies: Agent dies when the parents (CharacterAgent) its dependent on are all dead.")]
     [SerializeField] private bool _lifeIsDependent = false;
+    [SerializeField] private bool _replaceDependencyTeams = true;
     [SerializeField] private List<CharacterAgent> _dependencyParentAgents = new List<CharacterAgent>();
 
     //[SerializeField] private bool _cannotMove = false;
@@ -56,24 +57,26 @@ public class CharacterAgent : MonoBehaviour
         _currentTeam = newTeam;
     }
 
-    private void Start()
+    private void Awake()
     {
         // initialize weapons and other components
-        _weapon.InitializeWeapon(_currentTeam);
-        _characterArtController.Initialize(_currentTeam);
-        if (_healthBar)
+        if (_healthBar && _healthBar.gameObject.activeInHierarchy)
         {
             if (_healthBarVisible) OnHealthDecreased.AddListener(_healthBar.UpdateSliderValue);
             else _healthBar.gameObject.SetActive(false);
         }
         //_targetDetector.InitializeTargetDetector(_currentTeam);
         // initialize variables
-        if (!_lifeIsDependent || _dependencyParentAgents == null || _dependencyParentAgents.Count == 0) _lifeIsDependent = false;
+        if (!_lifeIsDependent || _dependencyParentAgents == null || _dependencyParentAgents.Count == 0)
+        {
+            _lifeIsDependent = false;
+        }
         else
         {
             foreach (CharacterAgent dependencyParent in _dependencyParentAgents)
             {
                 dependencyParent.OnAgentDeath.AddListener(EvaluateLifeDependencies);
+                if (_replaceDependencyTeams) dependencyParent.SetTeam(_currentTeam);
             }
         }
         // initialize own events
@@ -84,9 +87,18 @@ public class CharacterAgent : MonoBehaviour
     {
         // initialize variables
         _currentHealth = MaxHealth;
+        // Initialize components
         _healthBar.UpdateSliderValue(_currentHealth);
+        _characterArtController.Initialize(_currentTeam);
+        _weapon.InitializeWeapon(_currentTeam);
         //_movementState.Initialize();
         //_chaseState.Initialize();
+    }
+
+    private void Start()
+    {
+        _characterArtController.Initialize(_currentTeam);
+        _weapon.InitializeWeapon(_currentTeam);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -119,6 +131,8 @@ public class CharacterAgent : MonoBehaviour
         _weapon.RotateWeapon(direction);
     }
 
+    public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
+
     private void EvaluateLifeDependencies()
     {
         // True when at least 1 dependency is alive.
@@ -126,13 +140,15 @@ public class CharacterAgent : MonoBehaviour
         for (int i = 0; i < _dependencyParentAgents.Count; i++)
         {
             CharacterAgent dependencyAgent = _dependencyParentAgents[i];
-            if (dependencyAgent || dependencyAgent.gameObject.activeSelf)
+            if (dependencyAgent && dependencyAgent.gameObject.activeInHierarchy)
             {
+                print("BOTH ARE TRUE");
                 dependencyIsAlive = true;
                 break;
             }
         }
         if (!dependencyIsAlive) KillCharacter();
+        print(dependencyIsAlive);
     }
 
     private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
@@ -154,5 +170,6 @@ public class CharacterAgent : MonoBehaviour
     {
         if (_disableOnDeath) gameObject.SetActive(false);
         else Destroy(gameObject);
+        OnAgentDeath?.Invoke();
     }
 }
