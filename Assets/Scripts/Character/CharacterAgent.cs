@@ -28,7 +28,6 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private bool _disableOnDeath = false;      // Disables itself instead of destroying on death.
     [SerializeField] private bool _healthBarVisible = true;     // Enable/Disable the health bar.
 
-
     //[SerializeField] private bool _cannotMove = false;
     /*
     [Header("State Machine Variables")]
@@ -44,8 +43,10 @@ public class CharacterAgent : MonoBehaviour
     public float Armor => _stats.Armor;
     public float Speed => _stats.Speed;
     public float AggroRange => _stats.AggroRange;
-    public TeamData CurrentTeam => _currentTeam;
     public WeaponInstance EquippedWeapon => _weapon;
+    public TeamData CurrentTeam => _currentTeam;
+    public bool IsInvincible => _isInvincible;
+    public bool IsUntargetable => _isUntargetable;
     public float CurrentHealth => _currentHealth;
 
     public void InitializeAgent(TeamData newTeam)
@@ -106,22 +107,24 @@ public class CharacterAgent : MonoBehaviour
         _weapon.RotateWeapon(direction);
     }
 
-    private void DamageCharacter(float rawDamage)
+    private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
     {
-        // Damage formula.
-        float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
-        _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
-
+        float mitigatedDamage = 0;
+        if (!_isInvincible || bypassInvincibility)
+        {
+            // Damage formula.
+            mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
+            _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+        }
         OnDamageTaken?.Invoke(mitigatedDamage);
         OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
-
         // evaluate health.
         if (_currentHealth == 0) KillCharacter();
     }
 
     private void KillCharacter()
     {
-        //gameObject.SetActive(false);
-        Destroy(gameObject);
+        if (_disableOnDeath) gameObject.SetActive(false);
+        else Destroy(gameObject);
     }
 }

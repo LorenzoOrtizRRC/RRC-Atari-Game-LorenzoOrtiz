@@ -94,6 +94,7 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
+        if (enemyAgent.IsUntargetable) return;
         if (_enemyTarget) return;
         _enemyTarget = enemyAgent;
     }
