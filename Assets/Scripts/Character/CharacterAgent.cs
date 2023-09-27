@@ -3,23 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class CharacterAgent : MonoBehaviour
 {
-    public Action<float> OnDamageTaken;     // float is mitigated damage taken
-    public Action<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
+    public UnityEvent<float> OnDamageTaken;     // float is mitigated damage taken
+    public UnityEvent<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
     public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
     [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
+    [SerializeField] private WeaponInstance _weapon;
     [Header("UI Component References")]
     [SerializeField] private ResourceBar _healthBar;
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
-    [SerializeField] private WeaponInstance _weapon;
+    [SerializeField] private bool _isDependent;
     [SerializeField] private bool _healthBarVisible = true;
 
     //[SerializeField] private bool _cannotMove = false;
@@ -56,7 +58,7 @@ public class CharacterAgent : MonoBehaviour
         //OnEnemyTargetAcquired += _weapon.SetNewTarget;
         // initialize component events
         //_targetDetector.OnEnemyDetected += RegisterNewEnemy;
-        if (_healthBarVisible) OnHealthDecreased += _healthBar.UpdateSliderValue;
+        if (_healthBarVisible) OnHealthDecreased.AddListener(_healthBar.UpdateSliderValue);
     }
 
     private void OnEnable()
