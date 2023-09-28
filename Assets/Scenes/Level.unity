@@ -1328,6 +1328,7 @@ GameObject:
   - component: {fileID: 156222599}
   - component: {fileID: 156222598}
   - component: {fileID: 156222600}
+  - component: {fileID: 156222601}
   m_Layer: 0
   m_Name: Game Manager Object
   m_TagString: Untagged
@@ -1407,6 +1408,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageNumberPrefab: {fileID: 1973896058061444346, guid: 75d45529ecc52854bb739d8f6815ee83, type: 3}
   _spawnAngleDifference: 10
+--- !u!114 &156222601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156222595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c9c972cbf5c4844867b92d4ef589a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &162257277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,7 +3338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 424709523}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 156222601}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadNewScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &424709523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10043,7 +10068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1812150448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10662,7 +10687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1871241578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10726,7 +10751,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1871241580}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 156222601}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadNewScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1871241580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11513,6 +11550,66 @@ PrefabInstance:
       propertyPath: _currentTeam
       value: 
       objectReference: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2110543337}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 333075563}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398844352114854096, guid: fe740c94f72313743b3b522eb0187115, type: 3}
+      propertyPath: OnAgentDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8853677520207840348, guid: fe740c94f72313743b3b522eb0187115, type: 3}
       propertyPath: m_Name
       value: Character_Mothership
@@ -12020,7 +12117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2110543338
 RectTransform:
   m_ObjectHideFlags: 0
