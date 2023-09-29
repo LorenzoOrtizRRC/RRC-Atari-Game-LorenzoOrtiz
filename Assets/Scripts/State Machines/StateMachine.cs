@@ -110,7 +110,8 @@ public class StateMachine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Visualize Aggro range.
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius / 2f);
+        Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
     }
 }
