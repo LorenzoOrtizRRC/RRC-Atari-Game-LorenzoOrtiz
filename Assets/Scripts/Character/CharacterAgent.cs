@@ -22,7 +22,7 @@ public class CharacterAgent : MonoBehaviour
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
-    [SerializeField] private bool _isInvincible = false;        // Cannot be damaged. Projectiles may still collide with this agent, but it will take no damage.
+    [SerializeField] private bool _isInvulnerable = false;        // Cannot be damaged. Projectiles may still collide with this agent, but it will take no damage.
     [SerializeField] private bool _isUntargetable = false;      // Cannot be targeted. Only affects AI.
     [SerializeField] private bool _disableOnDeath = false;      // Disables itself instead of destroying on death.
     [SerializeField] private bool _healthBarVisible = true;     // Enable/Disable the health bar.
@@ -48,7 +48,7 @@ public class CharacterAgent : MonoBehaviour
     public float AggroRangeRadius => _stats.AggroRangeRadius;
     public WeaponInstance EquippedWeapon => _weapon;
     public TeamData CurrentTeam => _currentTeam;
-    public bool IsInvincible => _isInvincible;
+    public bool IsInvincible => _isInvulnerable;
     public bool IsUntargetable => _isUntargetable;
     public float CurrentHealth => _currentHealth;
 
@@ -133,6 +133,10 @@ public class CharacterAgent : MonoBehaviour
 
     public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
 
+    public void ToggleInvulnerable(bool isInvulnerable) => _isInvulnerable = isInvulnerable;
+
+    public void ToggleUntargetable(bool isUntargetable) => _isUntargetable = isUntargetable;
+
     private void EvaluateLifeDependencies()
     {
         // True when at least 1 dependency is alive.
@@ -154,7 +158,7 @@ public class CharacterAgent : MonoBehaviour
     private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
     {
         float mitigatedDamage = 0;
-        if (!_isInvincible || bypassInvincibility)
+        if (!_isInvulnerable || bypassInvincibility)
         {
             // Damage formula.
             mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
