@@ -22,7 +22,7 @@ public class StateMachine : MonoBehaviour
     private CharacterAgent _enemyTarget;
     private bool _isChasing = false;
 
-    public void InitializeStateMachine(TeamData newTeam, List<Waypoint> initialPath)
+    public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
     {
         _agent.InitializeAgent(newTeam);
         _movementState.SetWaypoints(initialPath);
