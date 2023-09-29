@@ -69,7 +69,7 @@ public class StateMachine : MonoBehaviour
         }
         //else directionToMove = MoveCharacter();
 
-        if (_enemyTarget) _agent.RotateWeapon(_enemyTarget.transform.position);
+        //if (_enemyTarget) _agent.RotateWeapon(_enemyTarget.transform.position);
         //else _agent.RotateWeapon(directionToMove);
     }
 

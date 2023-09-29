@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1808969846888306160, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _enemyDetectionRadius
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2244476541459274941, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Name
@@ -337,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394253845395186629, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Radius
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2680645913525236172, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_LocalPosition.x
