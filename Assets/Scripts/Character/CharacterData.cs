@@ -14,13 +14,13 @@ public class CharacterData : ScriptableObject
     [SerializeField] private float _health = 1f;
     [SerializeField] private float _armor = 0f;
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private float _aggroRange = 1f;
+    [SerializeField] private float _aggroRangeRadius = 1f;
 
     public string Name => _name;
     public float Health => _health;
     public float Armor => _armor;
     public float Speed => _speed;
-    public float AggroRange => _aggroRange;
+    public float AggroRangeRadius => _aggroRangeRadius;
     /*
     [SerializeField] private Rigidbody2D _rb;
 

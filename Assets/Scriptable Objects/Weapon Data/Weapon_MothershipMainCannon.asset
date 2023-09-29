@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
-  m_Name: Weapon_PlayerMachineGun
+  m_Name: Weapon_MothershipMainCannon
   m_EditorClassIdentifier: 
-  _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
-  _damage: 100
-  _rateOfFire: 0.2
+  _projectileObject: {fileID: 34959273334938374, guid: d2376855cf33d86408c3f9c86ef62f3f, type: 3}
+  _damage: 20
+  _rateOfFire: 3
   _minimumWeaponRange: 0
-  _maximumWeaponRange: 10
-  _weaponAngleSpread: 30
-  _projectileSpeed: 8
-  _projectileLifetime: 1.5
+  _maximumWeaponRange: 25
+  _weaponAngleSpread: 1
+  _projectileSpeed: 10
+  _projectileLifetime: 2

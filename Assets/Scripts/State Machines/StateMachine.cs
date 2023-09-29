@@ -32,8 +32,11 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         // initialize components
-        _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
-        _targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        if (_targetDetector || !_targetDetector.gameObject.activeSelf)
+        {
+            _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
+            _targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        }
     }
 
     private void Update()
@@ -45,7 +48,7 @@ public class StateMachine : MonoBehaviour
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
             float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (_enemyTarget.gameObject.activeSelf == false && distanceToTarget > _agent.AggroRange)
+            if (!_enemyTarget.gameObject.activeInHierarchy || distanceToTarget > _agent.AggroRangeRadius)
             {
                 ResetTarget();
             }
@@ -64,10 +67,6 @@ public class StateMachine : MonoBehaviour
                 }
             }
         }
-        //else directionToMove = MoveCharacter();
-
-        if (_enemyTarget) _agent.RotateWeapon(_enemyTarget.transform.position);
-        //else _agent.RotateWeapon(directionToMove);
     }
 
     private void FixedUpdate()
@@ -94,13 +93,31 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
-        if (_enemyTarget) return;
+        if (_enemyTarget) return;       // if target is still valid
+        if (enemyAgent.IsUntargetable) return;      // if target cannot be targeted
         _enemyTarget = enemyAgent;
     }
 
     public void ResetTarget()
     {
         _enemyTarget = null;
-        _targetDetector.ResetDetector();
+        //_targetDetector.ResetDetector();
+        RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0f);//, _targetDetector.DetectorLayerMask);
+        foreach (RaycastHit2D target in potentialTargets)
+        {
+            CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
+            if (agent && agent.CurrentTeam != _agent.CurrentTeam)
+            {
+                RegisterNewEnemy(agent);
+                break;
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Visualize Aggro range.
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
     }
 }

@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
         Vector2 offset = _playerAgent.transform.position + (new Vector3(inputX, inputY, 0) * _playerAgent.Speed * Time.fixedDeltaTime);
-        print($"{inputX}, {inputY}");
         _playerAgent.Rb.MovePosition(offset);
     }
 }

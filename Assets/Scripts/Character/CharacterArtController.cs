@@ -14,6 +14,9 @@ public class CharacterArtController : MonoBehaviour
     public void Initialize(TeamData _currentTeam)
     {
         // apply team colors
-        _renderer.color = _currentTeam.TeamColor;
+        if (_renderer)
+        {
+            _renderer.color = _currentTeam.TeamColor;
+        }
     }
 }

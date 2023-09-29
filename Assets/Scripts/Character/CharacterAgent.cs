@@ -3,24 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class CharacterAgent : MonoBehaviour
 {
-    public Action<float> OnDamageTaken;     // float is mitigated damage taken
-    public Action<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
+    public UnityEvent<float> OnDamageTaken;     // float is mitigated damage taken
+    public UnityEvent<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
+    public UnityEvent OnAgentDeath;
     public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
     [Header("Component References")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
+    [SerializeField] private WeaponInstance _weapon;
     [Header("UI Component References")]
     [SerializeField] private ResourceBar _healthBar;
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
-    [SerializeField] private WeaponInstance _weapon;
-    [SerializeField] private bool _healthBarVisible = true;
+    [SerializeField] private bool _isInvincible = false;        // Cannot be damaged. Projectiles may still collide with this agent, but it will take no damage.
+    [SerializeField] private bool _isUntargetable = false;      // Cannot be targeted. Only affects AI.
+    [SerializeField] private bool _disableOnDeath = false;      // Disables itself instead of destroying on death.
+    [SerializeField] private bool _healthBarVisible = true;     // Enable/Disable the health bar.
+    [Header("Life Dependancies: Agent dies when the parents (CharacterAgent) its dependent on are all dead.")]
+    [SerializeField] private bool _lifeIsDependent = false;
+    [SerializeField] private bool _replaceDependencyTeams = true;
+    [SerializeField] private List<CharacterAgent> _dependencyParentAgents = new List<CharacterAgent>();
 
     //[SerializeField] private bool _cannotMove = false;
     /*
@@ -36,9 +45,11 @@ public class CharacterAgent : MonoBehaviour
     public float MaxHealth => _stats.Health;
     public float Armor => _stats.Armor;
     public float Speed => _stats.Speed;
-    public float AggroRange => _stats.AggroRange;
-    public TeamData CurrentTeam => _currentTeam;
+    public float AggroRangeRadius => _stats.AggroRangeRadius;
     public WeaponInstance EquippedWeapon => _weapon;
+    public TeamData CurrentTeam => _currentTeam;
+    public bool IsInvincible => _isInvincible;
+    public bool IsUntargetable => _isUntargetable;
     public float CurrentHealth => _currentHealth;
 
     public void InitializeAgent(TeamData newTeam)
@@ -46,26 +57,48 @@ public class CharacterAgent : MonoBehaviour
         _currentTeam = newTeam;
     }
 
-    private void Start()
+    private void Awake()
     {
         // initialize weapons and other components
-        _weapon.InitializeWeapon(_currentTeam);
-        _characterArtController.Initialize(_currentTeam);
+        if (_healthBar && _healthBar.gameObject.activeInHierarchy)
+        {
+            if (_healthBarVisible) OnHealthDecreased.AddListener(_healthBar.UpdateSliderValue);
+            else _healthBar.gameObject.SetActive(false);
+        }
         //_targetDetector.InitializeTargetDetector(_currentTeam);
+        // initialize variables
+        if (!_lifeIsDependent || _dependencyParentAgents == null || _dependencyParentAgents.Count == 0)
+        {
+            _lifeIsDependent = false;
+        }
+        else
+        {
+            foreach (CharacterAgent dependencyParent in _dependencyParentAgents)
+            {
+                dependencyParent.OnAgentDeath.AddListener(EvaluateLifeDependencies);
+                if (_replaceDependencyTeams) dependencyParent.SetTeam(_currentTeam);
+            }
+        }
         // initialize own events
         //OnEnemyTargetAcquired += _weapon.SetNewTarget;
-        // initialize component events
-        //_targetDetector.OnEnemyDetected += RegisterNewEnemy;
-        if (_healthBarVisible) OnHealthDecreased += _healthBar.UpdateSliderValue;
     }
 
     private void OnEnable()
     {
         // initialize variables
         _currentHealth = MaxHealth;
+        // Initialize components
         _healthBar.UpdateSliderValue(_currentHealth);
+        _characterArtController.Initialize(_currentTeam);
+        _weapon.InitializeWeapon(_currentTeam);
         //_movementState.Initialize();
         //_chaseState.Initialize();
+    }
+
+    private void Start()
+    {
+        _characterArtController.Initialize(_currentTeam);
+        _weapon.InitializeWeapon(_currentTeam);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -98,22 +131,45 @@ public class CharacterAgent : MonoBehaviour
         _weapon.RotateWeapon(direction);
     }
 
-    private void DamageCharacter(float rawDamage)
-    {
-        // Damage formula.
-        float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
-        _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+    public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
 
+    private void EvaluateLifeDependencies()
+    {
+        // True when at least 1 dependency is alive.
+        bool dependencyIsAlive = false;
+        for (int i = 0; i < _dependencyParentAgents.Count; i++)
+        {
+            CharacterAgent dependencyAgent = _dependencyParentAgents[i];
+            if (dependencyAgent && dependencyAgent.gameObject.activeInHierarchy)
+            {
+                print("BOTH ARE TRUE");
+                dependencyIsAlive = true;
+                break;
+            }
+        }
+        if (!dependencyIsAlive) KillCharacter();
+        print(dependencyIsAlive);
+    }
+
+    private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
+    {
+        float mitigatedDamage = 0;
+        if (!_isInvincible || bypassInvincibility)
+        {
+            // Damage formula.
+            mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
+            _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+        }
         OnDamageTaken?.Invoke(mitigatedDamage);
         OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
-
         // evaluate health.
         if (_currentHealth == 0) KillCharacter();
     }
 
     private void KillCharacter()
     {
-        //gameObject.SetActive(false);
-        Destroy(gameObject);
+        if (_disableOnDeath) gameObject.SetActive(false);
+        else Destroy(gameObject);
+        OnAgentDeath?.Invoke();
     }
 }

@@ -15,6 +15,6 @@ public class PlayerManager : MonoBehaviour
         // initialize values
 
         // assign events
-        _playerController.PlayerAgent.OnHealthDecreased += _playerHealthBar.UpdateSliderValue;
+        _playerController.PlayerAgent.OnHealthDecreased.AddListener(_playerHealthBar.UpdateSliderValue);
     }
 }
