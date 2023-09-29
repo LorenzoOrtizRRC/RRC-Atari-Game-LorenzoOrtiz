@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 394877704361097563, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 57a2b405f7fb2724cb8382f3b3ae657f, type: 2}
     - target: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Name
       value: Character_Player_MachineGun
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5845705992924132293, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1670f6e4c693ec646b3d21614269f170, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

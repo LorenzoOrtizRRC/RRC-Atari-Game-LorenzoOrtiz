@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Weapon_PlayerMachineGun
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
-  _damage: 100
-  _rateOfFire: 0.2
+  _damage: 3
+  _rateOfFire: 0.25
   _minimumWeaponRange: 0
   _maximumWeaponRange: 10
   _weaponAngleSpread: 30

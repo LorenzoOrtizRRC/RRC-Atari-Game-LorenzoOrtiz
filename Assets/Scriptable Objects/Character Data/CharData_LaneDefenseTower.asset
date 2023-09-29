@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CharData_LaneDefenseTower
   m_EditorClassIdentifier: 
   _name: Defensive Tower
-  _health: 300
+  _health: 350
   _armor: 2
   _speed: 0
   _aggroRangeRadius: 15
