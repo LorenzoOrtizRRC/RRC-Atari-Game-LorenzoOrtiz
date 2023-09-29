@@ -45,6 +45,7 @@ public class StateMachine : MonoBehaviour
         //  if target is valid, evaluate target
         if (_enemyTarget)
         {
+            print(_enemyTarget.gameObject.name);
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
             float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
@@ -93,15 +94,27 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
-        if (enemyAgent.IsUntargetable) return;      // if target cannot be targeted
         if (_enemyTarget) return;       // if target is still valid
+        if (enemyAgent.IsUntargetable) return;      // if target cannot be targeted
         _enemyTarget = enemyAgent;
     }
 
     public void ResetTarget()
     {
         _enemyTarget = null;
-        _targetDetector.ResetDetector();
+        //_targetDetector.ResetDetector();
+        print("STARTING NEW REGISTER PROCESS");
+        RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0f);//, _targetDetector.DetectorLayerMask);
+        foreach (RaycastHit2D target in potentialTargets)
+        {
+            CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
+            if (agent && agent.CurrentTeam != _agent.CurrentTeam)
+            {
+                print("REGISTERING NEW ENEMY");
+                RegisterNewEnemy(agent);
+                break;
+            }
+        }
     }
 
     private void OnDrawGizmos()

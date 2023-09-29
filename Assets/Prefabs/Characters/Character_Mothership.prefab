@@ -9256,7 +9256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 958226734462721668}
-  _enemyDetectionRadius: 24.5
+  _enemyDetectionRadius: 22
   _showDetectionRadius: 1
 --- !u!58 &958226734462721668
 CircleCollider2D:

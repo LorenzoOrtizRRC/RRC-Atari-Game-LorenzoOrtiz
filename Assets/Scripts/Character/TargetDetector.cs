@@ -13,6 +13,9 @@ public class TargetDetector : MonoBehaviour
     [SerializeField] private bool _showDetectionRadius = true;  // in editor only
     private TeamData ownerTeam;
 
+    public LayerMask DetectorLayerMask => _detectorCollider.includeLayers;
+    public float EnemyDetectionRadius => _enemyDetectionRadius;
+
     private void Awake()
     {
         _detectorCollider ??= GetComponent<CircleCollider2D>();
