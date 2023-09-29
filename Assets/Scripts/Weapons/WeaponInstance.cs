@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public abstract class WeaponInstance : MonoBehaviour
@@ -14,8 +13,6 @@ public abstract class WeaponInstance : MonoBehaviour
 
     private TeamData _currentTeam;
     private float _cooldownTime = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
-    private bool _canFire = true;
-    private bool _isFiring = false;
 
     public void InitializeWeapon(TeamData currentTeam) => _currentTeam = currentTeam;
 
@@ -78,9 +75,11 @@ public abstract class WeaponInstance : MonoBehaviour
             Quaternion maxRotation = _projectileSpawnPoints[0].localRotation * Quaternion.AngleAxis(spreadAngle, Vector3.forward);
             foreach (Transform spawnPoint in _projectileSpawnPoints)
             {
+                // Subtract distance between weapon position and spawn position to accurately visualize weapon range
+                float lineLength = _weaponData.MaximumWeaponRange - (spawnPoint.transform.position - transform.position).magnitude;
                 // for some reason only (Quaternion * Vector) is allowed, not (Vector * Quaternion)
-                Gizmos.DrawLine(spawnPoint.position, spawnPoint.position + ((minRotation * spawnPoint.up) * _weaponData.MaximumWeaponRange));
-                Gizmos.DrawLine(spawnPoint.position, spawnPoint.position + ((maxRotation * spawnPoint.up) * _weaponData.MaximumWeaponRange));
+                Gizmos.DrawLine(spawnPoint.position, spawnPoint.position + ((minRotation * spawnPoint.up) * lineLength));
+                Gizmos.DrawLine(spawnPoint.position, spawnPoint.position + ((maxRotation * spawnPoint.up) * lineLength));
             }
         }
     }
