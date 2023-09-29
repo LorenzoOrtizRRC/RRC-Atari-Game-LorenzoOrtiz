@@ -102,13 +102,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888c0346e52740a4284b28b8ac40d1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthDecreased:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAgentDeath:
+    m_PersistentCalls:
+      m_Calls: []
   _rb: {fileID: 7723696700473416166}
   _characterArtController: {fileID: 1714874358317361568}
+  _weapon: {fileID: 5845705992924132293}
   _healthBar: {fileID: 1605958586433106080}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _weapon: {fileID: 5845705992924132293}
+  _isInvincible: 0
+  _isUntargetable: 0
+  _disableOnDeath: 0
   _healthBarVisible: 1
+  _lifeIsDependent: 0
+  _replaceDependencyTeams: 1
+  _dependencyParentAgents: []
 --- !u!114 &1714874358317361568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +153,7 @@ MonoBehaviour:
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
     _waypointDestinations: []
-    _distanceThreshold: 0.5
+    _distanceThreshold: 1
     _laneAlignmentBias: 0.8
   _isImmovable: 0
 --- !u!58 &7920214746148758183
@@ -376,7 +391,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -754673165
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 976d85fad6f8d664abb663d522311091, type: 3}
   m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
@@ -460,7 +475,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -754673165
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 24fe8308645e04d4b8a881974caf5cde, type: 3}
   m_Color: {r: 0.19607843, g: 1, b: 1, a: 1}
