@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour
     public Vector2 WaypointSize => _waypointArea.bounds.size;
     public Vector2 WaypointCenter => _waypointArea.bounds.center;
     [SerializeField] private Collider2D _waypointArea;
+    [SerializeField] private bool _previewWaypointArea = true;
 
     // gameobject must have a scale of 1 to be accurate
     public Vector2 GetRandomArea()
@@ -19,5 +20,14 @@ public class Waypoint : MonoBehaviour
         float randomX = Random.Range(-xExtents, xExtents);
         float randomY = Random.Range(-yExtents, yExtents);
         return new Vector2(randomX, randomY) + (Vector2)transform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_previewWaypointArea)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(transform.position, _waypointArea.bounds.size);
+        }
     }
 }
