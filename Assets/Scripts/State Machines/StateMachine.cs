@@ -48,7 +48,7 @@ public class StateMachine : MonoBehaviour
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
             float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (!_enemyTarget.gameObject.activeInHierarchy || distanceToTarget > _agent.AggroRangeRadius / 2f)
+            if (!_enemyTarget.gameObject.activeInHierarchy || distanceToTarget > _agent.AggroRangeRadius)
             {
                 ResetTarget();
             }
@@ -67,10 +67,6 @@ public class StateMachine : MonoBehaviour
                 }
             }
         }
-        //else directionToMove = MoveCharacter();
-
-        //if (_enemyTarget) _agent.RotateWeapon(_enemyTarget.transform.position);
-        //else _agent.RotateWeapon(directionToMove);
     }
 
     private void FixedUpdate()
