@@ -16,4 +16,4 @@ MonoBehaviour:
   _health: 200
   _armor: 0
   _speed: 1
-  _aggroRange: 30
+  _aggroRangeRadius: 15

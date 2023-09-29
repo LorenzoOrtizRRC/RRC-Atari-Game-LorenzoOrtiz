@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1808969846888306160, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _enemyDetectionRadius
-      value: 15
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 2244476541459274941, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Name
