@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
+  m_Name: Weapon_MothershipSmallCannon
+  m_EditorClassIdentifier: 
+  _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
+  _damage: 2
+  _rateOfFire: 0.8
+  _minimumWeaponRange: 0
+  _maximumWeaponRange: 15
+  _weaponAngleSpread: 10
+  _projectileSpeed: 6
+  _projectileLifetime: 1.5

@@ -48,7 +48,7 @@ public class StateMachine : MonoBehaviour
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
             float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (_enemyTarget.gameObject.activeSelf == false && distanceToTarget > _agent.AggroRange)
+            if (!_enemyTarget.gameObject.activeInHierarchy || distanceToTarget > _agent.AggroRange)
             {
                 ResetTarget();
             }
@@ -97,8 +97,8 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
-        if (enemyAgent.IsUntargetable) return;
-        if (_enemyTarget) return;
+        if (enemyAgent.IsUntargetable) return;      // if target cannot be targeted
+        if (_enemyTarget) return;       // if target is still valid
         _enemyTarget = enemyAgent;
     }
 
@@ -106,5 +106,11 @@ public class StateMachine : MonoBehaviour
     {
         _enemyTarget = null;
         _targetDetector.ResetDetector();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _agent.AggroRange / 2f);
     }
 }

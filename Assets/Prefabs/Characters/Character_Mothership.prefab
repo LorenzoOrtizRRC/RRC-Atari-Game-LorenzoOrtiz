@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 7004142210294616168}
   _visualizeWeaponSpread: 1
@@ -1842,7 +1842,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 666253454888927055}
   _weapon: {fileID: 5210052822253660096}
   _healthBar: {fileID: 648746418260548333}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 3444540984282306147}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &3444540984282306147
 CircleCollider2D:
@@ -2837,7 +2837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 1637701810404289197}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &1637701810404289197
 CircleCollider2D:
@@ -3100,7 +3100,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 8668852760586770575}
   _weapon: {fileID: 8904399531071318317}
   _healthBar: {fileID: 7653616957502619898}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -4563,7 +4563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 5ba983eeb52416847a001cf8f9557641, type: 2}
+  _weaponData: {fileID: 11400000, guid: 2c53ba24542c8094086cf88483e1cab9, type: 2}
   _projectileSpawnPoints:
   - {fileID: 668158157126388877}
   _visualizeWeaponSpread: 1
@@ -4698,7 +4698,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 4303789949584725217}
   _weapon: {fileID: 9031487107106279044}
   _healthBar: {fileID: 4197308535268117985}
-  _stats: {fileID: 11400000, guid: 6285143979accf349ad08e45f819e8cd, type: 2}
+  _stats: {fileID: 11400000, guid: 10d0bc851ef3d09439574a7a3155aa7a, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -4948,7 +4948,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 533990206272006647}
   _weapon: {fileID: 1221567216186947330}
   _healthBar: {fileID: 8597807349781601218}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -5442,7 +5442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 8286251612986976345}
   _visualizeWeaponSpread: 1
@@ -6778,7 +6778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 1045229362788781635}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &1045229362788781635
 CircleCollider2D:
@@ -7094,7 +7094,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 8380196230014480138}
   _weapon: {fileID: 3328170350117712287}
   _healthBar: {fileID: 5081746160613950189}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -7849,7 +7849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 1814451690499019136}
   _visualizeWeaponSpread: 1
@@ -8154,7 +8154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 5832684495565992549}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &5832684495565992549
 CircleCollider2D:
@@ -8583,7 +8583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 846619155634329330}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &846619155634329330
 CircleCollider2D:
@@ -9000,7 +9000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 3166211731128618477}
   _visualizeWeaponSpread: 1
@@ -9508,7 +9508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 958226734462721668}
-  _enemyDetectionRadius: 12
+  _enemyDetectionRadius: 24
   _showDetectionRadius: 1
 --- !u!58 &958226734462721668
 CircleCollider2D:
@@ -9591,7 +9591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 8276350931587668982}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &8276350931587668982
 CircleCollider2D:
@@ -10469,7 +10469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 8864581850281931292}
   _visualizeWeaponSpread: 1
@@ -10774,7 +10774,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 7210497745284280526}
   _weapon: {fileID: 4772248423970829245}
   _healthBar: {fileID: 1380630395220938825}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -10959,7 +10959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 2369577911254527526}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &2369577911254527526
 CircleCollider2D:
@@ -11042,7 +11042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 2309362195611084351}
   _visualizeWeaponSpread: 1
@@ -11113,7 +11113,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 574823910001122}
   _weapon: {fileID: 712388418299123903}
   _healthBar: {fileID: 7582167753692225083}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -12512,7 +12512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 5944399304627014634}
-  _enemyDetectionRadius: 10
+  _enemyDetectionRadius: 15
   _showDetectionRadius: 1
 --- !u!58 &5944399304627014634
 CircleCollider2D:
@@ -13556,7 +13556,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 5593261294042987244}
   _weapon: {fileID: 2065542066386329534}
   _healthBar: {fileID: 8353004062789996706}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -13705,7 +13705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 7691317428118186076}
   _visualizeWeaponSpread: 1
@@ -14831,7 +14831,7 @@ MonoBehaviour:
   _characterArtController: {fileID: 4082493228104990539}
   _weapon: {fileID: 1694338567661448297}
   _healthBar: {fileID: 7844009087755136043}
-  _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
+  _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
   _isInvincible: 0
   _isUntargetable: 0
@@ -15211,7 +15211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d284d5ea617d4cb5834d5e300d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
+  _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 3948093432550684119}
   _visualizeWeaponSpread: 1
@@ -15715,174 +15715,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &386010046005135617
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3774867905829773385}
-    m_Modifications:
-    - target: {fileID: 1557269573092745596, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_Name
-      value: Character_LaneDefenseTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1557269573092745596, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4019110892678427014, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4019110892678427014, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6228118672797211188, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6228118672797211188, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.337677
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0354881
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8560227649719973158, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
---- !u!4 &6807886750299573352 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6566559395032827241, guid: 582c7962e6fe63d40b0d28bc9de18c8e, type: 3}
-  m_PrefabInstance: {fileID: 386010046005135617}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1261538894316692925
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3774867905829773385}
-    m_Modifications:
-    - target: {fileID: 164698267922762140, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_Name
-      value: Character_Player_MachineGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 164698267922762140, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2311305721177643366, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2311305721177643366, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4736397789365351124, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4736397789365351124, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.307647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.6376243
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
---- !u!4 &6734377143710861364 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5545253459591212425, guid: 5355dd7c8b3c7a14aa1b16b850160b35, type: 3}
-  m_PrefabInstance: {fileID: 1261538894316692925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8211279685434225035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15986,6 +15818,10 @@ PrefabInstance:
     - target: {fileID: 1529838080698321536, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _isImmovable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808969846888306160, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _showDetectionRadius
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1837877756505857490, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_IsActive
@@ -16149,12 +15985,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5014570178666664386, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7092453876704179532}
-    - targetCorrespondingSourceObject: {fileID: 5014570178666664386, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6807886750299573352}
-    - targetCorrespondingSourceObject: {fileID: 5014570178666664386, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6734377143710861364}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       insertIndex: -1
