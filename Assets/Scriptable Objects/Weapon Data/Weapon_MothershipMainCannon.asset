@@ -18,5 +18,5 @@ MonoBehaviour:
   _minimumWeaponRange: 0
   _maximumWeaponRange: 25
   _weaponAngleSpread: 1
-  _projectileSpeed: 10
+  _projectileSpeed: 12
   _projectileLifetime: 2
