@@ -45,7 +45,6 @@ public class StateMachine : MonoBehaviour
         //  if target is valid, evaluate target
         if (_enemyTarget)
         {
-            print(_enemyTarget.gameObject.name);
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
             float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
