@@ -102,14 +102,12 @@ public class StateMachine : MonoBehaviour
     {
         _enemyTarget = null;
         //_targetDetector.ResetDetector();
-        print("STARTING NEW REGISTER PROCESS");
         RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0f);//, _targetDetector.DetectorLayerMask);
         foreach (RaycastHit2D target in potentialTargets)
         {
             CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
             if (agent && agent.CurrentTeam != _agent.CurrentTeam)
             {
-                print("REGISTERING NEW ENEMY");
                 RegisterNewEnemy(agent);
                 break;
             }
