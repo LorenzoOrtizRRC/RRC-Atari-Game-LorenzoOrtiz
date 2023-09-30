@@ -161,6 +161,7 @@ public class CharacterAgent : MonoBehaviour
         {
             // Damage formula.
             float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, 999999f);
+            //if (mitigatedDamage <= 0f) print($"MITIGATED DAMAGE IS <= 0f. NAME: {gameObject.name}, MITIGATED DAMAGE: {mitigatedDamage}");
             _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
             OnDamageTaken?.Invoke(mitigatedDamage);
             OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);

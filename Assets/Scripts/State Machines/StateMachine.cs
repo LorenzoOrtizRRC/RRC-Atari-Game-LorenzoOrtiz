@@ -67,6 +67,7 @@ public class StateMachine : MonoBehaviour
                 }
             }
         }
+        //else ResetTarget();
     }
 
     private void FixedUpdate()
@@ -93,24 +94,27 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
-        if (_enemyTarget) return;       // if target is still valid
+        if (_enemyTarget && _enemyTarget.gameObject.activeInHierarchy) return;       // if target is still valid
         if (enemyAgent.IsUntargetable) return;      // if target cannot be targeted
         _enemyTarget = enemyAgent;
+        // TRY TO REPLACE THIS WITH A BETTER IMPLEMENTATION WHEN OBJECT POOLING EXISTS PLS :)
+        _enemyTarget.OnAgentDeath.AddListener(ResetTarget);
     }
 
     public void ResetTarget()
     {
+        print("RESET TARGET");
         _enemyTarget = null;
         //_targetDetector.ResetDetector();
-        RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0f);//, _targetDetector.DetectorLayerMask);
-        foreach (RaycastHit2D target in potentialTargets)
+        //RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0.1f);//, _targetDetector.DetectorLayerMask);
+        Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius);
+        foreach (Collider2D target in potentialTargets)
         {
             CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
             if (agent && agent.CurrentTeam != _agent.CurrentTeam)
             {
+                print("TARGET IS VALID");
                 RegisterNewEnemy(agent);
-                // REPLACE THIS WITH A BETTER IMPLEMENTATION WHEN OBJECT POOLING EXISTS PLS :)
-                agent.OnAgentDeath.AddListener(ResetTarget);
                 break;
             }
         }

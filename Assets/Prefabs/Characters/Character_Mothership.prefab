@@ -1760,7 +1760,7 @@ MonoBehaviour:
   _healthBar: {fileID: 648746418260548333}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -1795,7 +1795,6 @@ MonoBehaviour:
   _agent: {fileID: 2262332687710071751}
   _targetDetector: {fileID: 809570153662290573}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -1814,14 +1813,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2934,7 +2933,7 @@ MonoBehaviour:
   _healthBar: {fileID: 7653616957502619898}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -2969,7 +2968,6 @@ MonoBehaviour:
   _agent: {fileID: 3909104974749824204}
   _targetDetector: {fileID: 4674531302568989237}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -2988,14 +2986,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4532,7 +4530,7 @@ MonoBehaviour:
   _healthBar: {fileID: 4197308535268117985}
   _stats: {fileID: 11400000, guid: 10d0bc851ef3d09439574a7a3155aa7a, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -4572,7 +4570,6 @@ MonoBehaviour:
   _agent: {fileID: 2957937116335588378}
   _targetDetector: {fileID: 3849618294963300529}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -4591,14 +4588,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4782,7 +4779,7 @@ MonoBehaviour:
   _healthBar: {fileID: 8597807349781601218}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -4817,7 +4814,6 @@ MonoBehaviour:
   _agent: {fileID: 879579199040677139}
   _targetDetector: {fileID: 2318894998988622608}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -4836,14 +4832,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -6928,7 +6924,7 @@ MonoBehaviour:
   _healthBar: {fileID: 5081746160613950189}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -6963,7 +6959,6 @@ MonoBehaviour:
   _agent: {fileID: 7719079415952756571}
   _targetDetector: {fileID: 6988178004414305512}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -6982,14 +6977,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10524,7 +10519,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1380630395220938825}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -10559,7 +10554,6 @@ MonoBehaviour:
   _agent: {fileID: 5749513337472201274}
   _targetDetector: {fileID: 171182279633669689}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -10578,14 +10572,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10863,7 +10857,7 @@ MonoBehaviour:
   _healthBar: {fileID: 7582167753692225083}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -10898,7 +10892,6 @@ MonoBehaviour:
   _agent: {fileID: 8845621173836990725}
   _targetDetector: {fileID: 6995761166332890698}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -10917,14 +10910,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -13306,7 +13299,7 @@ MonoBehaviour:
   _healthBar: {fileID: 8353004062789996706}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -13341,7 +13334,6 @@ MonoBehaviour:
   _agent: {fileID: 8689093742615947952}
   _targetDetector: {fileID: 2125389480061541903}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -13360,14 +13352,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -14581,7 +14573,7 @@ MonoBehaviour:
   _healthBar: {fileID: 7844009087755136043}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
   _healthBarVisible: 1
@@ -14616,7 +14608,6 @@ MonoBehaviour:
   _agent: {fileID: 3850451916599434691}
   _targetDetector: {fileID: 3464092171052373084}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
   _isImmovable: 1
@@ -14635,14 +14626,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
