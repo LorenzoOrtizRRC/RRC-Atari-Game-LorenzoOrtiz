@@ -13,6 +13,8 @@ public class WaypointMovement : MovementState
     private int _waypointIndex = 0;
     private Vector2 _currentDestination = Vector2.zero;
 
+    public Waypoint CurrentWaypoint => _waypointPath.WaypointList[_waypointIndex];
+
     public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
 
     public override void Initialize()
@@ -31,12 +33,21 @@ public class WaypointMovement : MovementState
             rb.MovePosition(destination);
             return destination;
         }
-        else if (_waypointIndex != _waypointPath.WaypointList.Count - 1)
+        else if (_waypointIndex < _waypointPath.WaypointList.Count - 1)
         {
             _waypointIndex++;
             _currentDestination = GetNewDestination();
         }
         return self.forward;
+    }
+
+    public void ForceIncrementWaypointIndex()
+    {
+        if (_waypointIndex < _waypointPath.WaypointList.Count - 1)
+        {
+            _waypointIndex++;
+            _currentDestination = GetNewDestination();
+        }
     }
 
     // Works with 2D colliders of any size (box, circle, rectangle). Use box/rectangle and circle colliders.

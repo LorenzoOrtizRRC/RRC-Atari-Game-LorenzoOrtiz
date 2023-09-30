@@ -87,6 +87,13 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // This fixes the problem of NPCs going beyond the waypoint, but coming back after somehow getting dragged beyond it.
+        Waypoint currentWaypoint;
+        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentWaypoint) _movementState.ForceIncrementWaypointIndex();
+    }
+
     private Vector2 MoveCharacter()
     {
         return _movementState.MoveAgent(transform, _agent.Rb, _agent.Speed);
@@ -103,7 +110,6 @@ public class StateMachine : MonoBehaviour
 
     public void ResetTarget()
     {
-        print("RESET TARGET");
         _enemyTarget = null;
         //_targetDetector.ResetDetector();
         //RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0.1f);//, _targetDetector.DetectorLayerMask);
@@ -113,7 +119,6 @@ public class StateMachine : MonoBehaviour
             CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
             if (agent && agent.CurrentTeam != _agent.CurrentTeam)
             {
-                print("TARGET IS VALID");
                 RegisterNewEnemy(agent);
                 break;
             }
