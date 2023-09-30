@@ -117,7 +117,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1605958586433106080}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _isInvincible: 0
+  _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 0
   _healthBarVisible: 1
@@ -152,7 +152,6 @@ MonoBehaviour:
   _agent: {fileID: 394877704361097563}
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
-    _waypointDestinations: []
     _distanceThreshold: 1
     _laneAlignmentBias: 0.8
   _isImmovable: 0
@@ -705,6 +704,14 @@ PrefabInstance:
     - target: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_Name
       value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: _decayDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: _decayStartDelay
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7784281929210888926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_AnchorMax.x

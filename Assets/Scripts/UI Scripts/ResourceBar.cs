@@ -21,15 +21,15 @@ public class ResourceBar : MonoBehaviour
 
     public void UpdateSliderValue(float value)
     {
-        _resourceSlider.value = Mathf.Clamp01(value);
+        _resourceSlider.value = Mathf.Clamp(value, 0f, 1f);
 
         // check if gameobject is active as failsafe to stop starting coroutines when disabled
         if (_showDecay && gameObject.activeInHierarchy)
         {
             if (value < _decaySlider.value)
             {
-                if (_decayCoroutineIsRunning) StopCoroutine(_currentDecayCoroutine);
-                _currentDecayCoroutine = StartCoroutine(StartDecay(value));
+                // if (_decayCoroutineIsRunning) StopCoroutine(_currentDecayCoroutine);
+                if (!_decayCoroutineIsRunning) _currentDecayCoroutine = StartCoroutine(StartDecay(value));
             }
             else _decaySlider.value = value;
         }
@@ -38,12 +38,12 @@ public class ResourceBar : MonoBehaviour
     public IEnumerator StartDecay(float endDecayValue)
     {
         _decayCoroutineIsRunning = true;
+        _decayStartDelayTimer = _decayStartDelay;
         while (_decayStartDelayTimer > 0f)
         {
             _decayStartDelayTimer -= Time.deltaTime;
             yield return null;
         }
-        _decayStartDelayTimer = _decayStartDelay;
         float initialDecayValue = _decaySlider.value;
         float lerpTimer = 0f;
         _endDecayValue = _resourceSlider.value;

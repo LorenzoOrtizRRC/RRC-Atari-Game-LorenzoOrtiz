@@ -160,7 +160,7 @@ public class CharacterAgent : MonoBehaviour
         if (!_isInvulnerable || bypassInvincibility)
         {
             // Damage formula.
-            float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
+            float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, 999999f);
             _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
             OnDamageTaken?.Invoke(mitigatedDamage);
             OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
