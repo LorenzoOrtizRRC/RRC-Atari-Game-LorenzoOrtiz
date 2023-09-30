@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_LaneDefenseTower
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 34959273334938374, guid: d2376855cf33d86408c3f9c86ef62f3f, type: 3}
-  _damage: 10
+  _damage: 2
   _rateOfFire: 0.3
   _minimumWeaponRange: 0
   _maximumWeaponRange: 15
