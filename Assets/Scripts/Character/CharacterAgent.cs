@@ -157,15 +157,14 @@ public class CharacterAgent : MonoBehaviour
 
     private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
     {
-        float mitigatedDamage = 0;
         if (!_isInvulnerable || bypassInvincibility)
         {
             // Damage formula.
-            mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
+            float mitigatedDamage = Mathf.Clamp(rawDamage - Armor, 1f, Mathf.Infinity);
             _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
+            OnDamageTaken?.Invoke(mitigatedDamage);
+            OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
         }
-        OnDamageTaken?.Invoke(mitigatedDamage);
-        OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
         // evaluate health.
         if (_currentHealth == 0) KillCharacter();
     }

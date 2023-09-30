@@ -17,6 +17,8 @@ public class ResourceBar : MonoBehaviour
     private bool _decayCoroutineIsRunning = false;
     private float _decayStartDelayTimer = 0f;
 
+    private float _endDecayValue = 0f;
+
     public void UpdateSliderValue(float value)
     {
         _resourceSlider.value = Mathf.Clamp01(value);
@@ -44,9 +46,11 @@ public class ResourceBar : MonoBehaviour
         _decayStartDelayTimer = _decayStartDelay;
         float initialDecayValue = _decaySlider.value;
         float lerpTimer = 0f;
-        while (_decaySlider.value > endDecayValue)
+        _endDecayValue = _resourceSlider.value;
+        while (_decaySlider.value > _endDecayValue)
         {
-            _decaySlider.value = Mathf.Lerp(initialDecayValue, endDecayValue, lerpTimer / _decayDuration);
+            _endDecayValue = _resourceSlider.value;
+            _decaySlider.value = Mathf.Lerp(initialDecayValue, _endDecayValue, lerpTimer / _decayDuration);
             lerpTimer += Time.deltaTime;
             yield return null;
         }
