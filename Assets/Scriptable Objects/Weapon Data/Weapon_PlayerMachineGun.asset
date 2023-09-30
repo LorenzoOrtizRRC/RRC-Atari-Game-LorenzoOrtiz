@@ -17,6 +17,6 @@ MonoBehaviour:
   _rateOfFire: 0.2
   _minimumWeaponRange: 0
   _maximumWeaponRange: 10
-  _weaponAngleSpread: 20
+  _weaponAngleSpread: 15
   _projectileSpeed: 9
   _projectileLifetime: 1.5

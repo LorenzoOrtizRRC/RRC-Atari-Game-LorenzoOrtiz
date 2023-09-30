@@ -109,6 +109,8 @@ public class StateMachine : MonoBehaviour
             if (agent && agent.CurrentTeam != _agent.CurrentTeam)
             {
                 RegisterNewEnemy(agent);
+                // REPLACE THIS WITH A BETTER IMPLEMENTATION WHEN OBJECT POOLING EXISTS PLS :)
+                agent.OnAgentDeath.AddListener(ResetTarget);
                 break;
             }
         }
