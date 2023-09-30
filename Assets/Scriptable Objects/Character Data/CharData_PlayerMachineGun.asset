@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Player
   _health: 150
   _armor: 1
-  _speed: 5
+  _speed: 4.5
   _aggroRangeRadius: 1
