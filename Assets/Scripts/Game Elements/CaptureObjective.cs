@@ -1,23 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CaptureObjective : MonoBehaviour
 {
     // This capture objective only tracks 1 team's progress at a time, using a Slider.
-    [Header("References")] //
+    [Header("References")]
+    [SerializeField] private Collider2D _objectiveCollider;
     [SerializeField] private ResourceBar _progressBar;
     [SerializeField] private Image _progressBarTeamColor;
     [SerializeField] private TeamData _initialTeamOwner;
+    [Header("Objective Variables")]
+    //[SerializeField] private float _maxValue = 100f;
+    [SerializeField] private float _captureSpeed = 0.5f;       // % capture speed per second.
 
     private List<CharacterAgent> _occupyingAgents = new List<CharacterAgent>();
     private TeamData _currentTeam;
-    private float _currentProgress = 0f;
+    private float _currentProgress = 0f;        // Max 1 (100%) progress.
+
+    private void Awake()
+    {
+        _currentProgress = 1f;      // Set to max.
+        _progressBar.UpdateSliderValue(_currentProgress / 1f);
+    }
+
+    private void Update()
+    {
+        if (_occupyingAgents.Count > 0) EvaluateOccupyingAgents();
+    }
 
     private void EvaluateOccupyingAgents()
     {
-        // Progress based on agents in capture area.
+        // Check which teams' agents are in the capture area.
         TeamData occupyingTeam = null;
         foreach (CharacterAgent agent in _occupyingAgents)
         {
@@ -25,16 +41,38 @@ public class CaptureObjective : MonoBehaviour
             {
                 occupyingTeam = agent.CurrentTeam;
             }
-            if (agent.CurrentTeam != occupyingTeam)
-            {
-                //
-            }
+            // If there are agents of multiple teams, do not update progress.
+            if (agent.CurrentTeam != occupyingTeam) return;
         }
+        UpdateProgress(occupyingTeam);
     }
 
-    private void UpdateProgress()
+    private void UpdateProgress(TeamData occupyingTeam)
     {
-        //  increment based on fixed speed
+        if (_currentProgress == 0f)
+        {
+            if (_currentTeam != occupyingTeam)
+            {
+                _currentTeam = occupyingTeam;
+                UpdateTeamColor(occupyingTeam);
+            }
+            else return;
+        }
+        // Increment or decrement current progress based on current team ownership vs. currently occupying team.
+        if (_currentTeam != occupyingTeam)
+        {
+            _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
+        }
+        else
+        {
+            _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
+        }
+        _progressBar.UpdateSliderValue(_currentProgress / 1f);
+    }
+
+    private void UpdateTeamColor(TeamData occupyingTeam)
+    {
+        _progressBarTeamColor.color = occupyingTeam.TeamColor;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,7 +95,12 @@ public class CaptureObjective : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Debug radius.
+        // Debug objective area.
         Gizmos.color = Color.green;
+        if (_objectiveCollider is CircleCollider2D circleCollider)
+        {
+            Gizmos.DrawWireSphere(transform.position, circleCollider.radius);
+        }
+        else if (_objectiveCollider is BoxCollider2D boxCollider) Gizmos.DrawWireCube(transform.position, boxCollider.size);
     }
 }
