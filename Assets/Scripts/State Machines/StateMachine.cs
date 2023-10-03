@@ -22,7 +22,7 @@ public class StateMachine : MonoBehaviour
     private CharacterAgent _enemyTarget;
     private bool _isChasing = false;
 
-    public void InitializeStateMachine(TeamData newTeam, List<Waypoint> initialPath)
+    public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
     {
         _agent.InitializeAgent(newTeam);
         _movementState.SetWaypoints(initialPath);
@@ -48,7 +48,7 @@ public class StateMachine : MonoBehaviour
             // replace 2nd condition with AGGRO RANGE from weapon data :>
             // if target is dead, reset detector (to check ontrigger again) and current enemy target.
             float distanceToTarget = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (!_enemyTarget.gameObject.activeInHierarchy || distanceToTarget > _agent.AggroRangeRadius)
+            if (_enemyTarget.IsUntargetable || (!_enemyTarget.gameObject.activeInHierarchy || distanceToTarget > _agent.AggroRangeRadius))
             {
                 ResetTarget();
             }
@@ -67,6 +67,7 @@ public class StateMachine : MonoBehaviour
                 }
             }
         }
+        //else ResetTarget();
     }
 
     private void FixedUpdate()
@@ -86,6 +87,13 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // This fixes the problem of NPCs going beyond the waypoint, but coming back after somehow getting dragged beyond it.
+        Waypoint currentWaypoint;
+        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentWaypoint) _movementState.ForceIncrementWaypointIndex();
+    }
+
     private Vector2 MoveCharacter()
     {
         return _movementState.MoveAgent(transform, _agent.Rb, _agent.Speed);
@@ -93,17 +101,20 @@ public class StateMachine : MonoBehaviour
 
     private void RegisterNewEnemy(CharacterAgent enemyAgent)
     {
-        if (_enemyTarget) return;       // if target is still valid
+        if (_enemyTarget && _enemyTarget.gameObject.activeInHierarchy) return;       // if target is still valid
         if (enemyAgent.IsUntargetable) return;      // if target cannot be targeted
         _enemyTarget = enemyAgent;
+        // TRY TO REPLACE THIS WITH A BETTER IMPLEMENTATION WHEN OBJECT POOLING EXISTS PLS :)
+        _enemyTarget.OnAgentDeath.AddListener(ResetTarget);
     }
 
     public void ResetTarget()
     {
         _enemyTarget = null;
         //_targetDetector.ResetDetector();
-        RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0f);//, _targetDetector.DetectorLayerMask);
-        foreach (RaycastHit2D target in potentialTargets)
+        //RaycastHit2D[] potentialTargets = Physics2D.CircleCastAll(transform.position, _targetDetector.EnemyDetectionRadius, Vector2.up, 0.1f);//, _targetDetector.DetectorLayerMask);
+        Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius);
+        foreach (Collider2D target in potentialTargets)
         {
             CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
             if (agent && agent.CurrentTeam != _agent.CurrentTeam)

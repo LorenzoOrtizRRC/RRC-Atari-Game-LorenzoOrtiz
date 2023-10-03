@@ -14,4 +14,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(sceneBuildIndex);
     }
+
+    // TEMPORARY
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+    }
 }

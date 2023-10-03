@@ -7,7 +7,7 @@ public class MinionSpawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnerData> _initialWave = new List<SpawnerData>();    // initial minions in starting waves
     [SerializeField] private TeamData _spawnerTeam;
-    [SerializeField] private List<Waypoint> _minionWaypoints;
+    [SerializeField] private WaypointPath _minionPath;
     [SerializeField] private float _delayBetweenSpawnWaves = 10f;   // real seconds
     [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds. delay between each minion spawn in a wave
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
@@ -62,7 +62,7 @@ public class MinionSpawner : MonoBehaviour
     private void SpawnMinion(int minionWaveIndex)
     {
         Instantiate(_minionWave[minionWaveIndex], GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
-        stateMachine?.InitializeStateMachine(_spawnerTeam, _minionWaypoints);
+        stateMachine?.InitializeStateMachine(_spawnerTeam, _minionPath);
     }
 
     private void RefreshTimers()
