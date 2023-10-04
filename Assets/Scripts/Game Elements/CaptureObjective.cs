@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+/*[System.Serializable]
+public class ObjectiveEvent : UnityEvent<TeamData>
+{
+}*/
+
 public class CaptureObjective : MonoBehaviour
 {
+    //public ObjectiveEvent OnObjectiveCaptured;    // Fires when a new ownerTeam that isn't _neutralTeamOwner is assigned.
+    //public ObjectiveEvent OnObjectiveLost;        // Fires when objective turns neutral.
     public UnityEvent<TeamData> OnObjectiveCaptured;    // Fires when a new ownerTeam that isn't _neutralTeamOwner is assigned.
     public UnityEvent<TeamData> OnObjectiveLost;        // Fires when objective turns neutral.
 
@@ -23,11 +30,15 @@ public class CaptureObjective : MonoBehaviour
     [SerializeField] private float _captureRegenSpeed = 0.5f;       // % capture regeneration speed (back to full or 0) per second when unoccupied after _captureRegenDelay seconds.
     [SerializeField] private bool _hideProgressBarWhenFull = true;
 
+
     private List<CharacterAgent> _occupyingAgents = new List<CharacterAgent>();
     private TeamData _currentOccupyingTeam;     // The team that currently occupies this objective. Used for when a team interrupts another team's capture of a neutral capture objective.
     private TeamData _ownerTeam;        // The team that currently owns this objective.
     private float _currentProgress = 0f;        // Max 1 (100%) progress.
     private float _captureRegenTimer = 0f;
+
+    public TeamData NeutralTeamOwner => _neutralTeamOwner;
+    public TeamData OwnerTeam => _ownerTeam;
 
     private void Awake()
     {
@@ -141,6 +152,7 @@ public class CaptureObjective : MonoBehaviour
             {
                 _currentOccupyingTeam = occupyingTeam;
                 UpdateProgressBarColor(occupyingTeam);
+                OnObjectiveLost?.Invoke(_ownerTeam);
                 SetNewOwner(_neutralTeamOwner);
             }
             else DecreaseProgress(_captureSpeed);
@@ -148,7 +160,11 @@ public class CaptureObjective : MonoBehaviour
         else
         {
             // owner team is neutral
-            if (_currentProgress == 1f) SetNewOwner(occupyingTeam);
+            if (_currentProgress == 1f)
+            {
+                SetNewOwner(occupyingTeam);
+                OnObjectiveCaptured?.Invoke(_ownerTeam);
+            }
             else
             {
                 if (occupyingTeam != _currentOccupyingTeam)

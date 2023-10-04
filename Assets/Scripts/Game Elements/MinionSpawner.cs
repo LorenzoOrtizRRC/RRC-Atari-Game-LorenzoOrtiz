@@ -12,6 +12,8 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds. delay between each minion spawn in a wave
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
 
+    public TeamData SpawnerTeam => _spawnerTeam;
+
     private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
     private float _waveTimer = 0f;     // timer for waves
     private float _minionSpawnTimer = 0f;       // timer for minions in waves
@@ -20,7 +22,7 @@ public class MinionSpawner : MonoBehaviour
 
     private void Awake()
     {
-        foreach (SpawnerData spawnerData in _initialWave)AddMinionsToWave(spawnerData);
+        foreach (SpawnerData spawnerData in _initialWave)AddMinionsInWave(spawnerData);
     }
 
     private void Update()
@@ -43,7 +45,7 @@ public class MinionSpawner : MonoBehaviour
         else if (Time.time >= _waveTimer) _isSpawningWave = true;
     }
 
-    public void AddMinionsToWave(SpawnerData spawnerData)
+    public void AddMinionsInWave(SpawnerData spawnerData)
     {
         for (int i = 0; i < spawnerData.NumberOfMinions; i++)
         {
@@ -51,7 +53,7 @@ public class MinionSpawner : MonoBehaviour
         }
     }
 
-    public void RemoveMinionsToWave(SpawnerData spawnerData)
+    public void RemoveMinionsInWave(SpawnerData spawnerData)
     {
         for (int i = spawnerData.NumberOfMinions; i > 0; i--)
         {
