@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,11 +12,12 @@ public class CaptureObjective : MonoBehaviour
     [SerializeField] private Image _progressBarTeamColor;
     [SerializeField] private TeamData _initialTeamOwner;
     [Header("Objective Variables")]
-    //[SerializeField] private float _maxValue = 100f;
     [SerializeField] private float _captureSpeed = 0.5f;       // % capture speed per second.
+    [SerializeField] private bool _hideProgressBarWhenFull = true;
 
     private List<CharacterAgent> _occupyingAgents = new List<CharacterAgent>();
-    private TeamData _currentTeam;
+    private TeamData _currentTeamOccupants;     // The team that currently occupies this objective.
+    private TeamData _teamOwner;        // The team that currently owns this objective.
     private float _currentProgress = 0f;        // Max 1 (100%) progress.
 
     private void Awake()
@@ -45,23 +45,30 @@ public class CaptureObjective : MonoBehaviour
             if (agent.CurrentTeam != occupyingTeam) return;
         }
         UpdateProgress(occupyingTeam);
+
+        if (_hideProgressBarWhenFull && _progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);
+        else _progressBar.gameObject.SetActive(true);
     }
 
     private void UpdateProgress(TeamData occupyingTeam)
     {
         if (_currentProgress == 0f)
         {
-            if (_currentTeam != occupyingTeam)
+            if (_currentTeamOccupants != occupyingTeam)
             {
-                _currentTeam = occupyingTeam;
+                _currentTeamOccupants = occupyingTeam;
                 UpdateTeamColor(occupyingTeam);
             }
             else return;
         }
         // Increment or decrement current progress based on current team ownership vs. currently occupying team.
-        if (_currentTeam != occupyingTeam)
+        if (_currentTeamOccupants != occupyingTeam)
         {
             _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
+        }
+        else if (_currentProgress == 1f)
+        {
+            //
         }
         else
         {

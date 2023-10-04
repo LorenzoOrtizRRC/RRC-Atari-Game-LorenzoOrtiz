@@ -22773,6 +22773,7 @@ MonoBehaviour:
   _progressBarTeamColor: {fileID: 1826760541}
   _initialTeamOwner: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
   _captureSpeed: 0.5
+  _hideProgressBarWhenFull: 1
 --- !u!58 &2144717141
 CircleCollider2D:
   m_ObjectHideFlags: 0
