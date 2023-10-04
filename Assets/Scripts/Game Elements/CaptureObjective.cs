@@ -25,8 +25,8 @@ public class CaptureObjective : MonoBehaviour
     private void Awake()
     {
         // Initialize ownership.
-        SetNewObjectiveOwner(_initialTeamOwner);
-        _currentProgress = 1f;      // Set to max.
+        SetNewOwner(_initialTeamOwner);
+        _currentProgress = _ownerTeam == _neutralTeamOwner ? 0f : 1f;
         _progressBar.UpdateSliderValue(_currentProgress / 1f);
     }
 
@@ -49,10 +49,9 @@ public class CaptureObjective : MonoBehaviour
             if (agent.CurrentTeam != occupyingTeam) return;
         }
         UpdateProgress(occupyingTeam);
-        //UpdateProgressOwner(occupyingTeam);
 
-        //if (_hideProgressBarWhenFull && _progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);
-        //else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
+        if (_hideProgressBarWhenFull && _progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);
+        else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
     }
 
     private void UpdateProgress(TeamData occupyingTeam)
@@ -125,14 +124,14 @@ public class CaptureObjective : MonoBehaviour
             {
                 _currentOccupyingTeam = occupyingTeam;
                 UpdateProgressBarColor(occupyingTeam);
-                SetNewObjectiveOwner(_neutralTeamOwner);
+                SetNewOwner(_neutralTeamOwner);
             }
             else DecreaseProgress();
         }
         else
         {
             // owner team is neutral
-            if (_currentProgress == 1f) SetNewObjectiveOwner(occupyingTeam);
+            if (_currentProgress == 1f) SetNewOwner(occupyingTeam);
             else
             {
                 if (occupyingTeam != _currentOccupyingTeam)
@@ -149,18 +148,18 @@ public class CaptureObjective : MonoBehaviour
         }
     }
 
-    // This method changes the color of the progress bar to indicate which team is capturing the objective (from neutral & 0 progress)
+    // This method changes the color of the progress bar to indicate which team is capturing the objective (from neutral and/or 0% progress).
     private void UpdateProgressBarColor(TeamData newTeam)
     {
         _progressBarTeamColor.color = newTeam.TeamColor;
     }
 
     // This method changes the colors of the objective itself to indicate which team owns the objective.
-    private void SetNewObjectiveOwner(TeamData newTeam)
+    private void SetNewOwner(TeamData newTeam)
     {
         _ownerTeam = newTeam;
+        // Change objective team colors.
         _objectiveColors.color = newTeam.TeamColor;
-        // Change objective colors.
     }
 
     private void IncreaseProgress()

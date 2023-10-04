@@ -22858,7 +22858,7 @@ MonoBehaviour:
   _progressBarTeamColor: {fileID: 1826760541}
   _objectiveColors: {fileID: 992737109}
   _neutralTeamOwner: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
-  _initialTeamOwner: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
+  _initialTeamOwner: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
   _captureSpeed: 1
   _hideProgressBarWhenFull: 1
 --- !u!58 &2144717141
