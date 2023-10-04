@@ -22860,6 +22860,8 @@ MonoBehaviour:
   _neutralTeamOwner: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
   _initialTeamOwner: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
   _captureSpeed: 1
+  _captureRegenDelay: 5
+  _captureRegenSpeed: 0.5
   _hideProgressBarWhenFull: 1
 --- !u!58 &2144717141
 CircleCollider2D:

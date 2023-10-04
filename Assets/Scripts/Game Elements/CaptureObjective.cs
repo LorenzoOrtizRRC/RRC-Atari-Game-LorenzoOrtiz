@@ -15,12 +15,15 @@ public class CaptureObjective : MonoBehaviour
     [SerializeField] private TeamData _neutralTeamOwner;    // When unoccupied, or previous team owner is removed and capturing process by a new team starts, set team owner to this.
     [SerializeField] private TeamData _initialTeamOwner;
     [SerializeField] private float _captureSpeed = 0.5f;       // % capture speed per second.
+    [SerializeField] private float _captureRegenDelay = 10f;        // Time in real seconds after being unoccupied to slowly increase/decrease capture progress. Set to 0f to disable.
+    [SerializeField] private float _captureRegenSpeed = 0.5f;       // % capture regeneration speed (back to full or 0) per second when unoccupied after _captureRegenDelay seconds.
     [SerializeField] private bool _hideProgressBarWhenFull = true;
 
     private List<CharacterAgent> _occupyingAgents = new List<CharacterAgent>();
     private TeamData _currentOccupyingTeam;     // The team that currently occupies this objective. Used for when a team interrupts another team's capture of a neutral capture objective.
     private TeamData _ownerTeam;        // The team that currently owns this objective.
     private float _currentProgress = 0f;        // Max 1 (100%) progress.
+    private float _captureRegenTimer = 0f;
 
     private void Awake()
     {
@@ -30,13 +33,22 @@ public class CaptureObjective : MonoBehaviour
         _progressBar.UpdateSliderValue(_currentProgress / 1f);
     }
 
+    private void OnEnable()
+    {
+        _captureRegenTimer = Time.time + _captureRegenDelay;
+    }
+
     private void Update()
     {
         if (_occupyingAgents.Count > 0) EvaluateOccupyingAgents();
+        else if (Time.time >= _captureRegenTimer) RegenerateProgress();
     }
 
     private void EvaluateOccupyingAgents()
     {
+        // Capture area is occupied, so reset unoccupied regen timer.
+        _captureRegenTimer = Time.time + _captureRegenDelay;
+
         // Check which teams' agents are in the capture area.
         TeamData occupyingTeam = null;
         foreach (CharacterAgent agent in _occupyingAgents)
@@ -50,6 +62,7 @@ public class CaptureObjective : MonoBehaviour
         }
         UpdateProgress(occupyingTeam);
 
+        // Toggle progress bar visibility based on progress
         if (_hideProgressBarWhenFull && _progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);
         else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
     }
@@ -116,7 +129,7 @@ public class CaptureObjective : MonoBehaviour
 
         if (_ownerTeam == occupyingTeam)
         {
-            if (_currentProgress < 1f) IncreaseProgress();
+            if (_currentProgress < 1f) IncreaseProgress(_captureSpeed);
         }
         else if (_ownerTeam != _neutralTeamOwner)
         {
@@ -126,7 +139,7 @@ public class CaptureObjective : MonoBehaviour
                 UpdateProgressBarColor(occupyingTeam);
                 SetNewOwner(_neutralTeamOwner);
             }
-            else DecreaseProgress();
+            else DecreaseProgress(_captureSpeed);
         }
         else
         {
@@ -141,11 +154,17 @@ public class CaptureObjective : MonoBehaviour
                         _currentOccupyingTeam = occupyingTeam;
                         UpdateProgressBarColor(occupyingTeam);
                     }
-                    else DecreaseProgress();
+                    else DecreaseProgress(_captureSpeed);
                 }
-                else IncreaseProgress();
+                else IncreaseProgress(_captureSpeed);
             }
         }
+    }
+
+    private void RegenerateProgress()
+    {
+        if (_ownerTeam == _neutralTeamOwner && _currentProgress > 0f) DecreaseProgress(_captureRegenSpeed);
+        else if (_currentProgress < 1f) IncreaseProgress(_captureRegenSpeed);
     }
 
     // This method changes the color of the progress bar to indicate which team is capturing the objective (from neutral and/or 0% progress).
@@ -162,15 +181,15 @@ public class CaptureObjective : MonoBehaviour
         _objectiveColors.color = newTeam.TeamColor;
     }
 
-    private void IncreaseProgress()
+    private void IncreaseProgress(float progressSpeed)
     {
-        _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
+        _currentProgress = Mathf.Clamp01(_currentProgress + (progressSpeed * Time.deltaTime));
         _progressBar.UpdateSliderValue(_currentProgress);
     }
 
-    private void DecreaseProgress()
+    private void DecreaseProgress(float progressSpeed)
     {
-        _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
+        _currentProgress = Mathf.Clamp01(_currentProgress - (progressSpeed * Time.deltaTime));
         _progressBar.UpdateSliderValue(_currentProgress);
     }
 
