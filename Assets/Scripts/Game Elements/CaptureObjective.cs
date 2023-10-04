@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class CaptureObjective : MonoBehaviour
 {
+    public UnityEvent<TeamData> OnObjectiveCaptured;    // Fires when a new ownerTeam that isn't _neutralTeamOwner is assigned.
+    public UnityEvent<TeamData> OnObjectiveLost;        // Fires when objective turns neutral.
+
     // This capture objective only tracks 1 team's progress at a time, using a Slider.
     [Header("References")]
     [SerializeField] private Collider2D _objectiveCollider;
