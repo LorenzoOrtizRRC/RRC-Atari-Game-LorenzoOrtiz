@@ -18,7 +18,7 @@ public class CaptureObjective : MonoBehaviour
     [SerializeField] private bool _hideProgressBarWhenFull = true;
 
     private List<CharacterAgent> _occupyingAgents = new List<CharacterAgent>();
-    private TeamData _currentTeamOccupants;     // The team that currently occupies this objective.
+    private TeamData _currentOccupyingTeam;     // The team that currently occupies this objective. Used for when a team interrupts another team's capture of a neutral capture objective.
     private TeamData _ownerTeam;        // The team that currently owns this objective.
     private float _currentProgress = 0f;        // Max 1 (100%) progress.
 
@@ -128,6 +128,7 @@ public class CaptureObjective : MonoBehaviour
         {
             if (_currentProgress == 0f)
             {
+                _currentOccupyingTeam = occupyingTeam;
                 UpdateProgressBarColor(occupyingTeam);
                 SetNewObjectiveOwner(_neutralTeamOwner);
             }
@@ -143,8 +144,24 @@ public class CaptureObjective : MonoBehaviour
             if (_currentProgress == 1f) SetNewObjectiveOwner(occupyingTeam);
             else
             {
-                _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-                _progressBar.UpdateSliderValue(_currentProgress);
+                if (occupyingTeam != _currentOccupyingTeam)
+                {
+                    if (_currentProgress == 0f)
+                    {
+                        _currentOccupyingTeam = occupyingTeam;
+                        UpdateProgressBarColor(occupyingTeam);
+                    }
+                    else
+                    {
+                        _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
+                        _progressBar.UpdateSliderValue(_currentProgress);
+                    }
+                }
+                else
+                {
+                    _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
+                    _progressBar.UpdateSliderValue(_currentProgress);
+                }
             }
         }
     }
