@@ -117,12 +117,7 @@ public class CaptureObjective : MonoBehaviour
 
         if (_ownerTeam == occupyingTeam)
         {
-            if (_currentProgress < 1f)
-            {
-                _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-                _progressBar.UpdateSliderValue(_currentProgress);
-                return;
-            }
+            if (_currentProgress < 1f) IncreaseProgress();
         }
         else if (_ownerTeam != _neutralTeamOwner)
         {
@@ -132,11 +127,7 @@ public class CaptureObjective : MonoBehaviour
                 UpdateProgressBarColor(occupyingTeam);
                 SetNewObjectiveOwner(_neutralTeamOwner);
             }
-            else
-            {
-                _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
-                _progressBar.UpdateSliderValue(_currentProgress);
-            }
+            else DecreaseProgress();
         }
         else
         {
@@ -151,17 +142,9 @@ public class CaptureObjective : MonoBehaviour
                         _currentOccupyingTeam = occupyingTeam;
                         UpdateProgressBarColor(occupyingTeam);
                     }
-                    else
-                    {
-                        _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
-                        _progressBar.UpdateSliderValue(_currentProgress);
-                    }
+                    else DecreaseProgress();
                 }
-                else
-                {
-                    _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-                    _progressBar.UpdateSliderValue(_currentProgress);
-                }
+                else IncreaseProgress();
             }
         }
     }
@@ -178,6 +161,18 @@ public class CaptureObjective : MonoBehaviour
         _ownerTeam = newTeam;
         _objectiveColors.color = newTeam.TeamColor;
         // Change objective colors.
+    }
+
+    private void IncreaseProgress()
+    {
+        _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
+        _progressBar.UpdateSliderValue(_currentProgress);
+    }
+
+    private void DecreaseProgress()
+    {
+        _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
+        _progressBar.UpdateSliderValue(_currentProgress);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
