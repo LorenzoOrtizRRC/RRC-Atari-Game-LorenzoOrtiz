@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class MinionSpawner : MonoBehaviour
 {
@@ -12,7 +11,10 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds. delay between each minion spawn in a wave
     [SerializeField] private Vector2 _spawnArea = Vector2.zero;
 
+    public TeamData SpawnerTeam => _spawnerTeam;
+
     private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
+    private GameObject[] _currentMinionWave = null;      // Minions to spawn in current wave. This is so that changes to _minionWave don't affect the current wave being spawned.
     private float _waveTimer = 0f;     // timer for waves
     private float _minionSpawnTimer = 0f;       // timer for minions in waves
     private int _waveIndex = 0;
@@ -20,19 +22,20 @@ public class MinionSpawner : MonoBehaviour
 
     private void Awake()
     {
-        foreach (SpawnerData spawnerData in _initialWave)AddMinionsToWave(spawnerData);
+        foreach (SpawnerData spawnerData in _initialWave)AddMinionsInWave(spawnerData);
     }
 
     private void Update()
     {
         if (_isSpawningWave)
         {
+            // Spawn the minion wave.
             if (Time.time >= _minionSpawnTimer)
             {
                 SpawnMinion(_waveIndex);
                 _minionSpawnTimer = Time.time + _delayBetweenMinions;
                 _waveIndex++;
-                if (_waveIndex > _minionWave.Count - 1)     // wave finished spawning.
+                if (_waveIndex > _currentMinionWave.Length - 1)     // wave finished spawning.
                 {
                     RefreshTimers();
                     _waveIndex = 0;
@@ -40,10 +43,15 @@ public class MinionSpawner : MonoBehaviour
                 }
             }
         }
-        else if (Time.time >= _waveTimer) _isSpawningWave = true;
+        else if (Time.time >= _waveTimer)
+        {
+            // Start wave spawning if wave timer finishes.
+            _currentMinionWave = _minionWave.ToArray();
+            _isSpawningWave = true;
+        }
     }
 
-    public void AddMinionsToWave(SpawnerData spawnerData)
+    public void AddMinionsInWave(SpawnerData spawnerData)
     {
         for (int i = 0; i < spawnerData.NumberOfMinions; i++)
         {
@@ -51,7 +59,7 @@ public class MinionSpawner : MonoBehaviour
         }
     }
 
-    public void RemoveMinionsToWave(SpawnerData spawnerData)
+    public void RemoveMinionsInWave(SpawnerData spawnerData)
     {
         for (int i = spawnerData.NumberOfMinions; i > 0; i--)
         {
@@ -61,7 +69,7 @@ public class MinionSpawner : MonoBehaviour
 
     private void SpawnMinion(int minionWaveIndex)
     {
-        Instantiate(_minionWave[minionWaveIndex], GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
+        Instantiate(_currentMinionWave[minionWaveIndex], GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
         stateMachine?.InitializeStateMachine(_spawnerTeam, _minionPath);
     }
 
