@@ -4,15 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-/*[System.Serializable]
-public class ObjectiveEvent : UnityEvent<TeamData>
-{
-}*/
-
 public class CaptureObjective : MonoBehaviour
 {
-    //public ObjectiveEvent OnObjectiveCaptured;    // Fires when a new ownerTeam that isn't _neutralTeamOwner is assigned.
-    //public ObjectiveEvent OnObjectiveLost;        // Fires when objective turns neutral.
     public UnityEvent<TeamData> OnObjectiveCaptured;    // Fires when a new ownerTeam that isn't _neutralTeamOwner is assigned.
     public UnityEvent<TeamData> OnObjectiveLost;        // Fires when objective turns neutral.
 
