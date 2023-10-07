@@ -6189,19 +6189,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 520484405}
-  _speed: 10
-  _targetDistanceThreshold: 1.2
-  _steeringQuadrantsCount: 1
+  Destination: {fileID: 1011263130}
   _steeringLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  Destination: {fileID: 1011263130}
-  SteeringSpeedTest: 270
-  AvoidanceCastDistance: 1.4
-  UnstuckTimerStartDelay: 0.3
-  UnstuckCheckMinDistance: 0.2
-  EnableUnstuck: 1
-  _multiObstacleRayInterval: 15
+  _speed: 10
+  _targetDistanceThreshold: 1.2
+  _steeringSpeedTest: 360
+  _avoidanceCastLength: 1
+  _unstuckTimerDelay: 0.3
+  _unstuckMinDistance: 0.2
+  _enableUnstuck: 1
 --- !u!58 &520484404
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9934,19 +9932,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 775100102}
-  _speed: 10
-  _targetDistanceThreshold: 1.2
-  _steeringQuadrantsCount: 1
+  Destination: {fileID: 1011263130}
   _steeringLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  Destination: {fileID: 1011263130}
-  SteeringSpeedTest: 270
-  AvoidanceCastDistance: 1.4
-  UnstuckTimerStartDelay: 0.3
-  UnstuckCheckMinDistance: 0.2
-  EnableUnstuck: 1
-  _multiObstacleRayInterval: 15
+  _speed: 10
+  _targetDistanceThreshold: 1.2
+  _steeringSpeedTest: 360
+  _avoidanceCastLength: 1
+  _unstuckTimerDelay: 0.3
+  _unstuckMinDistance: 0.2
+  _enableUnstuck: 1
 --- !u!1 &782418183
 GameObject:
   m_ObjectHideFlags: 0
@@ -29341,19 +29337,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 2128874113}
-  _speed: 10
-  _targetDistanceThreshold: 1.2
-  _steeringQuadrantsCount: 1
+  Destination: {fileID: 1011263130}
   _steeringLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  Destination: {fileID: 1011263130}
-  SteeringSpeedTest: 270
-  AvoidanceCastDistance: 1.4
-  UnstuckTimerStartDelay: 0.3
-  UnstuckCheckMinDistance: 0.2
-  EnableUnstuck: 1
-  _multiObstacleRayInterval: 15
+  _speed: 10
+  _targetDistanceThreshold: 1.2
+  _steeringSpeedTest: 360
+  _avoidanceCastLength: 1
+  _unstuckTimerDelay: 0.3
+  _unstuckMinDistance: 0.2
+  _enableUnstuck: 1
 --- !u!58 &2128874112
 CircleCollider2D:
   m_ObjectHideFlags: 0
