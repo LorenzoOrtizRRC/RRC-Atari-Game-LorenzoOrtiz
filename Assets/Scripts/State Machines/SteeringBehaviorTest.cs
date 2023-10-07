@@ -17,7 +17,9 @@ public class SteeringBehaviorTest : MonoBehaviour
     public Transform Destination;
     public float SteeringSpeedTest = 10f;
     public float AvoidanceCastDistance = 2f;
-    public float UnstuckTimerStartDelay = 1f;
+    public float UnstuckTimerStartDelay = 0.3f;
+    public float UnstuckCheckMinDistance = 1f;
+    public bool EnableUnstuck = true;
     //public float minAvoidanceDistanceThreshold = 3f;
     //public float maxAvoidanceDistanceThreshold = 0.5f;
 
@@ -30,6 +32,7 @@ public class SteeringBehaviorTest : MonoBehaviour
 
     private Vector2 _oldDirectionToObstacle;
     private float unstuckTimer;
+    private Vector2 _lastPosition;      // Used to unstuck self.
     public int _multiObstacleRayInterval = 5;
     private int _multiObstacleRayCounter = 0;
 
@@ -46,9 +49,19 @@ public class SteeringBehaviorTest : MonoBehaviour
 
         //Vector2 preferredDirection = GetNextDirection();
         //_currentDirection = RotateDirectionUsingSpeed(_currentDirection, preferredDirection);
+        // Unstucking calculations.
         float distanceFromTarget = (Destination.position - transform.position).magnitude;
         if (Destination && distanceFromTarget > _targetDistanceThreshold)
         {
+            if (EnableUnstuck)
+            {
+                if ((_lastPosition - (Vector2)transform.position).sqrMagnitude >= UnstuckCheckMinDistance * UnstuckCheckMinDistance)
+                {
+                    unstuckTimer = UnstuckTimerStartDelay;
+                    _lastPosition = transform.position;
+                }
+                else unstuckTimer -= Time.fixedDeltaTime;
+            }
             _currentDirection = GetNextDirection();
             _rb.MovePosition((Vector2)transform.position + _currentDirection * Time.fixedDeltaTime * _speed);
         }
@@ -62,6 +75,10 @@ public class SteeringBehaviorTest : MonoBehaviour
 
     private Vector2 GetNextDirection()
     {
+        if (unstuckTimer <= 0)
+        {
+            return RotateDirectionUsingSpeed(_currentDirection, _currentDirection, true);
+        }
         Vector2 directionToTarget = Destination.position - transform.position;
         // Current dirrection initally points towards destination.
         // Raycast towards current direction.
@@ -78,8 +95,10 @@ public class SteeringBehaviorTest : MonoBehaviour
             print("NO OBSTACLES IN PATH");
             // Try to steer towards destination. Steer when no new obstacles were registered, otherwise continue forwards.
             List<RaycastHit2D> obstacleOnRotation = Physics2D.CircleCastAll(transform.position, selfRadius, stepDirection, AvoidanceCastDistance, _steeringLayerMask).ToList();
+            // Remove self from raycast.
             RaycastHit2D selfHitB = obstacleOnRotation.Find(x => x.transform == transform);
             if (selfHitB) obstacleOnRotation.Remove(selfHitB);
+
             //print($"new obstacle exists: {obstacleOnRotation}, is self: {obstacleOnRotation.transform != transform}, bool: {obstacleOnRotation && obstacleOnRotation.transform != transform}");
             if (obstacleOnRotation.Any())// && obstacleOnRotation.transform != transform)
             {
@@ -106,6 +125,12 @@ public class SteeringBehaviorTest : MonoBehaviour
             // Calculate position to steer away from.
             centerPoint /= obstaclesInPath.Count;
             Vector3 directionToObstacle = centerPoint - (Vector2)transform.position;
+            _oldDirectionToObstacle = directionToObstacle;
+
+            // Unstuck-er.
+            //
+
+            /* THIS SECTION IS FOR COUNTER CHECKS
             if (_multiObstacleRayCounter == 0)
             {
                 // Counter checks.
@@ -127,22 +152,22 @@ public class SteeringBehaviorTest : MonoBehaviour
             else
             {
                 _multiObstacleRayCounter--;
-            }
+            }*/
             return RotateDirectionUsingSpeed(_currentDirection, _oldDirectionToObstacle, true);
             //return RotateDirectionUsingSpeed(_currentDirection, directionToTarget, true);
         }
     }
 
-    private Vector2 RotateDirectionUsingSpeed(Vector2 directionFrom, Vector2 directionTowards, bool inverseDirection = false)
+    private Vector2 RotateDirectionUsingSpeed(Vector2 directionFrom, Vector2 directionTowards, bool avoidDirection = false)
     {
         float rotationAngle = Vector2.SignedAngle(directionFrom.normalized, directionTowards.normalized);
-        if (rotationAngle == 0f && inverseDirection)
+        if (rotationAngle == 0f && avoidDirection)
         {
             Debug.LogWarning("ANGLE IS 0");
             rotationAngle = 45f;
         }
         float stepAngle = Mathf.MoveTowardsAngle(0f, rotationAngle, SteeringSpeedTest * Time.fixedDeltaTime);
-        if (inverseDirection) stepAngle = -stepAngle;
+        if (avoidDirection) stepAngle = -stepAngle;
         return Quaternion.AngleAxis(stepAngle, Vector3.forward) * directionFrom;
     }
 
