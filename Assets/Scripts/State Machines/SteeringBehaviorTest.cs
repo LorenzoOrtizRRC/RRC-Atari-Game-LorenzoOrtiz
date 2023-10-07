@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using UnityEngine;
 
-public class SteeringBehavior : MonoBehaviour
+public class SteeringBehaviorTest : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D _rb;
@@ -40,7 +40,7 @@ public class SteeringBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
         Vector2 direction = Quaternion.AngleAxis(SteeringSpeedTest * Time.fixedDeltaTime, Vector3.forward) * _currentDirection;
         //_currentDirection = direction;
 
@@ -74,11 +74,12 @@ public class SteeringBehavior : MonoBehaviour
 
         if (obstaclesInPath.Count == 0)
         {
+            // No obstacles in current path.
             print("NO OBSTACLES IN PATH");
             // Try to steer towards destination. Steer when no new obstacles were registered, otherwise continue forwards.
             List<RaycastHit2D> obstacleOnRotation = Physics2D.CircleCastAll(transform.position, selfRadius, stepDirection, AvoidanceCastDistance, _steeringLayerMask).ToList();
             RaycastHit2D selfHitB = obstacleOnRotation.Find(x => x.transform == transform);
-            if (selfHitB) obstaclesInPath.Remove(selfHitB);
+            if (selfHitB) obstacleOnRotation.Remove(selfHitB);
             //print($"new obstacle exists: {obstacleOnRotation}, is self: {obstacleOnRotation.transform != transform}, bool: {obstacleOnRotation && obstacleOnRotation.transform != transform}");
             if (obstacleOnRotation.Any())// && obstacleOnRotation.transform != transform)
             {
