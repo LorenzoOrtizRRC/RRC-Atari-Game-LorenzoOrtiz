@@ -12,12 +12,14 @@ public class SteeringBehavior : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [Header("Steering Variables")]
     [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _targetDistanceThreshold = 0.5f;
     [SerializeField, Min(1)] private int _steeringQuadrantsCount = 1;
     [SerializeField] private LayerMask _steeringLayerMask;
 
     public Transform Destination;
     public float SteeringSpeedTest = 10f;
     public float AvoidanceCastDistance = 2f;
+    public float UnstuckTimerLength = 2f;
     //public float minAvoidanceDistanceThreshold = 3f;
     //public float maxAvoidanceDistanceThreshold = 0.5f;
 
@@ -28,9 +30,15 @@ public class SteeringBehavior : MonoBehaviour
     //private Vector2[] directionVectors = new Vector2[0];
     //private float[] directionWeights = new float[0];
 
+    private Vector2 _oldDirectionToObstacle;
+    private float unstuckTimer;
+    public int _multiObstacleRayInterval = 5;
+    private int _multiObstacleRayCounter = 0;
+
     private void OnEnable()
     {
         _currentDirection = transform.up;
+        unstuckTimer = UnstuckTimerLength;
     }
     private void FixedUpdate()
     {
@@ -40,14 +48,18 @@ public class SteeringBehavior : MonoBehaviour
 
         //Vector2 preferredDirection = GetNextDirection();
         //_currentDirection = RotateDirectionUsingSpeed(_currentDirection, preferredDirection);
-
-        _currentDirection = GetNextDirection();
+        float distanceFromTarget = (Destination.position - transform.position).magnitude;
+        if (Destination && distanceFromTarget > _targetDistanceThreshold)
+        {
+            _currentDirection = GetNextDirection();
+            _rb.MovePosition((Vector2)transform.position + _currentDirection * Time.fixedDeltaTime * _speed);
+        }
 
         // Rotate towards direction
         //float rotationAngle = Vector2.SignedAngle(_currentDirection.normalized, preferredDirection.normalized);
         //float stepAngle = Mathf.MoveTowardsAngle(0f, rotationAngle, SteeringSpeedTest * Time.fixedDeltaTime);
         //_currentDirection = Quaternion.AngleAxis(stepAngle, Vector3.forward) * _currentDirection;
-        _rb.MovePosition((Vector2)transform.position + _currentDirection * Time.fixedDeltaTime * _speed);    
+        //_rb.MovePosition((Vector2)transform.position + _currentDirection * Time.fixedDeltaTime * _speed);    
     }
 
     private Vector2 GetNextDirection()
@@ -57,29 +69,56 @@ public class SteeringBehavior : MonoBehaviour
         // Raycast towards current direction.
         Vector2 stepDirection = RotateDirectionUsingSpeed(_currentDirection, directionToTarget);
         float selfRadius = GetComponent<CircleCollider2D>().radius;
-        RaycastHit2D currentPathObstacle = Physics2D.CircleCast(transform.position, selfRadius, _currentDirection, AvoidanceCastDistance, _steeringLayerMask);
-        if (!currentPathObstacle)
+        List<RaycastHit2D> obstaclesInPath = Physics2D.CircleCastAll(transform.position, selfRadius, _currentDirection, AvoidanceCastDistance, _steeringLayerMask).ToList();
+
+        RaycastHit2D selfHit = obstaclesInPath.Find(x => x.transform == transform);
+        if (selfHit) obstaclesInPath.Remove(selfHit);
+
+        if (obstaclesInPath.Count == 0)
         {
+            print("NO OBSTACLES IN PATH");
             RaycastHit2D obstacleOnRotation = Physics2D.CircleCast(transform.position, selfRadius, stepDirection, AvoidanceCastDistance, _steeringLayerMask);
-            // If raycast hits an obstacle, rotate current direction via dot product.
-            if (obstacleOnRotation)
+            if (obstacleOnRotation && !obstacleOnRotation.transform == transform)
             {
-                //Vector3 directionToObstacle = obstacleOnRotation.point - (Vector2)transform.position;
-                //return RotateDirectionUsingSpeed(_currentDirection, directionToObstacle, true);
+                print("OBSTACLES IN NEW PATH");
                 return _currentDirection;
             }
             else
             {
-                //Vector3 directionToObstacle = obstacleOnRotation.point - (Vector2)transform.position;
                 return RotateDirectionUsingSpeed(_currentDirection, directionToTarget);
             }
         }
-        // If not, Rotate current direction towards destination.
-        // Change current direction to new steered direction.
         else
         {
-            Vector3 directionToObstacle = currentPathObstacle.point - (Vector2)transform.position;
-            return RotateDirectionUsingSpeed(_currentDirection, directionToObstacle, true);
+            // There's an obstacle in the current direction, so rotate.
+            string debugString = "";
+            Vector2 centerPoint = Vector2.zero;
+            foreach (RaycastHit2D obstacle in obstaclesInPath)
+            {
+                centerPoint += obstacle.point;
+                debugString += $" {obstacle.transform.name}";
+            }
+            Debug.Log(debugString);
+            centerPoint /= obstaclesInPath.Count;
+            Vector3 directionToObstacle = centerPoint - (Vector2)transform.position;
+            if (_multiObstacleRayCounter == 0)
+            {
+                if (obstaclesInPath.Count > 1)
+                {
+                    _oldDirectionToObstacle = directionToObstacle;
+                    _multiObstacleRayCounter = _multiObstacleRayInterval;
+                    return RotateDirectionUsingSpeed(_currentDirection, _oldDirectionToObstacle, true);
+                }
+                else
+                {
+                    _oldDirectionToObstacle = directionToObstacle;
+                }
+            }
+            else
+            {
+                _multiObstacleRayCounter--;
+            }
+            return RotateDirectionUsingSpeed(_currentDirection, _oldDirectionToObstacle, true);
         }
     }
 
