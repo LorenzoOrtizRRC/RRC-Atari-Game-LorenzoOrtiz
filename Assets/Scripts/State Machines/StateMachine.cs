@@ -13,7 +13,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private CharacterAgent _agent;
     [SerializeField] private TargetDetector _targetDetector;
     [Header("State Machine Variables")]
-    [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
+    [SerializeField] private NPCMover _movementState = new NPCMover();
     [SerializeField] private MovementState _chaseState = new ChaseState();
     [SerializeField] private bool _isImmovable = false;
 
@@ -25,8 +25,16 @@ public class StateMachine : MonoBehaviour
     public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
     {
         _agent.InitializeAgent(newTeam);
-        _movementState.SetWaypoints(initialPath);
-        _movementState.Initialize();
+        //_movementState.SetWaypoints(initialPath);
+        if (initialPath)
+        {
+            print(initialPath.WaypointList.Count);
+            _movementState.Initialize(initialPath);
+        }
+        else
+        {
+            _movementState.Initialize();
+        }
     }
 
     private void Start()
@@ -91,7 +99,7 @@ public class StateMachine : MonoBehaviour
     {
         // This fixes the problem of NPCs going beyond the waypoint, but coming back after somehow getting dragged beyond it.
         Waypoint currentWaypoint;
-        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentWaypoint) _movementState.ForceIncrementWaypointIndex();
+        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentPath[_movementState.DestinationIndex]) _movementState.ForceIncrementWaypointIndex();
     }
 
     private Vector2 MoveCharacter()
@@ -130,5 +138,16 @@ public class StateMachine : MonoBehaviour
         // Visualize Aggro range.
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
+
+        // Visualize destinations.
+        Gizmos.color = Color.green;
+        if (_movementState.Destinations.Count > 1)
+        {
+            for (int i = 1; i < _movementState.Destinations.Count; i++)
+            {
+                // Draw a line between the previous point and the current point.
+                Gizmos.DrawLine(_movementState.Destinations[i - 1], _movementState.Destinations[i]);
+            }
+        }
     }
 }

@@ -152,6 +152,7 @@ MonoBehaviour:
   _agent: {fileID: 394877704361097563}
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
+    _initialPath: {fileID: 0}
     _distanceThreshold: 1
     _laneAlignmentBias: 0.8
   _isImmovable: 0

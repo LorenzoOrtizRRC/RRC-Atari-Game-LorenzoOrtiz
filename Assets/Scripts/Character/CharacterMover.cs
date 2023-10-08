@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CharacterMover : MonoBehaviour
+public class CharacterMover// : MonoBehaviour
 {
     //private WaypointPath _waypointPath;
     //[SerializeField] private float _distanceThreshold = 0.3f;
