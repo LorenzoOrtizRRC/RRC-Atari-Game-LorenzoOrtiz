@@ -55,7 +55,7 @@ public class NPCMover : CharacterMover
 
     private void GenerateDestinations()
     {
-        //_destinations.Clear();
+        if (!_currentPath.Any()) return;
         _destinations = new List<Vector2>(_currentPath.Count);
         for (int i = 0; i < _currentPath.Count; i++)
         {
