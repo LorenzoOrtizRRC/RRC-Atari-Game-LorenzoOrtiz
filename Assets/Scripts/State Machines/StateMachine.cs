@@ -99,7 +99,7 @@ public class StateMachine : MonoBehaviour
     {
         // This fixes the problem of NPCs going beyond the waypoint, but coming back after somehow getting dragged beyond it.
         Waypoint currentWaypoint;
-        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentPath[_movementState.DestinationIndex]) _movementState.ForceIncrementWaypointIndex();
+        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentPath[_movementState.DestinationIndex]) _movementState.ForceIncrementDestinationIndex();
     }
 
     private Vector2 MoveCharacter()

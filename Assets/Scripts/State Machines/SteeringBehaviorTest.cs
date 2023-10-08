@@ -109,10 +109,7 @@ public class SteeringBehaviorTest : MonoBehaviour
         return Quaternion.AngleAxis(stepAngle, Vector3.forward) * directionFrom;
     }
 
-    private void MoveAgent(Vector2 normalizedDirection)
-    {
-        _rb.MovePosition(normalizedDirection * Time.fixedDeltaTime * _speed);
-    }
+
 
     private void OnDrawGizmos()
     {
