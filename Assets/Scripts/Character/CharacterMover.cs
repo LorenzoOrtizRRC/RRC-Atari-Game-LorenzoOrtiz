@@ -9,7 +9,7 @@ public class CharacterMover// : MonoBehaviour
     [SerializeField] private float _movementSpeed = 1f;
     [SerializeField] private float _rotationSpeed = 180f;
 
-    private Vector2 _currentDirection = Vector2.up;     // (0, 1) is the forward direction. Current direction is cached for rotation purposes, since the actual game object doesn't rotate.
+    protected Vector2 _currentDirection = Vector2.up;     // (0, 1) is the forward direction. Current direction is cached for rotation purposes, since the actual game object doesn't rotate.
 
     // Returns destination point. By default returns forward (for weapon rotation purposes).
     public virtual Vector2 MoveAgent(Transform agentTransform, Rigidbody2D agentRigidbody, float speed, Vector2? customDirection = null)
