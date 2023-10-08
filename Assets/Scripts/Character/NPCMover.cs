@@ -7,15 +7,27 @@ using System.Linq;
 [Serializable]
 public class NPCMover : CharacterMover
 {
-    [Header("Movement Variables")]
+    [Header("Waypoint Variables")]
     [SerializeField] private WaypointPath _initialPath = null;      // Mainly used when NPC is already in the level and not spawned.
-    [SerializeField] private float _distanceThreshold = 0.5f;
+    [SerializeField] private float _distanceThreshold = 0.5f;       // Destination is considered reached when distance to it is <= this.
     [SerializeField, Range(0f, 1f)] private float _laneAlignmentBias = 0f;  // Aligns agent to stay on a side of the lane more.
+    [Header("Obstacle Avoidance")]
+    [SerializeField] private LayerMask _steeringLayerMask;
+    [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _targetDistanceThreshold = 0.5f;
+    [SerializeField] private float _steeringSpeedTest = 180f;
+    [SerializeField] private float _avoidanceCastLength = 1f;
+    [SerializeField] private float _avoidanceRadius = 1f;
+    [SerializeField] private float _unstuckTimerDelay = 0.3f;       // When position is within _unstuckMinDistance of _lastPosition, timer will start. Unstucking starts when timer hits 0.
+    [SerializeField] private float _unstuckMinDistance = 0.2f;      // When distance from _lastPosition is greater than this, _lastPosition will be reset.
+    [SerializeField] private bool _enableUnstuck = true;            // Must be turned off for static/immovable agents.
 
-    //private WaypointPath _waypointPath;
     private List<Waypoint> _currentPath = new List<Waypoint>();     // This is used to generate the destination path. This is cached for reference after this path is finished.
     private List<Vector2> _destinations = new List<Vector2>();
     private int _destinationIndex = 0;
+
+    private float unstuckTimer;
+    private Vector2 _lastPosition;      // Used to unstuck self.
 
     public List<Waypoint> CurrentPath => _currentPath;
     public List<Vector2> Destinations => _destinations;
@@ -43,7 +55,8 @@ public class NPCMover : CharacterMover
         if (directionToDestination.sqrMagnitude >= _distanceThreshold * _distanceThreshold)
         {
             Vector2 destination = (Vector2)agentTransform.position + (directionToDestination.normalized * Time.fixedDeltaTime * speed);
-            agentRigidbody.MovePosition(destination);
+            //agentRigidbody.MovePosition(destination);
+            StartMovement(agentRigidbody, destination);
             return destination;
         }
         else if (_destinationIndex < _destinations.Count - 1)
@@ -51,6 +64,13 @@ public class NPCMover : CharacterMover
             _destinationIndex++;
         }
         return agentTransform.forward;
+    }
+
+    // Maybe remove the override if I don't need it.
+    protected override void StartMovement(Rigidbody2D agentRigidbody, Vector2 destination)
+    {
+        // Actual logic for moving the agent goes here.
+        agentRigidbody.MovePosition(destination);
     }
 
     private void GenerateDestinations()
