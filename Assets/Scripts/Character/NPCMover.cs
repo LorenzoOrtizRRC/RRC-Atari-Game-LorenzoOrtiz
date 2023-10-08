@@ -3,39 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CharacterMover : MonoBehaviour
+public class NPCMover : CharacterMover
 {
-    //private WaypointPath _waypointPath;
-    //[SerializeField] private float _distanceThreshold = 0.3f;
-    //[SerializeField, Range(0f, 1f)] private float _laneAlignmentBias = 0f;  // Aligns agent to stay on a side of the lane more.
-    //private int _waypointIndex = 0;
-    //private Vector2 _currentDestination = Vector2.zero;
+    [Header("Movement Variables")]
+    [SerializeField] private float _distanceThreshold = 0.3f;
+    [SerializeField, Range(0f, 1f)] private float _laneAlignmentBias = 0f;  // Aligns agent to stay on a side of the lane more.
+    private WaypointPath _waypointPath;
+    private int _waypointIndex = 0;
+    private Vector2 _currentDestination = Vector2.zero;
 
-    //public Waypoint CurrentWaypoint => _waypointPath.WaypointList[_waypointIndex];
+    public Waypoint CurrentWaypoint => _waypointPath.WaypointList[_waypointIndex];
 
-    //public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
+    public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
 
-    //public virtual void Initialize()
-    //{
-        //_currentDestination = GetNewDestination();
-    //}
+    public virtual void Initialize()
+    {
+        _currentDestination = GetNewDestination();
+    }
 
     // Returns destination point. By default returns forward (for weapon rotation purposes).
-    public virtual Vector2 MoveAgent(Transform agentTransform, Rigidbody2D agentRigidbody, float speed, Vector2? customDirection = null)
+    public virtual Vector2 MoveAgent(Transform agentTransform, Rigidbody2D agentRigidbody, float speed, Vector3? customDirection = null)
     {
-        // Move an agent towards a direction.
-        if (!customDirection.HasValue) return agentTransform.forward;
-        Vector2 newDirection = customDirection.Value;
-        Vector2 destination = (Vector2)agentTransform.position + (newDirection.normalized * Time.fixedDeltaTime * speed);
-        agentRigidbody.MovePosition(destination);
-        return destination;
-        /*
-        Vector2 distance = _currentDestination - (Vector2)self.position;
+        Vector2 directionToDestination = _currentDestination - (Vector2)agentTransform.position;
         // Move if distance is greater than threshold, else get new waypoint
-        if (distance.magnitude >= _distanceThreshold)
+        if (directionToDestination.magnitude >= _distanceThreshold)
         {
-            Vector2 destination = (Vector2)self.position + (distance.normalized * Time.fixedDeltaTime * speed);
-            rb.MovePosition(destination);
+            Vector2 destination = (Vector2)agentTransform.position + (directionToDestination.normalized * Time.fixedDeltaTime * speed);
+            agentRigidbody.MovePosition(destination);
             return destination;
         }
         else if (_waypointIndex < _waypointPath.WaypointList.Count - 1)
@@ -43,9 +37,9 @@ public class CharacterMover : MonoBehaviour
             _waypointIndex++;
             _currentDestination = GetNewDestination();
         }
-        return self.forward;*/
+        return agentTransform.forward;
     }
-    /*
+
     public void ForceIncrementWaypointIndex()
     {
         if (_waypointIndex < _waypointPath.WaypointList.Count - 1)
@@ -53,8 +47,8 @@ public class CharacterMover : MonoBehaviour
             _waypointIndex++;
             _currentDestination = GetNewDestination();
         }
-    }*/
-    /*
+    }
+
     // Works with 2D box colliders only.
     private Vector2 GetNewDestination()
     {
@@ -77,5 +71,5 @@ public class CharacterMover : MonoBehaviour
             newDestination = Vector2.Lerp(newDestination, biasPoint, _laneAlignmentBias);
         }
         return newDestination;
-    }*/
+    }
 }
