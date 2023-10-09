@@ -163,9 +163,12 @@ MonoBehaviour:
     _targetDistanceThreshold: 0.5
     _avoidanceCastLength: 1
     _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
     _enableUnstuck: 1
-    _unstuckTimerDelay: 0.3
-    _unstuckMinDistance: 0.2
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngle: 2
+    _unstuckAngleMaxRotation: 45
   _isImmovable: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:

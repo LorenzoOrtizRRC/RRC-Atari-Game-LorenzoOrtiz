@@ -143,6 +143,7 @@ public class StateMachine : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, _movementState.CurrentDirection.normalized * 4f);
         Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere((Vector2)transform.position, _movementState.AvoidanceRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + (_movementState.CurrentDirection.normalized * _movementState.AvoidanceCastLength), _movementState.AvoidanceRadius);
 
         // Visualize Aggro range.
@@ -159,5 +160,6 @@ public class StateMachine : MonoBehaviour
                 Gizmos.DrawLine(_movementState.Destinations[i - 1], _movementState.Destinations[i]);
             }
         }
+        if (_movementState.Destinations.Count > 0) Gizmos.DrawLine(transform.position, _movementState.Destinations[0]);
     }
 }
