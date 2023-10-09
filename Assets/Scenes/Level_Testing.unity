@@ -693,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._rotationSpeed
-      value: 480
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._avoidanceRadius
@@ -704,12 +704,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._unstuckTimerLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._avoidanceCastLength
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckAngleMaxRotation
-      value: 45
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckObstacleMinAngle
@@ -721,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23383,7 +23387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._rotationSpeed
-      value: 480
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._avoidanceRadius
@@ -23394,12 +23398,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._unstuckTimerLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._avoidanceCastLength
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckAngleMaxRotation
-      value: 45
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckObstacleMinAngle
@@ -23411,7 +23419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.z

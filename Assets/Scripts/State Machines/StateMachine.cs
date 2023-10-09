@@ -95,7 +95,8 @@ public class StateMachine : MonoBehaviour
         {
             if (_isImmovable) return;
             directionToMove = MoveCharacter();
-            _agent.RotateWeapon(directionToMove);
+            //_agent.RotateWeapon(directionToMove);
+            _agent.RotateWeapon((Vector2)transform.position + _movementState.CurrentDirection);
         }
     }
 

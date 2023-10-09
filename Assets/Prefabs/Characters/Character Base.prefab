@@ -153,7 +153,7 @@ MonoBehaviour:
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
     _movementSpeed: 1
-    _rotationSpeed: 180
+    _rotationSpeed: 90
     _initialPath: {fileID: 0}
     _distanceThreshold: 1
     _laneAlignmentBias: 0.8
