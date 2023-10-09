@@ -46,7 +46,7 @@ public class SteeringBehaviorTest : MonoBehaviour
             }
             _currentDirection = GetNextDirection();
             _rb.MovePosition((Vector2)transform.position + _currentDirection * Time.fixedDeltaTime * _speed);
-        } 
+        }
     }
 
     private Vector2 GetNextDirection()

@@ -22,13 +22,17 @@ public class StateMachine : MonoBehaviour
     private CharacterAgent _enemyTarget;
     private bool _isChasing = false;
 
+    private void OnEnable()
+    {
+        _movementState.Initialize();
+    }
+
     public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
     {
         _agent.InitializeAgent(newTeam);
         //_movementState.SetWaypoints(initialPath);
         if (initialPath)
         {
-            print(initialPath.WaypointList.Count);
             _movementState.Initialize(initialPath);
         }
         else
@@ -135,6 +139,12 @@ public class StateMachine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Obstacle Avoidance
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, _movementState.CurrentDirection.normalized * 4f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere((Vector2)transform.position + (_movementState.CurrentDirection.normalized * _movementState.AvoidanceCastLength), _movementState.AvoidanceRadius);
+
         // Visualize Aggro range.
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);

@@ -13,14 +13,15 @@ public class NPCMover : CharacterMover
     [SerializeField, Range(0f, 1f)] private float _laneAlignmentBias = 0f;  // Aligns agent to stay on a side of the lane more.
     [Header("Obstacle Avoidance")]
     [SerializeField] private LayerMask _steeringLayerMask;
-    [SerializeField] private float _speed = 1f;
+    //[SerializeField] private float _speed = 1f;
     [SerializeField] private float _targetDistanceThreshold = 0.5f;
-    [SerializeField] private float _rotationSpeed = 180f;
+    //[SerializeField] private float _rotationSpeed = 180f;
     [SerializeField] private float _avoidanceCastLength = 1f;
     [SerializeField] private float _avoidanceRadius = 1f;
+    [Header("Unstucking Variables")]
+    [SerializeField] private bool _enableUnstuck = true;            // Must be turned off for static/immovable agents.
     [SerializeField] private float _unstuckTimerDelay = 0.3f;       // When position is within _unstuckMinDistance of _lastPosition, timer will start. Unstucking starts when timer hits 0.
     [SerializeField] private float _unstuckMinDistance = 0.2f;      // When distance from _lastPosition is greater than this, _lastPosition will be reset.
-    [SerializeField] private bool _enableUnstuck = true;            // Must be turned off for static/immovable agents.
 
     private List<Waypoint> _currentPath = new List<Waypoint>();     // This is used to generate the destination path. This is cached for reference after this path is finished.
     private List<Vector2> _destinations = new List<Vector2>();
@@ -33,18 +34,29 @@ public class NPCMover : CharacterMover
     public List<Vector2> Destinations => _destinations;
     public int DestinationIndex => _destinationIndex;
 
+    // For Gizmos only
+    public Vector2 CurrentDirection => _currentDirection;
+    public float AvoidanceCastLength => _avoidanceCastLength;
+    public float AvoidanceRadius => _avoidanceRadius;
+
     //public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
 
     public void Initialize()
     {
-        if (_currentPath.Any()) _currentPath = _initialPath.WaypointList;
-        GenerateDestinations();
+        if (_initialPath && _initialPath.WaypointList.Any())
+        {
+            _currentPath = _initialPath.WaypointList;
+            GenerateDestinations();
+        }
     }
 
     public void Initialize(WaypointPath newWaypointPath)
     {
-        if (newWaypointPath.WaypointList.Any()) _currentPath = newWaypointPath.WaypointList;
-        GenerateDestinations();
+        if (newWaypointPath && newWaypointPath.WaypointList.Any())
+        {
+            _currentPath = newWaypointPath.WaypointList;
+            GenerateDestinations();
+        }
     }
 
     // Returns destination point. By default returns the transform local forward (for weapon rotation purposes).
@@ -53,19 +65,41 @@ public class NPCMover : CharacterMover
         // Get target direction.
         // Apply obstacle avoidance to the target direction.
         // Apply steering to agent.
-        Vector2 distanceToDirection;
+        Vector2 directionToTarget;
         if (customDirection.HasValue)
         {
-            distanceToDirection = customDirection.Value;
+            directionToTarget = customDirection.Value;
         }
         else
         {
-            distanceToDirection = _destinations[_destinationIndex] - (Vector2)agentTransform.position;
+            directionToTarget = _destinations[_destinationIndex] - (Vector2)agentTransform.position;
         }
-        // Move if distance is greater than threshold, else get new waypoint.
-        if (distanceToDirection.sqrMagnitude >= _distanceThreshold * _distanceThreshold)
+        unstuckTimer = _unstuckTimerDelay;
+        // Unstuck logic.
+        /*if (directionToTarget.sqrMagnitude > _targetDistanceThreshold * _targetDistanceThreshold)
         {
-            Vector2 destination = (Vector2)agentTransform.position + (distanceToDirection.normalized * Time.fixedDeltaTime * speed);
+            if (_enableUnstuck)
+            {
+                if ((_lastPosition - (Vector2)agentTransform.position).sqrMagnitude > _unstuckMinDistance * _unstuckMinDistance)
+                {
+                    unstuckTimer = _unstuckTimerDelay;
+                    _lastPosition = agentTransform.position;
+                }
+                else unstuckTimer -= Time.fixedDeltaTime;
+            }
+            // Move stuff here.
+            //_currentDirection = GetNextDirection();
+            //_rb.MovePosition((Vector2)transform.position + _currentDirection * Time.deltaTime * _speed);
+        }*/
+        // Move if distance is greater than threshold, else get new waypoint.
+        if (directionToTarget.sqrMagnitude > _distanceThreshold * _distanceThreshold)
+        {
+            // Apply steering and obstacle avoidance to desired direction.
+            _currentDirection = GetNextDirection(agentTransform, directionToTarget);
+            // Finalize destination for moving.
+            Vector2 destination = (Vector2)agentTransform.position + (_currentDirection.normalized * Time.fixedDeltaTime * _movementSpeed);
+            // Apply steering and obstacle avoidance to destination.
+            //destination = GetNextDirection(agentTransform, destination);
             //agentRigidbody.MovePosition(destination);
             StartMovement(agentRigidbody, destination);
             return destination;
@@ -123,29 +157,31 @@ public class NPCMover : CharacterMover
         }
     }
 
-    /*
-    private Vector2 GetNextDirection()
+    // NEW METHOD NAME: RotateWithObstacleAvoidance
+    private Vector2 GetNextDirection(Transform agentTransform, Vector2 desiredDirection)
     {
-        if (unstuckTimer <= 0)
+        /*if (unstuckTimer <= 0)
         {
             return RotateDirectionUsingSpeed(_currentDirection, _currentDirection, true);
-        }
-        Vector2 directionToTarget = Destination.position - transform.position;
+        }*/
+        //Vector2 directionToTarget = Destination.position - transform.position;
+        Vector2 directionToTarget = desiredDirection;
 
         // Raycast towards current direction.
         Vector2 stepDirection = RotateDirectionUsingSpeed(_currentDirection, directionToTarget);
-        List<RaycastHit2D> obstaclesInPath = Physics2D.CircleCastAll(transform.position, _avoidanceRadius, _currentDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
-
-        RaycastHit2D selfHit = obstaclesInPath.Find(x => x.transform == transform);
+        List<RaycastHit2D> obstaclesInPath = Physics2D.CircleCastAll(agentTransform.position, _avoidanceRadius, _currentDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
+        // Remove self from raycast.
+        RaycastHit2D selfHit = obstaclesInPath.Find(x => x.transform == agentTransform);
+        //List<RaycastHit2D> selfHits = obstaclesInPath.FindAll(x => x.transform == agentTransform);
         if (selfHit) obstaclesInPath.Remove(selfHit);
 
         if (obstaclesInPath.Count == 0)
         {
             // No obstacles in current path.
             // Try to steer towards destination. Steer when no new obstacles were registered, otherwise continue forwards.
-            List<RaycastHit2D> obstacleOnRotation = Physics2D.CircleCastAll(transform.position, _avoidanceRadius, stepDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
+            List<RaycastHit2D> obstacleOnRotation = Physics2D.CircleCastAll(agentTransform.position, _avoidanceRadius, stepDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
             // Remove self from raycast.
-            RaycastHit2D selfHitB = obstacleOnRotation.Find(x => x.transform == transform);
+            RaycastHit2D selfHitB = obstacleOnRotation.Find(x => x.transform == agentTransform);
             if (selfHitB) obstacleOnRotation.Remove(selfHitB);
 
             if (obstacleOnRotation.Any())
@@ -159,7 +195,7 @@ public class NPCMover : CharacterMover
         }
         else
         {
-            // There's an obstacle in the current direction, so rotate.
+            // There's an obstacle in the current direction, so rotate away from the obstacles' center point.
             Vector2 centerPoint = Vector2.zero;
             foreach (RaycastHit2D obstacle in obstaclesInPath)
             {
@@ -167,10 +203,10 @@ public class NPCMover : CharacterMover
             }
             // Calculate position to steer away from.
             centerPoint /= obstaclesInPath.Count;
-            Vector3 directionToObstacle = centerPoint - (Vector2)transform.position;
+            Vector3 directionToObstacle = centerPoint - (Vector2)agentTransform.position;
             return RotateDirectionUsingSpeed(_currentDirection, directionToObstacle, true);
         }
-    }*/
+    }
 
     private Vector2 RotateDirectionUsingSpeed(Vector2 directionFrom, Vector2 directionTowards, bool avoidDirection = false)
     {

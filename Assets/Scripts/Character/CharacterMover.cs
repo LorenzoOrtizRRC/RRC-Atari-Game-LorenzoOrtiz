@@ -6,8 +6,8 @@ using System;
 public class CharacterMover// : MonoBehaviour
 {
     [Header("Movement Variables")]
-    [SerializeField] private float _movementSpeed = 1f;
-    [SerializeField] private float _rotationSpeed = 180f;
+    [SerializeField] protected float _movementSpeed = 1f;
+    [SerializeField] protected float _rotationSpeed = 180f;
 
     protected Vector2 _currentDirection = Vector2.up;     // (0, 1) is the forward direction. Current direction is cached for rotation purposes, since the actual game object doesn't rotate.
 

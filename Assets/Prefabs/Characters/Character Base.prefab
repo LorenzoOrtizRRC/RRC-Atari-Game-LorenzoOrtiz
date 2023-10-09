@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8400155256142134834}
   - component: {fileID: 5845705992924132293}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Weapon Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,9 +152,20 @@ MonoBehaviour:
   _agent: {fileID: 394877704361097563}
   _targetDetector: {fileID: 1808969846888306160}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
     _initialPath: {fileID: 0}
     _distanceThreshold: 1
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 320
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _enableUnstuck: 1
+    _unstuckTimerDelay: 0.3
+    _unstuckMinDistance: 0.2
   _isImmovable: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:
@@ -330,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100289818990024125}
   - component: {fileID: 3149208581365418043}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Weapon Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072334731956631828}
   - component: {fileID: 8623483805770791091}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Body Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2680645913525236172}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Weapon Spawn 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +541,7 @@ GameObject:
   - component: {fileID: 2862451610426340856}
   - component: {fileID: 1808969846888306160}
   - component: {fileID: 2394253845395186629}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
