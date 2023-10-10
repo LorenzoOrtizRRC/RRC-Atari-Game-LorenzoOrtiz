@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class MissionObjective : MonoBehaviour
+public class MissionObjective
 {
-    public Action<int, int> OnMissionObjectiveUpdated;
+    public Action<MissionObjective> OnMissionObjectiveUpdated;
 
     [SerializeField] private List<MissionListener> _missionListeners = new List<MissionListener>();
     private int _currentProgress = 0;
@@ -14,24 +14,26 @@ public class MissionObjective : MonoBehaviour
 
     public int CurrentProgress => _currentProgress;
     public int MaxProgress => _maxProgress;
+    public bool MissionIsComplete => (CurrentProgress / MaxProgress == 1);
 
-    private void Start()
+    public void Initialize()
     {
         foreach (MissionListener missionListener in _missionListeners)
         {
-            //missionListener.TriggerMissionSuccess += AddMissionSuccess;
+            missionListener.OnMissionSuccess += AddMissionSuccess;
+            missionListener.OnMissionFailure += AddMissionFailure;
         }
     }
 
     public void AddMissionSuccess()
     {
         _currentProgress++;
-        OnMissionObjectiveUpdated?.Invoke(_currentProgress, _maxProgress);
+        OnMissionObjectiveUpdated?.Invoke(this);
     }
 
     public void AddMissionFailure()
     {
         _currentProgress--;
-        OnMissionObjectiveUpdated?.Invoke(_currentProgress, _maxProgress);
+        OnMissionObjectiveUpdated?.Invoke(this);
     }
 }
