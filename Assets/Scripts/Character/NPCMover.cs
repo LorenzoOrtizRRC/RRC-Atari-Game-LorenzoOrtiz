@@ -51,7 +51,7 @@ public class NPCMover : CharacterMover
     public Vector2 CurrentDirection => _currentDirection;
     public float AvoidanceCastLength => _avoidanceCastLength;
     public float AvoidanceRadius => _avoidanceRadius;
-    public bool EnableDebugUnstuckAngles = false;
+    //public bool EnableDebugUnstuckAngles = false;
 
     //public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
 
@@ -134,10 +134,10 @@ public class NPCMover : CharacterMover
             {
                 //float angleToLastObstacle = Vector2.Angle(_currentDirection, lastObstacle2.Value - (Vector2)agentTransform.position);
                 float angleToLastObstacle = Vector2.Angle(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position);
-                if (EnableDebugUnstuckAngles)
-                {
-                    Debug.Log($"cached angle point: {_lastObstaclePoint.Value}");
-                }
+                //if (EnableDebugUnstuckAngles)
+                //{
+                    //Debug.Log($"cached angle point: {_lastObstaclePoint.Value}");
+                //}
                 if (_unstuckAngleTimer > 0f)
                 {
                     _unstuckAngleTimer -= Time.fixedDeltaTime;
@@ -232,7 +232,7 @@ public class NPCMover : CharacterMover
             float angleToLastObstacle = Vector2.Angle(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position);
             //if (angleToLastObstacle - _cachedAngleReference < _unstuckAngleMaxRotation)
             //{
-            Debug.LogWarning("ROTATING ANGLES");
+            //Debug.LogWarning("ROTATING ANGLES");
                 return RotateDirectionUsingSpeed(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position, true);
             //}
             //else _unstuckAngleTimer = _unstuckTimerLength;
@@ -259,7 +259,7 @@ public class NPCMover : CharacterMover
 
             if (obstacleOnRotation.Any())
             {
-                Debug.Log($"There are obstacles in new path. Continuing forwards. {agentTransform.name}");
+                //Debug.Log($"There are obstacles in new path. Continuing forwards. {agentTransform.name}");
                 //RememberLastObstacle(obstacleOnRotation[0].point);
                 //if (obstacleOnRotation[0].transform != _lastObstacleTransform)
                 //{
@@ -268,7 +268,7 @@ public class NPCMover : CharacterMover
                 //_lastObstaclePoint = obstacleOnRotation[0].point;
                 //_cachedAngleReference = Vector2.Angle(_currentDirection, obstacleOnRotation[0].point - (Vector2)agentTransform.position);
                 float newCachedAngle = Vector2.Angle(_currentDirection, obstacleOnRotation[0].point - (Vector2)agentTransform.position);
-                Debug.Log($"cached angle: {newCachedAngle}, condition: {newCachedAngle <= _unstuckObstacleMinAngleThreshold}, threshold: {_unstuckObstacleMinAngleThreshold}");
+                //Debug.Log($"cached angle: {newCachedAngle}, condition: {newCachedAngle <= _unstuckObstacleMinAngleThreshold}, threshold: {_unstuckObstacleMinAngleThreshold}");
                 if (newCachedAngle <= _unstuckObstacleMinAngleThreshold) GetNewObstacleAngle(obstacleOnRotation[0], newCachedAngle);
                 return _currentDirection;
                 //}
@@ -276,7 +276,7 @@ public class NPCMover : CharacterMover
             }
             else
             {
-                Debug.Log($"No obstacles in new path. Rotating towards. {agentTransform.name}");
+                //Debug.Log($"No obstacles in new path. Rotating towards. {agentTransform.name}");
                 /*_lastObstacleTransform = null;
                 _lastObstaclePoint = null;
                 _cachedAngleReference = null;*/
@@ -309,7 +309,7 @@ public class NPCMover : CharacterMover
             // Calculate position to steer away from.
             centerPoint /= obstaclesInPath.Count;
             Vector3 directionToObstacle = centerPoint - (Vector2)agentTransform.position;
-            Debug.Log($"There are obstacles in the current path. Rotating away. {agentTransform.name}");
+            //Debug.Log($"There are obstacles in the current path. Rotating away. {agentTransform.name}");
             //RememberLastObstacle(obstaclesInPath[0].point);
             /*_lastObstacleTransform = null;
             _lastObstaclePoint = null;
