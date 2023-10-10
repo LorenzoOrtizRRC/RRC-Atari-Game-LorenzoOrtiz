@@ -29,7 +29,7 @@ public class StateMachine : MonoBehaviour
 
     private void OnEnable()
     {
-        _movementState.Initialize();
+        _movementState.Initialize(_agent.Speed, _agent.RotationSpeed);
     }
 
     public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
@@ -38,11 +38,11 @@ public class StateMachine : MonoBehaviour
         //_movementState.SetWaypoints(initialPath);
         if (initialPath)
         {
-            _movementState.Initialize(initialPath);
+            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed, initialPath);
         }
         else
         {
-            _movementState.Initialize();
+            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed);
         }
     }
 
@@ -92,8 +92,13 @@ public class StateMachine : MonoBehaviour
         Vector2 directionToMove = transform.forward;
         if (_enemyTarget)
         {
-            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (_isChasing && !_isImmovable) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+            //float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
+            if (_isChasing && !_isImmovable)
+            {
+                //_chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+                Vector2 directionToEnemy = _enemyTarget.transform.position - transform.position;
+                _movementState.MoveAgent(transform, _agent.Rb, _agent.Speed, directionToEnemy);
+            }
             _agent.RotateWeapon(_enemyTarget.transform.position);
         }
         else

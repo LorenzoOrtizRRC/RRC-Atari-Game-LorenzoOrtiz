@@ -55,8 +55,9 @@ public class NPCMover : CharacterMover
 
     //public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
 
-    public void Initialize()
+    public override void Initialize(float movementSpeed, float rotationSpeed)
     {
+        base.Initialize(movementSpeed, rotationSpeed);
         if (_initialPath && _initialPath.WaypointList.Any())
         {
             _currentPath = _initialPath.WaypointList;
@@ -66,8 +67,9 @@ public class NPCMover : CharacterMover
         }
     }
 
-    public void Initialize(WaypointPath newWaypointPath)
+    public void Initialize(float movementSpeed, float rotationSpeed, WaypointPath newWaypointPath)
     {
+        base.Initialize(movementSpeed, rotationSpeed);
         if (newWaypointPath && newWaypointPath.WaypointList.Any())
         {
             _currentPath = newWaypointPath.WaypointList;
