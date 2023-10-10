@@ -1795,9 +1795,29 @@ MonoBehaviour:
   _agent: {fileID: 2262332687710071751}
   _targetDetector: {fileID: 809570153662290573}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &1963750391371783475
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1871,7 +1891,7 @@ GameObject:
   - component: {fileID: 1913237421825680135}
   - component: {fileID: 3464092171052373084}
   - component: {fileID: 3444540984282306147}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2633,7 +2653,7 @@ GameObject:
   - component: {fileID: 3405325713863019873}
   - component: {fileID: 2125389480061541903}
   - component: {fileID: 1637701810404289197}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2968,9 +2988,29 @@ MonoBehaviour:
   _agent: {fileID: 3909104974749824204}
   _targetDetector: {fileID: 4674531302568989237}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &2647968496242485609
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4570,9 +4610,29 @@ MonoBehaviour:
   _agent: {fileID: 2957937116335588378}
   _targetDetector: {fileID: 3849618294963300529}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &4727678265375563750
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4814,9 +4874,29 @@ MonoBehaviour:
   _agent: {fileID: 879579199040677139}
   _targetDetector: {fileID: 2318894998988622608}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &2825897321479037284
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6571,7 +6651,7 @@ GameObject:
   - component: {fileID: 8978158573354147388}
   - component: {fileID: 6995761166332890698}
   - component: {fileID: 1045229362788781635}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6959,9 +7039,29 @@ MonoBehaviour:
   _agent: {fileID: 7719079415952756571}
   _targetDetector: {fileID: 6988178004414305512}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &6720617364974728639
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7946,7 +8046,7 @@ GameObject:
   - component: {fileID: 1198861844948776186}
   - component: {fileID: 171182279633669689}
   - component: {fileID: 5832684495565992549}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8291,7 +8391,7 @@ GameObject:
   - component: {fileID: 8749256631440844544}
   - component: {fileID: 2318894998988622608}
   - component: {fileID: 846619155634329330}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9216,7 +9316,7 @@ GameObject:
   - component: {fileID: 850951211845585081}
   - component: {fileID: 3849618294963300529}
   - component: {fileID: 958226734462721668}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9299,7 +9399,7 @@ GameObject:
   - component: {fileID: 9223105903442652418}
   - component: {fileID: 809570153662290573}
   - component: {fileID: 8276350931587668982}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10554,9 +10654,29 @@ MonoBehaviour:
   _agent: {fileID: 5749513337472201274}
   _targetDetector: {fileID: 171182279633669689}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &6651963280359597272
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10666,7 +10786,7 @@ GameObject:
   - component: {fileID: 6070901627720383873}
   - component: {fileID: 4674531302568989237}
   - component: {fileID: 2369577911254527526}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10892,9 +11012,29 @@ MonoBehaviour:
   _agent: {fileID: 8845621173836990725}
   _targetDetector: {fileID: 6995761166332890698}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &5000896630945720426
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12218,7 +12358,7 @@ GameObject:
   - component: {fileID: 4730447235072741055}
   - component: {fileID: 6988178004414305512}
   - component: {fileID: 5944399304627014634}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Target Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13334,9 +13474,29 @@ MonoBehaviour:
   _agent: {fileID: 8689093742615947952}
   _targetDetector: {fileID: 2125389480061541903}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &139082539941518558
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14608,9 +14768,29 @@ MonoBehaviour:
   _agent: {fileID: 3850451916599434691}
   _targetDetector: {fileID: 3464092171052373084}
   _movementState:
+    _movementSpeed: 1
+    _rotationSpeed: 180
+    _initialPath: {fileID: 0}
     _distanceThreshold: 0.5
     _laneAlignmentBias: 0.8
+    _steeringLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _targetDistanceThreshold: 0.5
+    _avoidanceCastLength: 1
+    _avoidanceRadius: 1
+    _avoidanceRadiusPadding: 0.1
+    _enableUnstuck: 1
+    _enableUnstuckPosition: 1
+    _unstuckTimerLength: 0.5
+    _unstuckPositionMinDistance: 0.2
+    _unstuckObstacleMinAngleThreshold: 80
+    _unstuckAngleRotationDifference: 90
   _isImmovable: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &6412453562276882489
 CircleCollider2D:
   m_ObjectHideFlags: 0

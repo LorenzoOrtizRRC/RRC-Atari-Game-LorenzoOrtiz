@@ -13,20 +13,37 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private CharacterAgent _agent;
     [SerializeField] private TargetDetector _targetDetector;
     [Header("State Machine Variables")]
-    [SerializeField] private WaypointMovement _movementState = new WaypointMovement();
+    [SerializeField] private NPCMover _movementState = new NPCMover();
     [SerializeField] private MovementState _chaseState = new ChaseState();
     [SerializeField] private bool _isImmovable = false;
+    [Header("Debug Gizmos")]
+    [SerializeField] private bool _enableGizmos = false;
+    [SerializeField] private bool _showObstacleAvoidance = false;
+    [SerializeField] private bool _showAggroRange = false;
+    [SerializeField] private bool _showDestinations = false;
 
     public CharacterAgent EnemyTarget => _enemyTarget;
 
     private CharacterAgent _enemyTarget;
     private bool _isChasing = false;
 
+    private void OnEnable()
+    {
+        _movementState.Initialize(_agent.Speed, _agent.RotationSpeed);
+    }
+
     public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
     {
         _agent.InitializeAgent(newTeam);
-        _movementState.SetWaypoints(initialPath);
-        _movementState.Initialize();
+        //_movementState.SetWaypoints(initialPath);
+        if (initialPath)
+        {
+            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed, initialPath);
+        }
+        else
+        {
+            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed);
+        }
     }
 
     private void Start()
@@ -75,15 +92,21 @@ public class StateMachine : MonoBehaviour
         Vector2 directionToMove = transform.forward;
         if (_enemyTarget)
         {
-            float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
-            if (_isChasing && !_isImmovable) _chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+            //float distanceFromEnemy = (_enemyTarget.transform.position - transform.position).magnitude;
+            if (_isChasing && !_isImmovable)
+            {
+                //_chaseState.MoveAgent(transform, _agent.Rb, _agent.Speed, _enemyTarget.transform.position);
+                Vector2 directionToEnemy = _enemyTarget.transform.position - transform.position;
+                _movementState.MoveAgent(transform, _agent.Rb, _agent.Speed, directionToEnemy);
+            }
             _agent.RotateWeapon(_enemyTarget.transform.position);
         }
         else
         {
             if (_isImmovable) return;
             directionToMove = MoveCharacter();
-            _agent.RotateWeapon(directionToMove);
+            //_agent.RotateWeapon(directionToMove);
+            _agent.RotateWeapon((Vector2)transform.position + _movementState.CurrentDirection);
         }
     }
 
@@ -91,7 +114,7 @@ public class StateMachine : MonoBehaviour
     {
         // This fixes the problem of NPCs going beyond the waypoint, but coming back after somehow getting dragged beyond it.
         Waypoint currentWaypoint;
-        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentWaypoint) _movementState.ForceIncrementWaypointIndex();
+        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentPath[_movementState.DestinationIndex]) _movementState.ForceIncrementDestinationIndex();
     }
 
     private Vector2 MoveCharacter()
@@ -127,8 +150,38 @@ public class StateMachine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Visualize Aggro range.
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
+        if (!_enableGizmos) return;
+        // Obstacle Avoidance
+        if (_showObstacleAvoidance)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, _movementState.CurrentDirection.normalized * 4f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere((Vector2)transform.position, _movementState.AvoidanceRadius);
+            Gizmos.DrawWireSphere((Vector2)transform.position + (_movementState.CurrentDirection.normalized * _movementState.AvoidanceCastLength), _movementState.AvoidanceRadius);
+        }
+
+        if (_showAggroRange)
+        {
+            // Visualize Aggro range.
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
+        }
+
+        if (_showDestinations)
+        {
+            // Visualize destinations.
+            Gizmos.color = Color.green;
+            if (_movementState.Destinations.Count > 1)
+            {
+                for (int i = _movementState.DestinationIndex; i < _movementState.Destinations.Count; i++)
+                {
+                    if (i >= _movementState.Destinations.Count) continue;
+                    // Draw a line between the previous point and the current point.
+                    Gizmos.DrawLine(_movementState.Destinations[i - 1], _movementState.Destinations[i]);
+                }
+            }
+            if (_movementState.Destinations.Count > 0) Gizmos.DrawLine(transform.position, _movementState.Destinations[_movementState.DestinationIndex]);
+        }
     }
 }
