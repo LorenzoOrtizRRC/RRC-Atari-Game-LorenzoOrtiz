@@ -669,11 +669,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 644481497351336116, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 644481497351336116, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3074798547259334734, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_Name
@@ -681,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074798547259334734, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _enableGizmos
@@ -697,19 +697,19 @@ PrefabInstance:
       objectReference: {fileID: 1689460699}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._enableUnstuck
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._movementSpeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._rotationSpeed
-      value: 90
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._avoidanceRadius
-      value: 0.46
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckTimerDelay
@@ -724,12 +724,28 @@ PrefabInstance:
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._enableUnstuckPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState.EnableDebugUnstuckAngles
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckAngleMaxRotation
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckObstacleMinAngle
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._unstuckAngleRotationDifference
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._unstuckObstacleMinAngleThreshold
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -773,11 +789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591327888675052294, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7591327888675052294, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23543,11 +23559,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 644481497351336116, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 644481497351336116, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3074798547259334734, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_Name
@@ -23555,11 +23571,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3074798547259334734, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _enableGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _showObstacleAvoidance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._initialPath
@@ -23567,11 +23591,11 @@ PrefabInstance:
       objectReference: {fileID: 1689460699}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._movementSpeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._rotationSpeed
-      value: 90
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._avoidanceRadius
@@ -23590,6 +23614,14 @@ PrefabInstance:
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._enableUnstuckPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState.EnableDebugUnstuckAngles
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: _movementState._unstuckAngleMaxRotation
       value: 90
       objectReference: {fileID: 0}
@@ -23597,9 +23629,17 @@ PrefabInstance:
       propertyPath: _movementState._unstuckObstacleMinAngle
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._unstuckAngleRotationDifference
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799407269319122713, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+      propertyPath: _movementState._unstuckObstacleMinAngleThreshold
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.607
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7212077658771784795, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23639,11 +23679,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591327888675052294, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7591327888675052294, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

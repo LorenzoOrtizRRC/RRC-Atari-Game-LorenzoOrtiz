@@ -24,8 +24,8 @@ public class NPCMover : CharacterMover
     [SerializeField] private bool _enableUnstuckPosition = true;
     [SerializeField] private float _unstuckTimerLength = 0.5f;       // When position is within _unstuckMinDistance of _lastPosition, timer will start. Unstucking starts when timer hits 0.
     [SerializeField] private float _unstuckPositionMinDistance = 0.2f;      // When distance from _lastPosition is greater than this, _lastPosition will be reset.
-    [SerializeField] private float _unstuckObstacleMinAngleThreshold = 80f;      // Mostly used for cases where agents get stuck together.
-    [SerializeField, Range(0f, 85f)] private float _unstuckAngleRotationDifference = 90f;      // Mostly used for cases where agents get stuck together. Unlike the check for lastObstacle, this is compared with current direction.
+    [SerializeField, Range(0, 180f)] private float _unstuckObstacleMinAngleThreshold = 80f;      // Mostly used for cases where agents get stuck together.
+    [SerializeField, Range(0f, 85f)] private float _unstuckAngleRotationDifference = 90f;      // MUST BE HIGHER THAN MIN ANGLE THRESHOLD. Mostly used for cases where agents get stuck together. Unlike the check for lastObstacle, this is compared with current direction.
 
     private List<Waypoint> _currentPath = new List<Waypoint>();     // This is used to generate the destination path. This is cached for reference after this path is finished.
     private List<Vector2> _destinations = new List<Vector2>();
@@ -40,7 +40,7 @@ public class NPCMover : CharacterMover
     private Transform _lastObstacleTransform;       // Used for comparisons.
     private Vector2? _lastObstaclePoint;
     //private float _unstuckAngleOppositeDirection = 1f;
-    private float? _cachedAngleReference;
+    //private float? _cachedAngleReference;
     //private Vector2 _lastObstacleRotationReference;     // Used to cache _lastObstacle when rotating away it, since _lastObstacle will be reset when this is active.
 
     public List<Waypoint> CurrentPath => _currentPath;
@@ -130,64 +130,22 @@ public class NPCMover : CharacterMover
             // If angle timer != 0
                 // Decrement timer if angle is within min ranges.
 
-            if (_lastObstaclePoint.HasValue)
+            if (_lastObstaclePoint.HasValue)// && _lastObstacleTransform.gameObject.activeInHierarchy)
             {
                 //float angleToLastObstacle = Vector2.Angle(_currentDirection, lastObstacle2.Value - (Vector2)agentTransform.position);
                 float angleToLastObstacle = Vector2.Angle(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position);
                 if (EnableDebugUnstuckAngles)
                 {
                     Debug.Log($"cached angle point: {_lastObstaclePoint.Value}");
-                    Debug.Log($"angle to last: {angleToLastObstacle}, cached angle: {_cachedAngleReference.Value}, condition: {angleToLastObstacle < _cachedAngleReference + _unstuckObstacleMinAngleThreshold && angleToLastObstacle > _cachedAngleReference - _unstuckObstacleMinAngleThreshold}");
-                    Debug.Log($"max range: {_cachedAngleReference + _unstuckAngleRotationDifference}, min range: {_cachedAngleReference - _unstuckAngleRotationDifference}, condition 1: {angleToLastObstacle > _cachedAngleReference + _unstuckAngleRotationDifference}, condition 2: {angleToLastObstacle < _cachedAngleReference - _unstuckAngleRotationDifference}");
                 }
                 if (_unstuckAngleTimer > 0f)
                 {
                     _unstuckAngleTimer -= Time.fixedDeltaTime;
                 }
-                else if (angleToLastObstacle > _unstuckAngleRotationDifference)
+                else if (angleToLastObstacle >= _unstuckAngleRotationDifference)
                 {
                     RemoveObstacleAngle();
                 }
-                /*
-                if (_unstuckAngleTimer > 0f)
-                {
-                    if (angleToLastObstacle < _cachedAngleReference.Value + _unstuckAngleRotationDifference)
-                    {
-                        _unstuckAngleTimer -= Time.fixedDeltaTime;
-                    }
-                    else
-                    {
-                        RemoveObstacleAngle();
-                    }
-                }
-                else if (angleToLastObstacle > _cachedAngleReference.Value + _unstuckObstacleMinAngleThreshold)
-                {
-                    RemoveObstacleAngle();
-                }
-                else _unstuckAngleTimer -= Time.fixedDeltaTime;*/
-
-
-                //else RemoveObstacleAngle();
-                // Check if within min and max angle range, else check if outside max unstuck angle ranges (which is checked when it starts unstucking).
-                    /*
-                    if (angleToLastObstacle < Mathf.Abs(_cachedAngleReference.Value) + _unstuckObstacleMinAngleThreshold
-                        && angleToLastObstacle > Mathf.Abs(_cachedAngleReference.Value) - _unstuckObstacleMinAngleThreshold)
-                    {
-                        _unstuckAngleTimer -= Time.fixedDeltaTime;
-                    }
-                    else
-                    {
-                        if (angleToLastObstacle > _cachedAngleReference + _unstuckAngleRotationDifference
-                          || angleToLastObstacle < _cachedAngleReference - _unstuckAngleRotationDifference)
-                        //if (Mathf.Abs(angleToLastObstacle) > Mathf.Abs(_cachedAngleReference.Value + (Mathf.Sign(_cachedAngleReference.Value) * _unstuckAngleRotationDifference)))
-                        {
-                            _unstuckAngleTimer = _unstuckTimerLength;
-                            _lastObstaclePoint = null;
-                            _cachedAngleReference = null;
-                            //if (lastObstacle2.HasValue) Debug.Log(Vector2.Angle(lastObstacle2.Value, agentTransform.position));
-                        }
-                        else _unstuckAngleTimer -= Time.fixedDeltaTime;
-                    }*/
             }
         }
         // Move stuff here.
@@ -310,10 +268,11 @@ public class NPCMover : CharacterMover
                 //_lastObstaclePoint = obstacleOnRotation[0].point;
                 //_cachedAngleReference = Vector2.Angle(_currentDirection, obstacleOnRotation[0].point - (Vector2)agentTransform.position);
                 float newCachedAngle = Vector2.Angle(_currentDirection, obstacleOnRotation[0].point - (Vector2)agentTransform.position);
-                if (newCachedAngle <= 90f) GetNewObstacleAngle(obstacleOnRotation[0], newCachedAngle);
+                Debug.Log($"cached angle: {newCachedAngle}, condition: {newCachedAngle <= _unstuckObstacleMinAngleThreshold}, threshold: {_unstuckObstacleMinAngleThreshold}");
+                if (newCachedAngle <= _unstuckObstacleMinAngleThreshold) GetNewObstacleAngle(obstacleOnRotation[0], newCachedAngle);
+                return _currentDirection;
                 //}
                 //if (!_cachedAngleReference.HasValue) _cachedAngleReference = Vector2.Angle(_currentDirection, obstacleOnRotation[0].point - (Vector2)agentTransform.position);
-                return _currentDirection;
             }
             else
             {
@@ -328,6 +287,20 @@ public class NPCMover : CharacterMover
         else
         {
             // There's an obstacle in the current direction, so rotate away from the obstacles' center point.
+            // Check with a cast if the direction to rotate to has any obstacles. If yes then continue forwards, otherwise rotate.
+            /*
+            Vector2 awayStepDirection = RotateDirectionUsingSpeed(_currentDirection, desiredDirection, true);
+            List<RaycastHit2D> obstacleOnAwayRotation = Physics2D.CircleCastAll(agentTransform.position, _avoidanceRadius + _avoidanceRadiusPadding, awayStepDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
+            // Remove self from raycast.
+            RaycastHit2D selfHitC = obstacleOnAwayRotation.Find(x => x.transform == agentTransform);
+            if (selfHitC) obstacleOnAwayRotation.Remove(selfHitC);
+            if (obstacleOnAwayRotation.Any())
+            {
+                Debug.Log("Obstacles in rotation away from current path. Continuing forwards.");
+                RemoveObstacleAngle();
+                return _currentDirection;
+            }*/
+
             Vector2 centerPoint = Vector2.zero;
             foreach (RaycastHit2D obstacle in obstaclesInPath)
             {
@@ -362,7 +335,7 @@ public class NPCMover : CharacterMover
         if (avoidDirection) targetAngle = Mathf.Sign(angleDifference) * 180f;
         // Mathf.MoveTowardsAngle made me cry. I'm never using it here ever. EVER.
         float stepAngle = Mathf.MoveTowards(angleDifference, targetAngle, _rotationSpeed * Time.fixedDeltaTime);
-        Debug.LogWarning($"ANGLEDIFF BEFORE AVOID: {angleDiffBefore}, ANGLEDIFF AFTER AVOID: {angleDifference}, STEPANGLE: {stepAngle}, ANGLELIMIT: {angleLimit}.");
+        //Debug.LogWarning($"ANGLEDIFF BEFORE AVOID: {angleDiffBefore}, ANGLEDIFF AFTER AVOID: {angleDifference}, STEPANGLE: {stepAngle}, ANGLELIMIT: {angleLimit}.");
         // Clamp values.
         //float minValue = angleLimit >= 0f ? angleDifference : angleLimit;
         //float maxValue = angleLimit < 0f ? angleDifference : angleLimit
@@ -383,11 +356,11 @@ public class NPCMover : CharacterMover
 
     private void GetNewObstacleAngle(RaycastHit2D obstaclePoint, float angleReference)
     {
-        if (!_lastObstacleTransform || _lastObstacleTransform != obstaclePoint)
+        if (!_lastObstacleTransform || _lastObstacleTransform != obstaclePoint.transform)
         {
             _lastObstacleTransform = obstaclePoint.transform;
             _lastObstaclePoint = obstaclePoint.point;
-            _cachedAngleReference = angleReference;
+            //_cachedAngleReference = angleReference;
             _unstuckAngleTimer = _unstuckTimerLength;
         }
     }
@@ -396,7 +369,7 @@ public class NPCMover : CharacterMover
     {
         _lastObstacleTransform = null;
         _lastObstaclePoint = null;
-        _cachedAngleReference = null;
+        //_cachedAngleReference = null;
         _unstuckAngleTimer = _unstuckTimerLength;
     }
     /*
