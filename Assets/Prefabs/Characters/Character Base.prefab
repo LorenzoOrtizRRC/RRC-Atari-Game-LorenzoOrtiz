@@ -165,11 +165,16 @@ MonoBehaviour:
     _avoidanceRadius: 1
     _avoidanceRadiusPadding: 0.1
     _enableUnstuck: 1
+    _enableUnstuckPosition: 0
     _unstuckTimerLength: 0.5
     _unstuckPositionMinDistance: 0.2
-    _unstuckObstacleMinAngle: 2
-    _unstuckAngleMaxRotation: 45
+    _unstuckObstacleMinAngleThreshold: 2
+    _unstuckAngleRotationDifference: 45
   _isImmovable: 0
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
+  _showDestinations: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:
   m_ObjectHideFlags: 0

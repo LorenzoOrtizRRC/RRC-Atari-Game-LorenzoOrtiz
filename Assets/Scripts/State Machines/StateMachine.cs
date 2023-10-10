@@ -16,6 +16,11 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private NPCMover _movementState = new NPCMover();
     [SerializeField] private MovementState _chaseState = new ChaseState();
     [SerializeField] private bool _isImmovable = false;
+    [Header("Debug Gizmos")]
+    [SerializeField] private bool _enableGizmos = false;
+    [SerializeField] private bool _showObstacleAvoidance = false;
+    [SerializeField] private bool _showAggroRange = false;
+    [SerializeField] private bool _showDestinations = false;
 
     public CharacterAgent EnemyTarget => _enemyTarget;
 
@@ -140,27 +145,38 @@ public class StateMachine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!_enableGizmos) return;
         // Obstacle Avoidance
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, _movementState.CurrentDirection.normalized * 4f);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere((Vector2)transform.position, _movementState.AvoidanceRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + (_movementState.CurrentDirection.normalized * _movementState.AvoidanceCastLength), _movementState.AvoidanceRadius);
-
-        // Visualize Aggro range.
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
-
-        // Visualize destinations.
-        Gizmos.color = Color.green;
-        if (_movementState.Destinations.Count > 1)
+        if (_showObstacleAvoidance)
         {
-            for (int i = 1; i < _movementState.Destinations.Count; i++)
-            {
-                // Draw a line between the previous point and the current point.
-                Gizmos.DrawLine(_movementState.Destinations[i - 1], _movementState.Destinations[i]);
-            }
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, _movementState.CurrentDirection.normalized * 4f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere((Vector2)transform.position, _movementState.AvoidanceRadius);
+            Gizmos.DrawWireSphere((Vector2)transform.position + (_movementState.CurrentDirection.normalized * _movementState.AvoidanceCastLength), _movementState.AvoidanceRadius);
         }
-        if (_movementState.Destinations.Count > 0) Gizmos.DrawLine(transform.position, _movementState.Destinations[0]);
+
+        if (_showAggroRange)
+        {
+            // Visualize Aggro range.
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, _agent.AggroRangeRadius);
+        }
+
+        if (_showDestinations)
+        {
+            // Visualize destinations.
+            Gizmos.color = Color.green;
+            if (_movementState.Destinations.Count > 1)
+            {
+                for (int i = _movementState.DestinationIndex; i < _movementState.Destinations.Count; i++)
+                {
+                    if (i >= _movementState.Destinations.Count) continue;
+                    // Draw a line between the previous point and the current point.
+                    Gizmos.DrawLine(_movementState.Destinations[i - 1], _movementState.Destinations[i]);
+                }
+            }
+            if (_movementState.Destinations.Count > 0) Gizmos.DrawLine(transform.position, _movementState.Destinations[_movementState.DestinationIndex]);
+        }
     }
 }
