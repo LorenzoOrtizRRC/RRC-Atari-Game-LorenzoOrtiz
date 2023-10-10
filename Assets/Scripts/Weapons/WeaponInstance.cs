@@ -45,9 +45,15 @@ public abstract class WeaponInstance : MonoBehaviour
     {
         Vector2 direction = targetPoint - (Vector2)transform.position;
         float angleDifference = Vector2.SignedAngle(transform.up, direction);
-        float rotationDirection = angleDifference > 0f ? 1f : -1f;
-        float absClampValue = Mathf.Abs(angleDifference);
-        transform.Rotate(new Vector3(0f, 0f, 1 * Mathf.Clamp(rotationDirection * _weaponData.RotationSpeed * Time.fixedDeltaTime, -absClampValue, absClampValue)));
+        //float rotationDirection = angleDifference > 0f ? 1f : -1f;
+        //float absClampValue = Mathf.Abs(angleDifference);
+        //transform.Rotate(new Vector3(0f, 0f, 1 * Mathf.Clamp(rotationDirection * _weaponData.RotationSpeed * Time.fixedDeltaTime, -absClampValue, absClampValue)));
+
+        float angleDirection = 0f;
+        //if (avoidDirection) angleDirection = Mathf.Sign(angleDifference) * 180f;
+        // Mathf.MoveTowardsAngle made me cry. I'm never using it here ever. EVER.
+        float stepAngle = Mathf.MoveTowards(angleDifference, angleDirection, _weaponData.RotationSpeed * Time.fixedDeltaTime);
+        transform.rotation *= Quaternion.AngleAxis(angleDifference - stepAngle, Vector3.forward);
     }
 
     private ProjectileInstance SpawnProjectile(Transform spawnPosition)
