@@ -33849,7 +33849,7 @@ MonoBehaviour:
   _missionDisplayManager: {fileID: 1874383100}
   _missions:
   - _missionTitle: Payback
-    _missionDescription: Destroy the enemy Mothership
+    _missionDescription: Destroy all 3 enemies.
     _isLoseCondition: 0
     _isInstantLoseCondition: 0
     _completionCondition: 0
