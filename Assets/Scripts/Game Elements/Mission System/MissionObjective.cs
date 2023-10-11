@@ -5,9 +5,10 @@ using UnityEngine;
 
 enum MissionCompletionCondition {ReachedMaxProgress, LessThanMaxProgress, CurrentProgressIsZero}
 
-[Serializable]
-public class MissionObjective
+public class MissionObjective : MonoBehaviour
 {
+    // The MissionObjective uses individual listeners to keep track of progress.
+    // This script is a MonoBehaviour because it's easier to keep track of and edit when attached to its own gameObject. Previously it was just a serialized script inside MissionManager.
     public Action<MissionObjective> OnMissionUpdated;
 
     [SerializeField] private string _missionTitle;
