@@ -169,7 +169,7 @@ MonoBehaviour:
     _unstuckTimerLength: 0.5
     _unstuckPositionMinDistance: 0.2
     _unstuckObstacleMinAngleThreshold: 130
-    _unstuckAngleRotationDifference: 180
+    _unstuckAngleRotationDifference: 85
   _isImmovable: 0
   _enableGizmos: 0
   _showObstacleAvoidance: 0
@@ -709,6 +709,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 566336930346802990, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 986055035871144300, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -718,9 +722,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2107503149584124902, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107503149584124902, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 4804167293527668957}
+    - target: {fileID: 2107503149584124902, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107503149584124902, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107503149584124902, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107503149584124902, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_Name
       value: Health Bar
@@ -731,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: _decayStartDelay
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7784281929210888926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -740,6 +764,10 @@ PrefabInstance:
     - target: {fileID: 7784281929210888926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846958302415195440, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Maskable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
