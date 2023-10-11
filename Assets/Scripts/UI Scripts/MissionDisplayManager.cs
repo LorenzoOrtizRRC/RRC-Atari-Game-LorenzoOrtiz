@@ -22,7 +22,7 @@ public class MissionDisplayManager : MonoBehaviour
         }
     }
 
-    private void UpdateMissionDisplay(MissionObjective objective, int missionIndex)
+    public void UpdateMissionDisplay(MissionObjective objective, int missionIndex)
     {
         // If objective's mission isn't singular (e.g. defeat 5 enemies), add text to match this.
         string newDescription = objective.MissionDescription;

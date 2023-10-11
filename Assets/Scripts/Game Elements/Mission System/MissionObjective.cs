@@ -8,10 +8,11 @@ enum MissionCompletionCondition {ReachedMaxProgress, LessThanMaxProgress, Curren
 [Serializable]
 public class MissionObjective
 {
-    public Action<MissionObjective> OnMissionObjectiveUpdated;
+    public Action<MissionObjective> OnMissionUpdated;
 
     [SerializeField] private string _missionTitle;
     [SerializeField] private string _missionDescription;
+    [SerializeField] private bool _isLoseCondition;
     [SerializeField] private bool _isInstantLoseCondition = false;     // If this mission is failed, immediately lose the game. No win-equivalent.
     [SerializeField] private MissionCompletionCondition _completionCondition = MissionCompletionCondition.ReachedMaxProgress;
     [SerializeField] private List<MissionListener> _missionListeners = new List<MissionListener>();
@@ -34,8 +35,29 @@ public class MissionObjective
         }
     }
 
+    // Returns 1 if complete, 0 if incomplete, -1 if failed, and -100 if instant lose.
+    public int GetCompletionStatus()
+    {
+        int completionStatus = 0;
+        if (_completionCondition == MissionCompletionCondition.ReachedMaxProgress)
+        {
+            if (CurrentProgress / MaxProgress >= 1) completionStatus++;
+        }
+        else if (_completionCondition == MissionCompletionCondition.LessThanMaxProgress)
+        {
+            if (CurrentProgress < MaxProgress) completionStatus++;
+        }
+        else if (_completionCondition == MissionCompletionCondition.CurrentProgressIsZero)
+        {
+            if (CurrentProgress == 0) completionStatus++;
+        }
+        if (completionStatus > 1) completionStatus = -100;
+        else if (_isLoseCondition) completionStatus = -completionStatus;
+        return completionStatus;
+    }
+
     // Returns true if this mission objective is complete.
-    public bool GetCompletionStatus()
+    /*public bool GetCompletionStatus()
     {
         if (_completionCondition == MissionCompletionCondition.ReachedMaxProgress)
         {
@@ -49,17 +71,17 @@ public class MissionObjective
         {
             return CurrentProgress == 0;
         }
-    }
+    }*/
 
     private void TrackMissionSuccess()
     {
         _currentProgress++;
-        OnMissionObjectiveUpdated?.Invoke(this);
+        OnMissionUpdated?.Invoke(this);
     }
 
     private void TrackMissionFailure()
     {
         _currentProgress--;
-        OnMissionObjectiveUpdated?.Invoke(this);
+        OnMissionUpdated?.Invoke(this);
     }
 }

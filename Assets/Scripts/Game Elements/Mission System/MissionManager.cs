@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MissionManager : MonoBehaviour
 {
+    public UnityEvent OnMissionsCompleted;
+    public UnityEvent OnMissionsFailed;
+
+    [SerializeField] private MissionDisplayManager _missionDisplayManager;
     [SerializeField] private List<MissionObjective> _missions = new List<MissionObjective>();
 
     // Initialize mission objectives.
@@ -18,18 +23,28 @@ public class MissionManager : MonoBehaviour
         foreach (MissionObjective missionObjective in _missions)
         {
             missionObjective.Initialize();
-            missionObjective.OnMissionObjectiveUpdated += EvaluateMissions;
-            missionObjective.OnMissionObjectiveUpdated += UpdateMissionDisplay;
+            missionObjective.OnMissionUpdated += EvaluateMissions;
+            missionObjective.OnMissionUpdated += UpdateMissionDisplay;
         }
+
+        _missionDisplayManager.Initialize(_missions);
     }
 
-    private void EvaluateMissions(MissionObjective missionObjective)
+    private void EvaluateMissions(MissionObjective mission)
     {
-        //
+        // If equals to negative of total mission count or less, player lost. If equals to total mission count, player wins.
+        int objectiveCompletion = 0;
+        foreach (MissionObjective objective in _missions)
+        {
+            objectiveCompletion += objective.GetCompletionStatus();
+        }
+        if (objectiveCompletion == _missions.Count) OnMissionsCompleted?.Invoke();
+        else if (objectiveCompletion <= -_missions.Count) OnMissionsFailed?.Invoke();
     }
 
-    private void UpdateMissionDisplay(MissionObjective missionObjective)
+    private void UpdateMissionDisplay(MissionObjective mission)
     {
-        int index = _missions.IndexOf(missionObjective);
+        int missionIndex = _missions.IndexOf(mission);
+        _missionDisplayManager.UpdateMissionDisplay(mission, missionIndex);
     }
 }
