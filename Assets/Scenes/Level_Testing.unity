@@ -30027,12 +30027,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You Must Do The Objective (0/10)
+  m_text: 'Do Up To Three Objectives Per Mission (0/10)
 
-    Eliminate the Enemy Mothership (0/20)
+    Eliminate the Enemy
+    Mothership (0/20)
 
-    Capture
-    the Opposing Enemy Fortresses (0/5)'
+    Capture the Opposing Enemy Fortresses (0/5)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b57a1ca487a29984d91aa1e87362b68c, type: 2}
   m_sharedMaterial: {fileID: 8571665156841905835, guid: b57a1ca487a29984d91aa1e87362b68c, type: 2}

@@ -19,6 +19,8 @@ public class MissionObjective
     private int _currentProgress = 0;       // Initially zero.
     private int _maxProgress = 0;       // When _currentProgress = _maxProgress, this mission is finished.
 
+    public string MissionTitle => _missionTitle;
+    public string MissionDescription => _missionDescription;
     public bool IsInstantLoseCondition => _isInstantLoseCondition;
     public int CurrentProgress => _currentProgress;
     public int MaxProgress => _maxProgress;
