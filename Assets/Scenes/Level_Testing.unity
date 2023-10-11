@@ -5362,7 +5362,7 @@ GameObject:
   - component: {fileID: 387125473}
   - component: {fileID: 387125472}
   m_Layer: 5
-  m_Name: Panel (2)
+  m_Name: Mission Display (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5387,7 +5387,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 62.7855}
+  m_SizeDelta: {x: 0, y: 48.5384}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &387125472
 MonoBehaviour:
@@ -17241,7 +17241,7 @@ GameObject:
   - component: {fileID: 1034071345}
   - component: {fileID: 1034071344}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Mission Objective Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17261,10 +17261,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 387125471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 26.352478}
-  m_SizeDelta: {x: 904, y: -26.352}
+  m_AnchorMin: {x: 0, y: 0.75}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.000011444092}
+  m_SizeDelta: {x: 0, y: -0.000011444}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1034071344
 MonoBehaviour:
@@ -17313,12 +17313,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 1
-  m_fontSizeMax: 20
+  m_fontSizeMin: 5
+  m_fontSizeMax: 7
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 4096
@@ -29982,7 +29982,7 @@ GameObject:
   - component: {fileID: 1858513454}
   - component: {fileID: 1858513453}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Mission Objective Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30003,9 +30003,9 @@ RectTransform:
   m_Father: {fileID: 387125471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -0.00000045755}
-  m_SizeDelta: {x: 853.13, y: -36.433}
+  m_AnchorMax: {x: 1, y: 0.7}
+  m_AnchoredPosition: {x: 20, y: -0.000014067}
+  m_SizeDelta: {x: -51.07, y: 0.000034332}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1858513453
 MonoBehaviour:
@@ -30027,7 +30027,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Must Do The Objective (0/10)
+  m_text: 'You Must Do The Objective (0/10)
+
+    Eliminate the Enemy Mothership (0/20)
+
+    Capture
+    the Opposing Enemy Fortresses (0/5)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b57a1ca487a29984d91aa1e87362b68c, type: 2}
   m_sharedMaterial: {fileID: 8571665156841905835, guid: b57a1ca487a29984d91aa1e87362b68c, type: 2}
@@ -30054,21 +30059,21 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
+  m_fontSize: 6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 1
-  m_fontSizeMax: 15
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 50
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -30318,7 +30323,7 @@ GameObject:
   - component: {fileID: 1874383098}
   - component: {fileID: 1874383097}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: Mission Display Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30382,7 +30387,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874383095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
