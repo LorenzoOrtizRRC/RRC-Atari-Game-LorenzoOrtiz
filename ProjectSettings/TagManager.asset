@@ -50,3 +50,6 @@ TagManager:
   - name: World Space UI
     uniqueID: 4006965895
     locked: 0
+  - name: Character Particle Overlay
+    uniqueID: 2063289711
+    locked: 0
