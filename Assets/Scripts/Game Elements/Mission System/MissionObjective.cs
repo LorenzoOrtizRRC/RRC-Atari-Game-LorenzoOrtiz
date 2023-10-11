@@ -33,6 +33,7 @@ public class MissionObjective
             missionListener.OnMissionSuccess += TrackMissionSuccess;
             missionListener.OnMissionFailure += TrackMissionFailure;
         }
+        _maxProgress = _missionListeners.Count;
     }
 
     // Returns 1 if complete, 0 if incomplete, -1 if failed, and -100 if instant lose.
