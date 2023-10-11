@@ -30713,6 +30713,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missionDisplayUIPrefab: {fileID: 6042875085408156227, guid: 882e3a00b057e674d820627271861a0c, type: 3}
   _missionDisplayWindowParent: {fileID: 1874383095}
+  _slowlyGenerateTextAtStart: 1
+  _delayPerCharacter: 0.1
 --- !u!1 &1879838602
 GameObject:
   m_ObjectHideFlags: 0
