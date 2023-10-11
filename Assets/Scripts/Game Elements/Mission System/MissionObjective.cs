@@ -12,12 +12,14 @@ public class MissionObjective
 
     [SerializeField] private string _missionTitle;
     [SerializeField] private string _missionDescription;
+    [SerializeField] private bool _isInstantLoseCondition = false;     // If this mission is failed, immediately lose the game. No win-equivalent.
     [SerializeField] private MissionCompletionCondition _completionCondition = MissionCompletionCondition.ReachedMaxProgress;
     [SerializeField] private List<MissionListener> _missionListeners = new List<MissionListener>();
 
     private int _currentProgress = 0;       // Initially zero.
     private int _maxProgress = 0;       // When _currentProgress = _maxProgress, this mission is finished.
 
+    public bool IsInstantLoseCondition => _isInstantLoseCondition;
     public int CurrentProgress => _currentProgress;
     public int MaxProgress => _maxProgress;
 
