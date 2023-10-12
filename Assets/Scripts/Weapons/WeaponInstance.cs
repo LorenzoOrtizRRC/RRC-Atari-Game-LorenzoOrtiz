@@ -6,6 +6,10 @@ public abstract class WeaponInstance : MonoBehaviour
 {
     [SerializeField] protected WeaponData _weaponData;
     [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();  // positions used to position spawned projectiles
+    [Header("Effects")]
+    [SerializeField] private bool _enableEffects = true;
+    [SerializeField] private ParticleSystem _firingEffect;
+    [SerializeField] private bool _addTeamColorsToEffects = true;
     [SerializeField, Header("Debugging")] private bool _visualizeWeaponSpread = true; 
 
     public float MinimumRange => _weaponData.MinimumWeaponRange;
@@ -38,6 +42,11 @@ public abstract class WeaponInstance : MonoBehaviour
         {
             ProjectileInstance spawnedProjectile = SpawnProjectile(spawnPoint);
             InitializeProjectile(spawnedProjectile);
+            if (_enableEffects && _firingEffect)
+            {
+                ParticleSystem.MainModule effectMainModule = Instantiate(_firingEffect, spawnPoint.position, spawnPoint.rotation).main;
+                if (_addTeamColorsToEffects) effectMainModule.startColor = _currentTeam.TeamColor;
+            }
         }
     }
 

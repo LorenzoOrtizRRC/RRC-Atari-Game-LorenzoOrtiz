@@ -49,6 +49,9 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: 8818a0fab894fac4a8fe21b60f24b973, type: 2}
   _projectileSpawnPoints:
   - {fileID: 2680645913525236172}
+  _enableEffects: 1
+  _firingEffect: {fileID: 6166364348524231643, guid: f321645043e03ee40bc7eba25e85c8ed, type: 3}
+  _addTeamColorsToEffects: 1
   _visualizeWeaponSpread: 1
 --- !u!1 &804674929867470295
 GameObject:
