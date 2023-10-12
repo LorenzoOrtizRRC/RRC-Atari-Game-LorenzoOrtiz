@@ -30,6 +30,8 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private bool _lifeIsDependent = false;
     [SerializeField] private bool _replaceDependencyTeams = true;
     [SerializeField] private List<CharacterAgent> _dependencyParentAgents = new List<CharacterAgent>();
+    [SerializeField] private bool _addTeamColorsToEffects = true;
+    [SerializeField] private ParticleSystem _deathEffect;
 
     //[SerializeField] private bool _cannotMove = false;
     /*
@@ -173,6 +175,12 @@ public class CharacterAgent : MonoBehaviour
 
     private void KillCharacter()
     {
+        if (_deathEffect)
+        {
+            ParticleSystem.MainModule deathParticles = Instantiate(_deathEffect, transform.position, Quaternion.identity).main;
+            if (_addTeamColorsToEffects) deathParticles.startColor = _currentTeam.TeamColor;
+        }
+
         if (_disableOnDeath) gameObject.SetActive(false);
         else Destroy(gameObject);
         OnAgentDeath?.Invoke();

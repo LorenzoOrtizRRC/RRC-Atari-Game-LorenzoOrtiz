@@ -127,6 +127,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 4627145065216826720, guid: 9ff4c304c48b5744cb3c425a47446499, type: 3}
 --- !u!114 &1714874358317361568
 MonoBehaviour:
   m_ObjectHideFlags: 0
