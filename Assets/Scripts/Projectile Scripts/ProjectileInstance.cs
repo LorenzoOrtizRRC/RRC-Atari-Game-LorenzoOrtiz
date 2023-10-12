@@ -6,6 +6,13 @@ public class ProjectileInstance : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
+    [Header("Effects")]
+    private bool _enableHitEffect = true;
+    [SerializeField] private ParticleSystem _hitEffect;
+    [SerializeField] private bool _addTeamColorToEffects = true;
+    [SerializeField] private bool _effectRotatesToHitDirection = true;
+    [SerializeField, Range(0f, 1f)] private float _rotationToHitMultiplier = 0.2f;
+    [SerializeField] private bool _effectInheritsProjectileDirection = false;
     private float _damage = 1f;
     private float _speed = 1f;
     private float _lifetime = 1f;
@@ -51,7 +58,38 @@ public class ProjectileInstance : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out CharacterAgent collidingAgent))
         {
-            if (collidingAgent.CurrentTeam != _currentTeam) DestroyProjectile();
+            if (collidingAgent.CurrentTeam != _currentTeam)
+            {
+                SpawnHitEffect(collision.GetContact(0).point);
+                //SpawnHitEffect(collision.transform.position);
+                DestroyProjectile();
+            }
+        }
+    }
+
+    private void SpawnHitEffect(Vector2 contactPoint)
+    {
+        if (!_enableHitEffect || !_hitEffect) return;
+        Quaternion effectRotation = Quaternion.identity;
+        if (_effectRotatesToHitDirection)
+        {
+            Vector2 direction = contactPoint - (Vector2)transform.position;
+            effectRotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+            //float angle = Vector2.SignedAngle((Vector2)transform.position, direction);
+            //effectRotation = Quaternion.AngleAxis(angle * _rotationToHitMultiplier, Vector3.forward);
+
+            //effectRotation = Quaternion.LookRotation(direction, Vector3.forward);
+        }
+        else if (_effectInheritsProjectileDirection)
+        {
+            effectRotation = transform.rotation;
+        }
+        ParticleSystem effect = Instantiate(_hitEffect, contactPoint, effectRotation);
+        if (_addTeamColorToEffects)
+        {
+            ParticleSystem.MainModule effectMainModule = effect.main;
+            effectMainModule.startColor = _currentTeam.TeamColor;
         }
     }
 
