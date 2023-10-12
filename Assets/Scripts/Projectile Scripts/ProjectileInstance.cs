@@ -60,21 +60,22 @@ public class ProjectileInstance : MonoBehaviour
         {
             if (collidingAgent.CurrentTeam != _currentTeam)
             {
-                SpawnHitEffect(collision.GetContact(0).point);
+                //SpawnHitEffect(collision.GetContact(0).point);
                 //SpawnHitEffect(collision.transform.position);
+                SpawnHitEffect(collision);
                 DestroyProjectile();
             }
         }
     }
 
-    private void SpawnHitEffect(Vector2 contactPoint)
+    private void SpawnHitEffect(Collision2D collision)
     {
         if (!_enableHitEffect || !_hitEffect) return;
         Quaternion effectRotation = Quaternion.identity;
         if (_effectRotatesToHitDirection)
         {
-            Vector2 direction = contactPoint - (Vector2)transform.position;
-            effectRotation = Quaternion.LookRotation(Vector3.forward, direction);
+            Vector2 targetDirection = (Vector2)collision.transform.position - (Vector2)transform.position;
+            effectRotation = Quaternion.LookRotation(Vector3.forward, targetDirection);
 
             //float angle = Vector2.SignedAngle((Vector2)transform.position, direction);
             //effectRotation = Quaternion.AngleAxis(angle * _rotationToHitMultiplier, Vector3.forward);
@@ -85,7 +86,7 @@ public class ProjectileInstance : MonoBehaviour
         {
             effectRotation = transform.rotation;
         }
-        ParticleSystem effect = Instantiate(_hitEffect, contactPoint, effectRotation);
+        ParticleSystem effect = Instantiate(_hitEffect, collision.GetContact(0).point, effectRotation);
         if (_addTeamColorToEffects)
         {
             ParticleSystem.MainModule effectMainModule = effect.main;
