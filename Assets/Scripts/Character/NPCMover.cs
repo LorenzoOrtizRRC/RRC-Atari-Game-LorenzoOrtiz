@@ -79,9 +79,11 @@ public class NPCMover : CharacterMover
         }
     }
 
-    // Returns destination point. By default returns the transform local forward (for weapon rotation purposes).
+    // Returns destination point. By default returns the current direction (for weapon rotation purposes).
+    // Returns 
     public override Vector2 MoveAgent(Transform agentTransform, Rigidbody2D agentRigidbody, float speed, Vector2? customDirection = null)
     {
+        if (!_destinations.Any() || _destinationIndex >= _destinations.Count - 1) return _currentDirection;
         // Get target direction.
         // Apply obstacle avoidance to the target direction.
         // Apply steering to agent.
