@@ -6,6 +6,8 @@ public abstract class WeaponInstance : MonoBehaviour
 {
     [SerializeField] protected WeaponData _weaponData;
     [SerializeField] protected List<Transform> _projectileSpawnPoints = new List<Transform>();  // positions used to position spawned projectiles
+    [Header("Weapon Settings")]
+    [SerializeField] private bool _disableRotation = false;
     [Header("Effects")]
     [SerializeField] private bool _enableEffects = true;
     [SerializeField] private ParticleSystem _firingEffect;
@@ -52,6 +54,7 @@ public abstract class WeaponInstance : MonoBehaviour
 
     public void RotateWeapon(Vector2 targetPoint)
     {
+        if (_disableRotation) return;
         Vector2 direction = targetPoint - (Vector2)transform.position;
         float angleDifference = Vector2.SignedAngle(transform.up, direction);
         //float rotationDirection = angleDifference > 0f ? 1f : -1f;
