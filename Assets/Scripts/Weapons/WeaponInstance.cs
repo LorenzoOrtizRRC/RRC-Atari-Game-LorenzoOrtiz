@@ -12,13 +12,16 @@ public abstract class WeaponInstance : MonoBehaviour
     [SerializeField] private bool _enableEffects = true;
     [SerializeField] private ParticleSystem _firingEffect;
     [SerializeField] private bool _addTeamColorsToEffects = true;
-    [SerializeField, Header("Debugging")] private bool _visualizeWeaponSpread = true; 
+    [Header("Debugging")]
+    [SerializeField] private bool _enableGizmos = false;
+    [SerializeField] private bool _visualizeWeaponSpread = false; 
 
     public float MinimumRange => _weaponData.MinimumWeaponRange;
     public float MaximumRange => _weaponData.MaximumWeaponRange;
 
     private TeamData _currentTeam;
-    private float _cooldownTime = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
+    private float _firingTimer = 0f;    // from (1 / rate of fire) to 0. When <= 0, weapon is ready to fire.
+    private float _delayAfterFiringTimer = 0f;
 
     public void InitializeWeapon(TeamData currentTeam) => _currentTeam = currentTeam;
 
@@ -30,10 +33,14 @@ public abstract class WeaponInstance : MonoBehaviour
         //  rotate weapon towards target
         float angleDifference = Vector2.Angle(transform.up, direction);
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
-        if (angleDifference <= 1f && Time.time >= _cooldownTime)
+        if (Time.time > _delayAfterFiringTimer)
         {
-            FireWeapon();
-            _cooldownTime = Time.time + _weaponData.RateOfFire;
+            if (angleDifference <= _weaponData.MaxAngleToShoot && Time.time >= _firingTimer)
+            {
+                FireWeapon();
+                _firingTimer = Time.time + _weaponData.RateOfFire;
+                _delayAfterFiringTimer = Time.time + _weaponData.DelayAfterFiring;
+            }
         }
     }
 
@@ -84,6 +91,7 @@ public abstract class WeaponInstance : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!_enableGizmos) return;
         // visualize weapon spread
         if (_visualizeWeaponSpread && _weaponData.WeaponAngleSpread != 0f)
         {
