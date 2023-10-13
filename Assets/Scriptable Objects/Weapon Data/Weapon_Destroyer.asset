@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
-  m_Name: Weapon_Sniper
+  m_Name: Weapon_Destroyer
   m_EditorClassIdentifier: 
-  _projectileObject: {fileID: 1444248428017069882, guid: f04591f7415a5634dae7088e4afcf164, type: 3}
-  _damage: 13
-  _rateOfFire: 3
+  _projectileObject: {fileID: 8622972427338649916, guid: f4a80e80a73c6e94d8be79029066b4db, type: 3}
+  _damage: 20
+  _rateOfFire: 5
   _delayAfterFiring: 0
-  _rotationSpeed: 225
-  _maxAngleToShoot: 1
+  _rotationSpeed: 135
+  _maxAngleToShoot: 5
   _minimumWeaponRange: 0
-  _maximumWeaponRange: 15
+  _maximumWeaponRange: 7.5
   _weaponAngleSpread: 0
-  _projectileSpeed: 12
-  _projectileLifetime: 1.5
+  _projectileSpeed: 4
+  _projectileLifetime: 3
