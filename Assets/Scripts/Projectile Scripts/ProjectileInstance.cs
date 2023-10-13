@@ -7,7 +7,7 @@ public class ProjectileInstance : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
     [Header("Effects")]
-    private bool _enableHitEffect = true;
+    [SerializeField] private bool _enableHitEffect = true;
     [SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private bool _addTeamColorToEffects = true;
     [SerializeField] private bool _effectRotatesToHitDirection = true;

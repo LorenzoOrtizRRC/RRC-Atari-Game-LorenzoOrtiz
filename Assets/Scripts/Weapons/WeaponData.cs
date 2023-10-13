@@ -9,6 +9,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] private float _damage;
     [SerializeField] private float _rateOfFire;     // Projectiles per second. Used to calculate weapon cooldown between bullets. Formula for rate of fire: 1 second / bullets per second.
     [SerializeField] private float _rotationSpeed = 180f;
+    [SerializeField, Range(0f, 180f)] private float _maxAngleToShoot = 1f;      // Weapon will fire projectiles only when the angle from its target direction is below this number.
     [SerializeField] private float _minimumWeaponRange = 0f;
     [SerializeField] private float _maximumWeaponRange = 5f;
     [SerializeField] private float _weaponAngleSpread = 0f; // spread for projectiles in degrees

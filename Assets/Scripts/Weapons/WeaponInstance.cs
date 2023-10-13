@@ -26,9 +26,9 @@ public abstract class WeaponInstance : MonoBehaviour
         // targetPoint can be the direction the agent is moving, or the enemy's position relative to weapon
         Vector2 direction = targetPoint - (Vector2)transform.position;
         //  rotate weapon towards target
-        float angleDifference = Vector2.SignedAngle(transform.up, direction);
+        float angleDifference = Vector2.Angle(transform.up, direction);
         //  fire weapon if: rotation is correct, is off cooldown, and is within minimum and maximum range
-        if (Mathf.Abs(angleDifference) <= 1f && Time.time >= _cooldownTime)
+        if (angleDifference <= 1f && Time.time >= _cooldownTime)
         {
             FireWeapon();
             _cooldownTime = Time.time + _weaponData.RateOfFire;
