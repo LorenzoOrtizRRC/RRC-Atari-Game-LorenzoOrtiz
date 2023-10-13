@@ -22,6 +22,7 @@ public class CharacterAgent : MonoBehaviour
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
+    [SerializeField] private bool _disableWeapon = false;
     [SerializeField] private bool _isInvulnerable = false;        // Cannot be damaged. Projectiles may still collide with this agent, but it will take no damage.
     [SerializeField] private bool _isUntargetable = false;      // Cannot be targeted. Only affects AI.
     [SerializeField] private bool _disableOnDeath = false;      // Disables itself instead of destroying on death.
@@ -126,12 +127,12 @@ public class CharacterAgent : MonoBehaviour
 
     public void UseWeapon(Vector2 direction)
     {
-        _weapon.UseWeaponAuto(direction);
+        if (_disableWeapon || !_weapon) _weapon.UseWeaponAuto(direction);
     }
 
     public void RotateWeapon(Vector3 direction)
     {
-        _weapon.RotateWeapon(direction);
+        if (_disableWeapon || !_weapon) _weapon.RotateWeapon(direction);
     }
 
     public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
