@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5942614614161251444}
   - component: {fileID: 234923209847125714}
   m_Layer: 0
-  m_Name: Body Art (2)
+  m_Name: Art Team Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 41b50667b9e79fd4aa6e21d48282957e, type: 3}
-  m_Color: {r: 0.09411766, g: 0.09019608, b: 0.09411766, a: 1}
+  m_Color: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -495,6 +495,10 @@ PrefabInstance:
       propertyPath: _isImmovable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1714874358317361568, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 234923209847125714}
     - target: {fileID: 1808969846888306160, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _enemyDetectionRadius
       value: 14.5
