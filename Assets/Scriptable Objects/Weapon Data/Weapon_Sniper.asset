@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
-  m_Name: Weapon_PlayerMachineGun
+  m_Name: Weapon_Sniper
   m_EditorClassIdentifier: 
-  _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
-  _damage: 5
-  _rateOfFire: 0.2
+  _projectileObject: {fileID: 1444248428017069882, guid: f04591f7415a5634dae7088e4afcf164, type: 3}
+  _damage: 12
+  _rateOfFire: 3
   _delayAfterFiring: 0
-  _rotationSpeed: 720
-  _maxAngleToShoot: 180
+  _rotationSpeed: 225
+  _maxAngleToShoot: 1
   _minimumWeaponRange: 0
-  _maximumWeaponRange: 10
-  _weaponAngleSpread: 15
-  _projectileSpeed: 10
-  _projectileLifetime: 1.75
+  _maximumWeaponRange: 15
+  _weaponAngleSpread: 0
+  _projectileSpeed: 12
+  _projectileLifetime: 1.5

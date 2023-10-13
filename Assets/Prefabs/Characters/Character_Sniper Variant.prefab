@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 394877704361097563, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: da9c0f7b529068c448851c6936cbe67a, type: 2}
     - target: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Name
       value: Character_Sniper Variant
@@ -111,6 +115,14 @@ PrefabInstance:
     - target: {fileID: 1529838080698321536, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _movementState._avoidanceRadius
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808969846888306160, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _enemyDetectionRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680645913525236172, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.204
       objectReference: {fileID: 0}
     - target: {fileID: 2986044783280923949, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_AnchorMax.x
@@ -176,6 +188,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5845705992924132293, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ec485eed6ab88448bc002af69eac45a, type: 2}
     - target: {fileID: 8623483805770791091, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_SortingOrder
       value: 2

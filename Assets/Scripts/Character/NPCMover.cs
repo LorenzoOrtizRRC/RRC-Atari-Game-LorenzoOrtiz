@@ -83,7 +83,7 @@ public class NPCMover : CharacterMover
     // Returns 
     public override Vector2 MoveAgent(Transform agentTransform, Rigidbody2D agentRigidbody, float speed, Vector2? customDirection = null)
     {
-        if (!_destinations.Any() || _destinationIndex >= _destinations.Count - 1) return _currentDirection;
+        if (!_destinations.Any() || _destinationIndex >= _destinations.Count) return _currentDirection;
         // Get target direction.
         // Apply obstacle avoidance to the target direction.
         // Apply steering to agent.
