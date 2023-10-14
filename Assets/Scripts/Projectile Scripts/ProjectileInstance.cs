@@ -44,7 +44,11 @@ public class ProjectileInstance : MonoBehaviour
 
     private void Update()
     {
-        if (_elapsedLifetime >= _lifetime) DestroyProjectile();
+        if (_elapsedLifetime >= _lifetime)
+        {
+            SpawnHitEffect();
+            DestroyProjectile();
+        }
         _elapsedLifetime += Time.deltaTime;
     }
 
@@ -87,6 +91,23 @@ public class ProjectileInstance : MonoBehaviour
             effectRotation = transform.rotation;
         }
         ParticleSystem effect = Instantiate(_hitEffect, collision.GetContact(0).point, effectRotation);
+        if (_addTeamColorToEffects)
+        {
+            ParticleSystem.MainModule effectMainModule = effect.main;
+            effectMainModule.startColor = _currentTeam.TeamColor;
+        }
+    }
+
+    private void SpawnHitEffect()
+    {
+        if (!_enableHitEffect || !_hitEffect) return;
+        Quaternion effectRotation = Quaternion.identity;
+        /*if (_effectInheritsProjectileDirection)
+        {
+            effectRotation = transform.rotation;
+        }*/
+        effectRotation = transform.rotation;
+        ParticleSystem effect = Instantiate(_hitEffect, transform.position, effectRotation);
         if (_addTeamColorToEffects)
         {
             ParticleSystem.MainModule effectMainModule = effect.main;
