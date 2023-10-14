@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Linq;
 
 public class CharacterAgent : MonoBehaviour
 {
     public UnityEvent<float> OnDamageTaken;     // float is mitigated damage taken
     public UnityEvent<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
     public UnityEvent OnAgentDeath;
-    public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
+    //public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     // This class is in charge of managing the instance of the unit in the level, including tracking its live stats.
     [Header("Component References")]
@@ -59,7 +60,8 @@ public class CharacterAgent : MonoBehaviour
 
     public void InitializeAgent(TeamData newTeam)
     {
-        _currentTeam = newTeam;
+        //_currentTeam = newTeam;
+        SetTeam(newTeam);
     }
 
     private void Awake()
@@ -102,8 +104,23 @@ public class CharacterAgent : MonoBehaviour
 
     private void Start()
     {
-        _characterArtController.Initialize(_currentTeam);
-        _weapon.InitializeWeapon(_currentTeam);
+        //_characterArtController.Initialize(_currentTeam);
+        //_weapon.InitializeWeapon(_currentTeam);
+
+        // initialize dependency teams
+        // this is done twice right now because target detector won't update its team correctly. need to replace with owner agent var instead.
+        if (!_lifeIsDependent || _dependencyParentAgents == null || !_dependencyParentAgents.Any())
+        {
+            _lifeIsDependent = false;
+        }
+        else
+        {
+            foreach (CharacterAgent dependencyParent in _dependencyParentAgents)
+            {
+                dependencyParent.OnAgentDeath.AddListener(EvaluateLifeDependencies);
+                if (_replaceDependencyTeams) dependencyParent.SetTeam(_currentTeam);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -136,7 +153,12 @@ public class CharacterAgent : MonoBehaviour
         if (!_disableWeapon || !_weapon) _weapon.RotateWeapon(direction);
     }
 
-    public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
+    public void SetTeam(TeamData newTeam)
+    {
+        _currentTeam = newTeam;
+        _characterArtController.Initialize(newTeam);
+        _weapon.InitializeWeapon(_currentTeam);
+    }
 
     public void ToggleInvulnerable(bool isInvulnerable) => _isInvulnerable = isInvulnerable;
 

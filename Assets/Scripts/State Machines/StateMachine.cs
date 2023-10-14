@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StateMachine : MonoBehaviour
 {
     // NPC AI responsible for logic. Uses CharacterAgent to execute logic.
-    public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
+    //public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
     [Header("Component References")]
     [SerializeField] private CharacterAgent _agent;
@@ -49,7 +49,7 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         // initialize components
-        if (_targetDetector || !_targetDetector.gameObject.activeSelf)
+        if (_targetDetector && _targetDetector.gameObject.activeInHierarchy)
         {
             _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
             _targetDetector.OnEnemyDetected += RegisterNewEnemy;

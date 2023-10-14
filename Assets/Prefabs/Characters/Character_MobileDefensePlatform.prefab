@@ -644,6 +644,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1.45
       objectReference: {fileID: 0}
+    - target: {fileID: 7920214746148758183, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8623483805770791091, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Sprite
       value: 

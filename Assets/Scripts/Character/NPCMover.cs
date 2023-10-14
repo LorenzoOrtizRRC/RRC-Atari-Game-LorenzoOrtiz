@@ -393,18 +393,20 @@ public class NPCMover : CharacterMover
         /*List<RaycastHit2D> validObstacles = potentialObstacles.FindAll(x => x.transform != agentTransform
                 || (x.transform.TryGetComponent(out CharacterAgent dependencyAgent)
                         && !_ownerAgent.DependencyParentAgents.Find(x => x == dependencyAgent)));*/
+        bool obstacleIsValid = true;
         foreach (RaycastHit2D hit in potentialObstacles)
         {
-            if (hit.transform == agentTransform
-                || (hit.transform.TryGetComponent(out CharacterAgent dependencyAgent)
-                    && _ownerAgent.DependencyParentAgents.Exists(x => x == dependencyAgent)))
+            if (hit.transform == agentTransform) obstacleIsValid = false;
+            if (hit.transform.TryGetComponent(out CharacterAgent dependencyAgent)
+                && _ownerAgent.DependencyParentAgents.Exists(x => x == dependencyAgent))
             {
-                //Debug.Log($"FOUND DEPENDENCY! {_ownerAgent.DependencyParentAgents.Exists(x => x != dependencyAgent)}");
-                //Debug.Log($"FOUND DEPENDENCY!");
+                hit.transform.TryGetComponent(out CharacterAgent dependencyAgentA);
+                //Debug.Log($"FOUND DEPENDENCY! {_ownerAgent.DependencyParentAgents.Exists(x => x == dependencyAgentA)}");
+                //Debug.Log($"IS SELF: {hit.transform.name}, {agentTransform.name}"); ;
                 return false;
             }
         }
-        return true;
+        return obstacleIsValid;
     }
     /*
     private void RememberLastObstacle(Vector2 lastObstaclePosition)
