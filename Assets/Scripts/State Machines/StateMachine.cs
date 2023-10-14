@@ -29,7 +29,7 @@ public class StateMachine : MonoBehaviour
 
     private void OnEnable()
     {
-        _movementState.Initialize(_agent.Speed, _agent.RotationSpeed);
+        _movementState.Initialize(_agent.Speed, _agent.RotationSpeed, _agent);
     }
 
     public void InitializeStateMachine(TeamData newTeam, WaypointPath initialPath)
@@ -38,11 +38,11 @@ public class StateMachine : MonoBehaviour
         //_movementState.SetWaypoints(initialPath);
         if (initialPath)
         {
-            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed, initialPath);
+            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed, _agent, initialPath);
         }
         else
         {
-            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed);
+            _movementState.Initialize(_agent.Speed, _agent.RotationSpeed, _agent);
         }
     }
 

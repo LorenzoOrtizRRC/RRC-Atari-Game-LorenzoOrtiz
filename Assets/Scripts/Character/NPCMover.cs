@@ -55,9 +55,9 @@ public class NPCMover : CharacterMover
 
     //public void SetWaypoints(WaypointPath initialPath) => _waypointPath = initialPath;
 
-    public override void Initialize(float movementSpeed, float rotationSpeed)
+    public override void Initialize(float movementSpeed, float rotationSpeed, CharacterAgent ownerAgent)
     {
-        base.Initialize(movementSpeed, rotationSpeed);
+        base.Initialize(movementSpeed, rotationSpeed, ownerAgent);
         if (_initialPath && _initialPath.WaypointList.Any())
         {
             _currentPath = _initialPath.WaypointList;
@@ -67,9 +67,9 @@ public class NPCMover : CharacterMover
         }
     }
 
-    public void Initialize(float movementSpeed, float rotationSpeed, WaypointPath newWaypointPath)
+    public void Initialize(float movementSpeed, float rotationSpeed, CharacterAgent ownerAgent, WaypointPath newWaypointPath)
     {
-        base.Initialize(movementSpeed, rotationSpeed);
+        base.Initialize(movementSpeed, rotationSpeed, ownerAgent);
         if (newWaypointPath && newWaypointPath.WaypointList.Any())
         {
             _currentPath = newWaypointPath.WaypointList;
@@ -247,21 +247,32 @@ public class NPCMover : CharacterMover
         // Raycast towards current direction.
         List<RaycastHit2D> obstaclesInPath = Physics2D.CircleCastAll(agentTransform.position, _avoidanceRadius, _currentDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
         // Remove self from raycast.
-        RaycastHit2D selfHit = obstaclesInPath.Find(x => x.transform == agentTransform);
+        //RaycastHit2D selfHit = obstaclesInPath.Find(x => x.transform == agentTransform);
         //List<RaycastHit2D> selfHits = obstaclesInPath.FindAll(x => x.transform == agentTransform);
-        if (selfHit) obstaclesInPath.Remove(selfHit);
+        //if (selfHit) obstaclesInPath.Remove(selfHit);
+        /*List<RaycastHit2D> validObstaclesA = obstaclesInPath.FindAll(x => x.transform != agentTransform
+                || (x.transform.TryGetComponent(out CharacterAgent dependencyAgent)
+                        && _ownerAgent.DependencyParentAgents.Find(x => x != dependencyAgent)));*/
 
-        if (obstaclesInPath.Count == 0)
+        bool validObstaclesA = CheckValidObstacles(obstaclesInPath, agentTransform);
+
+        //if (validObstaclesA.Count == 0)
+        if (!validObstaclesA)
         {
-            Vector2 stepDirection = RotateDirectionUsingSpeed(_currentDirection, desiredDirection);
             // No obstacles in current path.
+            Vector2 stepDirection = RotateDirectionUsingSpeed(_currentDirection, desiredDirection);
             // Try to steer towards destination. Steer when no new obstacles were registered, otherwise continue forwards.
             List<RaycastHit2D> obstacleOnRotation = Physics2D.CircleCastAll(agentTransform.position, _avoidanceRadius + _avoidanceRadiusPadding, stepDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
             // Remove self from raycast.
-            RaycastHit2D selfHitB = obstacleOnRotation.Find(x => x.transform == agentTransform);
-            if (selfHitB) obstacleOnRotation.Remove(selfHitB);
+            //RaycastHit2D selfHitB = obstacleOnRotation.Find(x => x.transform == agentTransform);
+            /*List<RaycastHit2D> validObstaclesB = obstacleOnRotation.FindAll(x => x.transform == agentTransform
+                || (x.transform.TryGetComponent(out CharacterAgent dependencyAgent)
+                        && _ownerAgent.DependencyParentAgents.Find(x => x == dependencyAgent)));*/
+            //if (selfHitB) obstacleOnRotation.Remove(selfHitB);
+            bool validObstaclesB = CheckValidObstacles(obstacleOnRotation, agentTransform);
 
-            if (obstacleOnRotation.Any())
+            //if (validObstaclesB.Any())
+            if (validObstaclesB)
             {
                 //Debug.Log($"There are obstacles in new path. Continuing forwards. {agentTransform.name}");
                 //RememberLastObstacle(obstacleOnRotation[0].point);
@@ -375,6 +386,25 @@ public class NPCMover : CharacterMover
         _lastObstaclePoint = null;
         //_cachedAngleReference = null;
         _unstuckAngleTimer = _unstuckTimerLength;
+    }
+
+    private bool CheckValidObstacles(List<RaycastHit2D> potentialObstacles, Transform agentTransform)
+    {
+        /*List<RaycastHit2D> validObstacles = potentialObstacles.FindAll(x => x.transform != agentTransform
+                || (x.transform.TryGetComponent(out CharacterAgent dependencyAgent)
+                        && !_ownerAgent.DependencyParentAgents.Find(x => x == dependencyAgent)));*/
+        foreach (RaycastHit2D hit in potentialObstacles)
+        {
+            if (hit.transform == agentTransform
+                || (hit.transform.TryGetComponent(out CharacterAgent dependencyAgent)
+                    && _ownerAgent.DependencyParentAgents.Exists(x => x == dependencyAgent)))
+            {
+                //Debug.Log($"FOUND DEPENDENCY! {_ownerAgent.DependencyParentAgents.Exists(x => x != dependencyAgent)}");
+                Debug.Log($"FOUND DEPENDENCY!");
+                return false;
+            }
+        }
+        return true;
     }
     /*
     private void RememberLastObstacle(Vector2 lastObstaclePosition)

@@ -54,6 +54,7 @@ public class CharacterAgent : MonoBehaviour
     public TeamData CurrentTeam => _currentTeam;
     public bool IsInvincible => _isInvulnerable;
     public bool IsUntargetable => _isUntargetable;
+    public List<CharacterAgent> DependencyParentAgents => _dependencyParentAgents;
     public float CurrentHealth => _currentHealth;
 
     public void InitializeAgent(TeamData newTeam)
@@ -150,13 +151,13 @@ public class CharacterAgent : MonoBehaviour
             CharacterAgent dependencyAgent = _dependencyParentAgents[i];
             if (dependencyAgent && dependencyAgent.gameObject.activeInHierarchy)
             {
-                print("BOTH ARE TRUE");
+                //print("BOTH ARE TRUE");
                 dependencyIsAlive = true;
                 break;
             }
         }
         if (!dependencyIsAlive) KillCharacter();
-        print(dependencyIsAlive);
+        //print(dependencyIsAlive);
     }
 
     private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)

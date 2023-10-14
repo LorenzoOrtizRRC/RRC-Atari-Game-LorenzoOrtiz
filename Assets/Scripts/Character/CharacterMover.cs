@@ -9,12 +9,14 @@ public class CharacterMover// : MonoBehaviour
     [SerializeField] protected float _movementSpeed = 1f;
     [SerializeField] protected float _rotationSpeed = 180f;
 
+    protected CharacterAgent _ownerAgent;
     protected Vector2 _currentDirection = Vector2.up;     // (0, 1) is the forward direction. Current direction is cached for rotation purposes, since the actual game object doesn't rotate.
 
-    public virtual void Initialize(float movementSpeed, float rotationSpeed)
+    public virtual void Initialize(float movementSpeed, float rotationSpeed, CharacterAgent ownerAgent)
     {
         _movementSpeed = movementSpeed;
         _rotationSpeed = rotationSpeed;
+        _ownerAgent = ownerAgent;
     }
 
     // Returns destination point. By default returns forward (for weapon rotation purposes).
