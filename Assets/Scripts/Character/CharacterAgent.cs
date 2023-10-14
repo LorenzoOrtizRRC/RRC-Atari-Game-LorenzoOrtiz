@@ -44,6 +44,7 @@ public class CharacterAgent : MonoBehaviour
     */
 
     private float _currentHealth;
+    private bool _isDead = false;       // Used to check for the state of dependency agents.
 
     public Rigidbody2D Rb => _rb;
     public float MaxHealth => _stats.Health;
@@ -57,6 +58,7 @@ public class CharacterAgent : MonoBehaviour
     public bool IsUntargetable => _isUntargetable;
     public List<CharacterAgent> DependencyParentAgents => _dependencyParentAgents;
     public float CurrentHealth => _currentHealth;
+    public bool IsDead => _isDead;
 
     public void InitializeAgent(TeamData newTeam)
     {
@@ -94,6 +96,7 @@ public class CharacterAgent : MonoBehaviour
     {
         // initialize variables
         _currentHealth = MaxHealth;
+        _isDead = false;
         // Initialize components
         _healthBar.UpdateSliderValue(_currentHealth);
         _characterArtController.Initialize(_currentTeam);
@@ -167,18 +170,19 @@ public class CharacterAgent : MonoBehaviour
     private void EvaluateLifeDependencies()
     {
         // True when at least 1 dependency is alive.
-        bool dependencyIsAlive = false;
+        //bool dependencyIsAlive = false;
         for (int i = 0; i < _dependencyParentAgents.Count; i++)
         {
             CharacterAgent dependencyAgent = _dependencyParentAgents[i];
-            if (dependencyAgent && dependencyAgent.gameObject.activeInHierarchy)
+            if (dependencyAgent && dependencyAgent.gameObject.activeInHierarchy && !dependencyAgent.IsDead)
             {
-                //print("BOTH ARE TRUE");
-                dependencyIsAlive = true;
-                break;
+                //dependencyIsAlive = true;
+                //break;
+                return;
             }
         }
-        if (!dependencyIsAlive) KillCharacter();
+        //if (!dependencyIsAlive) KillCharacter();
+        KillCharacter();
         //print(dependencyIsAlive);
     }
 
@@ -199,6 +203,7 @@ public class CharacterAgent : MonoBehaviour
 
     private void KillCharacter()
     {
+        _isDead = true;
         if (_deathEffect)
         {
             ParticleSystem.MainModule deathParticles = Instantiate(_deathEffect, transform.position, Quaternion.identity).main;
