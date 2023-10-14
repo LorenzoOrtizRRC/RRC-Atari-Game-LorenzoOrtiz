@@ -497,6 +497,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f61fb15e38de72e45b7c3416bc20c774, type: 2}
     - target: {fileID: 394877704361097563, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _deathEffect
+      value: 
+      objectReference: {fileID: 4482330731938138374, guid: e0334880f2dc9e44f83ca65330c38c88, type: 3}
+    - target: {fileID: 394877704361097563, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _disableWeapon
       value: 1
       objectReference: {fileID: 0}

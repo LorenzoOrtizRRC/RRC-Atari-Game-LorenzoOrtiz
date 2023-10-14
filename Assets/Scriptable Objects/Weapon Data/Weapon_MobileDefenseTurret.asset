@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
   m_Name: Weapon_MobileDefenseTurret
   m_EditorClassIdentifier: 
-  _projectileObject: {fileID: 1444248428017069882, guid: f04591f7415a5634dae7088e4afcf164, type: 3}
+  _projectileObject: {fileID: 7284770150913174987, guid: bf6c18d8092d1f2419a3a9c2487dca69, type: 3}
   _damage: 4
   _rateOfFire: 0.4
   _delayAfterFiring: 0
