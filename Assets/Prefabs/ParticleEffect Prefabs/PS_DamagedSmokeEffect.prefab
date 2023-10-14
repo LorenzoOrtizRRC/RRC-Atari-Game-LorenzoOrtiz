@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4913,6 +4913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2381000375693212849}
+  - component: {fileID: 757899106396699649}
   - component: {fileID: 4482330731938138374}
   - component: {fileID: 1987922177100109063}
   m_Layer: 0
@@ -4938,6 +4939,21 @@ Transform:
   - {fileID: 4441837015587454437}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757899106396699649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440021324750294006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095d9a6439aab2046a6ce7a16430775e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selfParticleSystem: {fileID: 4482330731938138374}
+  _childParticleSystems:
+  - {fileID: 7870741129625831634}
 --- !u!198 &4482330731938138374
 ParticleSystem:
   m_ObjectHideFlags: 0

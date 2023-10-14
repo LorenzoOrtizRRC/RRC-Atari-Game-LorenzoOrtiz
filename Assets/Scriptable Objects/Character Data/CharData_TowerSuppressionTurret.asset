@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
-  m_Name: CharData_Sniper
+  m_Name: CharData_TowerSuppressionTurret
   m_EditorClassIdentifier: 
-  _name: Sniper
-  _health: 15
+  _name: Suppression Turret
+  _health: 80
   _armor: 0
-  _speed: 4
-  _rotationSpeed: 180
-  _aggroRangeRadius: 16
+  _speed: 0
+  _rotationSpeed: 90
+  _aggroRangeRadius: 11.9
