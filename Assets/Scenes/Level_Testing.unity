@@ -13131,8 +13131,9 @@ MonoBehaviour:
     _enableUnstuckPosition: 0
     _unstuckTimerLength: 0.5
     _unstuckPositionMinDistance: 0.2
-    _unstuckObstacleMinAngleThreshold: 130
-    _unstuckAngleRotationDifference: 85
+    _unstuckObstacleMinAngleThreshold: 100
+    _unstuckAngleRotationDifference: 175
+    _unstuckAngleMinDuration: 0
   _isImmovable: 0
   _enableGizmos: 1
   _showObstacleAvoidance: 1
@@ -30375,8 +30376,9 @@ MonoBehaviour:
     _enableUnstuckPosition: 0
     _unstuckTimerLength: 0.5
     _unstuckPositionMinDistance: 0.2
-    _unstuckObstacleMinAngleThreshold: 130
-    _unstuckAngleRotationDifference: 85
+    _unstuckObstacleMinAngleThreshold: 100
+    _unstuckAngleRotationDifference: 175
+    _unstuckAngleMinDuration: 0
   _isImmovable: 0
   _enableGizmos: 1
   _showObstacleAvoidance: 1

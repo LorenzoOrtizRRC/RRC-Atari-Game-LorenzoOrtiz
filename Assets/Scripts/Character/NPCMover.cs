@@ -112,19 +112,17 @@ public class NPCMover : CharacterMover
 
             if (_lastObstaclePoint.HasValue)// && _lastObstacleTransform.gameObject.activeInHierarchy)
             {
-                //float angleToLastObstacle = Vector2.Angle(_currentDirection, lastObstacle2.Value - (Vector2)agentTransform.position);
                 float angleToLastObstacle = Vector2.Angle(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position);
-                //if (EnableDebugUnstuckAngles)
-                //{
-                    //Debug.Log($"cached angle point: {_lastObstaclePoint.Value}");
-                //}
+                //Debug.Log($"CHECKING FOR: {_ownerAgent.transform.name}, ANGLE: {angleToLastObstacle}");
                 if (_unstuckAngleTimer > 0f)
                 {
                     _unstuckAngleTimer -= Time.fixedDeltaTime;
                 }
-                else if (Time.time >= _unstuckAngleDurationTimer && angleToLastObstacle >= _unstuckAngleRotationDifference)
-                {
+                //else if (Time.time >= _unstuckAngleDurationTimer && angleToLastObstacle >= _unstuckAngleRotationDifference)
+                else if (angleToLastObstacle >= _unstuckAngleRotationDifference)
+                        {
                     RemoveObstacleAngle();
+                    //Debug.Log($"UNSTUCKANGLES LOGIC! last obs point: {_lastObstaclePoint}, angle: {angleToLastObstacle}, agent name: {_ownerAgent.transform.name}");
                 }
             }
         }
@@ -207,8 +205,12 @@ public class NPCMover : CharacterMover
             float angleToLastObstacle = Vector2.Angle(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position);
             //if (angleToLastObstacle - _cachedAngleReference < _unstuckAngleMaxRotation)
             //{
-            //Debug.LogWarning("ROTATING ANGLES");
-                return RotateDirectionUsingSpeed(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position, true);
+            Vector2 obstaclePointOffset = ((Vector2)_lastObstacleTransform.position - _lastObstaclePoint.Value);
+            //Debug.LogWarning($"ROTATING ANGLES FOR: {_ownerAgent.transform.name}, OBS POINT: {_lastObstaclePoint.Value + obstaclePointOffset}");
+            Debug.LogWarning($"ROTATING ANGLES FOR: {_ownerAgent.transform.name}, OBS POINT: {(Vector2)_lastObstacleTransform.position - (Vector2)_ownerAgent.transform.position}");
+            //return RotateDirectionUsingSpeed(_currentDirection, (_lastObstaclePoint.Value + obstaclePointOffset) - (Vector2)_ownerAgent.transform.position, true);
+            return RotateDirectionUsingSpeed(_currentDirection, (Vector2)_lastObstacleTransform.position - (Vector2)_ownerAgent.transform.position, true);
+            //return RotateDirectionUsingSpeed(_currentDirection, _lastObstaclePoint.Value - (Vector2)agentTransform.position, true);
             //}
             //else _unstuckAngleTimer = _unstuckTimerLength;
         }
@@ -227,13 +229,13 @@ public class NPCMover : CharacterMover
             // Try to steer towards destination. Steer when no new obstacles were registered, otherwise continue forwards.
             List<RaycastHit2D> obstacleOnRotation = Physics2D.CircleCastAll(agentTransform.position, _avoidanceRadius + _avoidanceRadiusPadding, stepDirection, _avoidanceCastLength, _steeringLayerMask).ToList();
             bool validObstaclesB = CheckValidObstacles(obstacleOnRotation, agentTransform);
-            Debug.LogWarning($"valid obstacle b: {validObstaclesB}, name: {_ownerAgent.transform.name}");
+            //Debug.LogWarning($"valid obstacle b: {validObstaclesB}, name: {_ownerAgent.transform.name}");
 
             if (validObstaclesB)
             {
                 //Debug.Log($"There are obstacles in new path. Continuing forwards. {agentTransform.name}");
                 float newCachedAngle = Vector2.Angle(_currentDirection, obstacleOnRotation[0].point - (Vector2)agentTransform.position);
-                Debug.Log($"cached angle: {newCachedAngle}, condition: {newCachedAngle <= _unstuckObstacleMinAngleThreshold}, threshold: {_unstuckObstacleMinAngleThreshold}, gameobject: {_ownerAgent.transform.name}");
+                //Debug.Log($"cached angle: {newCachedAngle}, condition: {newCachedAngle <= _unstuckObstacleMinAngleThreshold}, threshold: {_unstuckObstacleMinAngleThreshold}, gameobject: {_ownerAgent.transform.name}");
                 if (newCachedAngle <= _unstuckObstacleMinAngleThreshold) GetNewObstacleAngle(obstacleOnRotation[0], newCachedAngle);
                 return _currentDirection;
                 //}
@@ -312,5 +314,18 @@ public class NPCMover : CharacterMover
             }
         }
         return false;
+    }
+
+    private void RemoveInvalidObstacles(List<RaycastHit2D> potentialObstacles, Transform agentTransform)
+    {
+        foreach (RaycastHit2D hit in potentialObstacles)
+        {
+            if (hit.transform == agentTransform) potentialObstacles.Remove(hit);
+            if (hit.transform.TryGetComponent(out CharacterAgent dependencyAgent)
+                && _ownerAgent.DependencyParentAgents.Exists(x => x == dependencyAgent))
+            {
+                potentialObstacles.Remove(hit);
+            }
+        }
     }
 }
