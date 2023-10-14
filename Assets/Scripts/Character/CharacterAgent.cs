@@ -128,12 +128,12 @@ public class CharacterAgent : MonoBehaviour
 
     public void UseWeapon(Vector2 direction)
     {
-        if (_disableWeapon || !_weapon) _weapon.UseWeaponAuto(direction);
+        if (!_disableWeapon || !_weapon) _weapon.UseWeaponAuto(direction);
     }
 
     public void RotateWeapon(Vector3 direction)
     {
-        if (_disableWeapon || !_weapon) _weapon.RotateWeapon(direction);
+        if (!_disableWeapon || !_weapon) _weapon.RotateWeapon(direction);
     }
 
     public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
