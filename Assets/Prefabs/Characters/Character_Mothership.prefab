@@ -876,6 +876,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 7004142210294616168}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &486182626065552772
 GameObject:
@@ -1760,6 +1765,7 @@ MonoBehaviour:
   _healthBar: {fileID: 648746418260548333}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -1767,6 +1773,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &666253454888927055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,6 +2961,7 @@ MonoBehaviour:
   _healthBar: {fileID: 7653616957502619898}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -2960,6 +2969,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &8668852760586770575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4436,6 +4447,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: 2c53ba24542c8094086cf88483e1cab9, type: 2}
   _projectileSpawnPoints:
   - {fileID: 668158157126388877}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &2762670567534795996
 GameObject:
@@ -4570,6 +4586,7 @@ MonoBehaviour:
   _healthBar: {fileID: 4197308535268117985}
   _stats: {fileID: 11400000, guid: 10d0bc851ef3d09439574a7a3155aa7a, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -4582,6 +4599,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &4303789949584725217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4839,6 +4858,7 @@ MonoBehaviour:
   _healthBar: {fileID: 8597807349781601218}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -4846,6 +4866,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &533990206272006647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4891,7 +4913,7 @@ MonoBehaviour:
     _unstuckTimerLength: 0.5
     _unstuckPositionMinDistance: 0.2
     _unstuckObstacleMinAngleThreshold: 80
-    _unstuckAngleRotationDifference: 90
+    _unstuckAngleRotationDifference: 85
   _isImmovable: 1
   _enableGizmos: 0
   _showObstacleAvoidance: 0
@@ -5353,6 +5375,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 8286251612986976345}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &3231911384781033247
 GameObject:
@@ -7004,6 +7031,7 @@ MonoBehaviour:
   _healthBar: {fileID: 5081746160613950189}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -7011,6 +7039,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &8380196230014480138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7779,6 +7809,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 1814451690499019136}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &4649859438929496580
 GameObject:
@@ -8846,6 +8881,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 3166211731128618477}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &5828806095355837017
 GameObject:
@@ -10315,6 +10355,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 8864581850281931292}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &6494303833760297672
 GameObject:
@@ -10619,6 +10664,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1380630395220938825}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -10626,6 +10672,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &7210497745284280526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10907,6 +10955,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 2309362195611084351}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &6791945879765515924
 GameObject:
@@ -10977,6 +11030,7 @@ MonoBehaviour:
   _healthBar: {fileID: 7582167753692225083}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -10984,6 +11038,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &574823910001122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13439,6 +13495,7 @@ MonoBehaviour:
   _healthBar: {fileID: 8353004062789996706}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -13446,6 +13503,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &5593261294042987244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13608,6 +13667,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 7691317428118186076}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &8123572275072181605
 GameObject:
@@ -14733,6 +14797,7 @@ MonoBehaviour:
   _healthBar: {fileID: 7844009087755136043}
   _stats: {fileID: 11400000, guid: 395673df41a632f44861866e64119bcf, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 1
@@ -14740,6 +14805,8 @@ MonoBehaviour:
   _lifeIsDependent: 0
   _replaceDependencyTeams: 1
   _dependencyParentAgents: []
+  _addTeamColorsToEffects: 1
+  _deathEffect: {fileID: 0}
 --- !u!114 &4082493228104990539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15133,6 +15200,11 @@ MonoBehaviour:
   _weaponData: {fileID: 11400000, guid: a435eb3e3ac3c924792b08608d58356d, type: 2}
   _projectileSpawnPoints:
   - {fileID: 3948093432550684119}
+  _disableRotation: 0
+  _enableEffects: 1
+  _firingEffect: {fileID: 0}
+  _addTeamColorsToEffects: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &8913821806521150331
 GameObject:

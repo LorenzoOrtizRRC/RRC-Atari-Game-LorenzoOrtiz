@@ -20540,7 +20540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.data[2]
@@ -20550,6 +20550,10 @@ PrefabInstance:
       propertyPath: _initialWave.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: f32e32eafd4e83040ab6ecda6f108f8b, type: 2}
+    - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
+      propertyPath: _initialWave.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 49ab315fd28d2544090eaafb29191f51, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35712,7 +35716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.data[2]
@@ -35722,6 +35726,10 @@ PrefabInstance:
       propertyPath: _initialWave.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: f32e32eafd4e83040ab6ecda6f108f8b, type: 2}
+    - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
+      propertyPath: _initialWave.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 49ab315fd28d2544090eaafb29191f51, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52858,6 +52866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_MobileDefenseTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 4029153209859714557, guid: fae297cc5ffb79b4f99a898a0ffb73de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8743738576573303272, guid: fae297cc5ffb79b4f99a898a0ffb73de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.009
@@ -52953,23 +52965,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 979398044008323195, guid: 32250f3ed5135044589970a04cc40241, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 979398044008323195, guid: 32250f3ed5135044589970a04cc40241, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649121241125987123, guid: 32250f3ed5135044589970a04cc40241, type: 3}
       propertyPath: m_Name
       value: Character_MobileDefensePlatform
       objectReference: {fileID: 0}
-    - target: {fileID: 7800231993242432457, guid: 32250f3ed5135044589970a04cc40241, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 5649121241125987123, guid: 32250f3ed5135044589970a04cc40241, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7800231993242432457, guid: 32250f3ed5135044589970a04cc40241, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800231993242432457, guid: 32250f3ed5135044589970a04cc40241, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
