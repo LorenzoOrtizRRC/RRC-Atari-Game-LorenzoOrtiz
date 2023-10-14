@@ -15,6 +15,6 @@ MonoBehaviour:
   _name: Mobile Defense Platform
   _health: 1
   _armor: 0
-  _speed: 2
-  _rotationSpeed: 67.5
+  _speed: 2.5
+  _rotationSpeed: 45
   _aggroRangeRadius: 15

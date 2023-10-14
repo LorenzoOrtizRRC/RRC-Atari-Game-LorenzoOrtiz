@@ -400,7 +400,7 @@ public class NPCMover : CharacterMover
                     && _ownerAgent.DependencyParentAgents.Exists(x => x == dependencyAgent)))
             {
                 //Debug.Log($"FOUND DEPENDENCY! {_ownerAgent.DependencyParentAgents.Exists(x => x != dependencyAgent)}");
-                Debug.Log($"FOUND DEPENDENCY!");
+                //Debug.Log($"FOUND DEPENDENCY!");
                 return false;
             }
         }
