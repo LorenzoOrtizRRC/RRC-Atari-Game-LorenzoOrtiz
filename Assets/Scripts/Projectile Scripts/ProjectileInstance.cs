@@ -9,6 +9,7 @@ public class ProjectileInstance : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
     //[SerializeField] private ParticleSystem _hitEffect;
+    [Header("Projectile Settings")]
     [SerializeField] private bool _addTeamColorToEffects = true;
     [SerializeField] private bool _effectRotatesToHitDirection = true;
     [SerializeField] private bool _effectInheritsProjectileDirection = false;
@@ -86,6 +87,12 @@ public class ProjectileInstance : MonoBehaviour
                 if (_penetrationCounter >= _penetrationStrength) DestroyProjectile();
                 else _penetrationCounter++;
             }
+        }
+        // If it's not an agent, it's terrain (filtered by layer masks.) Destroy projectile when colliding with terrain.
+        else
+        {
+            SpawnEffect(_hitEffect);
+            DestroyProjectile();
         }
     }
 

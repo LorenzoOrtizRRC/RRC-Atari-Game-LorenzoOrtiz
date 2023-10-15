@@ -136,7 +136,6 @@ MonoBehaviour:
   _characterArtController: {fileID: 8520688758158660115}
   _addTeamColorToEffects: 1
   _effectRotatesToHitDirection: 1
-  _rotationToHitMultiplier: 0.2
   _effectInheritsProjectileDirection: 1
 --- !u!58 &6174069632819570803
 CircleCollider2D:
@@ -153,14 +152,14 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 951
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 119
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1079
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
