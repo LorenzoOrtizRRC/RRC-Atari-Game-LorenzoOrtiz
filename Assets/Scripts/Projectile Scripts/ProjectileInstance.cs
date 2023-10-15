@@ -11,7 +11,6 @@ public class ProjectileInstance : MonoBehaviour
     //[SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private bool _addTeamColorToEffects = true;
     [SerializeField] private bool _effectRotatesToHitDirection = true;
-    [SerializeField, Range(0f, 1f)] private float _rotationToHitMultiplier = 0.2f;
     [SerializeField] private bool _effectInheritsProjectileDirection = false;
     
     private TeamData _currentTeam;

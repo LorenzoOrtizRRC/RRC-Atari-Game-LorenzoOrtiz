@@ -137,7 +137,7 @@ MonoBehaviour:
   _addTeamColorToEffects: 1
   _effectRotatesToHitDirection: 1
   _rotationToHitMultiplier: 0.2
-  _effectInheritsProjectileDirection: 0
+  _effectInheritsProjectileDirection: 1
 --- !u!58 &6174069632819570803
 CircleCollider2D:
   m_ObjectHideFlags: 0

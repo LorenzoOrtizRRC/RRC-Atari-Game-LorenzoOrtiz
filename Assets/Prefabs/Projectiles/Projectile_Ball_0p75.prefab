@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
       propertyPath: m_Name
-      value: ProjectileBase Variant
+      value: Projectile_Ball_0p75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
