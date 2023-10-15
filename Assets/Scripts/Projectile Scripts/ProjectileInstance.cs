@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ProjectileInstance : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
     [Header("Effects")]
@@ -13,28 +15,30 @@ public class ProjectileInstance : MonoBehaviour
     [SerializeField] private bool _effectRotatesToHitDirection = true;
     [SerializeField, Range(0f, 1f)] private float _rotationToHitMultiplier = 0.2f;
     [SerializeField] private bool _effectInheritsProjectileDirection = false;
-    private float _damage = 1f;
+
+    private float _damage = 0f;
     private float _speed = 1f;
     private float _lifetime = 1f;
+    private int _penetrationStrength = 0;        // Number of times the projectile can pierce through a target.
+    private float _splashRadius = 0f;       // Splash damage.
+    private LayerMask _splashMask;
     private TeamData _currentTeam;
 
     private float _elapsedLifetime = 0f;
+    private int _penetrationCounter = 0;
 
     public float Damage => _damage;
     public TeamData CurrentTeam => _currentTeam;
 
-    public void InitializeProjectile(float newDamage, float newSpeed, float newLifetime, TeamData newTeam)
+    public void InitializeProjectile(TeamData newTeam, float newDamage, float newSpeed, float newLifetime, int newPenetrationStrength, float newSplashRadius, LayerMask newSplashMask)
     {
+        _currentTeam = newTeam;
         _damage = newDamage;
         _speed = newSpeed;
         _lifetime = newLifetime;
-        _currentTeam = newTeam;
-    }
-
-    private void Awake()
-    {
-        _rb ??= GetComponent<Rigidbody2D>();
-        _characterArtController ??= GetComponent<CharacterArtController>();
+        _penetrationStrength = newPenetrationStrength;
+        _splashRadius = newSplashRadius;
+        _splashMask = newSplashMask;
     }
 
     private void Start()
@@ -47,6 +51,7 @@ public class ProjectileInstance : MonoBehaviour
         if (_elapsedLifetime >= _lifetime)
         {
             SpawnHitEffect();
+            DoSplashDamage();
             DestroyProjectile();
         }
         _elapsedLifetime += Time.deltaTime;
@@ -64,10 +69,25 @@ public class ProjectileInstance : MonoBehaviour
         {
             if (collidingAgent.CurrentTeam != _currentTeam)
             {
-                //SpawnHitEffect(collision.GetContact(0).point);
-                //SpawnHitEffect(collision.transform.position);
                 SpawnHitEffect(collision);
-                DestroyProjectile();
+            }
+
+            DoSplashDamage();
+
+            if (_penetrationCounter > _penetrationStrength) DestroyProjectile();
+            else _penetrationCounter++;
+        }
+    }
+
+    private void DoSplashDamage()
+    {
+        if (_splashRadius == 0f) return;
+        List<Collider2D> agentsWithinRange = Physics2D.OverlapCircleAll(transform.position, _splashRadius, _splashMask).ToList();
+        for (int i = 0; i < agentsWithinRange.Count; i++)
+        {
+            if (agentsWithinRange[i].TryGetComponent(out CharacterAgent agent) && agent.CurrentTeam != CurrentTeam)
+            {
+                agent.DamageCharacter(_damage);
             }
         }
     }
@@ -90,6 +110,7 @@ public class ProjectileInstance : MonoBehaviour
         {
             effectRotation = transform.rotation;
         }
+
         ParticleSystem effect = Instantiate(_hitEffect, collision.GetContact(0).point, effectRotation);
         if (_addTeamColorToEffects)
         {

@@ -201,13 +201,13 @@ public class CharacterAgent : MonoBehaviour
         //print(dependencyIsAlive);
     }
 
-    private void HealCharacter(float healValue)
+    public void HealCharacter(float healValue)
     {
         _currentHealth = Mathf.Min(_currentHealth + healValue, MaxHealth);
         OnHealthChanged?.Invoke(CurrentHealth / MaxHealth);
     }
 
-    private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
+    public void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
     {
         if (!_isInvulnerable || bypassInvincibility)
         {
