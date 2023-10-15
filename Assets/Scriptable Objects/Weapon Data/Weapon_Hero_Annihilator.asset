@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
+  m_Name: Weapon_Hero_Annihilator
+  m_EditorClassIdentifier: 
+  _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
+  _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
+  _splashEffect: {fileID: 6596529003588079410, guid: e79d1699c7b4e91439216cb266839cc5, type: 3}
+  _damage: 5
+  _rateOfFire: 0.4
+  _penetrationStrength: 0
+  _splashRadius: 0
+  _splashMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _delayAfterFiring: 0
+  _rotationSpeed: 135
+  _maxAngleToShoot: 22.5
+  _minimumWeaponRange: 0
+  _maximumWeaponRange: 12
+  _weaponAngleSpread: 2
+  _projectileSpeed: 8.5
+  _projectileLifetime: 2
