@@ -64,7 +64,7 @@ public class ProjectileInstance : MonoBehaviour
         if (_elapsedLifetime >= _projectileLifetime)
         {
             SpawnEffect(_hitEffect);
-            TryDoSplashDamage();
+            DoSplashDamage();
             DestroyProjectile();
         }
         _elapsedLifetime += Time.deltaTime;
@@ -90,7 +90,7 @@ public class ProjectileInstance : MonoBehaviour
         }
     }
 
-    private void TryDoSplashDamage()
+    private void DoSplashDamage()
     {
         if (_splashRadius == 0f) return;
         List<Collider2D> agentsWithinRange = Physics2D.OverlapCircleAll(transform.position, _splashRadius, _splashMask).ToList();
@@ -123,9 +123,15 @@ public class ProjectileInstance : MonoBehaviour
     private void SpawnEffect(ParticleSystem effectToSpawn)
     {
         if (!effectToSpawn) return;
+
         Quaternion effectRotation = Quaternion.identity;
+        if (_effectInheritsProjectileDirection)
+        {
+            effectRotation = transform.rotation;
+        }
 
         ParticleSystem effect = Instantiate(effectToSpawn, transform.position, effectRotation);
+
         if (_addTeamColorToEffects)
         {
             ParticleSystem.MainModule effectMainModule = effect.main;
