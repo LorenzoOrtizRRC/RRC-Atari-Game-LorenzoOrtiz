@@ -16,4 +16,7 @@ MonoBehaviour:
   _health: 150
   _armor: 1
   _speed: 4.5
+  _healthRegenAmount: 2
+  _healthRegenRate: 1
+  _rotationSpeed: 90
   _aggroRangeRadius: 1

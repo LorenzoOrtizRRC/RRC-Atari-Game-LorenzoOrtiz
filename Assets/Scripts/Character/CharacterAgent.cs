@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class CharacterAgent : MonoBehaviour
 {
     public UnityEvent<float> OnDamageTaken;     // float is mitigated damage taken
-    public UnityEvent<float> OnHealthDecreased;     // returned float is range 0 - 1. returned float is current health / max health
+    public UnityEvent<float> OnHealthChanged;     // returned float is range 0 - 1. returned float is current health / max health
     public UnityEvent OnAgentDeath;
     //public Action<CharacterAgent> OnEnemyTargetAcquired;    // when character gets a new _enemyTarget
 
@@ -60,6 +61,8 @@ public class CharacterAgent : MonoBehaviour
     public float CurrentHealth => _currentHealth;
     public bool IsDead => _isDead;
 
+    private float _healthRegenTimer = 0f;
+
     public void InitializeAgent(TeamData newTeam)
     {
         //_currentTeam = newTeam;
@@ -71,7 +74,10 @@ public class CharacterAgent : MonoBehaviour
         // initialize weapons and other components
         if (_healthBar && _healthBar.gameObject.activeInHierarchy)
         {
-            if (_healthBarVisible) OnHealthDecreased.AddListener(_healthBar.UpdateSliderValue);
+            if (_healthBarVisible)
+            {
+                OnHealthChanged.AddListener(_healthBar.UpdateSliderValue);
+            }
             else _healthBar.gameObject.SetActive(false);
         }
         //_targetDetector.InitializeTargetDetector(_currentTeam);
@@ -101,8 +107,8 @@ public class CharacterAgent : MonoBehaviour
         _healthBar.UpdateSliderValue(_currentHealth);
         _characterArtController.Initialize(_currentTeam);
         _weapon.InitializeWeapon(_currentTeam);
-        //_movementState.Initialize();
-        //_chaseState.Initialize();
+
+        _healthRegenTimer = Time.time + _stats.HealthRegenRate;
     }
 
     private void Start()
@@ -123,6 +129,15 @@ public class CharacterAgent : MonoBehaviour
                 dependencyParent.OnAgentDeath.AddListener(EvaluateLifeDependencies);
                 if (_replaceDependencyTeams) dependencyParent.SetTeam(_currentTeam);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (_stats.HealthRegenRate > 0 && Time.time >= _healthRegenTimer)
+        {
+            HealCharacter(_stats.HealthRegenAmount);
+            _healthRegenTimer = Time.time + _stats.HealthRegenRate;
         }
     }
 
@@ -186,6 +201,12 @@ public class CharacterAgent : MonoBehaviour
         //print(dependencyIsAlive);
     }
 
+    private void HealCharacter(float healValue)
+    {
+        _currentHealth = Mathf.Min(_currentHealth + healValue, MaxHealth);
+        OnHealthChanged?.Invoke(CurrentHealth / MaxHealth);
+    }
+
     private void DamageCharacter(float rawDamage, bool bypassInvincibility = false)
     {
         if (!_isInvulnerable || bypassInvincibility)
@@ -195,7 +216,7 @@ public class CharacterAgent : MonoBehaviour
             //if (mitigatedDamage <= 0f) print($"MITIGATED DAMAGE IS <= 0f. NAME: {gameObject.name}, MITIGATED DAMAGE: {mitigatedDamage}");
             _currentHealth = Mathf.Clamp(_currentHealth - mitigatedDamage, 0f, MaxHealth);
             OnDamageTaken?.Invoke(mitigatedDamage);
-            OnHealthDecreased?.Invoke(CurrentHealth / MaxHealth);
+            OnHealthChanged?.Invoke(CurrentHealth / MaxHealth);
         }
         // evaluate health.
         if (_currentHealth == 0) KillCharacter();

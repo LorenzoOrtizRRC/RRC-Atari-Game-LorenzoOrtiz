@@ -10,10 +10,12 @@ using UnityEngine.Rendering.UI;
 [CreateAssetMenu(fileName = "New Character Data", menuName = "Character/Character Data")]
 public class CharacterData : ScriptableObject
 {
-    [SerializeField] private string _name = "Unit Name";
+    [SerializeField] private string _name = "Unit_Name";
     [SerializeField] private float _health = 1f;
     [SerializeField] private float _armor = 0f;
     [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _healthRegenAmount = 0f;    // Health healed per _healthRegenRate seconds.
+    [SerializeField] private float _healthRegenRate = 0f;        // Per second.
     [SerializeField] private float _rotationSpeed = 90f;        // Mostly used by NPCs.
     [SerializeField] private float _aggroRangeRadius = 1f;
 
@@ -21,6 +23,8 @@ public class CharacterData : ScriptableObject
     public float Health => _health;
     public float Armor => _armor;
     public float Speed => _speed;
+    public float HealthRegenAmount => _healthRegenAmount;
+    public float HealthRegenRate => _healthRegenRate;
     public float RotationSpeed => _rotationSpeed;
     public float AggroRangeRadius => _aggroRangeRadius;
     /*
