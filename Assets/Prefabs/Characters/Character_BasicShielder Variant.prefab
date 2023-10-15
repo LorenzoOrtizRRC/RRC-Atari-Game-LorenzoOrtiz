@@ -124,10 +124,6 @@ PrefabInstance:
       propertyPath: _movementState._avoidanceRadius
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 1529838080698321536, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
-      propertyPath: _movementState._unstuckAngleRotationDifference
-      value: 85
-      objectReference: {fileID: 0}
     - target: {fileID: 2394253845395186629, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Radius
       value: 1

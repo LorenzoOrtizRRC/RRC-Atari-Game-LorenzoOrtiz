@@ -122,6 +122,7 @@ MonoBehaviour:
   _healthBar: {fileID: 1605958586433106080}
   _stats: {fileID: 11400000, guid: 32ff23ba1041e02488de20241c75fea5, type: 2}
   _currentTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+  _disableWeapon: 0
   _isInvulnerable: 0
   _isUntargetable: 0
   _disableOnDeath: 0
@@ -175,12 +176,13 @@ MonoBehaviour:
     _enableUnstuckPosition: 0
     _unstuckTimerLength: 0.5
     _unstuckPositionMinDistance: 0.2
-    _unstuckObstacleMinAngleThreshold: 130
-    _unstuckAngleRotationDifference: 85
+    _unstuckObstacleMinAngleThreshold: 100
+    _unstuckAngleRotationDifference: 155
+    _unstuckAngleMinDuration: 0
   _isImmovable: 0
-  _enableGizmos: 1
-  _showObstacleAvoidance: 1
-  _showAggroRange: 1
+  _enableGizmos: 0
+  _showObstacleAvoidance: 0
+  _showAggroRange: 0
   _showDestinations: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:
