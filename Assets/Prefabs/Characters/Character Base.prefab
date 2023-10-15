@@ -179,9 +179,9 @@ MonoBehaviour:
     _unstuckObstacleMinAngleThreshold: 100
     _unstuckAngleRotationDifference: 155
   _isImmovable: 0
-  _enableGizmos: 0
-  _showObstacleAvoidance: 0
-  _showAggroRange: 0
+  _enableGizmos: 1
+  _showObstacleAvoidance: 1
+  _showAggroRange: 1
   _showDestinations: 0
 --- !u!58 &7920214746148758183
 CircleCollider2D:
