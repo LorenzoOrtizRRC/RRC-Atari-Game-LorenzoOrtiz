@@ -72,7 +72,7 @@ public class ProjectileInstance : MonoBehaviour
                 SpawnHitEffect(collision);
             }
 
-            DoSplashDamage();
+            DoSplashDamage(collidingAgent);
 
             if (_penetrationCounter > _penetrationStrength) DestroyProjectile();
             else _penetrationCounter++;
@@ -86,6 +86,22 @@ public class ProjectileInstance : MonoBehaviour
         for (int i = 0; i < agentsWithinRange.Count; i++)
         {
             if (agentsWithinRange[i].TryGetComponent(out CharacterAgent agent) && agent.CurrentTeam != CurrentTeam)
+            {
+                agent.DamageCharacter(_damage);
+            }
+        }
+    }
+
+    // This is so that the primary damaged agent doesn't receive damage twice.
+    private void DoSplashDamage(CharacterAgent agentToIgnore)
+    {
+        if (_splashRadius == 0f) return;
+        List<Collider2D> agentsWithinRange = Physics2D.OverlapCircleAll(transform.position, _splashRadius, _splashMask).ToList();
+        for (int i = 0; i < agentsWithinRange.Count; i++)
+        {
+            if (agentsWithinRange[i].TryGetComponent(out CharacterAgent agent)
+                && agent.CurrentTeam != CurrentTeam
+                && agent != agentToIgnore)
             {
                 agent.DamageCharacter(_damage);
             }
