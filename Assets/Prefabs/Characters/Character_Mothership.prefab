@@ -1753,7 +1753,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -2949,7 +2949,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -4574,7 +4574,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -4846,7 +4846,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -7019,7 +7019,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -10652,7 +10652,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -11018,7 +11018,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -13483,7 +13483,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -14785,7 +14785,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:

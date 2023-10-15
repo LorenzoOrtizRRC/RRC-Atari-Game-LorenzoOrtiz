@@ -667,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.4
+      value: 0.1823
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.7
+      value: -0.689
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -753,9 +753,17 @@ PrefabInstance:
       propertyPath: m_Colors.m_DisabledColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2495514583962343713, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_Name
       value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965765919480244926, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5998335178472216403, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: _decayDuration
