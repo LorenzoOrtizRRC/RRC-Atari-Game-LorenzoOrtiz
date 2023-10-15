@@ -134,8 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 4917470637874317170}
   _characterArtController: {fileID: 8520688758158660115}
-  _enableHitEffect: 1
-  _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
   _addTeamColorToEffects: 1
   _effectRotatesToHitDirection: 1
   _rotationToHitMultiplier: 0.2
@@ -155,7 +153,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -83,12 +83,10 @@ public class ProjectileInstance : MonoBehaviour
             if (collidingAgent.CurrentTeam != _currentTeam)
             {
                 SpawnEffect(_hitEffect, collision);
+                DoSplashDamage(collidingAgent);
+                if (_penetrationCounter >= _penetrationStrength) DestroyProjectile();
+                else _penetrationCounter++;
             }
-
-            DoSplashDamage(collidingAgent);
-
-            if (_penetrationCounter >= _penetrationStrength) DestroyProjectile();
-            else _penetrationCounter++;
         }
     }
 

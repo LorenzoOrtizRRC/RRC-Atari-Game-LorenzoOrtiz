@@ -29,4 +29,4 @@ MonoBehaviour:
   _maximumWeaponRange: 4
   _weaponAngleSpread: 5
   _projectileSpeed: 4
-  _projectileLifetime: 1
+  _projectileLifetime: 1.5

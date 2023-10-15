@@ -110,7 +110,7 @@ MonoBehaviour:
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthDecreased:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnAgentDeath:
@@ -178,7 +178,6 @@ MonoBehaviour:
     _unstuckPositionMinDistance: 0.2
     _unstuckObstacleMinAngleThreshold: 100
     _unstuckAngleRotationDifference: 155
-    _unstuckAngleMinDuration: 0
   _isImmovable: 0
   _enableGizmos: 0
   _showObstacleAvoidance: 0

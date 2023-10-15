@@ -53605,6 +53605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PS_ProjectileAreaDamage4x
       objectReference: {fileID: 0}
+    - target: {fileID: 2835130203607921878, guid: 93529b474db12274a9e0bcbcda6855f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
