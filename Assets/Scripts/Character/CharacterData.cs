@@ -10,7 +10,7 @@ using UnityEngine.Rendering.UI;
 [CreateAssetMenu(fileName = "New Character Data", menuName = "Character/Character Data")]
 public class CharacterData : ScriptableObject
 {
-    [SerializeField] private string _name = "Unit_Name";
+    [SerializeField] private string _characterName = "Unit_Name";
     [SerializeField] private float _health = 1f;
     [SerializeField] private float _armor = 0f;
     [SerializeField] private float _speed = 1f;
@@ -19,7 +19,7 @@ public class CharacterData : ScriptableObject
     [SerializeField] private float _rotationSpeed = 90f;        // Mostly used by NPCs.
     [SerializeField] private float _aggroRangeRadius = 1f;
 
-    public string Name => _name;
+    public string CharacterName => _characterName;
     public float Health => _health;
     public float Armor => _armor;
     public float Speed => _speed;

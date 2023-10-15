@@ -48,6 +48,7 @@ public class CharacterAgent : MonoBehaviour
     private bool _isDead = false;       // Used to check for the state of dependency agents.
 
     public Rigidbody2D Rb => _rb;
+    public string AgentName => _stats.CharacterName;
     public float MaxHealth => _stats.Health;
     public float Armor => _stats.Armor;
     public float Speed => _stats.Speed;
