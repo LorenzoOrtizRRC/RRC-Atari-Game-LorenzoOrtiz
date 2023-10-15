@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: Weapon_Sniper
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 1444248428017069882, guid: f04591f7415a5634dae7088e4afcf164, type: 3}
+  _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
+  _splashEffect: {fileID: 6596529003588079410, guid: e79d1699c7b4e91439216cb266839cc5, type: 3}
   _damage: 13
   _rateOfFire: 3
+  _penetrationStrength: 0
+  _splashRadius: 0
+  _splashMask:
+    serializedVersion: 2
+    m_Bits: 64
   _delayAfterFiring: 0
   _rotationSpeed: 225
   _maxAngleToShoot: 1

@@ -8,37 +8,50 @@ public class ProjectileInstance : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
-    [Header("Effects")]
-    [SerializeField] private bool _enableHitEffect = true;
-    [SerializeField] private ParticleSystem _hitEffect;
+    //[SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private bool _addTeamColorToEffects = true;
     [SerializeField] private bool _effectRotatesToHitDirection = true;
     [SerializeField, Range(0f, 1f)] private float _rotationToHitMultiplier = 0.2f;
     [SerializeField] private bool _effectInheritsProjectileDirection = false;
-
+    
+    private TeamData _currentTeam;
+    private ParticleSystem _hitEffect;
+    private ParticleSystem _splashEffect;
     private float _damage = 0f;
-    private float _speed = 1f;
-    private float _lifetime = 1f;
+    private float _projectileSpeed = 1f;
+    private float _projectileLifetime = 1f;
     private int _penetrationStrength = 0;        // Number of times the projectile can pierce through a target.
     private float _splashRadius = 0f;       // Splash damage.
     private LayerMask _splashMask;
-    private TeamData _currentTeam;
-
     private float _elapsedLifetime = 0f;
     private int _penetrationCounter = 0;
 
     public float Damage => _damage;
     public TeamData CurrentTeam => _currentTeam;
 
+    /*
     public void InitializeProjectile(TeamData newTeam, float newDamage, float newSpeed, float newLifetime, int newPenetrationStrength, float newSplashRadius, LayerMask newSplashMask)
     {
         _currentTeam = newTeam;
         _damage = newDamage;
-        _speed = newSpeed;
-        _lifetime = newLifetime;
+        _projectileSpeed = newSpeed;
+        _projectileLifetime = newLifetime;
         _penetrationStrength = newPenetrationStrength;
         _splashRadius = newSplashRadius;
         _splashMask = newSplashMask;
+    }*/
+
+    public void InitializeProjectile(TeamData newTeam, WeaponData newWeaponData)
+    {
+        _currentTeam = newTeam;
+        _hitEffect = newWeaponData.HitEffect;
+        _splashEffect = newWeaponData.SplashEffect;
+        _damage = newWeaponData.Damage;
+        _projectileSpeed = newWeaponData.ProjectileSpeed;
+        _projectileLifetime = newWeaponData.ProjectileLifetime;
+        _penetrationStrength = newWeaponData.PenetrationStrength;
+        _splashRadius = newWeaponData.SplashRadius;
+        _splashMask = newWeaponData.SplashMask;
     }
 
     private void Start()
@@ -48,10 +61,10 @@ public class ProjectileInstance : MonoBehaviour
 
     private void Update()
     {
-        if (_elapsedLifetime >= _lifetime)
+        if (_elapsedLifetime >= _projectileLifetime)
         {
-            SpawnHitEffect();
-            DoSplashDamage();
+            SpawnEffect(_hitEffect);
+            TryDoSplashDamage();
             DestroyProjectile();
         }
         _elapsedLifetime += Time.deltaTime;
@@ -60,7 +73,7 @@ public class ProjectileInstance : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        _rb.MovePosition(transform.position + (transform.up * _speed * Time.fixedDeltaTime));
+        _rb.MovePosition(transform.position + (transform.up * _projectileSpeed * Time.fixedDeltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,17 +82,17 @@ public class ProjectileInstance : MonoBehaviour
         {
             if (collidingAgent.CurrentTeam != _currentTeam)
             {
-                SpawnHitEffect(collision);
+                SpawnEffect(_hitEffect, collision);
             }
 
             DoSplashDamage(collidingAgent);
 
-            if (_penetrationCounter > _penetrationStrength) DestroyProjectile();
+            if (_penetrationCounter >= _penetrationStrength) DestroyProjectile();
             else _penetrationCounter++;
         }
     }
 
-    private void DoSplashDamage()
+    private void TryDoSplashDamage()
     {
         if (_splashRadius == 0f) return;
         List<Collider2D> agentsWithinRange = Physics2D.OverlapCircleAll(transform.position, _splashRadius, _splashMask).ToList();
@@ -104,13 +117,27 @@ public class ProjectileInstance : MonoBehaviour
                 && agent != agentToIgnore)
             {
                 agent.DamageCharacter(_damage);
+                SpawnEffect(_splashEffect);
             }
         }
     }
 
-    private void SpawnHitEffect(Collision2D collision)
+    private void SpawnEffect(ParticleSystem effectToSpawn)
     {
-        if (!_enableHitEffect || !_hitEffect) return;
+        if (!effectToSpawn) return;
+        Quaternion effectRotation = Quaternion.identity;
+
+        ParticleSystem effect = Instantiate(effectToSpawn, transform.position, effectRotation);
+        if (_addTeamColorToEffects)
+        {
+            ParticleSystem.MainModule effectMainModule = effect.main;
+            effectMainModule.startColor = _currentTeam.TeamColor;
+        }
+    }
+
+    private void SpawnEffect(ParticleSystem effectToSpawn, Collision2D collision)
+    {
+        if (!effectToSpawn) return;
         Quaternion effectRotation = Quaternion.identity;
         if (_effectRotatesToHitDirection)
         {
@@ -127,22 +154,18 @@ public class ProjectileInstance : MonoBehaviour
             effectRotation = transform.rotation;
         }
 
-        ParticleSystem effect = Instantiate(_hitEffect, collision.GetContact(0).point, effectRotation);
+        ParticleSystem effect = Instantiate(effectToSpawn, collision.GetContact(0).point, effectRotation);
         if (_addTeamColorToEffects)
         {
             ParticleSystem.MainModule effectMainModule = effect.main;
             effectMainModule.startColor = _currentTeam.TeamColor;
         }
     }
-
+    /*
     private void SpawnHitEffect()
     {
         if (!_enableHitEffect || !_hitEffect) return;
         Quaternion effectRotation = Quaternion.identity;
-        /*if (_effectInheritsProjectileDirection)
-        {
-            effectRotation = transform.rotation;
-        }*/
         effectRotation = transform.rotation;
         ParticleSystem effect = Instantiate(_hitEffect, transform.position, effectRotation);
         if (_addTeamColorToEffects)
@@ -150,7 +173,7 @@ public class ProjectileInstance : MonoBehaviour
             ParticleSystem.MainModule effectMainModule = effect.main;
             effectMainModule.startColor = _currentTeam.TeamColor;
         }
-    }
+    }*/
 
     private void DestroyProjectile()
     {

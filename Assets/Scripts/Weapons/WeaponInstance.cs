@@ -94,8 +94,9 @@ public abstract class WeaponInstance : MonoBehaviour
 
     private void InitializeProjectile(ProjectileInstance spawnedProjectile)
     {
-        spawnedProjectile.InitializeProjectile(_currentTeam, _weaponData.Damage, _weaponData.ProjectileSpeed,
-            _weaponData.ProjectileLifetime, _weaponData.PenetrationStrength, _weaponData.SplashRadius);
+        /*spawnedProjectile.InitializeProjectile(_currentTeam, _weaponData.Damage, _weaponData.ProjectileSpeed,
+            _weaponData.ProjectileLifetime, _weaponData.PenetrationStrength, _weaponData.SplashRadius);*/
+        spawnedProjectile.InitializeProjectile(_currentTeam, _weaponData);
     }
 
     private void OnDrawGizmos()

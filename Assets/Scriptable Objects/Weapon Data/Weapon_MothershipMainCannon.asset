@@ -13,8 +13,18 @@ MonoBehaviour:
   m_Name: Weapon_MothershipMainCannon
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 34959273334938374, guid: d2376855cf33d86408c3f9c86ef62f3f, type: 3}
+  _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
+  _splashEffect: {fileID: 6596529003588079410, guid: e79d1699c7b4e91439216cb266839cc5, type: 3}
   _damage: 20
   _rateOfFire: 3
+  _penetrationStrength: 0
+  _splashRadius: 0
+  _splashMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _delayAfterFiring: 0
+  _rotationSpeed: 180
+  _maxAngleToShoot: 1
   _minimumWeaponRange: 0
   _maximumWeaponRange: 25
   _weaponAngleSpread: 1

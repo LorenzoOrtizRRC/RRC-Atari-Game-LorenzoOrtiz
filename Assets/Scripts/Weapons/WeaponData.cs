@@ -5,7 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon Data", menuName = "Weapons/Weapon Data")]
 public class WeaponData : ScriptableObject
 {
+    [Header("References")]
     [SerializeField] private GameObject _projectileObject;
+    [SerializeField] private ParticleSystem _hitEffect;
+    [SerializeField] private ParticleSystem _splashEffect;
+    [Header("Weapon Stats")]
     [SerializeField, Min(0f)] private float _damage = 1f;
     [SerializeField, Min(0f)] private float _rateOfFire = 1f;     // Projectiles per second. Used to calculate weapon cooldown between bullets. Formula for rate of fire: 1 second / bullets per second.
     [SerializeField, Min(0f)] private int _penetrationStrength = 0;
@@ -21,11 +25,13 @@ public class WeaponData : ScriptableObject
     [SerializeField, Min(0f)] private float _projectileLifetime = 1f;     // Projectile lifetime duration in seconds.
 
     public GameObject ProjectileObject => _projectileObject;
+    public ParticleSystem HitEffect => _hitEffect;
+    public ParticleSystem SplashEffect => _splashEffect;
     public float Damage => _damage;
     public float RateOfFire => _rateOfFire;
     public int PenetrationStrength => _penetrationStrength;
     public float SplashRadius => _splashRadius;
-    public float SplashMask => _splashMask;
+    public LayerMask SplashMask => _splashMask;
     public float DelayAfterFiring => _delayAfterFiring;
     public float RotationSpeed => _rotationSpeed;
     public float MaxAngleToShoot => _maxAngleToShoot;

@@ -13,13 +13,20 @@ MonoBehaviour:
   m_Name: Weapon_TowerSuppressionTurret
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 7284770150913174987, guid: bf6c18d8092d1f2419a3a9c2487dca69, type: 3}
+  _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
+  _splashEffect: {fileID: 6596529003588079410, guid: e79d1699c7b4e91439216cb266839cc5, type: 3}
   _damage: 2
   _rateOfFire: 0.22
+  _penetrationStrength: 0
+  _splashRadius: 0
+  _splashMask:
+    serializedVersion: 2
+    m_Bits: 64
   _delayAfterFiring: 0
   _rotationSpeed: 135
   _maxAngleToShoot: 10
   _minimumWeaponRange: 0
   _maximumWeaponRange: 12
-  _weaponAngleSpread: 10
+  _weaponAngleSpread: 5
   _projectileSpeed: 8
   _projectileLifetime: 2

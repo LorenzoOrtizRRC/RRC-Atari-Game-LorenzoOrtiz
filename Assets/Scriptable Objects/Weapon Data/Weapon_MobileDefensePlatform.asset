@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: Weapon_MobileDefensePlatform
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 7792752497417319274, guid: 54b3120f3e5c00f49b074727996497a7, type: 3}
+  _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
+  _splashEffect: {fileID: 6596529003588079410, guid: e79d1699c7b4e91439216cb266839cc5, type: 3}
   _damage: 0
   _rateOfFire: 1
+  _penetrationStrength: 0
+  _splashRadius: 0
+  _splashMask:
+    serializedVersion: 2
+    m_Bits: 64
   _delayAfterFiring: 0
   _rotationSpeed: 180
   _maxAngleToShoot: 1
