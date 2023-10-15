@@ -137,6 +137,11 @@ public class NPCMover : CharacterMover
         return _currentDirection;
     }
 
+    public void SetCurrentDirection(Vector2 direction)
+    {
+        _currentDirection = direction.normalized;
+    }
+
     // Maybe remove the override if I don't need it.
     protected override void StartMovement(Rigidbody2D agentRigidbody, Vector2 destination)
     {

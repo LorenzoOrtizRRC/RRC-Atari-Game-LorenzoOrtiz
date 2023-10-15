@@ -75,6 +75,14 @@ public abstract class WeaponInstance : MonoBehaviour
         transform.rotation *= Quaternion.AngleAxis(angleDifference - stepAngle, Vector3.forward);
     }
 
+    public void RotateWeaponInstant(Vector2 targetPoint)
+    {
+        if (_disableRotation) return;
+        Vector2 direction = targetPoint - (Vector2)transform.position;
+        float angleDifference = Vector2.SignedAngle(transform.up, direction);
+        transform.rotation *= Quaternion.AngleAxis(angleDifference, Vector3.forward);
+    }
+
     private ProjectileInstance SpawnProjectile(Transform spawnPosition)
     {
         float spreadAngle = _weaponData.WeaponAngleSpread / 2f;

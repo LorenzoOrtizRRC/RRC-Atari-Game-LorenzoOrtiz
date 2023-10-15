@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,6 +54,14 @@ public class StateMachine : MonoBehaviour
         {
             _targetDetector.InitializeTargetDetector(_agent.CurrentTeam);
             _targetDetector.OnEnemyDetected += RegisterNewEnemy;
+        }
+
+        // Set initial facing direction.
+        if (_movementState.Destinations.Any())
+        {
+            Vector2 destinationDirection = _movementState.Destinations[0] - (Vector2)_agent.transform.position;
+            _movementState.SetCurrentDirection(destinationDirection.normalized);
+            _agent.EquippedWeapon.RotateWeaponInstant(destinationDirection.normalized);
         }
     }
 
