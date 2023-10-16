@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfd49b67ac593e45a30193285897264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missionDisplayUIPrefab: {fileID: 6042875085408156227, guid: 882e3a00b057e674d820627271861a0c, type: 3}
+  _missionDisplayUIPrefab: {fileID: 2365155892893262512, guid: 882e3a00b057e674d820627271861a0c, type: 3}
   _missionDisplayWindowParent: {fileID: 4337564449507311802}
   _slowlyGenerateTextAtStart: 1
   _delayPerCharacter: 0.1
