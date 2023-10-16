@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
-  m_Name: CharData_Destroyer
+  m_Name: CharData_Hero_Neutralizer
   m_EditorClassIdentifier: 
-  _characterName: Destroyer
-  _health: 40
+  _characterName: Neutralizer
+  _health: 60
   _armor: 0
   _speed: 4
-  _healthRegenAmount: 0
-  _healthRegenRate: 0
-  _rotationSpeed: 80
-  _aggroRangeRadius: 11
+  _healthRegenAmount: 2
+  _healthRegenRate: 1
+  _rotationSpeed: 180
+  _aggroRangeRadius: 16

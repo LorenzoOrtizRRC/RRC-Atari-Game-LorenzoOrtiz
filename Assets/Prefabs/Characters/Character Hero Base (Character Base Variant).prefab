@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 116580154563218765, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551887674268753603, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Name
       value: Character Hero Base (Character Base Variant)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145959368627072170, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2986044783280923949, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_AnchorMax.x
@@ -18,6 +30,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986044783280923949, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583084252732703730, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603921261874224095, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846740197547466234, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4835223009182039195, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
@@ -84,6 +108,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6604177777739480360, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153030951393618134, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8213044911276456501, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -146,11 +178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1439257023904354072, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3.78298
+      value: 3.999
       objectReference: {fileID: 0}
     - target: {fileID: 1439257023904354072, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.30411
+      value: 0.3041
       objectReference: {fileID: 0}
     - target: {fileID: 1439257023904354072, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,9 +232,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1548325469520669367, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
+      propertyPath: m_fontSize
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548325469520669367, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.21
+      objectReference: {fileID: 0}
     - target: {fileID: 2859926343948932491, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
       propertyPath: m_Name
       value: HeroNameDisplayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2859926343948932491, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380535521050029489, guid: f5109e08a0485fa478f8aab2e87d64fe, type: 3}
       propertyPath: _agent
