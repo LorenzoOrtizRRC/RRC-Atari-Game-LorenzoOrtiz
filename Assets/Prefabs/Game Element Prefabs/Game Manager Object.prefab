@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9117645540478437132}
   - component: {fileID: 8523510285344633238}
+  - component: {fileID: 4935699835766865012}
   - component: {fileID: 5799911092252532044}
   - component: {fileID: 344428559679041724}
   - component: {fileID: 400263177527315965}
@@ -48,6 +49,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c9c972cbf5c4844867b92d4ef589a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4935699835766865012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2262115875484762206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6feec9433dddfe74da2616cb422c255d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioPlayerPrefab: {fileID: 4536725240526021649, guid: a7ccc45ff3aa5cf4e837ab9f13124b3b, type: 3}
+  _objectPoolCount: 10
 --- !u!114 &5799911092252532044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageNumberPrefab: {fileID: 1973896058061444346, guid: 75d45529ecc52854bb739d8f6815ee83, type: 3}
-  _spawnAngleDifference: 10
+  _spawnAngleDifference: 20
 --- !u!114 &344428559679041724
 MonoBehaviour:
   m_ObjectHideFlags: 0
