@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
   m_Name: CharData_Destroyer
   m_EditorClassIdentifier: 
-  _name: Destroyer
+  _characterName: Destroyer
   _health: 35
   _armor: 1
   _speed: 4
+  _healthRegenAmount: 0
+  _healthRegenRate: 0
   _rotationSpeed: 80
   _aggroRangeRadius: 11

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
   m_Name: CharData_MobileDefensePlatform
   m_EditorClassIdentifier: 
-  _name: Mobile Defense Platform
+  _characterName: Mobile Defense Platform
   _health: 1
   _armor: 0
   _speed: 2.5
+  _healthRegenAmount: 0
+  _healthRegenRate: 0
   _rotationSpeed: 45
   _aggroRangeRadius: 15

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
   m_Name: CharData_MobileDefenseTurret
   m_EditorClassIdentifier: 
-  _name: Mobile Defensive Turret
+  _characterName: Mobile Defense Turret
   _health: 80
   _armor: 1
   _speed: 0
+  _healthRegenAmount: 0
+  _healthRegenRate: 0
   _rotationSpeed: 135
   _aggroRangeRadius: 12.5
