@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CharData_Hero_Annihilator
   m_EditorClassIdentifier: 
   _characterName: Annihilator
-  _health: 120
-  _armor: 0
+  _health: 100
+  _armor: 1
   _speed: 3
   _healthRegenAmount: 2
   _healthRegenRate: 1

@@ -298,23 +298,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4598522904627206781, guid: e3632c0299923eb44ab686655945281e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4598522904627206781, guid: e3632c0299923eb44ab686655945281e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6807547941386154447, guid: e3632c0299923eb44ab686655945281e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6807547941386154447, guid: e3632c0299923eb44ab686655945281e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8945007260199084341, guid: e3632c0299923eb44ab686655945281e, type: 3}
       propertyPath: m_Name
       value: Character_Hero_Annihilator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945007260199084341, guid: e3632c0299923eb44ab686655945281e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1938,11 +1942,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 483116149747561931, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 483116149747561931, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 863562487362267798, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1988,13 +1992,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_Hero_Neutralizer
       objectReference: {fileID: 0}
+    - target: {fileID: 4991799378446159491, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410595211117003279, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
+      propertyPath: _currentTeam
+      value: 
+      objectReference: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
     - target: {fileID: 7429856826893213305, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7429856826893213305, guid: 53fb6d8d53acd7049a0da18a51251864, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
