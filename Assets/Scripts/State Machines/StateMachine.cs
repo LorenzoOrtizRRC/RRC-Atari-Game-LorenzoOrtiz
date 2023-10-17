@@ -152,7 +152,6 @@ public class StateMachine : MonoBehaviour
             CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
             if (agent && !agent.IsDead && !agent.IsUntargetable && agent.CurrentTeam != _agent.CurrentTeam)
             {
-                print("NEW ENEMY DETECTED! " + agent.IsDead + " " + agent.gameObject.name);
                 RegisterNewEnemy(agent);
                 break;
             }

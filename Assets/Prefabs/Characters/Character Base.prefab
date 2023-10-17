@@ -53,7 +53,7 @@ MonoBehaviour:
   _enableEffects: 1
   _firingEffect: {fileID: 6166364348524231643, guid: f321645043e03ee40bc7eba25e85c8ed, type: 3}
   _addTeamColorsToEffects: 1
-  _enableGizmos: 1
+  _enableGizmos: 0
   _visualizeWeaponSpread: 1
 --- !u!1 &804674929867470295
 GameObject:
@@ -179,7 +179,7 @@ MonoBehaviour:
     _unstuckObstacleMinAngleThreshold: 100
     _unstuckAngleRotationDifference: 155
   _isImmovable: 0
-  _enableGizmos: 1
+  _enableGizmos: 0
   _showObstacleAvoidance: 1
   _showAggroRange: 1
   _showDestinations: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _detectorCollider: {fileID: 2394253845395186629}
   _enemyDetectionRadius: 10
-  _showDetectionRadius: 1
+  _showDetectionRadius: 0
 --- !u!58 &2394253845395186629
 CircleCollider2D:
   m_ObjectHideFlags: 0
