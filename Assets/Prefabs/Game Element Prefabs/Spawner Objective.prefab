@@ -371,8 +371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teamReference: {fileID: 0}
-  _captureObjective: {fileID: 0}
-  _affectedSpawners: []
+  _captureObjective: {fileID: 3739075737004200733}
+  _affectedSpawners:
+  - {fileID: 225766796110883842}
   _newPath: {fileID: 2436365274793174734}
 --- !u!1001 &1412797832912630862
 PrefabInstance:

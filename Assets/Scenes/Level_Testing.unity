@@ -6643,6 +6643,22 @@ PrefabInstance:
       propertyPath: OnObjectiveCaptured.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4029273365138807039, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
+      propertyPath: _newPath
+      value: 
+      objectReference: {fileID: 122853106}
+    - target: {fileID: 4029273365138807039, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
+      propertyPath: _teamReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
+    - target: {fileID: 4029273365138807039, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
+      propertyPath: _affectedSpawners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029273365138807039, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
+      propertyPath: _affectedSpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1756919624}
     - target: {fileID: 8322029104074812502, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -36128,6 +36144,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1756919624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
+  m_PrefabInstance: {fileID: 400373616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1759395423
 PrefabInstance:
   m_ObjectHideFlags: 0
