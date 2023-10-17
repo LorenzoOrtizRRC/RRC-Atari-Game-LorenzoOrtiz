@@ -167,7 +167,7 @@ MonoBehaviour:
     _laneAlignmentBias: 0.8
     _steeringLayerMask:
       serializedVersion: 2
-      m_Bits: 320
+      m_Bits: 1344
     _targetDistanceThreshold: 0.5
     _avoidanceCastLength: 1
     _avoidanceRadius: 1
