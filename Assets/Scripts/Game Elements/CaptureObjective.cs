@@ -41,6 +41,10 @@ public class CaptureObjective : MonoBehaviour
         SetNewOwner(_initialTeamOwner);
         _currentProgress = _ownerTeam == _neutralTeamOwner ? 0f : 1f;
         _progressBar.UpdateSliderValue(_currentProgress / 1f);
+
+        // Set progress bar visibility.
+        if (_hideProgressBarWhenFull && _progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);
+        else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
     }
 
     private void OnEnable()
