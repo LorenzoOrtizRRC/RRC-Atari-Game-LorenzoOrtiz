@@ -14,7 +14,10 @@ public class MinionSpawner : MonoBehaviour
     public TeamData SpawnerTeam => _spawnerTeam;
 
     private List<GameObject> _minionWave = new List<GameObject>();      // minions to spawn per wave
+    private TeamData _currentTeam;
+    private WaypointPath _currentPath;
     private GameObject[] _currentMinionWave = null;      // Minions to spawn in current wave. This is so that changes to _minionWave don't affect the current wave being spawned.
+
     private float _waveTimer = 0f;     // timer for waves
     private float _minionSpawnTimer = 0f;       // timer for minions in waves
     private int _waveIndex = 0;
@@ -23,6 +26,9 @@ public class MinionSpawner : MonoBehaviour
     private void Awake()
     {
         foreach (SpawnerData spawnerData in _initialWave)AddMinionsInWave(spawnerData);
+
+        _currentPath = _minionPath;
+        _currentTeam = _spawnerTeam;
     }
 
     private void Update()
@@ -67,10 +73,18 @@ public class MinionSpawner : MonoBehaviour
         }
     }
 
+    public void SetWaypointPath(WaypointPath newPath)
+    {
+        _currentPath = newPath;
+        RefreshTimers();
+    }
+
+    public void SetTeam(TeamData newTeam) => _currentTeam = newTeam;
+
     private void SpawnMinion(int minionWaveIndex)
     {
         Instantiate(_currentMinionWave[minionWaveIndex], GetSpawnPosition(), Quaternion.identity).TryGetComponent(out StateMachine stateMachine);
-        stateMachine?.InitializeStateMachine(_spawnerTeam, _minionPath);
+        stateMachine?.InitializeStateMachine(_currentTeam, _currentPath);
     }
 
     private void RefreshTimers()
