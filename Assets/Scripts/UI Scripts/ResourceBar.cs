@@ -19,6 +19,8 @@ public class ResourceBar : MonoBehaviour
 
     private float _endDecayValue = 0f;
 
+    public float ResourceValue => _resourceSlider.value;
+
     public void UpdateSliderValue(float value)
     {
         _resourceSlider.value = Mathf.Clamp(value, 0f, 1f);

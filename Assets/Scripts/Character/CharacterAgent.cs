@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Linq;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine.UIElements;
 
 public class CharacterAgent : MonoBehaviour
 {
@@ -19,8 +20,9 @@ public class CharacterAgent : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private CharacterArtController _characterArtController;
     [SerializeField] private WeaponInstance _weapon;
-    [Header("UI Component References")]
+    [Header("UI")]
     [SerializeField] private ResourceBar _healthBar;
+    [SerializeField] private bool _hideHealthBarWhenFull = true;
     [Header("Agent Variables")]
     [SerializeField] private CharacterData _stats;
     [SerializeField] private TeamData _currentTeam;
@@ -131,6 +133,8 @@ public class CharacterAgent : MonoBehaviour
                 if (_replaceDependencyTeams) dependencyParent.SetTeam(_currentTeam);
             }
         }
+
+        TryChangeHealthBarVisibility();
     }
 
     private void Update()
@@ -205,6 +209,7 @@ public class CharacterAgent : MonoBehaviour
     public void HealCharacter(float healValue)
     {
         _currentHealth = Mathf.Min(_currentHealth + healValue, MaxHealth);
+        TryChangeHealthBarVisibility();
         OnHealthChanged?.Invoke(CurrentHealth / MaxHealth);
     }
 
@@ -219,6 +224,7 @@ public class CharacterAgent : MonoBehaviour
             OnDamageTaken?.Invoke(mitigatedDamage);
             OnHealthChanged?.Invoke(CurrentHealth / MaxHealth);
         }
+        TryChangeHealthBarVisibility();
         // evaluate health.
         if (_currentHealth == 0) KillCharacter();
     }
@@ -235,5 +241,11 @@ public class CharacterAgent : MonoBehaviour
         if (_disableOnDeath) gameObject.SetActive(false);
         else Destroy(gameObject);
         OnAgentDeath?.Invoke();
+    }
+
+    private void TryChangeHealthBarVisibility()
+    {
+        if (_hideHealthBarWhenFull && _healthBar.gameObject.activeInHierarchy && _healthBar.ResourceValue / 1f == 1f) _healthBar.gameObject.SetActive(false);
+        else if (!_healthBar.gameObject.activeInHierarchy && _healthBar.ResourceValue / 1f < 1f) _healthBar.gameObject.SetActive(true);
     }
 }
