@@ -23,8 +23,9 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private bool _showAggroRange = false;
     [SerializeField] private bool _showDestinations = false;
 
+    //Optimize this.
+    public NPCMover MovementState => _movementState;
     public CharacterAgent EnemyTarget => _enemyTarget;
-
     private CharacterAgent _enemyTarget;
     private bool _isChasing = false;
 
@@ -118,12 +119,20 @@ public class StateMachine : MonoBehaviour
             _agent.RotateWeapon((Vector2)transform.position + _movementState.CurrentDirection);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // This fixes the problem of NPCs going beyond the waypoint, but coming back after somehow getting dragged beyond it.
         Waypoint currentWaypoint;
-        if ((currentWaypoint = other.GetComponent<Waypoint>()) && currentWaypoint == _movementState.CurrentPath[_movementState.DestinationIndex]) _movementState.ForceIncrementDestinationIndex();
+        if (currentWaypoint = collision.GetComponent<Waypoint>())
+        {
+            if (!_movementState.CurrentPath.Any()) return;
+            int maxElements = _movementState.CurrentPath.Count;
+            int index = Math.Min(_movementState.DestinationIndex, maxElements - 1);
+            if (currentWaypoint == _movementState.CurrentPath[index])
+            {
+                _movementState.ForceIncrementDestinationIndex();
+            }
+        }
     }
 
     private Vector2 MoveCharacter()

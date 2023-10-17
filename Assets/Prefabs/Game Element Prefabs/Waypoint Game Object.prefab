@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf04d6e4b7e9f94bafee14f3566b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypointArea: {fileID: 1460890729178991377}
+  _waypointArea: {x: 2.5, y: 2.5}
   _previewWaypointArea: 1
 --- !u!61 &1460890729178991377
 BoxCollider2D:
