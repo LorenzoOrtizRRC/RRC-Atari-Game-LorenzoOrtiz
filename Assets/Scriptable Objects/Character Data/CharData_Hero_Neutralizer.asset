@@ -19,4 +19,4 @@ MonoBehaviour:
   _healthRegenAmount: 2
   _healthRegenRate: 1
   _rotationSpeed: 180
-  _aggroRangeRadius: 16
+  _aggroRangeRadius: 18
