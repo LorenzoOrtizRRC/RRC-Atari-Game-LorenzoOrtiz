@@ -22,6 +22,8 @@ public class CaptureObjective : MonoBehaviour
     [SerializeField] private float _captureRegenDelay = 10f;        // Time in real seconds after being unoccupied to slowly increase/decrease capture progress. Set to 0f to disable.
     [SerializeField] private float _captureRegenSpeed = 0.5f;       // % capture regeneration speed (back to full or 0) per second when unoccupied after _captureRegenDelay seconds.
     [SerializeField] private bool _hideProgressBarWhenFull = true;
+    [Header("Colors")]
+    [SerializeField] private bool _preserveAlphaTransparency = true;
 
 
     private List<CharacterAgent> _occupyingAgents = new List<CharacterAgent>();
@@ -183,7 +185,13 @@ public class CaptureObjective : MonoBehaviour
     // This method changes the color of the progress bar to indicate which team is capturing the objective (from neutral and/or 0% progress).
     private void UpdateProgressBarColor(TeamData newTeam)
     {
-        _progressBarTeamColor.color = newTeam.TeamColor;
+        Color newColor = newTeam.TeamColor;
+        if (_preserveAlphaTransparency)
+        {
+            Color teamColor = newTeam.TeamColor;
+            newColor = new Color(teamColor.r, teamColor.g, teamColor.b, _progressBarTeamColor.color.a);
+        }
+        _progressBarTeamColor.color = newColor;
     }
 
     // This method changes the colors of the objective itself to indicate which team owns the objective.
