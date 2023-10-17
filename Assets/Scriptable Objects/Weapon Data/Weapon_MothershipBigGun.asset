@@ -23,7 +23,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _delayAfterFiring: 2
-  _rotationSpeed: 135
+  _rotationSpeed: 90
   _maxAngleToShoot: 1
   _minimumWeaponRange: 0
   _maximumWeaponRange: 25

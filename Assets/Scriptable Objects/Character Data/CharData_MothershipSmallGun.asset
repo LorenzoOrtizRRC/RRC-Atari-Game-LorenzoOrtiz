@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterName: Mothership Defensive Turret
   _health: 50
-  _armor: 0
+  _armor: 1
   _speed: 0
   _healthRegenAmount: 0
   _healthRegenRate: 0
-  _rotationSpeed: 135
+  _rotationSpeed: 0
   _aggroRangeRadius: 16

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterName: Mothership Main Cannon
   _health: 300
-  _armor: 1
+  _armor: 2
   _speed: 1
   _healthRegenAmount: 0
   _healthRegenRate: 0
-  _rotationSpeed: 90
+  _rotationSpeed: 0
   _aggroRangeRadius: 25
