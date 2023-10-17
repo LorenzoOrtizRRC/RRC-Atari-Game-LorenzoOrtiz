@@ -6,6 +6,7 @@ public class MinionSpawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnerData> _initialWave = new List<SpawnerData>();    // initial minions in starting waves
     [SerializeField] private TeamData _spawnerTeam;
+    [SerializeField] private TeamData _neutralTeam;     // Do not spawn if team is neutral.
     [SerializeField] private WaypointPath _minionPath;
     [SerializeField] private float _delayBetweenSpawnWaves = 10f;   // real seconds
     [SerializeField] private float _delayBetweenMinions = 1f;       // real seconds. delay between each minion spawn in a wave
@@ -33,6 +34,14 @@ public class MinionSpawner : MonoBehaviour
 
     private void Update()
     {
+        // Optimize this.
+        if (_currentTeam == _neutralTeam)
+        {
+            RefreshTimers();
+            _waveIndex = 0;
+            _isSpawningWave = false;
+        }
+
         if (_isSpawningWave)
         {
             // Spawn the minion wave.

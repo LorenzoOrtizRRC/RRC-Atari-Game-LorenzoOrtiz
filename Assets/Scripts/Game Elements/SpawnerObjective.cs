@@ -7,12 +7,15 @@ public class SpawnerObjective : CaptureObjective
     // When captured, adds minions to its ownerTeam's spawners in _affectedMinionSpawners.
     // When lost (neutral), removes minions from its previous ownerTeam's spawners in _affectedMinionSpawners.
     [SerializeField] private List<MinionSpawner> _affectedMinionSpawners;
+    [SerializeField] private List<CharacterAgent> _affectedAgents;
     [SerializeField] private List<SpawnerData> _minionsToAdd;
 
     private void Start()
     {
         OnObjectiveCaptured.AddListener(AddMinionsToSpawner);
+        OnObjectiveCaptured.AddListener(SetAgentTeams);
         OnObjectiveLost.AddListener(RemoveMinionsFromSpawner);
+        OnObjectiveLost.AddListener(SetAgentTeamsNeutral);
         if (OwnerTeam != NeutralTeamOwner)
         {
             foreach (MinionSpawner minionSpawner in _affectedMinionSpawners)
@@ -25,6 +28,22 @@ public class SpawnerObjective : CaptureObjective
                     }
                 }
             }
+        }
+    }
+
+    public void SetAgentTeams(TeamData newOwnerTeam)
+    {
+        foreach (CharacterAgent agent in _affectedAgents)
+        {
+            agent.SetTeam(newOwnerTeam);
+        }
+    }
+
+    public void SetAgentTeamsNeutral(TeamData newOwnerTeam)
+    {
+        foreach (CharacterAgent agent in _affectedAgents)
+        {
+            agent.SetTeam(NeutralTeamOwner);
         }
     }
 

@@ -48,7 +48,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9418d6d00ccd17248bd086122497f94b, type: 2}
   - {fileID: 11400000, guid: 009dfd4e0c12b6445bef81f96ea14909, type: 2}
   _spawnerTeam: {fileID: 11400000, guid: 27c8800bb454ec044b295c9ea6144e8a, type: 2}
-  _minionWaypoints: []
+  _neutralTeam: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
+  _minionPath: {fileID: 0}
   _delayBetweenSpawnWaves: 10
   _delayBetweenMinions: 1
   _spawnArea: {x: 5, y: 5}
