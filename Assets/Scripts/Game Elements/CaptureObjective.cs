@@ -79,64 +79,6 @@ public class CaptureObjective : MonoBehaviour
 
     private void UpdateProgress(TeamData occupyingTeam)
     {
-        /*
-        if (occupyingTeam == _ownerTeam && _currentProgress == 1f) return;
-        else if (_currentProgress == 0f)        // If progress is 0, switch owners
-        {
-            if (_ownerTeam != occupyingTeam && _ownerTeam != _neutralTeamOwner)
-            {
-                //_currentTeamOccupants = occupyingTeam;
-                // Change bar color to occupying team. Change owner to neutral.
-                UpdateProgressOwner(occupyingTeam);
-                UpdateOwnerTeam(_neutralTeamOwner);
-            }
-            else return;
-        }
-
-        // Increment or decrement current progress based on current team ownership vs. currently occupying team.
-        if (_ownerTeam != occupyingTeam)
-        {
-            _currentProgress = Mathf.Clamp01(_currentProgress - (_captureSpeed * Time.deltaTime));
-        }
-        else
-        {
-            _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-        }
-        _progressBar.UpdateSliderValue(_currentProgress / 1f);
-        */
-
-        /*
-        if the occupants own objective OR if its neutral;
-            if its 100%
-                if its not theirs, make it theirs. Otherwise do nothing.
-            if it's less than 100, increment
-        if they dont (the enemy owns it);
-            if it's 0, and the owner isnt neutral, make it neutral
-            if it's the enemy's, decrement
-           
-        */
-        //if (_ownerTeam == _neutralTeamOwner && )
-        /*
-        if (_ownerTeam == _neutralTeamOwner)
-        {
-            if (_currentProgress == 1f) SetNewObjectiveOwner(occupyingTeam);
-            else _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-        }
-        else if (_ownerTeam == occupyingTeam)
-        {
-            if (_currentProgress < 1f) _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-        }
-        else
-        {
-            if (_currentProgress == 0f)
-            {
-                UpdateProgressBarColor(occupyingTeam);
-                SetNewObjectiveOwner(_neutralTeamOwner);
-            }
-            else _currentProgress = Mathf.Clamp01(_currentProgress + (_captureSpeed * Time.deltaTime));
-        }
-        */
-
         if (_ownerTeam == occupyingTeam)
         {
             if (_currentProgress < 1f) IncreaseProgress(_captureSpeed);
@@ -178,7 +120,13 @@ public class CaptureObjective : MonoBehaviour
 
     private void RegenerateProgress()
     {
-        if (_ownerTeam == _neutralTeamOwner && _currentProgress > 0f) DecreaseProgress(_captureRegenSpeed);
+        if (_ownerTeam == _neutralTeamOwner)
+        {
+            if (_currentProgress > 0f)
+            {
+                DecreaseProgress(_captureRegenSpeed);
+            }
+        }
         else if (_currentProgress < 1f) IncreaseProgress(_captureRegenSpeed);
     }
 

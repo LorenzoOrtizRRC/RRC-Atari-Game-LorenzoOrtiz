@@ -32399,10 +32399,11 @@ MonoBehaviour:
   _objectiveColors: {fileID: 340658559}
   _neutralTeamOwner: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
   _initialTeamOwner: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
-  _captureSpeed: 0.5
+  _captureSpeed: 0.3
   _captureRegenDelay: 3
-  _captureRegenSpeed: 0.5
+  _captureRegenSpeed: 0.1
   _hideProgressBarWhenFull: 1
+  _preserveAlphaTransparency: 1
   _affectedMinionSpawners: []
   _minionsToAdd: []
 --- !u!1 &1467333381
@@ -44513,6 +44514,7 @@ MonoBehaviour:
   _captureRegenDelay: 5
   _captureRegenSpeed: 0.5
   _hideProgressBarWhenFull: 1
+  _preserveAlphaTransparency: 1
 --- !u!58 &2144717141
 CircleCollider2D:
   m_ObjectHideFlags: 0
