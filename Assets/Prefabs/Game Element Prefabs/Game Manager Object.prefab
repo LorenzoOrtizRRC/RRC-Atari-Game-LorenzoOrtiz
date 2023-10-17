@@ -11,10 +11,7 @@ GameObject:
   - component: {fileID: 9117645540478437132}
   - component: {fileID: 8523510285344633238}
   - component: {fileID: 4935699835766865012}
-  - component: {fileID: 5799911092252532044}
   - component: {fileID: 344428559679041724}
-  - component: {fileID: 400263177527315965}
-  - component: {fileID: 8714045351942157157}
   m_Layer: 0
   m_Name: Game Manager Object
   m_TagString: Untagged
@@ -63,20 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioPlayerPrefab: {fileID: 4536725240526021649, guid: a7ccc45ff3aa5cf4e837ab9f13124b3b, type: 3}
   _objectPoolCount: 10
---- !u!114 &5799911092252532044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2262115875484762206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c11312996c87bb4581d5b44533386fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageNumberPrefab: {fileID: 1973896058061444346, guid: 75d45529ecc52854bb739d8f6815ee83, type: 3}
-  _spawnAngleDifference: 20
 --- !u!114 &344428559679041724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,32 +74,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 0}
   _playerHealthBar: {fileID: 0}
---- !u!114 &400263177527315965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2262115875484762206}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef2c29b248ba004dbe1795b20196b0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerLength: 0.25
-  _objectToPool: {fileID: 3187683972741911983, guid: 58fe796c2260b3e4cb2e54359e2bd15b, type: 3}
---- !u!114 &8714045351942157157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2262115875484762206}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c0c53b8d750de4b8e86e2614614e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectsToPool:
-  - {fileID: 3187683972741911983, guid: 58fe796c2260b3e4cb2e54359e2bd15b, type: 3}
-  _initialObjectPoolSize: 10

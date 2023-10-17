@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 408306678824657437}
   - component: {fileID: 4026541970823408659}
   - component: {fileID: 1557278853657971705}
-  - component: {fileID: 7379592094062951107}
+  - component: {fileID: 7625541815944898801}
   m_Layer: 5
   m_Name: Mission Display Window
   m_TagString: Untagged
@@ -89,7 +89,7 @@ MonoBehaviour:
   _missionDisplayWindowParent: {fileID: 4337564449507311802}
   _slowlyGenerateTextAtStart: 1
   _delayPerCharacter: 0.1
---- !u!114 &7379592094062951107
+--- !u!114 &7625541815944898801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
