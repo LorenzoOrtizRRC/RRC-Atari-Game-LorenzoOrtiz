@@ -148,9 +148,11 @@ public class StateMachine : MonoBehaviour
         Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(_targetDetector.transform.position, _targetDetector.EnemyDetectionRadius);
         foreach (Collider2D target in potentialTargets)
         {
+            // TODO: Optimize these checks.
             CharacterAgent agent = target.transform.GetComponent<CharacterAgent>();
-            if (agent && agent.CurrentTeam != _agent.CurrentTeam)
+            if (agent && !agent.IsDead && !agent.IsUntargetable && agent.CurrentTeam != _agent.CurrentTeam)
             {
+                print("NEW ENEMY DETECTED! " + agent.IsDead + " " + agent.gameObject.name);
                 RegisterNewEnemy(agent);
                 break;
             }
