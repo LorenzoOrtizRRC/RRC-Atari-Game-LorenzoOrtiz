@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13aeadb5d70e42c40b3bfcd399042b18, type: 3}
-  m_Name: SD_SniperWave
+  m_Name: SD_BasicShielder_2x
   m_EditorClassIdentifier: 
-  _minionPrefab: {fileID: 8936307908396836258, guid: 5e8e28f796442ef48849009133cc866f, type: 3}
+  _minionPrefab: {fileID: 121837617551764651, guid: c73fb9a3b1b431c4e9f199b99002c290, type: 3}
   _numberOfMinions: 2

@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 6.7, y: 6.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2312221237583023870}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 1b26a047d14be8440bc40acde8402fcc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.05882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.047058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -292,7 +292,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7.5
+  m_Radius: 10
 --- !u!1 &5251155151971710702
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +402,10 @@ PrefabInstance:
     - target: {fileID: 3261900794691039196, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
       propertyPath: _isUntargetable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411231340351901311, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6982423595563980824, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
       propertyPath: m_AnchorMax.x

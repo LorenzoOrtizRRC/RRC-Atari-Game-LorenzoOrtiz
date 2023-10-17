@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13aeadb5d70e42c40b3bfcd399042b18, type: 3}
-  m_Name: SD_MobileDefensePlatform
+  m_Name: SD_BasicShooter_2x
   m_EditorClassIdentifier: 
-  _minionPrefab: {fileID: 5649121241125987123, guid: 32250f3ed5135044589970a04cc40241, type: 3}
-  _numberOfMinions: 1
+  _minionPrefab: {fileID: 3074798547259334734, guid: 206c8c20ceac7a745929c51010e286cd, type: 3}
+  _numberOfMinions: 2
