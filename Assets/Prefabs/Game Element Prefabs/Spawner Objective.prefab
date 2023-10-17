@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2312221237583023870}
-  - component: {fileID: 7028167181827215332}
+  - component: {fileID: 3739075737004200733}
   - component: {fileID: 3682496267502032315}
   m_Layer: 0
   m_Name: Spawner Objective
@@ -220,10 +220,11 @@ Transform:
   - {fileID: 2978390947411137173}
   - {fileID: 1231065474583287523}
   - {fileID: 7134046517702145037}
+  - {fileID: 9093448748150223627}
   - {fileID: 558172655672587040}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7028167181827215332
+--- !u!114 &3739075737004200733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,24 +233,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2429853163957527446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4b484ae3d3c9448ba44b5987efb9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: a836b5f39eeaa4940ab5a3dbc8583846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnObjectiveCaptured:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7028167181827215332}
-        m_TargetAssemblyTypeName: SpawnerObjective, Assembly-CSharp
-        m_MethodName: AddMinionsToSpawner
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnObjectiveLost:
     m_PersistentCalls:
       m_Calls: []
@@ -264,7 +253,10 @@ MonoBehaviour:
   _captureRegenSpeed: 0.1
   _hideProgressBarWhenFull: 1
   _preserveAlphaTransparency: 1
-  _affectedMinionSpawners: []
+  _affectedMinionSpawners:
+  - {fileID: 225766796110883842}
+  _affectedAgents:
+  - {fileID: 4530583125992758162}
   _minionsToAdd: []
 --- !u!58 &3682496267502032315
 CircleCollider2D:
@@ -311,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 558172655672587040}
   m_Layer: 0
-  m_Name: Minion Spawner Group (0)
+  m_Name: Minion Spawner Data Group (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +323,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8596683962034141275}
-  - {fileID: 9093448748150223627}
   - {fileID: 4939303882263316398}
   m_Father: {fileID: 2312221237583023870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -380,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teamReference: {fileID: 0}
-  _captureObjective: {fileID: 7028167181827215332}
+  _captureObjective: {fileID: 0}
   _affectedSpawners: []
   _newPath: {fileID: 2436365274793174734}
 --- !u!1001 &1412797832912630862
@@ -389,7 +380,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 558172655672587040}
+    m_TransformParent: {fileID: 2312221237583023870}
     m_Modifications:
     - target: {fileID: 94282827287999402, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -464,6 +455,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
+--- !u!114 &4530583125992758162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3261900794691039196, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
+  m_PrefabInstance: {fileID: 1412797832912630862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888c0346e52740a4284b28b8ac40d1de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9093448748150223627 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7901899049803188037, guid: d139d215101d5194b8cbb16f3243b0b6, type: 3}
@@ -503,11 +505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 7.7378
+      value: 6.8933
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1.0083
+      value: 0.7269
       objectReference: {fileID: 0}
     - target: {fileID: 463296225334172520, guid: 9cb74785254ca47458a7fa1310b2e96e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -983,6 +985,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa8576ace5322e240af3b144df544f18, type: 3}
+--- !u!114 &225766796110883842 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
+  m_PrefabInstance: {fileID: 8962296248421049439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59120f3771f0704dae48a1ba1832083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7134046517702145037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2261160465936437330, guid: fa8576ace5322e240af3b144df544f18, type: 3}

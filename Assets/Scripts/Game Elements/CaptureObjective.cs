@@ -35,7 +35,7 @@ public class CaptureObjective : MonoBehaviour
     public TeamData NeutralTeamOwner => _neutralTeamOwner;
     public TeamData OwnerTeam => _ownerTeam;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Initialize ownership.
         SetNewOwner(_initialTeamOwner);
@@ -46,6 +46,13 @@ public class CaptureObjective : MonoBehaviour
     private void OnEnable()
     {
         _captureRegenTimer = Time.time + _captureRegenDelay;
+    }
+
+    private void Start()
+    {
+        print(_ownerTeam);
+        print(OnObjectiveCaptured == null);
+        OnObjectiveCaptured?.Invoke(_ownerTeam);
     }
 
     private void Update()

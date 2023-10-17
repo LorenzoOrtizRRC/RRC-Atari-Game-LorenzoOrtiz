@@ -14,7 +14,7 @@ public class CaptureObjectiveListener : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        _captureObjective.OnObjectiveCaptured.AddListener(UpdateSpawnerWaypoints);
+        //_captureObjective.OnObjectiveCaptured.AddListener(UpdateSpawnerWaypoints);
     }
 
     private void UpdateSpawnerWaypoints(TeamData newOwnerTeam)

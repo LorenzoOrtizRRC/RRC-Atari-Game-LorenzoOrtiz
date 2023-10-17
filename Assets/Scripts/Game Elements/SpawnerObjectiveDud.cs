@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerObjective : CaptureObjective
+public class SpawnerObjectiveDud : CaptureObjective
 {
     // When captured, adds minions to its ownerTeam's spawners in _affectedMinionSpawners.
     // When lost (neutral), removes minions from its previous ownerTeam's spawners in _affectedMinionSpawners.
@@ -10,14 +10,12 @@ public class SpawnerObjective : CaptureObjective
     [SerializeField] private List<CharacterAgent> _affectedAgents;
     [SerializeField] private List<SpawnerData> _minionsToAdd;
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-
         OnObjectiveCaptured.AddListener(AddMinionsToSpawner);
-        OnObjectiveCaptured.AddListener(SetAffectedTeams);
+        OnObjectiveCaptured.AddListener(SetAgentTeams);
         OnObjectiveLost.AddListener(RemoveMinionsFromSpawner);
-        OnObjectiveLost.AddListener(SetAffectedTeamsNeutral);
+        OnObjectiveLost.AddListener(SetAgentTeamsNeutral);
         if (OwnerTeam != NeutralTeamOwner)
         {
             foreach (MinionSpawner minionSpawner in _affectedMinionSpawners)
@@ -33,29 +31,19 @@ public class SpawnerObjective : CaptureObjective
         }
     }
 
-    public void SetAffectedTeams(TeamData newOwnerTeam)
+    public void SetAgentTeams(TeamData newOwnerTeam)
     {
         foreach (CharacterAgent agent in _affectedAgents)
         {
             agent.SetTeam(newOwnerTeam);
         }
-
-        foreach (MinionSpawner spawner in _affectedMinionSpawners)
-        {
-            spawner.SetTeam(newOwnerTeam);
-        }
     }
 
-    public void SetAffectedTeamsNeutral(TeamData newOwnerTeam)
+    public void SetAgentTeamsNeutral(TeamData newOwnerTeam)
     {
         foreach (CharacterAgent agent in _affectedAgents)
         {
             agent.SetTeam(NeutralTeamOwner);
-        }
-
-        foreach (MinionSpawner spawner in _affectedMinionSpawners)
-        {
-            spawner.SetTeam(NeutralTeamOwner);
         }
     }
 
