@@ -133,13 +133,15 @@ public class CaptureObjective : MonoBehaviour
     // This method changes the color of the progress bar to indicate which team is capturing the objective (from neutral and/or 0% progress).
     private void UpdateProgressBarColor(TeamData newTeam)
     {
+        /*
         Color newColor = newTeam.TeamColor;
         if (_preserveAlphaTransparency)
         {
             Color teamColor = newTeam.TeamColor;
             newColor = new Color(teamColor.r, teamColor.g, teamColor.b, _progressBarTeamColor.color.a);
         }
-        _progressBarTeamColor.color = newColor;
+        _progressBarTeamColor.color = newColor;*/
+        _progressBarTeamColor.color = newTeam.TeamColor;
     }
 
     // This method changes the colors of the objective itself to indicate which team owns the objective.
@@ -147,7 +149,13 @@ public class CaptureObjective : MonoBehaviour
     {
         _ownerTeam = newTeam;
         // Change objective team colors.
-        _objectiveColors.color = newTeam.TeamColor;
+        Color newColor = newTeam.TeamColor;
+        if (_preserveAlphaTransparency)
+        {
+            Color teamColor = newTeam.TeamColor;
+            newColor = new Color(teamColor.r, teamColor.g, teamColor.b, _objectiveColors.color.a);
+        }
+        _objectiveColors.color = newColor;
     }
 
     private void IncreaseProgress(float progressSpeed)
