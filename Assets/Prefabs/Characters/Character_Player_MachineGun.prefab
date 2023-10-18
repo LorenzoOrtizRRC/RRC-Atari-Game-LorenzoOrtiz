@@ -604,9 +604,13 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: 57a2b405f7fb2724cb8382f3b3ae657f, type: 2}
+    - target: {fileID: 394877704361097563, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: _disableOnDeath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 804674929867470295, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Name
-      value: Character_Player_MachineGun Variant
+      value: Character_Player_MachineGun
       objectReference: {fileID: 0}
     - target: {fileID: 1529838080698321536, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Enabled

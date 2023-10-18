@@ -53,8 +53,8 @@ public class MissionObjective : MonoBehaviour
         {
             if (CurrentProgress == 0) completionStatus++;
         }
-        if (completionStatus > 1) completionStatus = -100;
-        else if (_isLoseCondition) completionStatus = -completionStatus;
+        if (_isInstantLoseCondition && completionStatus >= 1) completionStatus = -100;
+        else if (_isLoseCondition && completionStatus >= 1) completionStatus = -completionStatus;
         return completionStatus;
     }
 

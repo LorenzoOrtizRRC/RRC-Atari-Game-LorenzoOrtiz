@@ -44,13 +44,15 @@ public class MissionManager : MonoBehaviour
     private void EvaluateMissions(MissionObjective mission)
     {
         // If equals to negative of total mission count or less, player lost. If equals to total mission count, player wins.
+        int objectiveGoal = 0;
         int objectiveCompletion = 0;
         foreach (MissionObjective objective in _missions)
         {
+            if (!objective.IsInstantLoseCondition) objectiveGoal++;
             objectiveCompletion += objective.GetCompletionStatus();
         }
-        if (objectiveCompletion == _missions.Count) OnMissionsCompleted?.Invoke();
-        else if (objectiveCompletion <= -_missions.Count) OnMissionsFailed?.Invoke();
+        if (objectiveCompletion == objectiveGoal) OnMissionsCompleted?.Invoke();
+        else if (objectiveCompletion <= -objectiveGoal) OnMissionsFailed?.Invoke();
     }
 
     private void UpdateMissionDisplay(MissionObjective mission)
