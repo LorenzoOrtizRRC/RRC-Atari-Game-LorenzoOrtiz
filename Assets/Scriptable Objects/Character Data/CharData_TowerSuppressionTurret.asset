@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CharData_TowerSuppressionTurret
   m_EditorClassIdentifier: 
   _characterName: Suppression Turret
-  _health: 80
+  _health: 90
   _armor: 0
   _speed: 0
   _healthRegenAmount: 0
   _healthRegenRate: 0
   _rotationSpeed: 90
-  _aggroRangeRadius: 11.9
+  _aggroRangeRadius: 12.9

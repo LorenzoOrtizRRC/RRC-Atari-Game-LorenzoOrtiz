@@ -15,7 +15,7 @@ MonoBehaviour:
   _projectileObject: {fileID: 8622972427338649916, guid: f4a80e80a73c6e94d8be79029066b4db, type: 3}
   _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
   _splashEffect: {fileID: 6596529003588079410, guid: e79d1699c7b4e91439216cb266839cc5, type: 3}
-  _damage: 20
+  _damage: 22
   _rateOfFire: 5
   _penetrationStrength: 0
   _splashRadius: 0
@@ -28,5 +28,5 @@ MonoBehaviour:
   _minimumWeaponRange: 0
   _maximumWeaponRange: 7.5
   _weaponAngleSpread: 0
-  _projectileSpeed: 4.5
+  _projectileSpeed: 5
   _projectileLifetime: 3.5

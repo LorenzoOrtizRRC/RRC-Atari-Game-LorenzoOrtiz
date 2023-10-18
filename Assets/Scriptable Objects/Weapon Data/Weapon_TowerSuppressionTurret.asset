@@ -26,7 +26,7 @@ MonoBehaviour:
   _rotationSpeed: 135
   _maxAngleToShoot: 10
   _minimumWeaponRange: 0
-  _maximumWeaponRange: 12
+  _maximumWeaponRange: 13
   _weaponAngleSpread: 5
   _projectileSpeed: 8
   _projectileLifetime: 2

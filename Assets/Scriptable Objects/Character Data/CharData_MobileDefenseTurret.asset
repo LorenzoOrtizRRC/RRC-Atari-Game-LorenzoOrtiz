@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CharData_MobileDefenseTurret
   m_EditorClassIdentifier: 
   _characterName: Mobile Defense Turret
-  _health: 80
-  _armor: 1
+  _health: 70
+  _armor: 0
   _speed: 0
   _healthRegenAmount: 0
   _healthRegenRate: 0
