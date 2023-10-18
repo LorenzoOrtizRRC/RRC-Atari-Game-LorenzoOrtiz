@@ -16,7 +16,7 @@ TagManager:
   - CharacterAvoidance
   - TargetDetection
   - Terrain
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Minimap
+    uniqueID: 291954699
     locked: 0
   - name: Character Body
     uniqueID: 3540294131

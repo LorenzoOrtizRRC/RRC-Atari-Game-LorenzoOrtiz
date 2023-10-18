@@ -108,6 +108,14 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 8118047099835695236, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118047099835695236, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8623483805770791091, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_FlipX
       value: 0

@@ -2365,7 +2365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
@@ -13506,7 +13506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &732419648
 Transform:
   m_ObjectHideFlags: 0
@@ -18170,7 +18170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
@@ -25525,7 +25525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
@@ -27474,7 +27474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
@@ -28964,7 +28964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
@@ -29769,7 +29769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
@@ -39698,7 +39698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _captureSpeed
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
