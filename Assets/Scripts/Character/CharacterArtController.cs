@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterArtController : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private SpriteRenderer[] _renderers;
 
     private void Awake()
     {
-        _renderer ??= GetComponent<SpriteRenderer>();
+        //_renderers ??= GetComponent<SpriteRenderer>();
     }
 
     public void Initialize(TeamData _currentTeam)
     {
         // apply team colors
-        if (_renderer)
+        if (_renderers.Any())
         {
-            _renderer.color = _currentTeam.TeamColor;
+            foreach (SpriteRenderer renderer in _renderers)
+            {
+                renderer.color = _currentTeam.TeamColor;
+            }
         }
     }
 }
