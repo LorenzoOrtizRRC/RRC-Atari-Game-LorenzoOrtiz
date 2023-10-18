@@ -14,7 +14,7 @@ public class CaptureObjective : MonoBehaviour
     [SerializeField] private Collider2D _objectiveCollider;
     [SerializeField] private ResourceBar _progressBar;
     [SerializeField] private Image _progressBarTeamColor;
-    [SerializeField] private SpriteRenderer _objectiveColors;
+    [SerializeField] private SpriteRenderer[] _objectiveColors;
     [Header("Objective Variables")]
     [SerializeField] private TeamData _neutralTeamOwner;    // When unoccupied, or previous team owner is removed and capturing process by a new team starts, set team owner to this.
     [SerializeField] private TeamData _initialTeamOwner;
@@ -165,12 +165,15 @@ public class CaptureObjective : MonoBehaviour
         _ownerTeam = newTeam;
         // Change objective team colors.
         Color newColor = newTeam.TeamColor;
-        if (_preserveAlphaTransparency)
+        foreach (SpriteRenderer renderer in _objectiveColors)
         {
-            Color teamColor = newTeam.TeamColor;
-            newColor = new Color(teamColor.r, teamColor.g, teamColor.b, _objectiveColors.color.a);
+            if (_preserveAlphaTransparency)
+            {
+                Color teamColor = newTeam.TeamColor;
+                newColor = new Color(teamColor.r, teamColor.g, teamColor.b, renderer.color.a);
+            }
+            renderer.color = newColor;
         }
-        _objectiveColors.color = newColor;
     }
 
     private void IncreaseProgress(float progressSpeed)
