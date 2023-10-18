@@ -102,7 +102,6 @@ public class MissionDisplayManager : MonoBehaviour
         for (int i = 0; i < characters.Length; i++)
         {
             newDescription += characters[i];
-            print($"PRINT: {_missionDisplayList[missionIndex]}");
             _missionDisplayList[missionIndex].MissionDescription.text = newDescription;
             if (char.IsWhiteSpace(characters[i])) continue;
             yield return new WaitForSeconds(_delayPerCharacter);
