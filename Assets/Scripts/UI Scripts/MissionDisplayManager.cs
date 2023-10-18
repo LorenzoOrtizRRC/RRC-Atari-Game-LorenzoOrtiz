@@ -11,8 +11,8 @@ public class MissionDisplayManager : MonoBehaviour
     [SerializeField] private float _delayPerCharacter = 0.05f;
 
     private List<MissionDisplay> _missionDisplayList;
-    private bool _charactersAlreadyGenerated = false;     // True if coroutine already ran, meaning it should only run once.
-    private bool _descriptionGenerationEnded = false;
+    //private bool _charactersAlreadyGenerated = false;     // True if coroutine already ran, meaning it should only run once.
+    //private bool _descriptionGenerationEnded = false;
     private Coroutine _charGeneratorCoroutine;
 
     public void Initialize(List<MissionObjective> objectives)
@@ -39,12 +39,15 @@ public class MissionDisplayManager : MonoBehaviour
 
         if (_slowlyGenerateTextAtStart)
         {
-            if (!_charactersAlreadyGenerated) _charGeneratorCoroutine = StartCoroutine(GenerateDescription(newDescription, missionIndex));
-            else
+            //if (!_charactersAlreadyGenerated)
+            //{
+                _charGeneratorCoroutine = StartCoroutine(GenerateDescription(newDescription, missionIndex));
+            //}
+            /*else
             {
                 if (!_descriptionGenerationEnded) StopCoroutine(_charGeneratorCoroutine);
                 _missionDisplayList[missionIndex].MissionDescription.text = newDescription;
-            }
+            }*/
         }
         else
         {
@@ -70,7 +73,7 @@ public class MissionDisplayManager : MonoBehaviour
     // Slowly types out the characters of the text one at a time.
     private IEnumerator GenerateDescription(string description, int missionIndex)
     {
-        _charactersAlreadyGenerated = true;
+        //_charactersAlreadyGenerated = true;
         char[] characters = description.ToCharArray();
         string newDescription = string.Empty;
         for (int i = 0; i < characters.Length; i++)
@@ -80,7 +83,7 @@ public class MissionDisplayManager : MonoBehaviour
             if (char.IsWhiteSpace(characters[i])) continue;
             yield return new WaitForSeconds(_delayPerCharacter);
         }
-        _descriptionGenerationEnded = true;
+        //_descriptionGenerationEnded = true;
         yield return null;
     }
 }
