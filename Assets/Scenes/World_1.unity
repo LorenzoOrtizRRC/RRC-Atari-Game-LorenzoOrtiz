@@ -1202,8 +1202,8 @@ Transform:
   - {fileID: 1338922601}
   - {fileID: 1675459620}
   - {fileID: 1425723641}
-  - {fileID: 1480607774}
   - {fileID: 965535997}
+  - {fileID: 1480607774}
   - {fileID: 2070422323}
   - {fileID: 1980509329}
   m_Father: {fileID: 0}
@@ -1266,7 +1266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -1564,11 +1564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -1577,11 +1577,11 @@ PrefabInstance:
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 7a8df919c52b400429f245b99d14fd45, type: 2}
+      objectReference: {fileID: 11400000, guid: 5557ceacd054f9a4f873cb795f95ee04, type: 2}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b583375cea4fcc94984ffd194c5b4be9, type: 2}
+      objectReference: {fileID: 11400000, guid: e50badd811b1967488dbf31d7734fda9, type: 2}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[2]
       value: 
@@ -4536,11 +4536,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -5068,11 +5068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -6083,7 +6083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -6236,11 +6236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.y
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7703,11 +7703,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.y
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8691,11 +8691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.y
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10137,7 +10137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -11209,7 +11209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -11958,7 +11958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6364398202022411859, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _minionPath
@@ -13916,11 +13916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -15417,11 +15417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -15497,7 +15497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2429853163957527446, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: m_Name
-      value: Spawner Objective MIDDLE_RIGHT (3)
+      value: Spawner Objective Top_Left
       objectReference: {fileID: 0}
     - target: {fileID: 2436365274793174734, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _waypointList.Array.data[0]
@@ -15510,7 +15510,7 @@ PrefabInstance:
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
       value: 
-      objectReference: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
+      objectReference: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
     - target: {fileID: 4029273365138807039, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _newPath
       value: 
@@ -17072,11 +17072,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -18159,7 +18159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -19125,7 +19125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -21063,7 +21063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -21519,7 +21519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[0]
@@ -22671,7 +22671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6364398202022411859, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _minionPath
@@ -23170,11 +23170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -23183,11 +23183,11 @@ PrefabInstance:
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 7a8df919c52b400429f245b99d14fd45, type: 2}
+      objectReference: {fileID: 11400000, guid: 5557ceacd054f9a4f873cb795f95ee04, type: 2}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b583375cea4fcc94984ffd194c5b4be9, type: 2}
+      objectReference: {fileID: 11400000, guid: e50badd811b1967488dbf31d7734fda9, type: 2}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[2]
       value: 
@@ -23867,11 +23867,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.y
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2696727214051797893, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
@@ -24380,11 +24380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -24509,11 +24509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -24589,7 +24589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2429853163957527446, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: m_Name
-      value: Spawner Objective MIDDLE_RIGHT (1)
+      value: Spawner Objective Top_Right
       objectReference: {fileID: 0}
     - target: {fileID: 2436365274793174734, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _waypointList.Array.data[0]
@@ -25081,11 +25081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -25161,7 +25161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2429853163957527446, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: m_Name
-      value: Spawner Objective MIDDLE_RIGHT (2)
+      value: Spawner Objective Bottom_Left
       objectReference: {fileID: 0}
     - target: {fileID: 2436365274793174734, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _waypointList.Array.data[0]
@@ -25174,7 +25174,7 @@ PrefabInstance:
     - target: {fileID: 3739075737004200733, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialTeamOwner
       value: 
-      objectReference: {fileID: 11400000, guid: 275a5f1c9f66d704096a496cc771595f, type: 2}
+      objectReference: {fileID: 11400000, guid: 6653ccac4610a5842ae854471a73f553, type: 2}
     - target: {fileID: 4029273365138807039, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _newPath
       value: 
@@ -25527,11 +25527,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.y
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2696727214051797893, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
@@ -26100,7 +26100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -28334,7 +28334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -29921,11 +29921,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.y
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2696727214051797893, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
@@ -30500,11 +30500,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1460890729178991377, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.y
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2696727214051797893, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: m_Size.x
@@ -31858,11 +31858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8600461234242172815, guid: 7f170d42d26d05548a409c9e02a3bf9f, type: 3}
       propertyPath: _waypointArea.y
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32280,7 +32280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810662684131631891, guid: e2ede2fe8344f3b4cb1c74888e3cadf1, type: 3}
       propertyPath: _previewPathEdgesRadius
@@ -32433,11 +32433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -33149,11 +33149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenMinions
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -33229,7 +33229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2429853163957527446, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: m_Name
-      value: Spawner Objective MIDDLE_RIGHT (4)
+      value: Spawner Objective Bottom_Right
       objectReference: {fileID: 0}
     - target: {fileID: 2436365274793174734, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _waypointList.Array.data[0]

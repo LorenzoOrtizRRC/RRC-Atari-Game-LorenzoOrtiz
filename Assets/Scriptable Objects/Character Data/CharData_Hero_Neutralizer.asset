@@ -15,7 +15,7 @@ MonoBehaviour:
   _characterName: Neutralizer
   _health: 70
   _armor: 0
-  _speed: 4
+  _speed: 3.5
   _healthRegenAmount: 2
   _healthRegenRate: 1
   _rotationSpeed: 180
