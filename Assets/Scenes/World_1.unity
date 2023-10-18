@@ -523,7 +523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8604521, y: 0}
   m_AnchorMax: {x: 1, y: 0.24901886}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0.2800293}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0.2800293}
   m_SizeDelta: {x: 0.00012207, y: -0.28}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &42172931
@@ -2353,7 +2353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -5593,7 +5593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -6219,7 +6219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -13678,7 +13678,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 24
+  orthographic size: 40
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -16317,7 +16317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -18155,7 +18155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -20122,7 +20122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -25610,7 +25610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.data[0]
@@ -27547,7 +27547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -28908,7 +28908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -29037,7 +29037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -29842,7 +29842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size
@@ -38865,7 +38865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9170011914379954269, guid: fa8576ace5322e240af3b144df544f18, type: 3}
       propertyPath: _initialWave.Array.size
@@ -39843,7 +39843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _delayBetweenSpawnWaves
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 225766796110883842, guid: b4c48d5fe163ca843ada17289eaf1be2, type: 3}
       propertyPath: _initialWave.Array.size

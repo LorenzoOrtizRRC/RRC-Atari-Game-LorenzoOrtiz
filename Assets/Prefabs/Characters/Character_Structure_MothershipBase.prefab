@@ -1981,6 +1981,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 7.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1192203914606517763, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 716211265fdb5d54184cc920d8c07a88, type: 3}
     - target: {fileID: 1529838080698321536, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: _isImmovable
       value: 1
@@ -2052,6 +2056,14 @@ PrefabInstance:
     - target: {fileID: 7723696700473416166, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_BodyType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118047099835695236, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118047099835695236, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8623483805770791091, guid: 72503b87f8c301541b9a1c57119e4589, type: 3}
       propertyPath: m_Sprite
