@@ -18,7 +18,7 @@ public class MissionManager : MonoBehaviour
     // Send an event when all missions are successful.
     // Send an event when all missions are failed.
 
-    private void Start()
+    private void Awake()
     {
         foreach (MissionObjective missionObjective in _missions)
         {
@@ -26,8 +26,19 @@ public class MissionManager : MonoBehaviour
             missionObjective.OnMissionUpdated += EvaluateMissions;
             missionObjective.OnMissionUpdated += UpdateMissionDisplay;
         }
-
         _missionDisplayManager.Initialize(_missions);
+    }
+
+    private void Start()
+    {/*
+        foreach (MissionObjective missionObjective in _missions)
+        {
+            missionObjective.Initialize();
+            missionObjective.OnMissionUpdated += EvaluateMissions;
+            missionObjective.OnMissionUpdated += UpdateMissionDisplay;
+        }*/
+
+        _missionDisplayManager.InitializeGeneration(_missions);
     }
 
     private void EvaluateMissions(MissionObjective mission)

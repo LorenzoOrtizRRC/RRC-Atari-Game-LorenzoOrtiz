@@ -49,6 +49,7 @@ public class CaptureObjective : MonoBehaviour
             if (_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);     // Disable if full progress.
             else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
             else if (_currentProgress == 0f && _ownerTeam == NeutralTeamOwner) _progressBar.gameObject.SetActive(false);    // Disable if neutral & 0 progress.
+            //OnObjectiveCaptured?.Invoke(_ownerTeam);
         }
     }
 

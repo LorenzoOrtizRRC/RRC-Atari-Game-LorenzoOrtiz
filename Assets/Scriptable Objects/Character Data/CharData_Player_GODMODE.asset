@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e8e024ec5e748142b1be07f4eaec0c3, type: 3}
-  m_Name: CharData_PlayerMachineGun
+  m_Name: CharData_Player_GODMODE
   m_EditorClassIdentifier: 
   _characterName: Player
-  _health: 120
+  _health: 1000
   _armor: 1
-  _speed: 4.5
-  _healthRegenAmount: 2
+  _speed: 15
+  _healthRegenAmount: 50
   _healthRegenRate: 0.5
   _rotationSpeed: 90
   _aggroRangeRadius: 1

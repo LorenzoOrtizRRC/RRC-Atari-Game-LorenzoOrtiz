@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4c72bea1df5a84abccf7b37d4a5cbf, type: 3}
-  m_Name: Weapon_PlayerMachineGun
+  m_Name: Weapon_Player_MachineGun
   m_EditorClassIdentifier: 
   _projectileObject: {fileID: 1444248428017069882, guid: f04591f7415a5634dae7088e4afcf164, type: 3}
   _hitEffect: {fileID: 2123554026298576845, guid: 14c9f10821765204bb5b66fa2ab081c9, type: 3}
