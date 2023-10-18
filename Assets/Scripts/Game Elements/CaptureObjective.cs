@@ -54,8 +54,6 @@ public class CaptureObjective : MonoBehaviour
 
     private void Start()
     {
-        print(_ownerTeam);
-        print(OnObjectiveCaptured == null);
         OnObjectiveCaptured?.Invoke(_ownerTeam);
     }
 
