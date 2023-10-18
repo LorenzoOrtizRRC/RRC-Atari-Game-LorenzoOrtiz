@@ -39,12 +39,17 @@ public class CaptureObjective : MonoBehaviour
     {
         // Initialize ownership.
         SetNewOwner(_initialTeamOwner);
+        UpdateProgressBarColor(_initialTeamOwner);
         _currentProgress = _ownerTeam == _neutralTeamOwner ? 0f : 1f;
         _progressBar.UpdateSliderValue(_currentProgress / 1f);
 
         // Set progress bar visibility.
-        if (_hideProgressBarWhenFull && _progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);
-        else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
+        if (_hideProgressBarWhenFull)
+        {
+            if (_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f == 1f) _progressBar.gameObject.SetActive(false);     // Disable if full progress.
+            else if (!_progressBar.gameObject.activeInHierarchy && _currentProgress / 1f < 1f) _progressBar.gameObject.SetActive(true);
+            else if (_currentProgress == 0f && _ownerTeam == NeutralTeamOwner) _progressBar.gameObject.SetActive(false);    // Disable if neutral & 0 progress.
+        }
     }
 
     private void OnEnable()
