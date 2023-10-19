@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CharData_Player_MachineGun
   m_EditorClassIdentifier: 
   _characterName: Player
-  _health: 80
+  _health: 100
   _armor: 1
   _speed: 5.5
-  _healthRegenAmount: 1
+  _healthRegenAmount: 0.5
   _healthRegenRate: 0.5
   _rotationSpeed: 90
   _aggroRangeRadius: 1
